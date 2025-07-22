@@ -1,0 +1,157 @@
+/* Fixes scrollbar */
+:host, :root {
+  margin: 0 !important
+}
+
+/* More emphasized selection background for light theme */
+::selection, .text-selected {
+  background-color: color-mix(in srgb, var(--tblr-primary) 20%, transparent);
+}
+/* Even more emphasized selection background for light theme */
+:is(:host, :root):is([data-bs-theme=dark]) ::selection {
+  background-color: color-mix(in srgb, var(--tblr-primary) 50%, transparent);
+}
+
+/* Increase specificity, to make damn sure it is hidden */
+[hidden][hidden][hidden][hidden] {
+  display: none !important;
+}
+
+dialog {
+  border: none;
+}
+
+
+/* TEMP: Most likely - used for SPA dev purposes */
+/* CUSTOM ID - holds the content of replaced pages */
+#page-content {
+  display: contents !important;
+}
+
+/* # MESSENGER */
+/* NOTE: This section is an absolute mess */
+
+/* ! TEMP/WIP - super ultra mega total hack (to "fit" screen height) */
+.page-wrapper:has(.messenger) {
+  max-height: calc(100dvh - 3.5rem);
+  overflow-y: scroll;
+}
+
+:root {
+  --footer-content-height: 4.5rem;
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --footer-content-height: 1.5rem;
+  }
+}
+
+.messenger > .row > [class*="col"] {
+  max-height: calc(100dvh - 3.5rem - 1.5rem - 2.25rem - 1.5rem - 1.5rem - 2rem - var(--footer-content-height) - 2rem);
+  overflow-y: scroll;
+}
+
+/* temp: Hide message sender avatar images -> remove them from code */
+.messenger .nav-pills .nav-link [class*="col"]:has(>.avatar) {
+  display: none;
+}
+
+.footnote {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.28), transparent);
+}
+
+/* MESSENGER (end) */
+
+/* # NAVBAR */
+.navbar {
+  --tblr-navbar-active-color: var(--tblr-primary);
+  /* --tblr-navbar-color: var(--tblr-secondary); */
+  --tblr-navbar-active-bg: transparent;
+}
+
+/* Scrollbar will no longer be visible all the time (i.e. when there is no overflow to scroll) */
+.navbar navbar-vertical {
+  overflow: auto !important;
+}
+
+/* Hamburger icon */
+.navbar-toggler {
+  color: var(--tblr-body-color);
+}
+
+.navbar-nav {
+  --tblr-nav-link-color: var(--tblr-body-color);
+}
+
+/* Increase icon gap */
+.nav-link-icon {
+  margin-right: 0.875rem;
+}
+
+/* Disable the left border */
+.nav-item.active:after {
+  display: none;
+}
+
+.navbar.navbar-vertical .dropdown-menu {
+  --tblr-dropdown-link-hover-color: var(--tblr-navbar-active-color);
+  --tblr-dropdown-link-hover-bg: transparent;
+}
+
+.navbar.navbar-vertical .dropdown-item:is(:focus, :hover, .active, :active) {
+  color: var(--tblr-dropdown-link-hover-color) !important;
+}
+
+/* Limits mobile navbar to full screen height and enables overflow scroll. Without this, sticky navbar would not be possible to navigate if it overflowed */
+/* NOTE: That 2rem is the logo height = hard-coded height of .navbar-brand-image */
+@media (max-width: 991.98px) {
+  .navbar.sticky-top .navbar-collapse {
+    max-height: calc(100dvh - var(--tblr-navbar-padding-y) - var(--tblr-navbar-brand-padding-y) - 2rem - var(--tblr-navbar-brand-padding-y) - var(--tblr-navbar-padding-y));
+    overflow: auto;
+  }
+}
+
+/* Rounded bottom corners of expanded mobile navbar */
+@media (max-width: 991.98px) {
+  .navbar-vertical:has(.navbar-collapse.show) {
+    border-bottom-left-radius: var(--tblr-border-radius-lg);
+    border-bottom-right-radius: var(--tblr-border-radius-lg);
+  }
+}
+
+/* ? maybe - centers the center logo in the center column */
+@media (max-width: 991.98px) {
+  .navbar-vertical.navbar-expand-lg > [class^=container] {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .navbar-collapse {
+    grid-column: 1/-1;
+  }
+}
+/* NAVBAR (end) */
+
+.dropdown-menu {
+  --tblr-dropdown-padding-x: 0.25rem;
+  --tblr-dropdown-padding-y: 0.25rem;
+}
+
+/* Rounded item corners */
+.dropdown-item {
+  --tblr-dropdown-item-border-radius: var(--tblr-border-radius);
+}
+
+/* Open dropdown arrow rotated */
+.dropdown-toggle.show:after {
+  rotate: 180deg;
+  /* Will rotate in optical center */
+  transform-origin: calc(50% - 0.05em) 75%;
+}
+
+/* The form will be invisible (but its children will not) and won't interfere with the layout */
+.card form {
+  display: contents;
+}
