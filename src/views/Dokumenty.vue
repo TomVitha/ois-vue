@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Subtitle" title="Title">
+  <PageTemplate pretitle="Ke stažení" title="Dokumenty">
     <!-- <template #actions>
       <div class="btn-list">
         <button type="button" class="btn">
@@ -207,8 +207,8 @@
                     </svg>
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Otevřít</a>
-                    <a class="dropdown-item" href="#">Stáhnout</a>
+                    <a class="dropdown-item" href="/sample-invoice.pdf">Otevřít</a>
+                    <a class="dropdown-item" href="/sample-invoice.pdf" download>Stáhnout</a>
                   </div>
                 </div>
               </div>

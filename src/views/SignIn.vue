@@ -65,7 +65,7 @@
                 </div>
               </div>
               <div>
-                <label class="form-check">
+                <label class="form-check d-inline-block">
                   <input type="checkbox" class="form-check-input">
                   <span class="form-check-label">Zapamatovat si mě</span>
                 </label>
@@ -76,11 +76,7 @@
               </div>
             </div>
           </form>
-        </div>
-        <div class="hr-text">
-          Nebo
-        </div>
-        <div class="card-body">
+          <div class="hr-text">Nebo</div>
           <div class="row row-gap-2">
             <!-- <div class="col-12">
             <a href="#" class="btn btn-x btn-4 w-100">

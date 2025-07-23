@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import LayoutDefault from '../layouts/LayoutDefault.vue'
+// import LayoutDefault from '../layouts/LayoutDefault.vue'
 import LayoutBlank from '../layouts/LayoutBlank.vue'
 
 const router = createRouter({
+  linkActiveClass: 'active',
+  linkExactActiveClass: 'active-exact',
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      // meta: { layout: LayoutDefault },
+      // meta: { layout: LayoutDefault }, // Unnecessary to specify LayoutDefault as we default to it in App.vue
       component: Home,
     },
     {
@@ -24,8 +26,24 @@ const router = createRouter({
       component: () => import('../views/Dokumenty.vue'),
     },
     {
+      path: '/help',
+      component: () => import('../views/Help.vue'),
+    },
+    {
       path: '/komunikace',
       component: () => import('../views/Komunikace.vue'),
+    },
+    {
+      path: '/kontakty',
+      component: () => import('../views/Kontakty.vue'),
+    },
+    {
+      path: '/news',
+      component: () => import('../views/News.vue'),
+    },
+    {
+      path: '/platby',
+      component: () => import('../views/Platby.vue'),
     },
     {
       path: '/sign-in',
@@ -34,12 +52,12 @@ const router = createRouter({
     },
     {
       path: '/404',
-      meta: { layout: LayoutBlank },
+      // meta: { layout: LayoutBlank },
       component: () => import('../views/404.vue'),
     },
     {
       path: '/:catchAll(.*)',
-      redirect: '/404',
+      component: () => import('../views/404.vue'),
     },
   ],
 })
