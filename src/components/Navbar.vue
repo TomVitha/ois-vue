@@ -5,16 +5,16 @@
 <template>
   <header class="navbar navbar-expand-lg d-print-none d-none d-lg-flex">
     <div class="container-xl">
-      <!-- BEGIN NAVBAR TOGGLER -->
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- END NAVBAR TOGGLER -->
-      <!-- BEGIN NAVBAR LOGO -->
+
+
       <div>
         <!-- Empty div for layout purposes -->
       </div>
-      <!-- END NAVBAR LOGO -->
+
       <div class="navbar-nav flex-row order-md-last">
         <div class="d-none d-md-flex align-items-center me-3">
           <!-- TEMP ? -->
@@ -245,7 +245,7 @@
               Settings
             </a>
             <div class="dropdown-divider"></div>
-            <a href="/sign-in.html" class="dropdown-item">
+            <RouterLink to="/sign-in" class="dropdown-item">
               <div class="dropdown-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -255,7 +255,7 @@
                 </svg>
               </div>
               Logout
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>

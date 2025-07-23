@@ -5,12 +5,12 @@
 <template>
   <aside class="navbar navbar-vertical navbar-expand-lg sticky-top d-print-none">
     <div class="container-fluid">
-      <!-- BEGIN NAVBAR TOGGLER -->
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- END NAVBAR TOGGLER -->
-      <!-- BEGIN NAVBAR LOGO -->
+
+
       <div class="navbar-brand navbar-brand-autodark">
         <a href="/" aria-label="Tabler">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" style="enable-background:new 0 0 283.5 186.2;" xml:space="preserve" class="navbar-brand-image">
@@ -35,7 +35,7 @@
           </svg>
         </a>
       </div>
-      <!-- END NAVBAR LOGO -->
+
       <div class="navbar-nav flex-row justify-content-end d-lg-none">
         <!-- to be deleted? (next element) -->
         <div class="d-flex">
@@ -195,7 +195,7 @@
               Settings
             </a>
             <div class="dropdown-divider"></div>
-            <a href="/sign-in.html" class="dropdown-item">
+            <RouterLink to="/sign-in" class="dropdown-item">
               <div class="dropdown-item-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -205,12 +205,12 @@
                 </svg>
               </div>
               Logout
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>
       <div class="collapse navbar-collapse user-select-none" id="sidebar-menu">
-        <!-- BEGIN NAVBAR MENU -->
+
         <ul class="navbar-nav p-1 p-lg-3 gap-1">
           <!-- Overview / Dashboard -->
           <li class="nav-item active">
@@ -409,7 +409,7 @@
               </a>
             </li> -->
         </ul>
-        <!-- END NAVBAR MENU -->
+
       </div>
     </div>
   </aside>
