@@ -13,7 +13,18 @@
     <link rel="stylesheet" href="/src/assets/tabler-custom.css">
   </head>
   <body>
-    <div id="app" class="page"></div>
+    <div id="app" class="page">
+      <!-- LOADING CONTENT -->
+      <div class="page page-center my-auto">
+        <div class="container container-slim py-4">
+          <div class="text-center">
+          <!-- <div class="text-secondary mb-3">Načítá se</div> -->
+          <div class="progress progress-sm">
+            <div class="progress-bar progress-bar-indeterminate"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js" defer></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
