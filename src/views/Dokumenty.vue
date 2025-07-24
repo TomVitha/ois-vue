@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Ke stažení" title="Dokumenty">
+  <PageTemplate title="Dokumenty">
     <!-- <template #actions>
       <div class="btn-list">
         <button type="button" class="btn">

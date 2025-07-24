@@ -5,7 +5,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Oznámení a nabídky" title="Novinky">
+  <PageTemplate title="Novinky a nabídky">
     <div class="row row-cards">
       <div class="col-12">
         <a href="https://google.com" class="card">

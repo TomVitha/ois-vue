@@ -51,6 +51,10 @@ const router = createRouter({
       meta: { layout: LayoutBlank },
     },
     {
+      path: '/zadosti',
+      component: () => import('../views/Zadosti.vue'),
+    },
+    {
       path: '/404',
       // meta: { layout: LayoutBlank },
       component: () => import('../views/404.vue'),

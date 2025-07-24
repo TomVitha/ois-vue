@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Přehled bytu" title="D 331">
+  <PageTemplate title="D 331">
     <template #actions>
       <div class="btn-list">
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -19,10 +19,10 @@
       <div class="modal" id="exampleModal" tabindex="-1">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <!-- <div class="modal-header">
               <h5 class="modal-title">Přejmenovat</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            </div> -->
             <div class="modal-body">
               <div>
                 <label class="form-label d-inline-flex" for="apt-name">Název</label>

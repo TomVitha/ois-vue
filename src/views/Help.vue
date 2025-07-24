@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Pomoc" title="Nápověda">
+  <PageTemplate title="Nápověda">
     <div class="space-y-4">
       <div class="card card-md">
         <div class="card-body">

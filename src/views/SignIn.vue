@@ -1,5 +1,24 @@
 <script setup>
+  import { useThemeStore } from '@/stores/theme'
+  const themeStore = useThemeStore()
 
+  function togglePasswordVisibility(passwdInput = document.querySelector('#password'), event) {
+    const icon = event.currentTarget.querySelector('.ti')
+    let isVisible = passwdInput.getAttribute('type') == 'password' ? false : true;
+    // TODO: Use switch icon? RE: https://docs.tabler.io/ui/components/switch-icon
+    if (isVisible) {
+      passwdInput.setAttribute('type', 'password')
+      icon.classList.remove('ti-eye-off')
+      icon.classList.add('ti-eye')
+      isVisible = false
+
+    } else {
+      passwdInput.setAttribute('type', 'text')
+      icon.classList.remove('ti-eye')
+      icon.classList.add('ti-eye-off')
+      isVisible = true
+    }
+  }
 </script>
 
 <template>
@@ -58,7 +77,7 @@
                 <div class="input-group input-group-flat">
                   <input type="password" id="password" name="password" autocomplete="current-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
                   <span class="input-group-text">
-                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" onclick="togglePasswordVisibility()">
+                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
                       <i class="ti ti-eye fs-2 icon"></i>
                     </a>
                   </span>
@@ -102,12 +121,12 @@
       <div class="row">
         <div class="ms-auto mt-2 col-auto d-flex align-items-center">
           <div class="me-2">
-            <a href="?theme=dark" class="btn btn-6 btn-white w-100 btn-icon hide-theme-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Enable dark mode" data-bs-original-title="Enable dark mode" onclick="event.preventDefault(); applyTheme('dark')">
+            <a href="?theme=dark" class="btn btn-6 btn-white w-100 btn-icon hide-theme-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Enable dark mode" data-bs-original-title="Enable dark mode" @click.prevent="themeStore.applyTheme('dark')">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                 <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
               </svg>
             </a>
-            <a href="?theme=light" class="btn btn-6 btn-white w-100 btn-icon hide-theme-light" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Enable light mode" data-bs-original-title="Enable light mode" onclick="event.preventDefault(); applyTheme('light')">
+            <a href="?theme=light" class="btn btn-6 btn-white w-100 btn-icon hide-theme-light" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Enable light mode" data-bs-original-title="Enable light mode" @click.prevent="themeStore.applyTheme('light')">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                 <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                 <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7">
@@ -143,7 +162,7 @@
 </template>
 
 <style scoped>
-  :not([data-bs-theme="dark"]) .page {
+  :root:not([data-bs-theme="dark"]) .page {
     background: var(--bg) center / cover;
   }
 </style>

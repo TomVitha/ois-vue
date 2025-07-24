@@ -20,25 +20,16 @@
         <div class="d-none d-md-flex align-items-center me-3">
           <!-- TEMP ? -->
           <!-- <div clas="nav-item">
-              <div class="input-icon">
-                <input type="text" value="" class="form-control" placeholder="Search…">
-                <span class="input-icon-addon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-                    <path d="M21 21l-6 -6"></path>
-                  </svg>
-                </span>
-              </div>
-            </div> -->
-          <div class="nav-item">
-            <a href="#" class="nav-link px-0" onclick="event.preventDefault(); document.querySelector('#temp-search')?.showModal()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Vyhledat">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                <path d="M21 21l-6 -6" />
-              </svg>
-            </a>
-          </div>
+            <div class="input-icon">
+              <input type="text" value="" class="form-control" placeholder="Search…">
+              <span class="input-icon-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                  <path d="M21 21l-6 -6"></path>
+                </svg>
+              </span>
+            </div>
+          </div> -->
           <div class="nav-item">
             <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zapnout tmavý režim" @click.prevent="themeStore.applyTheme('dark')">
               <!-- Download SVG icon from http://tabler.io/icons/icon/moon -->

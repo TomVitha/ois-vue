@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Subtitle" title="Title">
+  <PageTemplate title="Kontakty">
     <div class="row row-cards">
       <div class="col-md-6">
         <div class="card">

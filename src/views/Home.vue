@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Domovská stránka" title="Přehled">
+  <PageTemplate title="Přehled">
     <!-- <template #actions>
       <button class="btn btn-primary">Nová akce</button>
     </template> -->
@@ -57,7 +57,7 @@
               </div>
             </div>
             <div>
-              <h3 class="card-title"><a href="#apt">Byt C 310</a></h3>
+              <h3 class="card-title"><a href="/apt">Byt C 310</a></h3>
             </div>
             <div class="row gy-2">
               <div class="col-12 col-md-4">
@@ -76,7 +76,7 @@
           </div>
           <div class="card-body">
             <div class="d-flex align-items-baseline">
-              <h3 class="card-title"><a href="#apt">Byt A 017</a></h3>
+              <h3 class="card-title"><a href="/apt">Byt A 017</a></h3>
             </div>
             <div class="row gy-2">
               <div class="col-12 col-md-4">

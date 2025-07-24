@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import { defineProps } from 'vue'
   import PageTemplate from '@/components/PageTemplate.vue'
 </script>
 
 <template>
 
-  <PageTemplate pretitle="our own fake email" title="Komunikace">
+  <PageTemplate title="Komunikace">
     <template #actions>
       <div class="btn-list">
         <a href="#" class="btn btn-1">něco</a>

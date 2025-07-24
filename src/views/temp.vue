@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Subtitle" title="Title">
+  <PageTemplate pretitle="xxxxxx" title="Nadpis">
     <!-- <template #actions>
       <div class="btn-list">
         <button type="button" class="btn">

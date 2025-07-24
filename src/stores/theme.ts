@@ -22,6 +22,7 @@ export const useThemeStore = defineStore('theme', () => {
     function initTheme() {
         const storedTheme = localStorage.getItem("theme");
         if (storedTheme && validThemes.includes(storedTheme)) {
+            // Load from localStorage
             applyTheme(storedTheme);
         } else {
             // Default to system preference
@@ -29,6 +30,12 @@ export const useThemeStore = defineStore('theme', () => {
             applyTheme(systemTheme);
         }
     }
+
+    // Watching the state and its changes through the $subscribe() method of a store
+    useThemeStore().$subscribe((mutation, state) => {
+        // console.debug('Theme store changed:', mutation, state)
+        // applyTheme(state.theme);
+    })
 
     return { theme, applyTheme, initTheme, validThemes, validThemeBases }
 })

@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="moneeeyyyy" title="Platby">
+  <PageTemplate title="Platby">
     <!-- ALERTS -->
     <div class="alert alert-danger alert-dismissible" role="alert">
       <div class="alert-icon">

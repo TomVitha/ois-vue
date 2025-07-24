@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Váš profil" title="Nastavení účtu">
+  <PageTemplate title="Nastavení účtu">
     <div class="row g-5">
       <div class="col-xl-2 d-none d-xl-block">
         <div class="sticky-top">
@@ -283,6 +283,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-12">
+            <p>O změnu údajů si můžete zažádat na stránce <RouterLink to="/zadosti">Žádosti a žmeny</RouterLink>.</p>
           </div>
           <div class="col-12">
             <div class="card card-md">
