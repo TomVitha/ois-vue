@@ -35,9 +35,9 @@
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů</h3>
             <p class="text-secondary">Vdala jste se? Přestěhovali jste se, nebo si změnili telefonní číslo? Tak si to nechte pro sebe, nás to nezajímá.</p>
-            <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje">Otevřít</a>
+            <a href="#zadost-osobni-udaje" class="btn" data-bs-toggle="modal">Otevřít</a>
             <!-- DIALOG -->
-            <div class="modal" id="zadost-osobni-udaje" tabindex="-1">
+            <div class="modal fade" id="zadost-osobni-udaje" tabindex="-1">
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -45,49 +45,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <div class="row align-items-center">
-                      <div class="col"><span class="form-label">Údaj</span></div>
-                      <div class="col"><span class="form-label">Současný</span></div>
-                      <div class="col"><span class="form-label">Nový</span></div>
-                    </div>
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <div class="dropdown">
-                          <a href="#" class="btn dropdown-toggle justify-content-between w-100" data-bs-toggle="dropdown">Rodinný stav</a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                            <a class="dropdown-item" href="#">Third action</a>
-                          </div>
-                        </div>
+                    <div class="row align-items-center gy-3">
+                      <div class="col-md-4">
+                        <span class="form-label">Údaj</span>
+                        <select name="lang" class="form-select">
+                          <option value="1">Rodinný stav</option>
+                          <option value="1">Jméno</option>
+                          <option value="1">Adresa</option>
+                        </select>
                       </div>
-                      <div class="col">
+                      <div class="col-md-4">
+                        <span class="form-label">Současná hodnota</span>
                         <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Ženatý" readonly>
                       </div>
-                      <div class="col">
+                      <div class="col-md-4">
+                        <span class="form-label">Nová hodnota</span>
                         <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Svobodný">
                       </div>
                     </div>
 
-                    <a href="#" class="d-inline-block mt-3">Další údaj</a>
+                    <!-- <a href="#" class="d-inline-block mt-3">Další údaj</a> -->
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn me-auto" data-bs-dismiss="modal">Zrušit</button>
@@ -107,9 +84,9 @@
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů 2</h3>
             <p class="text-secondary">Jestli se něco ohledně vás změnilo, tak nám to řekněte. Jestli nám to neřeknete tak vám uřízneme... tedy, tak vám ten byt nedáme.</p>
-            <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje-2">Otevřít</a>
+            <a href="#zadost-osobni-udaje-2" class="btn" data-bs-toggle="modal">Otevřít</a>
             <!-- DIALOG -->
-            <div class="modal" id="zadost-osobni-udaje-2" tabindex="-1">
+            <div class="modal fade" id="zadost-osobni-udaje-2" tabindex="-1">
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">

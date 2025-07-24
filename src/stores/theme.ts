@@ -19,16 +19,33 @@ export const useThemeStore = defineStore('theme', () => {
         document.documentElement.setAttribute("data-bs-theme", newTheme);
     }
 
+    //// Old init function 
+    // function initTheme() {
+    //     const storedTheme = localStorage.getItem("theme");
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const urlTheme = urlParams.get("theme");
+
+    //     if (urlTheme && validThemes.includes(urlTheme)) {
+    //         theme.value = urlTheme;
+    //     } else if (storedTheme && validThemes.includes(storedTheme)) {
+    //         // Load from localStorage
+    //         theme.value = storedTheme;
+    //     } else {
+    //         // Default to system preference
+    //         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    //         theme.value = systemTheme;
+    //     }
+
+    //     applyTheme(theme.value);
+    // }
+
     function initTheme() {
-        const storedTheme = localStorage.getItem("theme");
-        if (storedTheme && validThemes.includes(storedTheme)) {
-            // Load from localStorage
-            applyTheme(storedTheme);
-        } else {
-            // Default to system preference
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            applyTheme(systemTheme);
-        }
+        const getValidTheme = (value: string | null) => value && validThemes.includes(value) ? value : null;
+        const urlParamTheme = getValidTheme(new URLSearchParams(window.location.search).get("theme"));
+        const storedTheme = getValidTheme(localStorage.getItem("theme"));
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const initialTheme = urlParamTheme || storedTheme || systemTheme;
+        applyTheme(initialTheme);
     }
 
     // Watching the state and its changes through the $subscribe() method of a store

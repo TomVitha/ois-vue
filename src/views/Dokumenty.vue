@@ -206,7 +206,7 @@
                       <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                     </svg>
                   </a>
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="/sample-invoice.pdf">Otevřít</a>
                     <a class="dropdown-item" href="/sample-invoice.pdf" download>Stáhnout</a>
                   </div>

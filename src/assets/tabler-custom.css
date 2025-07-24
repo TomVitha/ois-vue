@@ -170,18 +170,25 @@ dialog {
 
 /* Increase backdrop intensity */
 .modal-backdrop.show {
+  --tblr-backdrop-bg: black;
     opacity: 0.5;
-    --tblr-backdrop-bg: black;
 }
 
 /* ???? DIALOG AS BOTTOM DRAWER ON MOBILE */
 @media (max-width: 575px) {
-  .modal-dialog {
+  .modal-dialog.drawer {
     align-items: end;
-        --tblr-modal-margin: 0.0rem;
+    --tblr-modal-margin: 0.0rem;
   }
-  .modal-content {
+  .drawer .modal-content {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+}
+
+/* Disable font size increase on mobile */
+@media (max-width: 575.98px) {
+    .form-control, .form-select {
+        font-size: inherit;
+    }
 }
