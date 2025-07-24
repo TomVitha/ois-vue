@@ -155,3 +155,33 @@ dialog {
 .card form {
   display: contents;
 }
+
+
+/* !! TEMP !! */
+:root {
+  --tblr-primary: #41a541;
+}
+
+/* Limits dropdown height */
+.dropdown-menu {
+  max-height: min(300px, 80vh);
+  overflow: auto;
+}
+
+/* Increase backdrop intensity */
+.modal-backdrop.show {
+    opacity: 0.5;
+    --tblr-backdrop-bg: black;
+}
+
+/* ???? DIALOG AS BOTTOM DRAWER ON MOBILE */
+@media (max-width: 575px) {
+  .modal-dialog {
+    align-items: end;
+        --tblr-modal-margin: 0.0rem;
+  }
+  .modal-content {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
