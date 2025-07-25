@@ -17,8 +17,13 @@
   <div class="card flex-fill messenger border-top-0 border-start-0 border-end-0 rounded-0">
     <div class="row g-0 flex-fill">
       <div class="col-12 col-lg-auto d-flex flex-column border-end messenger__list">
-        <div class="card-header space-y-2 align-items-stretch order-1 order-lg-0 flex-column-reverse flex-lg-column">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">Nová zpráva</button>
+        <div class="card-header space-y-2 align-items-stretch ">
+          <!-- Compose button -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-pencil"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" /><path d="M13.5 6.5l4 4" /></svg>
+            Nová zpráva
+          </button>
+          <!-- Compose message window -->
           <div class="modal" id="new-message-modal" tabindex="-1">
             <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -40,6 +45,7 @@
               </div>
             </div>
           </div>
+          <!-- Search bar -->
           <div class="input-icon">
             <span class="input-icon-addon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
@@ -52,7 +58,7 @@
         </div>
         <div class="card-body p-0 scrollable flex-fill">
           <div class="nav flex-column nav-pills" role="tablist">
-            <a href="#chat-1" class="nav-link text-start mw-100 ps-4 pe-1 py-3 active" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="true">
+            <a href="#chat-1" class="nav-link text-start mw-100 ps-4 pe-1 py-3" data-bs-toggle="pill" role="tab" aria-selected="true">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div class="d-flex align-items-center justify-content-between">
@@ -70,7 +76,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-2" class="nav-link text-start mw-100 px-4 py-3" id="chat-2-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Jeffie Lewzey</div>
@@ -78,7 +84,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-3" class="nav-link text-start mw-100 px-4 py-3" id="chat-3-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Mallory Hulme</div>
@@ -89,7 +95,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-4" class="nav-link text-start mw-100 px-4 py-3" id="chat-4-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Dunn Slane</div>
@@ -98,7 +104,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-5" class="nav-link text-start mw-100 px-4 py-3" id="chat-5-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Emmy Levet</div>
@@ -108,7 +114,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-6" class="nav-link text-start mw-100 px-4 py-3" id="chat-6-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Maryjo Lebarree</div>
@@ -120,7 +126,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-7" class="nav-link text-start mw-100 px-4 py-3" id="chat-7-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Egan Poetz</div>
@@ -129,7 +135,7 @@
                 <div class="col-auto">🌴</div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-8" class="nav-link text-start mw-100 px-4 py-3" id="chat-8-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Kellie Skingley</div>
@@ -141,7 +147,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-9" class="nav-link text-start mw-100 px-4 py-3" id="chat-9-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
                 <div class="col text-body">
                   <div>Christabel Charlwood</div>
@@ -150,7 +156,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-10" class="nav-link text-start mw-100 px-4 py-3" id="chat-10-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -162,7 +168,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-11" class="nav-link text-start mw-100 px-4 py-3" id="chat-11-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -174,7 +180,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-12" class="nav-link text-start mw-100 px-4 py-3" id="chat-12-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -186,7 +192,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-13" class="nav-link text-start mw-100 px-4 py-3" id="chat-13-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -198,7 +204,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-14" class="nav-link text-start mw-100 px-4 py-3" id="chat-14-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -210,7 +216,7 @@
                 </div>
               </div>
             </a>
-            <a href="#chat-1" class="nav-link text-start mw-100 px-4 py-3" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
+            <a href="#chat-15" class="nav-link text-start mw-100 px-4 py-3" id="chat-15-tab" data-bs-toggle="pill" role="tab" aria-selected="false" tabindex="-1">
               <div class="row align-items-center flex-fill mw-100">
 
                 <div class="col text-body">
@@ -225,288 +231,32 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex flex-column">
-        <div class="card-body scrollable">
-          <div class="chat">
-            <!--
-              <div class="chat-bubbles">
-                <div class="chat-item">
-                  <div class="row align-items-end justify-content-end">
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble chat-bubble-me">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Paweł Kuna</div>
-                            <div class="col-auto chat-bubble-date">09:32</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Hey guys, I just pushed a new commit on the <code>dev</code> branch. Can you have a look
-                            and tell me what you think?</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000m.jpg)"> </span></div>
+      <div class="col d-flex flex-column messenger__body">
+        <div class="card-body scrollable tab-content">
+          <div class="tab-pane" id="chat-1">
+            <div class="chat">
+              <h2 class="mb-4">Návrh smlouvy o dílo</h2>
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <!-- <span class="avatar avatar-2 me-3" style="background-image: url(./static/avatars/052f.jpg)"> </span> -->
+                  <div>
+                    <div class="font-weight-medium">Od: Srnec Vladimír Ing.</div>
+                    <div class="text-secondary">Komu: Novák Adam</div>
                   </div>
                 </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/002m.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Mallory Hulme</div>
-                            <div class="col-auto chat-bubble-date">09:34</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Sure Paweł, let me pull the latest updates.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/003m.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Dunn Slane</div>
-                            <div class="col-auto chat-bubble-date">09:34</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>I'm on it too 👊</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/002m.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Mallory Hulme</div>
-                            <div class="col-auto chat-bubble-date">09:40</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>I see you've refactored the <code>calculateStatistics</code> function. The code is much
-                            cleaner now.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end justify-content-end">
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble chat-bubble-me">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Paweł Kuna</div>
-                            <div class="col-auto chat-bubble-date">09:42</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Yes, I thought it was getting a bit cluttered.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000m.jpg)"> </span></div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000f.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Emmy Levet</div>
-                            <div class="col-auto chat-bubble-date">09:43</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>The commit message is descriptive, too. Good job on mentioning the issue number it fixes.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/003m.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Dunn Slane</div>
-                            <div class="col-auto chat-bubble-date">09:44</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>
-                            I noticed you added some new dependencies in the <code>package.json</code>. Did you also
-                            update the <code>README</code> with
-                            the setup instructions?
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end justify-content-end">
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble chat-bubble-me">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Paweł Kuna</div>
-                            <div class="col-auto chat-bubble-date">09:45</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Oops, I forgot. I'll add that right away.</p>
-                          <div class="mt-2">
-                            <img src="https://media3.giphy.com/media/VABbCpX94WCfS/giphy.gif" alt=""
-                              class="rounded img-fluid">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000m.jpg)"> </span></div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/002m.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Mallory Hulme</div>
-                            <div class="col-auto chat-bubble-date">09:46</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>
-                            I see a couple of edge cases we might not be handling in the
-                            <code>calculateStatistic</code> function. Should I open an
-                            issue for that?
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end justify-content-end">
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble chat-bubble-me">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Paweł Kuna</div>
-                            <div class="col-auto chat-bubble-date">09:47</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Yes, Bob. Please do. We should not forget to handle those.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000m.jpg)"> </span></div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000f.jpg)"> </span></div>
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Emmy Levet</div>
-                            <div class="col-auto chat-bubble-date">09:50</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Alright, once the <code>README</code> is updated, I'll merge this commit into the main
-                            branch. Nice work, Paweł.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end justify-content-end">
-                    <div class="col col-lg-6">
-                      <div class="chat-bubble chat-bubble-me">
-                        <div class="chat-bubble-title">
-                          <div class="row">
-                            <div class="col chat-bubble-author">Paweł Kuna</div>
-                            <div class="col-auto chat-bubble-date">09:52</div>
-                          </div>
-                        </div>
-                        <div class="chat-bubble-body">
-                          <p>Thanks, <a href="#">@everyone</a>! 🙌</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000m.jpg)"> </span></div>
-                  </div>
-                </div>
-                <div class="chat-item">
-                  <div class="row align-items-end">
-                    <div class="col-auto"><span class="avatar avatar-1"
-                        style="background-image: url(./static/avatars/000f.jpg)"> </span></div>
-                    <div class="col-auto">
-                      <div class="chat-bubble">
-                        <div class="chat-bubble-body">
-                          <p class="text-secondary text-italic">typing<span class="animated-dots"></span></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              -->
-            <h2 class="mb-4">Návrh smlouvy o dílo</h2>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex">
-                <!-- <span class="avatar avatar-2 me-3" style="background-image: url(./static/avatars/052f.jpg)"> </span> -->
                 <div>
-                  <div class="font-weight-medium">Od: Srnec Vladimír Ing.</div>
-                  <div class="text-secondary">Komu: Novák Adam</div>
+                  <span class="text-secondary fs-5">Po 09.06.2025 13:41</span>
                 </div>
               </div>
-              <div>
-                <span class="text-secondary fs-5">Po 09.06.2025 13:41</span>
+              <div class="markdown mt-5">
+                <p>Dobrý den,</p>
+                <p>dovolujeme si vás informovat o této důležité záležitosti. Prosím vemte ji na vědomí.</p>
+                <p>S přáním hezkého dne <br>Vladimír Srnec</p>
               </div>
             </div>
-            <div class="markdown mt-5">
-              <p>Dobrý den,</p>
-              <p>dovolujeme si vás informovat o této důležité záležitosti. Prosím vemte ji na vědomí.</p>
-              <p>S přáním hezkého dne <br>Vladimír Srnec</p>
-            </div>
+          </div>
+          <div class="tab-pane" id="chat-2">
+            <h1>TEEEEEEEEEEST</h1>
           </div>
         </div>
         <div class="card-footer">

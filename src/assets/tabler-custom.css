@@ -1,3 +1,10 @@
+/* ! HIDES VUE INSPECTOR */
+#vue-inspector-container,
+#__vue-devtools-container__ {
+  display: none !important;
+}
+
+
 /* Fixes scrollbar */
 :host, :root {
   margin: 0 !important
@@ -24,38 +31,32 @@ dialog {
 
 
 /* # MESSENGER */
-/* NOTE: This section is an absolute mess */
 
-/* ! TEMP/WIP - super ultra mega total hack (to "fit" screen height) */
 .page-wrapper:has(.messenger) {
   max-height: calc(100dvh - 3.5rem);
-  overflow-y: clip;
+  overflow: clip;
 }
 
-:root {
-  /* --footer-content-height: 4.5rem; */
-  --footer-content-height: 5.25rem;
+/* NOTE: Footer probably won't be included in layout, so no need */
+/* :root { --footer-content-height: 5.25rem; } */
+/* @media (max-width: 1200px) { :root { --footer-content-height: 1.5rem; } } */
+
+
+.messenger > .row > [class*="col"] {
+  max-height: calc(100dvh - 3.5rem - 0px);
 }
 
-@media (max-width: 1200px) {
-  :root {
-    --footer-content-height: 1.5rem;
+
+@media (max-width: 991.98px) {
+  .messenger:has(.messenger__body .tab-pane.active) .messenger__list {
+    max-width: 0px;
+    width: 0;
+    overflow: clip;
   }
 }
 
 
-/* HACK: The footer is still there, it's just overflowing and is clipped */
-.messenger > .row > [class*="col"] {
-  /* max-height: calc(100dvh - 3.5rem - var(--footer-content-height) - 0px); */
-  max-height: calc(100dvh - 3.5rem - 0px);
-}
-
-/* .messenger > .row > [class*="col"]:first-child {
-  width: 350px;
-  resize: horizontal;
-} */
-
-
+/* NOTE: CSS-only resizing (maybe rework using JS?) */
 @media (min-width: 992px) {
   .messenger__list {
     width: 375px;
@@ -66,16 +67,14 @@ dialog {
   }
 }
 
-
 /* MESSENGER (end) */
+
 
 /* # NAVBAR */
 .navbar {
   --tblr-navbar-active-color: var(--tblr-primary);
   --tblr-navbar-active-bg: transparent;
 }
-
-
 
 /* Hamburger icon */
 .navbar-toggler {
