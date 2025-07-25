@@ -37,7 +37,7 @@ themeStore.initTheme() // Initialize theme on mount
   <!-- Dynamic component - According to current view's layout (specified in router) -->
   <!-- Component = Page template (with headers, navbars, footers) -->
   <component :is="$route.meta.layout || LayoutDefault">
-    <!-- RouterViews is passed to components's <slot> -->
+    <!-- RouterView is passed to components's default <slot> -->
     <RouterView />
   </component>
 </template>
