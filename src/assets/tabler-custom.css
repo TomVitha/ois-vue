@@ -7,6 +7,7 @@
 ::selection, .text-selected {
   background-color: color-mix(in srgb, var(--tblr-primary) 20%, transparent);
 }
+
 /* Even more emphasized selection background for light theme */
 :is(:host, :root):is([data-bs-theme=dark]) ::selection {
   background-color: color-mix(in srgb, var(--tblr-primary) 50%, transparent);
@@ -22,58 +23,59 @@ dialog {
 }
 
 
-/* TEMP: Most likely - used for SPA dev purposes */
-/* CUSTOM ID - holds the content of replaced pages */
-#page-content {
-  display: contents !important;
-}
-
 /* # MESSENGER */
 /* NOTE: This section is an absolute mess */
 
 /* ! TEMP/WIP - super ultra mega total hack (to "fit" screen height) */
 .page-wrapper:has(.messenger) {
   max-height: calc(100dvh - 3.5rem);
-  overflow-y: scroll;
+  overflow-y: clip;
 }
 
 :root {
-  --footer-content-height: 4.5rem;
+  /* --footer-content-height: 4.5rem; */
+  --footer-content-height: 5.25rem;
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   :root {
     --footer-content-height: 1.5rem;
   }
 }
 
+
+/* HACK: The footer is still there, it's just overflowing and is clipped */
 .messenger > .row > [class*="col"] {
-  max-height: calc(100dvh - 3.5rem - 1.5rem - 2.25rem - 1.5rem - 1.5rem - 2rem - var(--footer-content-height) - 2rem);
-  overflow-y: scroll;
+  /* max-height: calc(100dvh - 3.5rem - var(--footer-content-height) - 0px); */
+  max-height: calc(100dvh - 3.5rem - 0px);
 }
 
-/* temp: Hide message sender avatar images -> remove them from code */
-.messenger .nav-pills .nav-link [class*="col"]:has(>.avatar) {
-  display: none;
+/* .messenger > .row > [class*="col"]:first-child {
+  width: 350px;
+  resize: horizontal;
+} */
+
+
+@media (min-width: 992px) {
+  .messenger__list {
+    width: 375px;
+    min-width: 250px;
+    max-width: min(650px, 100%);
+    resize: horizontal;
+    overflow: auto;
+  }
 }
 
-.footnote {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.28), transparent);
-}
 
 /* MESSENGER (end) */
 
 /* # NAVBAR */
 .navbar {
   --tblr-navbar-active-color: var(--tblr-primary);
-  /* --tblr-navbar-color: var(--tblr-secondary); */
   --tblr-navbar-active-bg: transparent;
 }
 
-/* Scrollbar will no longer be visible all the time (i.e. when there is no overflow to scroll) */
-.navbar navbar-vertical {
-  overflow: auto !important;
-}
+
 
 /* Hamburger icon */
 .navbar-toggler {
@@ -132,6 +134,7 @@ dialog {
     grid-column: 1/-1;
   }
 }
+
 /* NAVBAR (end) */
 
 .dropdown-menu {
@@ -159,7 +162,7 @@ dialog {
 
 /* !! TEMP !! */
 :root {
-  --tblr-primary: #41a541;
+  /* --tblr-primary: #41a541; */
 }
 
 /* Limits dropdown height */
@@ -171,7 +174,7 @@ dialog {
 /* Increase backdrop intensity */
 .modal-backdrop.show {
   --tblr-backdrop-bg: black;
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 /* ???? DIALOG AS BOTTOM DRAWER ON MOBILE */
@@ -180,6 +183,7 @@ dialog {
     align-items: end;
     --tblr-modal-margin: 0.0rem;
   }
+
   .drawer .modal-content {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -188,7 +192,7 @@ dialog {
 
 /* Disable font size increase on mobile */
 @media (max-width: 575.98px) {
-    .form-control, .form-select {
-        font-size: inherit;
-    }
+  .form-control, .form-select {
+    font-size: inherit;
+  }
 }

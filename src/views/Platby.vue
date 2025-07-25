@@ -822,11 +822,11 @@
                   Zaplaceno
                 </span> -->
               </div>
-              <!-- <div class="col-12 col-md-auto order-last">
+              <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-1 fs-5 w-100">Faktura</a>
+                  <a href="#" class="btn btn-1 w-100">Faktura</a>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
@@ -847,7 +847,7 @@
               </div>
               <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-6 btn-primary fs-5 w-100">Zaplatit</a>
+                  <a href="#" class="btn btn-6 btn-primary w-100">Zaplatit</a>
                 </div>
               </div>
             </div>
@@ -888,7 +888,7 @@
               </div>
               <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-6 btn-primary fs-5 w-100">Doplatit</a>
+                  <a href="#" class="btn btn-6 btn-primary w-100">Doplatit</a>
                 </div>
               </div>
             </div>
@@ -910,7 +910,7 @@
               </div>
               <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-6 btn-primary fs-5 w-100">Zaplatit</a>
+                  <a href="#" class="btn btn-6 btn-primary w-100">Zaplatit</a>
                 </div>
               </div>
             </div>
@@ -932,7 +932,7 @@
               </div>
               <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-6 btn-primary fs-5 w-100">Zaplatit</a>
+                  <a href="#" class="btn btn-6 btn-primary w-100">Zaplatit</a>
                 </div>
               </div>
             </div>
@@ -954,7 +954,7 @@
               </div>
               <div class="col-12 col-md-auto order-last">
                 <div class="text-end">
-                  <a href="#" class="btn btn-6 btn-red fs-5 w-100">Zaplatit</a>
+                  <a href="#" class="btn btn-6 btn-red w-100">Zaplatit</a>
                 </div>
               </div>
             </div>

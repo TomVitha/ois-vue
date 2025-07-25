@@ -158,7 +158,7 @@
           <a href="#" class="nav-link d-flex lh-1 p-0 px-2" data-bs-toggle="dropdown" aria-label="Open user menu">
             <span class="avatar avatar-sm" style="background-image: url(https://avatar.freepik.com/2047389.jpg)">
             </span>
-            <div class="d-none d-xl-block ps-2">
+            <div class="ps-2">
               <div>Adam Novák</div>
               <div class="mt-1 small text-secondary">adamnovak@seznam.cz</div>
             </div>
@@ -172,7 +172,7 @@
                   <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>
               </div>
-              Profile
+              Účet
             </RouterLink>
             <a href="https://preview.tabler.io/settings.html" class="dropdown-item">
               <div class="dropdown-item-icon">
@@ -182,7 +182,7 @@
                   <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
                 </svg>
               </div>
-              Settings
+              Nastavení
             </a>
             <div class="dropdown-divider"></div>
             <RouterLink to="/sign-in" class="dropdown-item">
@@ -194,7 +194,7 @@
                   <path d="M18 15l3 -3" />
                 </svg>
               </div>
-              Logout
+              Odhlásit se
             </RouterLink>
           </div>
         </div>

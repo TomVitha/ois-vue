@@ -35,7 +35,7 @@
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů</h3>
             <p class="text-secondary">Vdala jste se? Přestěhovali jste se, nebo si změnili telefonní číslo? Tak si to nechte pro sebe, nás to nezajímá.</p>
-            <a href="#zadost-osobni-udaje" class="btn" data-bs-toggle="modal">Otevřít</a>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje">Otevřít</button>
             <!-- DIALOG -->
             <div class="modal fade" id="zadost-osobni-udaje" tabindex="-1">
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -50,13 +50,13 @@
                         <span class="form-label">Údaj</span>
                         <select name="lang" class="form-select">
                           <option value="1">Rodinný stav</option>
-                          <option value="1">Jméno</option>
-                          <option value="1">Adresa</option>
+                          <option value="2">Jméno</option>
+                          <option value="3">Adresa</option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <span class="form-label">Současná hodnota</span>
-                        <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Ženatý" readonly>
+                        <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Ženatý" disabled>
                       </div>
                       <div class="col-md-4">
                         <span class="form-label">Nová hodnota</span>
@@ -84,7 +84,7 @@
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů 2</h3>
             <p class="text-secondary">Jestli se něco ohledně vás změnilo, tak nám to řekněte. Jestli nám to neřeknete tak vám uřízneme... tedy, tak vám ten byt nedáme.</p>
-            <a href="#zadost-osobni-udaje-2" class="btn" data-bs-toggle="modal">Otevřít</a>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje-2">Otevřít</button>
             <!-- DIALOG -->
             <div class="modal fade" id="zadost-osobni-udaje-2" tabindex="-1">
               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">

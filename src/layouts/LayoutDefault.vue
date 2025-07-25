@@ -9,6 +9,6 @@ import Footer from '../components/Footer.vue'
   <Navbar />
   <div class="page-wrapper">
     <slot />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
