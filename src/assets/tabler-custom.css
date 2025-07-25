@@ -32,13 +32,8 @@ dialog {
 
 /* # MESSENGER */
 
-.page-wrapper:has(.messenger) {
-  max-height: calc(100dvh - 3.5rem);
-  overflow: clip;
-}
-
-.messenger > .row > [class*="col"] {
-  max-height: calc(100dvh - 3.5rem - 0px);
+.messenger > [class*="col"] > .card {
+  max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));
 }
 
 /* NOTE: CSS-only resizing (maybe rework using JS?) */
