@@ -15,11 +15,14 @@ onMounted(async () => {
 })
 </script>
 
+<!-- !!! NO LONGER USED - INCORPORATED INTO KOMUNIKACE.vue VIEW -->
+
 <template>
   <div>
     <h2>{{ meta.subject }}</h2>
     <div><strong>From:</strong> {{ meta.from }}</div>
     <div><strong>Date:</strong> {{ meta.datetime }}</div>
-    <div v-html="html"></div>
+    <!-- <div v-html="html"></div> -->
+     <slot></slot>
   </div>
 </template>

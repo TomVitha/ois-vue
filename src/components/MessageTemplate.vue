@@ -1,21 +1,20 @@
 <script setup lang="ts">
   defineProps<{
+    subject: string
     from: string
     to?: string
     datetime: string
-    subject: string
   }>()
 </script>
+
+<!-- !! DEPRECATED AND UNUSED -->
 
 <template>
   <div class="card">
     <div class="card-header gap-2">
       <div class="btn-actions">
+        <!--  CLOSE MESSAGE -->
         <RouterLink to="/komunikace" class="btn btn-action d-lg-none">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-            <path d="M18 6l-12 12"></path>
-            <path d="M6 6l12 12"></path>
-          </svg> -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
             <path d="M15 6l-6 6l6 6"></path>
           </svg>
@@ -29,7 +28,22 @@
             <div v-if="to" class="text-secondary">Komu: {{ to }}</div>
           </div>
           <div>
-            <span class="text-secondary fs-5">{{ datetime }}</span>
+            <span class="text-secondary fs-5">
+              {{
+                // new Date(datetime).toLocaleString([], { }) // old
+                // TODO: Set locale according to global state
+                new Intl.DateTimeFormat(["cs-CZ"], {
+                  weekday: 'short',
+                  day: '2-digit',
+                  month: '2-digit',
+                  // include year only in it is different from current year
+                  // year: new Date(datetime).getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                }).format(new Date(datetime))
+              }}
+            </span>
           </div>
         </div>
       </div>

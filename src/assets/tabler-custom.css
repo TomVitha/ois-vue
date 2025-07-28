@@ -34,6 +34,7 @@ dialog {
 
 .messenger > [class*="col"] > .card {
   max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));
+  /* border: 1px solid red !important; */
 }
 
 /* NOTE: CSS-only resizing (maybe rework using JS?) */
@@ -45,6 +46,10 @@ dialog {
     resize: horizontal;
     overflow: auto;
   }
+}
+
+.messenger .nav-pills {
+  --tblr-nav-pills-border-radius: 0px;
 }
 
 /* MESSENGER (end) */

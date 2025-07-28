@@ -48,7 +48,7 @@
 
 </script>
 
-<!-- ! TEĎ JSEM SI TO ROZBIL, SNAŽÍM SE ZPROVOZNIT NAČÍTÁNÍ ZPRÁV Z MARKDOWN -->
+<!-- !!! OLD DEPRECATED DEV LAYOUT - UNUSED !!! -->
 
 <template>
   <NavbarVertical />
@@ -57,7 +57,6 @@
     <div class="page-body">
       <div class="container-fluid flex-fill space-y-0">
         <div class="messenger row row-deck row-cards flex-fill">
-          <!-- TEMP HIDDEN -->
           <!-- Messages list column -->
           <div class="col-12 col-lg-auto d-flex flex-column messenger__list">
             <div class="card">
@@ -104,45 +103,9 @@
                   <input type="text" value="" class="form-control" placeholder="Hledat…" aria-label="Hledat">
                 </div>
               </div>
+              <!-- Messages list -->
               <div class="card-body p-0 scrollable flex-fill">
                 <div class="nav flex-column nav-pills">
-                  <RouterLink to="/msg-1" class="nav-link text-start mw-100 px-4 py-3" aria-selected="false">
-                    <div class="row align-items-center flex-fill mw-100">
-                      <div class="col text-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <span class="text-truncate">Odesilatel 1</span>
-                          <div class="d-flex align-items-center gap-2 fs-5">
-                            <i class="ti ti-paperclip"></i>
-                            <span class="text-secondary">11:45</span>
-                          </div>
-                        </div>
-                        <div class="fs-5 text-truncate w-100">Title (msg-1)</div>
-                        <div class="d-flex align-items-center justify-content-between gap-2">
-                          <span class="text-secondary fs-5 text-truncate">obsah zprávy</span>
-                          <i class="ti ti-star text-secondary fs-3"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </RouterLink>
-                  <RouterLink to="/msg-2" class="nav-link text-start mw-100 px-4 py-3" aria-selected="false">
-                    <div class="row align-items-center flex-fill mw-100">
-                      <div class="col text-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <span class="text-truncate">Odesilatel 2</span>
-                          <div class="d-flex align-items-center gap-2 fs-5">
-                            <i class="ti ti-paperclip"></i>
-                            <span class="text-secondary">11:45</span>
-                          </div>
-                        </div>
-                        <div class="fs-5 text-truncate w-100">Title (msg-2)</div>
-                        <div class="d-flex align-items-center justify-content-between gap-2">
-                          <span class="text-secondary fs-5 text-truncate">obsah zprávy</span>
-                          <i class="ti ti-star text-secondary fs-3"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </RouterLink>
-                  <span>----------------------------------</span>
                   <MessengerListItem
                     v-for="msg in messages"
                     :key="msg.id"
@@ -165,3 +128,9 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.page-wrapper {
+  background-color: #800;
+}
+</style>
