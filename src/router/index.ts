@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 // import LayoutDefault from '../layouts/LayoutDefault.vue'
 import LayoutBlank from '../layouts/LayoutBlank.vue'
-import LayoutMessenger from '../layouts/LayoutMessenger.vue'
 
 const router = createRouter({
   linkActiveClass: 'active',
@@ -65,16 +64,6 @@ const router = createRouter({
       path: '/komunikace',
       component: () => import('../views/Komunikace.vue'),
       // meta: { layout: LayoutMessenger}
-    },
-    {
-      path: '/msg-1',
-      component: () => import('../views/msg-1.vue'),
-      meta: { layout: LayoutMessenger },
-    },
-    {
-      path: '/msg-2',
-      component: () => import('../views/msg-2.vue'),
-      meta: { layout: LayoutMessenger },
     },
   ],
 })
