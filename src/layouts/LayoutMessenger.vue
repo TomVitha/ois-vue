@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+  import { ref, onMounted } from 'vue'
+  import matter from 'gray-matter'
+  import { marked } from 'marked'
+
   import NavbarVertical from '../components/NavbarVertical.vue'
   import Navbar from '../components/Navbar.vue'
   import Footer from '../components/Footer.vue'
+
+  import MessageMarkdown from '@/components/MessageMarkdown.vue'
+
+  import MessengerListItem from '@/components/MessengerListItem.vue'
+
 
   // TEMP/DEV - to test many messages and page overflow
   // onMounted(() => {
@@ -14,7 +22,33 @@ import { onMounted } from 'vue'
   //     }
   //   }
   // })
+
+  // const msgs = import.meta.glob('@/messages/*.md')
+  // console.log(msgs)
+
+
+  const messages = ref<{ id: string, meta: any, content: string }[]>([])
+
+  onMounted(async () => {
+    // Import all markdown files as raw text
+    const modules = import.meta.glob('../messages/*.md', { query: '?raw', import: 'default' })
+    const entries = Object.entries(modules)
+    const loaded = await Promise.all(
+      entries.map(async ([path, loader]) => {
+        const raw = await loader()
+        const parsed = matter(raw)
+        // Extract a simple id from filename
+        const id = path.split('/').pop()?.replace('.md', '') ?? path
+        return { id, meta: parsed.data, content: parsed.content }
+      })
+    )
+    messages.value = loaded
+  })
+
+
 </script>
+
+<!-- ! TEĎ JSEM SI TO ROZBIL, SNAŽÍM SE ZPROVOZNIT NAČÍTÁNÍ ZPRÁV Z MARKDOWN -->
 
 <template>
   <NavbarVertical />
@@ -23,6 +57,7 @@ import { onMounted } from 'vue'
     <div class="page-body">
       <div class="container-fluid flex-fill space-y-0">
         <div class="messenger row row-deck row-cards flex-fill">
+          <!-- TEMP HIDDEN -->
           <!-- Messages list column -->
           <div class="col-12 col-lg-auto d-flex flex-column messenger__list">
             <div class="card">
@@ -107,18 +142,23 @@ import { onMounted } from 'vue'
                       </div>
                     </div>
                   </RouterLink>
+                  <span>----------------------------------</span>
+                  <MessengerListItem
+                    v-for="msg in messages"
+                    :key="msg.id"
+                    :from="msg.meta.from"
+                    :to="msg.meta.to"
+                    :datetime="msg.meta.datetime"
+                    :subject="msg.meta.subject"
+                    :content="msg.content"
+                  />
                 </div>
               </div>
             </div>
           </div>
           <!-- Message body column -->
           <div class="col d-flex flex-column messenger__body">
-            <!-- <div class="card"> -->
-              <!-- <div class="card-body"> -->
-                <!-- Default Slot = RouterView = Message body -->
-                <slot />
-              <!-- </div> -->
-            <!-- </div> -->
+            <slot />
           </div>
         </div>
       </div>
