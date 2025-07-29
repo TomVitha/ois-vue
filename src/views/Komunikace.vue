@@ -7,14 +7,13 @@
   import MessengerListItem from '@/components/MessengerListItem.vue'
   // import MessageTemplate from '@/components/MessageTemplate.vue'
 
-  import hugeRTE from 'hugerte'
-  import hugerteIframe from '@/components/HugeRTE.vue'
+  // import hugeRTE from 'hugerte'
+  // import hugerteIframe from '@/components/HugeRTE.vue'
 
   const messages = ref<{ id: string, meta: any, content: string }[]>([])
-  const selectedMessage = ref<{ id: string, meta: any, content: string } | null>(null)
 
+  // Import all markdown files as raw text
   onMounted(async () => {
-    // Import all markdown files as raw text
     const modules = import.meta.glob('../messages/*.md', { query: '?raw', import: 'default' })
     const entries = Object.entries(modules)
     const loaded = await Promise.all(
@@ -23,48 +22,40 @@
         const parsed = matter(raw)
         // Extract a simple id from filename
         const id = path.split('/').pop()?.replace('.md', '') ?? path
+        // Normalize datetime to ISO string
+        if (parsed.data.datetime) {
+          parsed.data.datetime = new Date(parsed.data.datetime).toISOString()
+        }
         return { id, meta: parsed.data, content: parsed.content }
       })
     )
     messages.value = loaded
   })
 
+
+  const selectedMessageId = ref<string | null>(null)
+  const selectedMessage = computed(() =>
+    messages.value.find(msg => msg.id === selectedMessageId.value) || null
+  )
   const selectedIndex = computed(() =>
     selectedMessage.value
       ? messages.value.findIndex(msg => msg.id === selectedMessage.value?.id)
       : -1
   )
-
   const selectedMessageHtml = computed(() =>
     selectedMessage.value ? marked.parse(selectedMessage.value.content) : ''
   )
 
-  // onMounted(() => {
-  //   let hugerteOptions = {
-  //     selector: '#hugerte-mytextarea',
-  //     height: 300,
-  //     menubar: false,
-  //     statusbar: false,
-  //     plugins: [
-  //       'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
-  //       'preview', 'anchor',
-  //       'searchreplace', 'visualblocks', 'code', 'fullscreen',
-  //       'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
-  //     ],
-  //     toolbar: 'undo redo | formatselect | ' +
-  //       'bold italic backcolor | alignleft aligncenter ' +
-  //       'alignright alignjustify | bullist numlist outdent indent | ' +
-  //       'removeformat',
-  //     content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }'
-  //   }
+  function discardDraft(event?: Event) {
 
-  //   // if (localStorage.getItem("tablerTheme") === 'dark') {
-  //   //   hugerteOptions.skin = 'oxide-dark';
-  //   //   hugerteOptions.content_css = 'dark';
-  //   // }
+    if (confirm("Opravdu chcete zahodit rozpracovanou zprávu?")) {
+      console.debug("DISCARDED")
+    } else {
+      console.debug("canceled")
+    }
+  }
 
-  //   hugeRTE.init(hugerteOptions);
-  // })
+  import MessengerAttachment from '@/components/MessengerAttachment.vue'
 
 </script>
 
@@ -112,8 +103,8 @@
                     </div>
                     <div class="modal-footer">
                       <div class="button-actions me-auto">
-                        <!-- Scrap -->
-                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" data-bs-dismiss="modal">
+                        <!-- Discard -->
+                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" @click.prevent="discardDraft()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 7l16 0" />
@@ -132,7 +123,11 @@
                         </button>
                       </div>
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-send-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send-2">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
+                          <path d="M6.5 12h14.5" />
+                        </svg>
                         <span>Odeslat</span>
                       </button>
                     </div>
@@ -147,14 +142,15 @@
                     <path d="M21 21l-6 -6"></path>
                   </svg>
                 </span>
-                <input type="text" value="" class="form-control" placeholder="Hledat…" aria-label="Hledat">
+                <input type="text" value="" class="form-control" placeholder="Hledat ve zprávách…" aria-label="Hledat">
                 <!-- TODO: Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
+                <!-- TODO: Paginace zpráv, výpis kolik z kolika -->
               </div>
             </div>
             <!-- Messages list -->
             <div class="card-body p-0 scrollable flex-fill">
               <div class="nav flex-column nav-pills">
-                <MessengerListItem v-for="msg in messages" :key="msg.id" :from="msg.meta.from" :datetime="msg.meta.datetime.toISOString()" :subject="msg.meta.subject" :content="msg.content" :badge="msg.meta.badge" @click.prevent="selectedMessage = msg"></MessengerListItem>
+                <MessengerListItem v-for="msg in messages" :key="msg.id" :from="msg.meta.from" :datetime="msg.meta.datetime" :subject="msg.meta.subject" :content="msg.content" :badge="msg.meta.badge" @click.prevent="selectedMessageId = msg.id"></MessengerListItem>
               </div>
             </div>
           </div>
@@ -180,28 +176,40 @@
             </div>
           </div>
           <!-- Else if a message is selected: show message content -->
+          <!-- TODO? Message body into component? -->
           <div class="card scrollable" v-else id="message-view">
             <div class="card-header">
-              <div class="row w-100 row-gap-3">
+              <div class="space-y-3 flex-fill">
                 <div class="col-12 col-xl-auto d-lg-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Prev message -->
-                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessage = messages[selectedIndex - 1]" :disabled="selectedIndex <= 0">
+                    <!-- Prev message -->
+                    <button
+                      class="btn btn-link btn-action"
+                      title="Předchozí zpráva"
+                      @click="selectedMessageId = messages[selectedIndex - 1]?.id"
+                      :disabled="selectedIndex <= 0"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M15 6l-6 6l6 6"></path>
+                      <path d="M15 6l-6 6l6 6"></path>
                       </svg>
                     </button>
                     <!-- Next message -->
-                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessage = messages[selectedIndex + 1]" :disabled="selectedIndex === messages.length - 1 || selectedIndex === -1">
+                    <button
+                      class="btn btn-link btn-action"
+                      title="Další zpráva"
+                      @click="selectedMessageId = messages[selectedIndex + 1]?.id"
+                      :disabled="selectedIndex === messages.length - 1 || selectedIndex === -1"
+                    >
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-end icon-2">
-                        <path d="M9 6l6 6l-6 6"></path>
+                      <path d="M9 6l6 6l-6 6"></path>
                       </svg>
                     </button>
                     <!--  Close message -->
-                    <button class="btn btn-link btn-action ms-auto" title="Zavřít zprávu" @click="selectedMessage = null">
+                    <button class="btn btn-link btn-action ms-auto" title="Zavřít zprávu" @click="selectedMessageId = null">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M18 6l-12 12"></path>
-                        <path d="M6 6l12 12"></path>
+                      <path d="M18 6l-12 12"></path>
+                      <path d="M6 6l12 12"></path>
                       </svg>
                     </button>
                   </div>
@@ -210,7 +218,7 @@
                   <div class="space-y-2 w-100">
                     <div>
                       <h2 class="d-inline m-0">{{ selectedMessage.meta.subject }}</h2>
-                      <span v-if="selectedMessage.meta.badge" class="badge bg-azure-lt d-inline-block ms-2 mb-1">{{ selectedMessage.meta.badge }}</span>
+                      <span v-if="selectedMessage.meta.badge" class="badge bg-default text-default-fg d-inline-block ms-2 mb-1">{{ selectedMessage.meta.badge }}</span>
                     </div>
                     <div class="d-flex justify-content-between">
                       <div>
@@ -229,11 +237,40 @@
                               year: 'numeric',
                               hour: '2-digit',
                               minute: '2-digit',
-                            }).format(new Date(selectedMessage.meta.datetime.toISOString()))
+                            }).format(new Date(selectedMessage.meta.datetime))
                           }}
                         </span>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <!-- Attachments -->
+                <div class="col-12">
+                  <div class="row row-gap-2">
+                    <div class="col-12 col-lg-auto">
+                      <MessengerAttachment
+                        :filename="'Potvrzeni_o_odebrani_dite.pdf'"
+                        :size="'12 MB'"
+                        :filetype="'pdf'"
+                        :url="'https://example.com'"
+                      ></MessengerAttachment>
+                    </div>
+                    <div class="col-12 col-lg-auto">
+                      <MessengerAttachment
+                        :filename="'Tabulka_s_nechutne_dlouhym_nazvem-adam_j_novak-2025-04-26.xlsx'"
+                        :size="'7 KB'"
+                        :filetype="'xlsx'"
+                        :url="'https://example.com'"
+                      ></MessengerAttachment>
+                    </div>
+                    <!-- <MessengerAttachment
+                      v-for="attachment in selectedMessage.meta.attachments || []"
+                      :key="attachment.filename"
+                      :filename="attachment.filename"
+                      :size="attachment.size"
+                      :filetype="attachment.filetype"
+                      :url="attachment.url"
+                    ></MessengerAttachment> -->
                   </div>
                 </div>
               </div>
@@ -241,6 +278,7 @@
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>
+                <!-- TODO: Attachments -->
               </div>
             </div>
           </div>

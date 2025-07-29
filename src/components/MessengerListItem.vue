@@ -14,7 +14,7 @@
     <div class="align-items-center flex-fill mw-100 text-body">
       <div class="d-flex align-items-center gap-2">
         <span class="text-truncate">{{ from }}</span>
-        <span v-if="badge" class="badge bg-azure-lt">Byt D 331</span>
+        <span v-if="badge" class="badge bg-default text-default-fg">{{ badge }}</span>
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <i class="ti ti-paperclip"></i>
           <span class="text-secondary">{{ new Date(datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</span>
