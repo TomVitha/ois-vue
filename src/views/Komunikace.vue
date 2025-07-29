@@ -57,6 +57,27 @@
 
   import MessengerAttachment from '@/components/MessengerAttachment.vue'
 
+  const selectedOption = ref('')
+
+  // TODO: Generalize -> TO COMPONENT!
+  import TomSelect from 'tom-select'
+
+  onMounted(() => {
+    new TomSelect("#select-beast", {
+      create: false,
+      render: {
+        no_results: function(data, escape) {
+          return `<div class="no-results">Žádné výsledky nenalezeny.</div>`;
+        },
+        option_create: function(data, escape) {
+          return `<div class="create">Přidat <strong>${escape(data.input)}</strong>&hellip;</div>`;
+        }
+      },
+    });
+  })
+
+
+
 </script>
 
 <template>
@@ -64,7 +85,7 @@
     <div class="container-fluid flex-fill space-y-0">
       <div class="messenger row row-deck row-cards flex-fill">
         <!-- Messages list column -->
-        <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex': selectedMessage }">
+        <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex d-print-none': selectedMessage }">
           <div class="card">
             <div class="card-header space-y-2 align-items-stretch ">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">
@@ -89,13 +110,25 @@
                       </form> -->
                       <!-- <hugerteIframe></hugerteIframe> -->
                       <div class="space-y-3 h-100">
-                        <div class="input-group input-group-flat">
+                        <div class="input-group">
                           <span class="input-group-text">Od: </span><input type="text" class="form-control" autocomplete="off" value="Adam Novák" readonly>
                         </div>
-                        <div class="input-group input-group-flat">
+                        <!-- <div class="input-group input-group-flat">
                           <span class="input-group-text">Komu: </span><input type="text" class="form-control" autocomplete="off">
+                        </div> -->
+                        <!-- WIP - tom-select -->
+                        <!-- TODO: Generalize -->
+                        <div class="input-group">
+                          <span class="input-group-text">Komu: </span>
+                          <select class="form-control" id="select-beast" placeholder="Vyberte příjemce..." autocomplete="off">
+                            <option value="">Select a person...</option>
+                            <option value="4">Thomas Edison</option>
+                            <option value="1">Nikola</option>
+                            <option value="3">Nikola Tesla</option>
+                            <option value="5">Arnold Schwarzenegger</option>
+                          </select>
                         </div>
-                        <div class="input-group input-group-flat">
+                        <div class="input-group">
                           <span class="input-group-text">Předmět: </span><input type="text" class="form-control" autocomplete="off" aria-label="Předmět zprávy">
                         </div>
                         <textarea name="" id="" placeholder="Pište zprávu..." class="form-control flex-fill" data-bs-toggle="autosize" style="min-height: 200px"></textarea>
@@ -156,7 +189,7 @@
           </div>
         </div>
         <!-- Message body column -->
-        <div class="col d-flex flex-column messenger__body" :class="{ 'd-none d-lg-flex': !selectedMessage }">
+        <div class="col d-flex flex-column messenger__body" :class="{ 'd-none d-lg-flex d-print-none': !selectedMessage }">
           <!-- If no message is selected: show empty welcome -->
           <div v-if="!selectedMessage" class="page page-center" id="empty-state">
             <div class="container-tight py-4">
@@ -184,32 +217,22 @@
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Prev message -->
                     <!-- Prev message -->
-                    <button
-                      class="btn btn-link btn-action"
-                      title="Předchozí zpráva"
-                      @click="selectedMessageId = messages[selectedIndex - 1]?.id"
-                      :disabled="selectedIndex <= 0"
-                    >
+                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = messages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                      <path d="M15 6l-6 6l6 6"></path>
+                        <path d="M15 6l-6 6l6 6"></path>
                       </svg>
                     </button>
                     <!-- Next message -->
-                    <button
-                      class="btn btn-link btn-action"
-                      title="Další zpráva"
-                      @click="selectedMessageId = messages[selectedIndex + 1]?.id"
-                      :disabled="selectedIndex === messages.length - 1 || selectedIndex === -1"
-                    >
+                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessageId = messages[selectedIndex + 1]?.id" :disabled="selectedIndex === messages.length - 1 || selectedIndex === -1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-end icon-2">
-                      <path d="M9 6l6 6l-6 6"></path>
+                        <path d="M9 6l6 6l-6 6"></path>
                       </svg>
                     </button>
                     <!--  Close message -->
                     <button class="btn btn-link btn-action ms-auto" title="Zavřít zprávu" @click="selectedMessageId = null">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                      <path d="M18 6l-12 12"></path>
-                      <path d="M6 6l12 12"></path>
+                        <path d="M18 6l-12 12"></path>
+                        <path d="M6 6l12 12"></path>
                       </svg>
                     </button>
                   </div>
@@ -248,20 +271,10 @@
                 <div class="col-12">
                   <div class="row row-gap-2">
                     <div class="col-12 col-lg-auto">
-                      <MessengerAttachment
-                        :filename="'Potvrzeni_o_odebrani_dite.pdf'"
-                        :size="'12 MB'"
-                        :filetype="'pdf'"
-                        :url="'https://example.com'"
-                      ></MessengerAttachment>
+                      <MessengerAttachment :filename="'Potvrzeni_o_odebrani_dite.pdf'" :size="'12 MB'" :filetype="'pdf'" :url="'https://example.com'"></MessengerAttachment>
                     </div>
                     <div class="col-12 col-lg-auto">
-                      <MessengerAttachment
-                        :filename="'Tabulka_s_nechutne_dlouhym_nazvem-adam_j_novak-2025-04-26.xlsx'"
-                        :size="'7 KB'"
-                        :filetype="'xlsx'"
-                        :url="'https://example.com'"
-                      ></MessengerAttachment>
+                      <MessengerAttachment :filename="'Tabulka_s_nechutne_dlouhym_nazvem-adam_j_novak-2025-04-26.xlsx'" :size="'7 KB'" :filetype="'xlsx'" :url="'https://example.com'"></MessengerAttachment>
                     </div>
                     <!-- <MessengerAttachment
                       v-for="attachment in selectedMessage.meta.attachments || []"
