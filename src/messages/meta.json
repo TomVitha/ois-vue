@@ -1,0 +1,26 @@
+[
+  {
+    "id": "msg-1",
+    "from": "Don Salieri",
+    "datetime": "2025-07-25T10:22:00",
+    "subject": "Vítej u nás do rodiny",
+    "badge": "Byt D 331",
+    "isUnread": true,
+    "attachments": [
+      {
+        "filename": "Provozni_rad_rodiny_Salieri.pdf",
+        "filetype": "pdf",
+        "url": "/attachments/Provozni_rad_rodiny_Salieri.pdf",
+        "size": "12 MB"
+      }
+    ]
+  },
+  {
+    "id": "msg-2",
+    "from": "Ozzy Osbourne",
+    "datetime": "2025-07-24T23:59:59",
+    "subject": "It's me",
+    "isUnread": false,
+    "attachments": []
+  }
+]

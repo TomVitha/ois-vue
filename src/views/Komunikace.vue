@@ -11,8 +11,9 @@
   // import hugerteIframe from '@/components/HugeRTE.vue'
 
   const messages = ref<{ id: string, meta: any, content: string }[]>([])
+  import messagesMeta from '../messages/meta.json'
 
-  // Import all markdown files as raw text
+  // Import markdown messages and their metadata
   onMounted(async () => {
     const modules = import.meta.glob('../messages/*.md', { query: '?raw', import: 'default' })
     const entries = Object.entries(modules)
@@ -20,16 +21,28 @@
       entries.map(async ([path, loader]) => {
         const raw = await loader()
         const parsed = matter(raw)
-        // Extract a simple id from filename
-        const id = path.split('/').pop()?.replace('.md', '') ?? path
+        const id = path.split('/').pop()?.replace('.md', '') ?? path  // Extract filename from path and use as ID
         // Normalize datetime to ISO string
         if (parsed.data.datetime) {
           parsed.data.datetime = new Date(parsed.data.datetime).toISOString()
         }
-        return { id, meta: parsed.data, content: parsed.content }
+        return { 
+          id, 
+          // meta: parsed.data, 
+          content: parsed.content 
+        }
       })
     )
-    messages.value = loaded
+    messages.value = messagesMeta.map(meta => {
+      const contentObj = loaded.find(l => l.id === meta.id)
+      return {
+        id: meta.id,
+        meta: meta,
+        content: contentObj?.content ?? ''
+      }
+    })
+    // debug log messages
+    console.debug("Loaded messages:", messages.value)
   })
 
 
@@ -183,7 +196,18 @@
             <!-- Messages list -->
             <div class="card-body p-0 scrollable flex-fill">
               <div class="nav flex-column nav-pills">
-                <MessengerListItem v-for="msg in messages" :key="msg.id" :from="msg.meta.from" :datetime="msg.meta.datetime" :subject="msg.meta.subject" :content="msg.content" :badge="msg.meta.badge" @click.prevent="selectedMessageId = msg.id"></MessengerListItem>
+                <MessengerListItem
+                  v-for="msg in messages"
+                  :key="msg.id"
+                  :from="msg.meta.from"
+                  :datetime="msg.meta.datetime"
+                  :subject="msg.meta.subject"
+                  :content="msg.content"
+                  :badge="msg.meta.badge"
+                  :is-unread="msg.meta.isUnread"
+                  :has-attachment="Array.isArray(msg.meta.attachments) && msg.meta.attachments.length > 0"
+                  @click.prevent="selectedMessageId = msg.id; msg.meta.isUnread = false"
+                />
               </div>
             </div>
           </div>
@@ -200,7 +224,12 @@
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/light.svg" alt="" class="hide-theme-dark" width="200">
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/dark.svg" alt="" class="hide-theme-light" width="200">
                 </div>
-                <p class="empty-title">Schránka</p>
+                <p class="empty-title">
+                  <span v-if="messages.some(m => m.meta.isUnread)">
+                  Nepřečtené zprávy ({{ messages.filter(m => m.meta.isUnread).length }})
+                  </span>
+                  <span v-else>Schránka</span>
+                </p>
                 <p class="empty-subtitle text-secondary" style="text-wrap: pretty">
                   <span v-if="messages.length == 0">Nemáte žádné položky</span>
                   <span v-else-if="messages.length > 0">Vyberte některou ze svých {{ messages.length }} zpráv</span>
@@ -238,7 +267,7 @@
                   </div>
                 </div>
                 <div class="col">
-                  <div class="space-y-2 w-100">
+                  <div class="w-100">
                     <div>
                       <h2 class="d-inline m-0">{{ selectedMessage.meta.subject }}</h2>
                       <span v-if="selectedMessage.meta.badge" class="badge bg-default text-default-fg d-inline-block ms-2 mb-1">{{ selectedMessage.meta.badge }}</span>
@@ -271,10 +300,7 @@
                 <div class="col-12">
                   <div class="row row-gap-2">
                     <div class="col-12 col-lg-auto">
-                      <MessengerAttachment :filename="'Potvrzeni_o_odebrani_dite.pdf'" :size="'12 MB'" :filetype="'pdf'" :url="'https://example.com'"></MessengerAttachment>
-                    </div>
-                    <div class="col-12 col-lg-auto">
-                      <MessengerAttachment :filename="'Tabulka_s_nechutne_dlouhym_nazvem-adam_j_novak-2025-04-26.xlsx'" :size="'7 KB'" :filetype="'xlsx'" :url="'https://example.com'"></MessengerAttachment>
+                      <MessengerAttachment v-for="attachment in selectedMessage.meta.attachments" :filename="attachment.filename" :size="attachment.size" :filetype="attachment.filetype" :url="attachment.url"></MessengerAttachment>
                     </div>
                     <!-- <MessengerAttachment
                       v-for="attachment in selectedMessage.meta.attachments || []"

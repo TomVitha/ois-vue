@@ -1,10 +1,3 @@
----
-from: Don Salieri
-datetime: 2025-07-25T10:22:00
-subject: Vítej u nás do rodiny
-badge: Byt D 331
----
-
 _Rozhodl_ jsem se, že to s tebou zkusím, Tome. Mám rád nové tváře.
 
 Jsme tady taková velká _rodina_. Pauliho, Sama už znáš. Tady Frank je jako moje pravá ruka a stará se o právní stránku naší věci. No a támhle za barem to je Luigi. Tenhle podnik sice není žádný luxus, ale Luigi je výborný kuchař. Pauli tě později představí ještě Vincenzovi a Ralphovi. Je nás skutečně hodně, ale tohle ti zatím bude stačit.
