@@ -20,12 +20,14 @@
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <!-- TODO: Conditional paper clip icon displaying -->
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
+          <!-- TODO: If date is today: display time; else display date -->
+          <!-- TODO: Then: If date is current year: display year too -->
           <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">{{ new Date(datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</span>
         </div>
       </div>
-      <div class="fs-5 text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
+      <div class="text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
       <div class="d-flex align-items-center justify-content-between gap-2">
-        <span class="text-secondary fs-5 text-truncate">{{ content?.slice(0, 100) || 'Obsah zprávy...' }}</span>
+        <span class="text-secondary  text-truncate">{{ content?.slice(0, 100) || 'Obsah zprávy...' }}</span>
         <!-- <i class="ti ti-star text-secondary fs-3"></i> -->
       </div>
     </div>

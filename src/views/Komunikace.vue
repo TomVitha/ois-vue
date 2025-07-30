@@ -297,19 +297,12 @@
                   </div>
                 </div>
                 <!-- Attachments -->
+                <!-- FIXME: Only show container element if there are any attachments -->
                 <div class="col-12">
                   <div class="row row-gap-2">
                     <div class="col-12 col-lg-auto">
                       <MessengerAttachment v-for="attachment in selectedMessage.meta.attachments" :filename="attachment.filename" :size="attachment.size" :filetype="attachment.filetype" :url="attachment.url"></MessengerAttachment>
                     </div>
-                    <!-- <MessengerAttachment
-                      v-for="attachment in selectedMessage.meta.attachments || []"
-                      :key="attachment.filename"
-                      :filename="attachment.filename"
-                      :size="attachment.size"
-                      :filetype="attachment.filetype"
-                      :url="attachment.url"
-                    ></MessengerAttachment> -->
                   </div>
                 </div>
               </div>
@@ -317,7 +310,6 @@
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>
-                <!-- TODO: Attachments -->
               </div>
             </div>
           </div>
