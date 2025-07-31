@@ -4,16 +4,16 @@
 
   function togglePasswordVisibility(passwdInput = document.querySelector('#password'), event) {
     const icon = event.currentTarget.querySelector('.ti')
-    let isVisible = passwdInput.getAttribute('type') == 'password' ? false : true;
+    let isVisible = passwdInput?.getAttribute('type') == 'password' ? false : true;
     // TODO: Use switch icon? RE: https://docs.tabler.io/ui/components/switch-icon
     if (isVisible) {
-      passwdInput.setAttribute('type', 'password')
+      passwdInput?.setAttribute('type', 'password')
       icon.classList.remove('ti-eye-off')
       icon.classList.add('ti-eye')
       isVisible = false
 
     } else {
-      passwdInput.setAttribute('type', 'text')
+      passwdInput?.setAttribute('type', 'text')
       icon.classList.remove('ti-eye')
       icon.classList.add('ti-eye-off')
       isVisible = true
@@ -22,7 +22,6 @@
 </script>
 
 <template>
-  <!-- yes, .page with in .page is a bit hacky -->
   <div class="page flex-fill wrapper" style="--bg: url('https://www.central-group.cz/Uloziste/34/3409d948-9b74-4d6e-a077-6d2dcd7c7c2f.jpg')">
     <main class="container container-tight flex-fill d-flex flex-column justify-content-center py-4">
       <div class="card card-md">
@@ -77,7 +76,7 @@
                 <div class="input-group input-group-flat">
                   <input type="password" id="password" name="password" autocomplete="current-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
                   <span class="input-group-text">
-                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
+                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility(undefined, $event)">
                       <i class="ti ti-eye fs-2 icon"></i>
                     </a>
                   </span>
