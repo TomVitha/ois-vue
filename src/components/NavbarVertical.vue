@@ -10,9 +10,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-
       <div class="navbar-brand navbar-brand-autodark">
-        <a href="/" aria-label="Tabler">
+        <RouterLink to="/" aria-label="CENTRAL GROUP">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" style="enable-background:new 0 0 283.5 186.2;" xml:space="preserve" class="navbar-brand-image">
             <g id="LOGO">
               <g class="st0" style="fill: #000000">
@@ -33,7 +32,7 @@
               </g>
             </g>
           </svg>
-        </a>
+        </RouterLink>
       </div>
 
       <NavbarNav class="d-lg-none" />
@@ -58,7 +57,7 @@
             </RouterLink>
           </li>
           <!-- Communication -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <RouterLink to="/komunikace" class="nav-link">
               <span class="nav-link-icon d-inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
@@ -72,7 +71,7 @@
                 <span class="badge-dot bg-red ms-auto"></span>
               </div>
             </RouterLink>
-          </li>
+          </li> -->
           <!-- žádosti a změny -->
           <li class="nav-item">
             <RouterLink to="/zadosti" class="nav-link">

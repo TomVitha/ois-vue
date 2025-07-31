@@ -1,17 +1,24 @@
 <script setup lang="ts">
-  import { ref, onMounted, computed } from 'vue'
+  import { ref, onMounted, computed, watch } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
+
   import matter from 'gray-matter'
   import { marked } from 'marked'
 
-  // import MessageMarkdown from '@/components/MessageMarkdown.vue'
-  import MessengerListItem from '@/components/MessengerListItem.vue'
-  // import MessageTemplate from '@/components/MessageTemplate.vue'
-
-  // import hugeRTE from 'hugerte'
-  // import hugerteIframe from '@/components/HugeRTE.vue'
-
-  const messages = ref<{ id: string, meta: any, content: string }[]>([])
   import messagesMeta from '../messages/meta.json'
+  import MessengerListItem from '@/components/MessengerListItem.vue'
+  import MessengerAttachment from '@/components/MessengerAttachment.vue'
+
+  import { useMessengerStore } from '@/stores/messenger'
+  const messengerStore = useMessengerStore()
+
+  import TomSelect from 'tom-select'
+  
+  const route = useRoute()
+  const router = useRouter()
+  
+  const messages = ref<{ id: string, meta: any, content: string }[]>([])
+  const selectedMessageId = ref<string | null>(null)
 
   // Import markdown messages and their metadata
   onMounted(async () => {
@@ -21,7 +28,7 @@
       entries.map(async ([path, loader]) => {
         const raw = await loader()
         const parsed = matter(raw)
-        const id = path.split('/').pop()?.replace('.md', '') ?? path  // Extract filename from path and use as ID
+        const id = path.split('/').pop()?.replace('.md', '') ?? path
         return { id, content: parsed.content }
       })
     )
@@ -33,56 +40,63 @@
         content: contentObj?.content ?? ''
       }
     })
-    // debug log messages
-    console.debug("Loaded messages:", messages.value)
+    
+    // Check for message ID in URL query parameter
+    if (route.query.m) {
+      selectMessage(route.query.m as string)
+    }
+    
+    // Initialize TomSelect
+    new TomSelect("#select-recipient", {
+      create: false,
+    });
   })
 
+  function selectMessage(messageId: string) {
+    selectedMessageId.value = messageId
+  }
 
-  const selectedMessageId = ref<string | null>(null)
   const selectedMessage = computed(() =>
     messages.value.find(msg => msg.id === selectedMessageId.value) || null
   )
+
   const selectedIndex = computed(() =>
     selectedMessage.value
       ? messages.value.findIndex(msg => msg.id === selectedMessage.value?.id)
       : -1
   )
+
   const selectedMessageHtml = computed(() =>
     selectedMessage.value ? marked.parse(selectedMessage.value.content) : ''
   )
 
-  function discardDraft(event?: Event) {
+  // Watch for changes in selectedMessageId
+  watch(selectedMessageId, (newId) => {
+    if (newId) {
+      router.replace({ query: { m: newId } })
+      messengerStore.markAsRead(newId)
+    } else {
+      router.replace({ query: {} })
+    }
+  })
+  
+  // Watch for changes in route.query
+  watch(() => route.query.m, (newMsgId) => {
+    if (newMsgId && newMsgId !== selectedMessageId.value) {
+      selectMessage(newMsgId as string)
+    } else if (!newMsgId && selectedMessageId.value) {
+      selectedMessageId.value = null
+    }
+  })
 
+  // TODO
+  function discardDraft(event?: Event) {
     if (confirm("Opravdu chcete zahodit rozpracovanou zprávu?")) {
       console.debug("DISCARDED")
     } else {
       console.debug("canceled")
     }
   }
-
-  import MessengerAttachment from '@/components/MessengerAttachment.vue'
-
-  const selectedOption = ref('')
-
-  // TODO: Generalize -> TO COMPONENT!
-  import TomSelect from 'tom-select'
-
-  onMounted(() => {
-    new TomSelect("#select-beast", {
-      create: false,
-      // render: {
-      //   no_results: function(data, escape) {
-      //     return `<div class="no-results">Žádné výsledky nenalezeny.</div>`;
-      //   },
-      //   option_create: function(data, escape) {
-      //     return `<div class="create">Přidat <strong>${escape(data.input)}</strong>&hellip;</div>`;
-      //   }
-      // },
-    });
-  })
-
-
-
 </script>
 
 <template>
@@ -115,7 +129,7 @@
                       </form> -->
                       <!-- <hugerteIframe></hugerteIframe> -->
                       <div class="space-y-3 h-100">
-                        <div class="input-group">
+                        <div class="input-group input-group-flat">
                           <span class="input-group-text">Od: </span><input type="text" class="form-control" autocomplete="off" value="Adam Novák" readonly>
                         </div>
                         <!-- <div class="input-group input-group-flat">
@@ -123,17 +137,19 @@
                         </div> -->
                         <!-- WIP - tom-select -->
                         <!-- TODO: Generalize -->
-                        <div class="input-group">
+                        <div class="input-group input-group-flat">
                           <span class="input-group-text">Komu: </span>
-                          <select class="form-control" id="select-beast" placeholder="Vyberte příjemce..." autocomplete="off">
-                            <option value="">Select a person...</option>
-                            <option value="4">Thomas Edison</option>
-                            <option value="1">Nikola</option>
-                            <option value="3">Nikola Tesla</option>
-                            <option value="5">Arnold Schwarzenegger</option>
+                          <select class="form-control" id="select-recipient" placeholder="Vyberte příjemce..." autocomplete="off">
+                            <option value="">Vyberte příjemce...</option>
+                            <option value="1">Darth Vader</option>
+                            <option value="2">Michael Corleone</option>
+                            <option value="3">Marty McFly</option>
+                            <option value="4">Jack Sparrow</option>
+                            <option value="5">Tony Stark</option>
+                            <option value="6">The Terminator</option>
                           </select>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group input-group-flat">
                           <span class="input-group-text">Předmět: </span><input type="text" class="form-control" autocomplete="off" aria-label="Předmět zprávy">
                         </div>
                         <textarea name="" id="" placeholder="Pište zprávu..." class="form-control flex-fill" data-bs-toggle="autosize" style="min-height: 200px"></textarea>
@@ -166,7 +182,7 @@
                           <path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
                           <path d="M6.5 12h14.5" />
                         </svg>
-                        <span>Odeslat</span>
+                        Odeslat
                       </button>
                     </div>
                   </div>
@@ -198,7 +214,7 @@
                   :badge="msg.meta.badge"
                   :is-unread="msg.meta.isUnread"
                   :has-attachment="Array.isArray(msg.meta.attachments) && msg.meta.attachments.length > 0"
-                  @click.prevent="selectedMessageId = msg.id; msg.meta.isUnread = false"
+                  @click.prevent="selectMessage(msg.id)"
                 />
               </div>
             </div>
@@ -236,8 +252,7 @@
               <div class="space-y-3 flex-fill">
                 <div class="col-12 col-xl-auto d-lg-none">
                   <div class="btn-actions mx-n3 my-n2">
-                    <!-- Prev message -->
-                    <!-- Prev message -->
+                    <!-- Previous message -->
                     <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = messages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                         <path d="M15 6l-6 6l6 6"></path>

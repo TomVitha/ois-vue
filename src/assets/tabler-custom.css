@@ -180,3 +180,8 @@ dialog {
     font-size: inherit;
   }
 }
+
+/* Fix floating label vertical alignment */
+.form-floating>label {
+  align-content: center;
+}
