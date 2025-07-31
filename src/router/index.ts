@@ -63,7 +63,6 @@ const router = createRouter({
     {
       path: '/komunikace',
       component: () => import('../views/Komunikace.vue'),
-      // meta: { layout: LayoutMessenger}
     },
   ],
 })

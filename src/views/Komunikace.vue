@@ -22,15 +22,7 @@
         const raw = await loader()
         const parsed = matter(raw)
         const id = path.split('/').pop()?.replace('.md', '') ?? path  // Extract filename from path and use as ID
-        // Normalize datetime to ISO string
-        if (parsed.data.datetime) {
-          parsed.data.datetime = new Date(parsed.data.datetime).toISOString()
-        }
-        return { 
-          id, 
-          // meta: parsed.data, 
-          content: parsed.content 
-        }
+        return { id, content: parsed.content }
       })
     )
     messages.value = messagesMeta.map(meta => {
@@ -78,14 +70,14 @@
   onMounted(() => {
     new TomSelect("#select-beast", {
       create: false,
-      render: {
-        no_results: function(data, escape) {
-          return `<div class="no-results">Žádné výsledky nenalezeny.</div>`;
-        },
-        option_create: function(data, escape) {
-          return `<div class="create">Přidat <strong>${escape(data.input)}</strong>&hellip;</div>`;
-        }
-      },
+      // render: {
+      //   no_results: function(data, escape) {
+      //     return `<div class="no-results">Žádné výsledky nenalezeny.</div>`;
+      //   },
+      //   option_create: function(data, escape) {
+      //     return `<div class="create">Přidat <strong>${escape(data.input)}</strong>&hellip;</div>`;
+      //   }
+      // },
     });
   })
 
@@ -298,7 +290,7 @@
                 </div>
                 <!-- Attachments -->
                 <!-- FIXME: Only show container element if there are any attachments -->
-                <div class="col-12">
+                <div class="col-12" v-if="Array.isArray(selectedMessage.meta.attachments) && selectedMessage.meta.attachments.length > 0">
                   <div class="row row-gap-2">
                     <div class="col-12 col-lg-auto">
                       <MessengerAttachment v-for="attachment in selectedMessage.meta.attachments" :filename="attachment.filename" :size="attachment.size" :filetype="attachment.filetype" :url="attachment.url"></MessengerAttachment>

@@ -2,7 +2,7 @@
   {
     "id": "msg-1",
     "from": "Don Salieri",
-    "datetime": "2025-07-25T10:22:00",
+    "datetime": "2025-07-31T08:22:00",
     "subject": "Vítej u nás do rodiny",
     "badge": "Byt D 331",
     "isUnread": true,
@@ -17,9 +17,9 @@
   },
   {
     "id": "msg-2",
-    "from": "Ozzy Osbourne",
+    "from": "Anton Antonovič Kupkovskyj",
     "datetime": "2025-07-24T23:59:59",
-    "subject": "It's me",
+    "subject": "Důležitá záležitost",
     "isUnread": false,
     "attachments": []
   }

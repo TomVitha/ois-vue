@@ -172,20 +172,6 @@
               <span class="nav-link-title text-truncate">Novinky (a nabídky)</span>
             </RouterLink>
           </li>
-          <!-- FAQ -->
-          <li class="nav-item">
-            <RouterLink to="/help" class="nav-link">
-              <span class="nav-link-icon d-inline-block">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help-hexagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z"></path><path d="M12 16v.01"></path><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"></path></svg> -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-question-mark">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4" />
-                  <path d="M12 19l0 .01" />
-                </svg>
-              </span>
-              <span class="nav-link-title text-truncate">Nápověda / Pomoc</span>
-            </RouterLink>
-          </li>
           <!-- Contacts -->
           <li class="nav-item">
             <RouterLink to="/kontakty" class="nav-link">
@@ -202,16 +188,20 @@
               <span class="nav-link-title text-truncate">Kontakty</span>
             </RouterLink>
           </li>
-          <!-- TEMP / TESTING -->
-          <!-- account -->
-          <!-- <li class="nav-item mt-auto">
-              <a class="nav-link" href="https://preview.tabler.io/settings.html">
-                <span class="nav-link-icon d-inline-block">
-                  <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                </span>
-                <span class="nav-link-title text-truncate">Adam Novák</span>
-              </a>
-            </li> -->
+          <!-- HELP / FAQ -->
+          <li class="nav-item">
+            <RouterLink to="/help" class="nav-link">
+              <span class="nav-link-icon d-inline-block">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help-hexagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z"></path><path d="M12 16v.01"></path><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"></path></svg> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-question-mark">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4" />
+                  <path d="M12 19l0 .01" />
+                </svg>
+              </span>
+              <span class="nav-link-title text-truncate">Nápověda / Pomoc</span>
+            </RouterLink>
+          </li>
         </ul>
 
       </div>

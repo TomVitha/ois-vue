@@ -8,6 +8,9 @@
     badge?: string
     isUnread?: boolean
   }>()
+
+  import {useLocaleStore} from '@/stores/locale'
+  const localeStore = useLocaleStore()
 </script>
 
 <template>
@@ -20,9 +23,24 @@
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <!-- TODO: Conditional paper clip icon displaying -->
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
-          <!-- TODO: If date is today: display time; else display date -->
-          <!-- TODO: Then: If date is current year: display year too -->
-          <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">{{ new Date(datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</span>
+            <!-- If date is today: display time; else display date (and year if not current year) -->
+            <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
+            {{
+              ((locale = localeStore.locale) => {
+              const date = new Date(datetime)
+              const now = new Date()
+              const isToday = date.toDateString() === now.toDateString()
+              if (isToday) {
+                return date.toLocaleTimeString([locale], { hour: '2-digit', minute: '2-digit' })
+              }
+              const isCurrentYear = date.getFullYear() === now.getFullYear()
+              if (isCurrentYear) {
+                return date.toLocaleDateString([locale], { month: '2-digit', day: '2-digit' })
+              }
+              return date.toLocaleDateString([locale], { year: '2-digit', month: '2-digit', day: '2-digit' })
+              })()
+            }}
+            </span>
         </div>
       </div>
       <div class="text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
@@ -34,4 +52,6 @@
   </button>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
