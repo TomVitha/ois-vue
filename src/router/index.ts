@@ -42,6 +42,10 @@ const router = createRouter({
       component: () => import('../views/Platby.vue'),
     },
     {
+      path: '/platby-alt',
+      component: () => import('../views/Platby-alt.vue'),
+    },
+    {
       path: '/sign-in',
       component: () => import('../views/SignIn.vue'),
       meta: { layout: LayoutBlank },

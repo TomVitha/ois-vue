@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <div class="navbar-nav flex-row order-md-last ms-auto">
+  <div class="navbar-nav flex-row order-lg-last ms-auto">
     <div class="d-flex align-items-center">
       <!-- Theme switch -->
       <div class="nav-item">
