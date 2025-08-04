@@ -132,7 +132,7 @@
               <div class="fs-4 fw-bold text text-yellow">{{ formatCurrency(remainingAmount) }}</div>
             </div>
             <div class="col-12 d-md-none">
-              <div class="progress progress-sm mt-2">
+              <div class="progress progress-sm mt-2" :class="{'bg-red-lt': status === 'overdue'}">
                 <div class="progress-bar bg-green" :style="`width: ${percentagePaid}%`" :title="`${percentagePaid}% zaplaceno`" role="progressbar" :aria-valuenow="percentagePaid" aria-valuemin="0" aria-valuemax="100">
                   <span class="visually-hidden"> {{ percentagePaid }}% zaplaceno</span>
                 </div>

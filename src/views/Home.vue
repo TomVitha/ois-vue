@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate title="Přehled">
+  <PageTemplate pretitle="Dobrý den, Adame" title="Vítejte ve svém klientském portálu">
     <!-- <template #actions>
       <button class="btn btn-primary">Nová akce</button>
     </template> -->
@@ -41,7 +41,8 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
+      <!-- TEMP: Hidden -->
+      <!-- <div class="col-12">
         <div class="card card-md">
           <div class="card-body">
             <div class="d-flex align-items-baseline">
@@ -94,7 +95,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="col-lg-4">
         <div class="card overflow-hidden">
           <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
@@ -144,14 +145,14 @@
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
             blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
             dokumenty k podepsání (které ješte nepodepsal)

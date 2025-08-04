@@ -58,8 +58,8 @@
           </div>
         </div>
       </div>
-      <div class="mt-1">
-        <span>{{ body }}</span>
+      <div class="row">
+        <div class="col text-secondary mt-0">{{ body }}</div>
       </div>
     </div>
   </a>
