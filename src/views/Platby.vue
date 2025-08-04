@@ -1,74 +1,58 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentItem from '@/components/PaymentItem.vue'
+  import Alert from '@/components/Alert.vue'
 </script>
 
 <template>
-
   <PageTemplate title="Platby">
-    <!-- ALERTS -->
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <div class="alert-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
-          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
-          <path d="M12 8v4"></path>
-          <path d="M12 16h.01"></path>
-        </svg>
-      </div>
-      <div>
-        <h4 class="alert-heading">Password does not meet requirements:</h4>
-        <div class="alert-description">
-          You done fucked up this time.
-        </div>
-      </div>
-      <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
-    <div class="alert alert-important alert-danger alert-dismissible" role="alert">
-      <div class="alert-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
-          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
-          <path d="M12 8v4"></path>
-          <path d="M12 16h.01"></path>
-        </svg>
-      </div>
-      <div>
-        <h4 class="alert-heading">Password does not meet requirements:</h4>
-        <div class="alert-description">
-          You done fucked up this time.
-        </div>
-      </div>
-      <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
-    <div class="alert alert-warning alert-dismissible w-100" role="alert">
-      <div class="alert-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
-          <path d="M12 9v4"></path>
-          <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z">
-          </path>
-          <path d="M12 16h.01"></path>
-        </svg>
-      </div>
-      <div>
-        <h4 class="alert-heading">Some information is missing!</h4>
-        <div class="alert-description">This is a custom alert box with a description. <a href="#" class="alert-action">Link</a></div>
-      </div>
-      <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
-    <div class="alert alert-important alert-warning alert-dismissible" role="alert">
-      <div class="alert-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
-          <path d="M12 9v4"></path>
-          <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z">
-          </path>
-          <path d="M12 16h.01"></path>
-        </svg>
-      </div>
-      <div>
-        <h4 class="alert-heading">This is a custom alert box!</h4>
-        <div class="alert-description">This is a custom alert box with a description.</div>
-      </div>
-      <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
+    <!-- ALERTS (components) -->
+    <!-- <Alert 
+      heading="Dismissable non-important success box"
+      type="success"
+      :is-dismissable="true"
+    >
+      This is a component alert box description.
+    </Alert>
+    <Alert 
+      heading="Non-dismissable non-important info box"
+      type="info"
+      :is-important="false"
+      :is-dismissable="true"
+    >
+      This is a component alert box description.
+    </Alert>
+    <Alert 
+      heading="Non-dismissable non-important warning box"
+      type="warning"
+    >
+      This is a component alert box description.
+    </Alert>
+    <Alert 
+      heading="Dismissable important warning box"
+      type="warning"
+      :is-important="true"
+      :is-dismissable="true"
+    >
+      This is a component alert box description.
+    </Alert>
+    <Alert 
+      heading="Dismissable non-important danger box"
+      type="danger"
+      :is-dismissable="true"
+    >
+      We require some <a href="" class="alert-action">action</a> from you.
+    </Alert>
+    <Alert 
+      heading="Non-dismissable important danger box"
+      type="danger"
+      :is-important="true"
+    >
+      <ul class="alert-list">
+        <li>Minimum 8 characters</li>
+        <li>Include a special character</li>
+      </ul>
+    </Alert> -->
     <!-- CONTENT -->
     <div class="row row-deck row-cards">
       <div class="col-md-4">
