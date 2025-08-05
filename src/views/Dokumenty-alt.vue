@@ -208,8 +208,8 @@
                   </a>
                   <!-- TEMP Preview invoice -->
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="./src/assets/sample-invoice.pdf">Otevřít</a>
-                    <a class="dropdown-item" href="./src/assets/sample-invoice.pdf" download>Stáhnout</a>
+                    <a class="dropdown-item" href="../assets/sample-invoice.pdf">Otevřít</a>
+                    <a class="dropdown-item" href="../assets/sample-invoice.pdf" download>Stáhnout</a>
                   </div>
                 </div>
               </div>
