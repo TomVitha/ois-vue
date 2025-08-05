@@ -1,23 +1,11 @@
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { useThemeStore } from '@/stores/theme'
   const themeStore = useThemeStore()
 
-  function togglePasswordVisibility(passwdInput = document.querySelector('#password'), event) {
-    const icon = event.currentTarget.querySelector('.ti')
-    let isVisible = passwdInput?.getAttribute('type') == 'password' ? false : true;
-    // TODO: Use switch icon? RE: https://docs.tabler.io/ui/components/switch-icon
-    if (isVisible) {
-      passwdInput?.setAttribute('type', 'password')
-      icon.classList.remove('ti-eye-off')
-      icon.classList.add('ti-eye')
-      isVisible = false
-
-    } else {
-      passwdInput?.setAttribute('type', 'text')
-      icon.classList.remove('ti-eye')
-      icon.classList.add('ti-eye-off')
-      isVisible = true
-    }
+  const passwordVisible = ref(false)
+  function togglePasswordVisibility() {
+    passwordVisible.value = !passwordVisible.value
   }
 </script>
 
@@ -74,10 +62,10 @@
                   </span>
                 </div>
                 <div class="input-group input-group-flat">
-                  <input type="password" id="password" name="password" autocomplete="current-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
+                  <input :type="passwordVisible ? 'text' : 'password'" id="password" name="password" autocomplete="current-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
                   <span class="input-group-text">
-                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility(undefined, $event)">
-                      <i class="ti ti-eye fs-2 icon"></i>
+                    <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
+                      <i class="fs-2 icon" :class="['ti', passwordVisible ? 'ti-eye-off' : 'ti-eye']"></i>
                     </a>
                   </span>
                 </div>
@@ -90,12 +78,12 @@
               </div>
               <div class="form-footer my-0">
                 <button type="submit" class="btn btn-primary w-100">Přihlásit se</button>
-                <!-- <a href="index.html" type="submit" class="btn btn-primary w-100">Přihlásit</a> -->
               </div>
             </div>
           </form>
           <div class="hr-text">Nebo</div>
           <div class="row row-gap-2">
+            <!-- BankID Alt design -->
             <!-- <div class="col-12">
             <a href="#" class="btn btn-x btn-4 w-100">
               Přihlásit se přes
