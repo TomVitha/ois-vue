@@ -42,10 +42,6 @@ const router = createRouter({
       component: () => import('../views/Platby.vue'),
     },
     {
-      path: '/platby-alt',
-      component: () => import('../views/Platby-alt.vue'),
-    },
-    {
       path: '/sign-in',
       component: () => import('../views/SignIn.vue'),
       meta: { layout: LayoutBlank },
@@ -63,10 +59,18 @@ const router = createRouter({
       path: '/:catchAll(.*)',
       component: () => import('../views/404.vue'),
     },
-    // TODO: Dynamic Route Matching ?
     {
       path: '/komunikace',
       component: () => import('../views/Komunikace.vue'),
+    },
+    // Old/Alt designs preserved
+    {
+      path: '/dokumenty-alt',
+      component: () => import('../views/Dokumenty-alt.vue'),
+    },
+    {
+      path: '/platby-alt',
+      component: () => import('../views/Platby-alt.vue'),
     },
   ],
 })
