@@ -39,7 +39,7 @@
         meta: meta,
         content: contentObj?.content ?? ''
       }
-    })
+    }).reverse()
     
     // Check for message ID in URL query parameter
     if (route.query.m) {
@@ -198,7 +198,7 @@
                 </span>
                 <input type="text" value="" class="form-control" placeholder="Hledat ve zprávách…" aria-label="Hledat">
                 <!-- TODO: Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
-                <!-- TODO: Paginace zpráv, výpis kolik z kolika -->
+                <!-- TODO? Paginace zpráv, výpis kolik z kolika -->
               </div>
             </div>
             <!-- Messages list -->
@@ -227,7 +227,7 @@
             <div class="container-tight py-4">
               <div class="empty">
                 <div class="empty-img">
-                  <!-- TEMP Envelope image from outlook -->
+                  <!-- TEMP Image from Outlook -->
                   <!-- TODO: Replace with custom image -->
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/light.svg" alt="" class="hide-theme-dark" width="200">
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/dark.svg" alt="" class="hide-theme-light" width="200">

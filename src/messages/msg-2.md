@@ -1,7 +1,10 @@
-Dobrý den,
+Vážený vane Nováku,
 
-rádi bychom Vás informovali o této velmi důležité záležitosti. Prosím, obeznamte se s jejími podrobnostmi a vezměte ji na vědomí.
+děkujeme že jste nám dal své těžce vydřené, či jiným způsobem obstarané peníze. Na oplátku jsme se rozhodli Vám darovat byt. Jsme rádi, že jste si vybrali právě nás a jsme rádi, že jsme mohli být součástí vašeho života, dost možná i do samotného konce.
 
-Děkujeme, vaše kontaktní osoba
+V příloze zasílám dokument, obsahující všechny informace, které byste mohl potřebovat, takže už není důvod, abyste mi psal.
 
-MUDr. JUDr. Anton Antonovič Kupkovskyj
+Přejeme Vám mnoho spokojenosti ve Vašem novém domově. _Bude_ se vám v něm líbit.
+
+S pozdravem,  
+Anton Antonovič Kupkovskyj

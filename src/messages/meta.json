@@ -1,26 +1,26 @@
 [
   {
     "id": "msg-1",
-    "from": "Don Salieri",
+    "from": "Dušan Kunovský",
     "datetime": "2025-07-31T08:22:00",
-    "subject": "Vítej u nás do rodiny",
-    "badge": "Byt D 331",
-    "isUnread": true,
-    "attachments": [
-      {
-        "filename": "Provozni_rad_rodiny_Salieri.pdf",
-        "filetype": "pdf",
-        "url": "/attachments/Provozni_rad_rodiny_Salieri.pdf",
-        "size": "12 MB"
-      }
-    ]
+    "subject": "Vítejte ve svém klientském portálu",
+    "isUnread": false,
+    "attachments": []
   },
   {
     "id": "msg-2",
     "from": "Anton Antonovič Kupkovskyj",
-    "datetime": "2025-07-24T23:59:59",
+    "datetime": "2025-08-02T12:05:33",
     "subject": "Důležitá záležitost",
-    "isUnread": false,
-    "attachments": []
+    "badge": "Byt D 331",
+    "isUnread": true,
+    "attachments": [
+      {
+        "filename": "dulezity_dokument.pdf",
+        "filetype": "pdf",
+        "url": ".src/messages/dulezity_dokument.pdf.pdf",
+        "size": "12 MB"
+      }
+    ]
   }
 ]

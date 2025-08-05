@@ -21,7 +21,6 @@
         <span v-if="badge" class="badge bg-default text-default-fg text-nowrap">{{ badge }}</span>
         <span class="text-truncate" :class="{ 'fw-bold': isUnread }">{{ from }}</span>
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
-          <!-- TODO: Conditional paper clip icon displaying -->
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
             <!-- If date is today: display time; else display date (and year if not current year) -->
             <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
