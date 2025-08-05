@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Dobrý den, Adame" title="Vítejte ve svém klientském portálu">
+  <PageTemplate pretitle="Vážený pane Nováku," title="Vítejte ve svém klientském portálu">
     <!-- <template #actions>
       <button class="btn btn-primary">Nová akce</button>
     </template> -->
@@ -96,7 +96,8 @@
           </div>
         </div>
       </div> -->
-      <div class="col-lg-4">
+      <!-- TEMP: Hidden -->
+      <div class="col-lg-4" hidden>
         <div class="card overflow-hidden">
           <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
             <!-- <div class="carousel-indicators carousel-indicators-dot">

@@ -37,7 +37,7 @@
       <!-- User -->
       <div class="nav-item dropdown user-select-none">
         <a href="#" class="nav-link d-flex lh-1 p-0 px-2" data-bs-toggle="dropdown" aria-label="Open user menu">
-          <span class="avatar avatar-sm" style="background-image: url(https://avatar.freepik.com/2047389.jpg)">
+          <span class="avatar avatar-sm" style="background-image: url('../src/assets/gigachad.jpg')">
           </span>
           <div class="ps-2 d-none d-lg-block">
             <div>Adam Novák</div>
