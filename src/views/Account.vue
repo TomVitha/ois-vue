@@ -387,7 +387,7 @@
                     <div class="text-secondary">Some smaller text under the title</div>
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control" value="Adam Novák" autocomplete="name" required="">
+                    <input type="text" class="form-control" value="Adam Novák" autocomplete="name" required>
                   </div>
                 </div>
               </div>

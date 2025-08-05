@@ -7,7 +7,8 @@
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
-import Editor from "@hugerte/hugerte-vue"
+// TEMP: Uncomment when Hugerte is available
+// import Editor from "@hugerte/hugerte-vue"
 // const content = `
 // <h2 style="text-align: center;">
 //   HugeRTE provides a <span style="text-decoration: underline;">feature-rich</span> rich text editing experience.
