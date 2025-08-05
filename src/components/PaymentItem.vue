@@ -132,7 +132,7 @@
               <div class="fs-4 fw-bold text text-yellow">{{ formatCurrency(remainingAmount) }}</div>
             </div>
             <div class="col-12 d-md-none">
-              <div class="progress progress-sm mt-2" :class="{'bg-red-lt': status === 'overdue'}">
+              <div class="progress progress-sm mt-2" :class="{ 'bg-red-lt': status === 'overdue' }">
                 <div class="progress-bar bg-green" :style="`width: ${percentagePaid}%`" :title="`${percentagePaid}% zaplaceno`" role="progressbar" :aria-valuenow="percentagePaid" aria-valuemin="0" aria-valuemax="100">
                   <span class="visually-hidden"> {{ percentagePaid }}% zaplaceno</span>
                 </div>
@@ -143,12 +143,22 @@
         <div v-if="!isPaid || isInvoiceShown" class="col-12 col-md-auto order-last">
           <div class="text-end">
             <a v-if="isPaid && isInvoiceShown" href="#faktura" class="btn w-100">Faktura</a>
-            <a v-else href="#platba" class="btn w-100" :class="status === 'overdue' ? 'btn-red' : 'btn-primary'">{{ isPartiallyPaid ? 'Doplatit' : 'Zaplatit' }}</a>
+            <a 
+              v-else 
+              href="#platba" 
+              class="btn w-100" 
+              :class="status === 'overdue' ? 'btn-red' : 'btn-primary'"
+              data-bs-toggle="modal" 
+              data-bs-target="#temp-payment-modal"
+            >
+              {{ isPartiallyPaid ? 'Doplatit' : 'Zaplatit' }}
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped></style>
