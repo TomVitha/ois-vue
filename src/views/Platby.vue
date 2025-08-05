@@ -84,8 +84,10 @@
         </div>
       </div>
       <!-- TODO: Řazení? Filtrování? -->
-      <!-- TODO: Lidé chtějí odklad plateb -> 3 dots submenu with actions ? -->
-      <h3 class="mt-4 mb-0">Nadcházející</h3>
+      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti a změny -->
+      <div class="col-12">
+        <h3 class="m-0">Nadcházející</h3>
+      </div>
       <!-- Unpaid, upcoming -->
       <div class="col-12">
         <PaymentItem title="Oprava střechy" duedate="2026-01-01" :amount="50000" :paid="0" :is-invoice-shown="true" />
@@ -110,7 +112,9 @@
       <div class="col-12">
         <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
       </div>
-      <h3 class="mt-4 mb-0">Zaplacené</h3>
+      <div class="col-12">
+        <h3 class="m-0">Zaplacené</h3>
+      </div>
       <!-- Paid -->
       <div class="col-12">
         <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
@@ -132,10 +136,14 @@
         <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
       </div>
     </div>
+    <!-- Footer message -->
+     <div class="col-12">
+
+     </div>
 
     <!-- WIP -->
     <!-- TODO: Create proper design (with proper code) -->
-    <!-- TODO: Click to copy -->
+    <!-- TODO: Click to copy text buttons -->
     <!-- TODO: Breakdown for partially paid (like on payments page) -->
     <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
     <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->

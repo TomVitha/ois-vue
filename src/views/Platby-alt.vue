@@ -100,7 +100,7 @@
       </div>
       <h3 class="mt-4 mb-0">Platby</h3>
       <!-- TODO: Řazení? Filtrování? -->
-      <!-- TODO: Lidé chtějí odklad plateb -> 3 dots submenu with actions -->
+      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti a změny -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -749,7 +749,6 @@
           </div>
         </div>
       </div>
-      <!-- TODO: Zvážit zda použít fs-5, nebo nechat defaultní velikost -->
       <h2 class="mb-n3 mt-5">Platby (final design?)</h2>
       <h3 class="mt-4 mb-0">Zaplacené</h3>
       <!-- Paid -->

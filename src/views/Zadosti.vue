@@ -23,7 +23,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">Generic žádost</h3>
+            <h3 class="card-title">Obecná žádost</h3>
             <p class="text-secondary">Když žádná z předem zvolených možností není to co potřebujete.</p>
           </div>
         </div>

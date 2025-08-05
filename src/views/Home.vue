@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Vážený pane Nováku," title="Vítejte ve svém klientském portálu">
+  <PageTemplate pretitle="Vážený kliente," title="Vítejte ve svém klientském portálu">
     <!-- <template #actions>
       <button class="btn btn-primary">Nová akce</button>
     </template> -->
