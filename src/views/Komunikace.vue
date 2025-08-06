@@ -2,7 +2,6 @@
   import { ref, onMounted, computed, watch } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
-  import matter from 'gray-matter'
   import { marked } from 'marked'
 
   import messagesMeta from '../messages/meta.json'
@@ -27,9 +26,8 @@
     const loaded = await Promise.all(
       entries.map(async ([path, loader]) => {
         const raw = await loader()
-        const parsed = matter(raw)
         const id = path.split('/').pop()?.replace('.md', '') ?? path
-        return { id, content: parsed.content }
+        return { id, content: raw }
       })
     )
     messages.value = messagesMeta.map(meta => {
@@ -37,7 +35,7 @@
       return {
         id: meta.id,
         meta: meta,
-        content: contentObj?.content ?? ''
+        content: typeof contentObj?.content === 'string' ? contentObj.content : ''
       }
     }).reverse()
     

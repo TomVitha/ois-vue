@@ -13,7 +13,6 @@
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@hugerte/hugerte-vue": "^2.0.2",
-    "gray-matter": "^4.0.3",
     "hugerte": "^1.0.9",
     "marked": "^16.1.1",
     "pinia": "^3.0.3",
