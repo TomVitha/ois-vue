@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
 
   const props = defineProps<{
     name: string
@@ -8,6 +8,12 @@
     email?: string
     imgURL?: string
   }>()
+
+  const resolvedURL = computed(() =>
+  props.imgURL && (!props.imgURL.startsWith('/') || props.imgURL.startsWith('http'))
+    ? props.imgURL
+    : `${import.meta.env.BASE_URL}${props.imgURL}`
+  )
 
 </script>
 
@@ -43,7 +49,7 @@
     <div class="card-body">
       <div class="row align-items-center gx-4">
         <div v-if="imgURL" class="col-4 col-sm-auto align-self-start">
-          <img :src="imgURL" alt="Fotografie" width="170" class="rounded">
+          <img :src="resolvedURL" alt="Fotografie" width="170" class="rounded">
         </div>
         <div class="col">
           <div class="row gy-2">

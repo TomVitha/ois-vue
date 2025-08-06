@@ -2,7 +2,10 @@
   import { ref, onMounted, computed, watch } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
+  // markdown parser
   import { marked } from 'marked'
+  // <select> UI control with autocomplete
+  import TomSelect from 'tom-select'
 
   import messagesMeta from '../messages/meta.json'
   import MessengerListItem from '@/components/MessengerListItem.vue'
@@ -11,15 +14,13 @@
   import { useMessengerStore } from '@/stores/messenger'
   const messengerStore = useMessengerStore()
 
-  import TomSelect from 'tom-select'
-  
   const route = useRoute()
   const router = useRouter()
-  
+
   const messages = ref<{ id: string, meta: any, content: string }[]>([])
   const selectedMessageId = ref<string | null>(null)
 
-  // Import markdown messages and their metadata
+  // Import markdown messages
   onMounted(async () => {
     const modules = import.meta.glob('../messages/*.md', { query: '?raw', import: 'default' })
     const entries = Object.entries(modules)
@@ -30,6 +31,7 @@
         return { id, content: raw }
       })
     )
+    // Map messages metadata to messages
     messages.value = messagesMeta.map(meta => {
       const contentObj = loaded.find(l => l.id === meta.id)
       return {
@@ -38,12 +40,13 @@
         content: typeof contentObj?.content === 'string' ? contentObj.content : ''
       }
     }).reverse()
-    
+    // NOTE: reverse() to reorder from newest to oldest
+
     // Check for message ID in URL query parameter
     if (route.query.m) {
       selectMessage(route.query.m as string)
     }
-    
+
     // Initialize TomSelect
     new TomSelect("#select-recipient", {
       create: false,
@@ -77,7 +80,7 @@
       router.replace({ query: {} })
     }
   })
-  
+
   // Watch for changes in route.query
   watch(() => route.query.m, (newMsgId) => {
     if (newMsgId && newMsgId !== selectedMessageId.value) {
@@ -122,6 +125,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                      <!-- TODO: HugeRTE instead of plain text -->
                       <!-- <form method="post">
                         <textarea id="hugerte-mytextarea">Hello, <b>Tabler</b>!</textarea>
                       </form> -->
@@ -232,7 +236,7 @@
                 </div>
                 <p class="empty-title">
                   <span v-if="messages.some(m => m.meta.isUnread)">
-                  Nepřečtené zprávy ({{ messages.filter(m => m.meta.isUnread).length }})
+                    Nepřečtené zprávy ({{messages.filter(m => m.meta.isUnread).length}})
                   </span>
                   <span v-else>Schránka</span>
                 </p>

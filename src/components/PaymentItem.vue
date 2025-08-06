@@ -1,10 +1,8 @@
 <script setup lang="ts">
-  import { ref, defineProps, computed } from 'vue';
-
+  import { ref, computed } from 'vue';
 
   import { useLocaleStore } from '@/stores/locale'
   const localeStore = useLocaleStore()
-
 
   const props = defineProps<{
     title: string,
