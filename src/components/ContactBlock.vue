@@ -9,7 +9,7 @@
     imgURL?: string
   }>()
 
-  const resolvedURL = computed(() =>
+  const basedImgURL = computed(() =>
   props.imgURL && (!props.imgURL.startsWith('/') || props.imgURL.startsWith('http'))
     ? props.imgURL
     : `${import.meta.env.BASE_URL}${props.imgURL}`
@@ -21,7 +21,7 @@
   <!-- <div class="card">
     <div class="row row-0">
       <div v-if="imgURL" class="col-4  align-self-start">
-        <img :src="imgURL" :alt="name" class="w-100 h-100 object-cover card-img-start" width="140" />
+        <img :src="basedImgURL" :alt="name" class="w-100 h-100 object-cover card-img-start" width="140" />
       </div>
       <div class="col">
         <div class="card-body h-full space-y-2">
@@ -49,7 +49,7 @@
     <div class="card-body">
       <div class="row align-items-center gx-4">
         <div v-if="imgURL" class="col-4 col-sm-auto align-self-start">
-          <img :src="resolvedURL" alt="Fotografie" width="170" class="rounded">
+          <img :src="basedImgURL" alt="Fotografie" width="170" class="rounded">
         </div>
         <div class="col">
           <div class="row gy-2">

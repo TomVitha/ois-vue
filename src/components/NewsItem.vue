@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <a href="https://google.com" class="card">
+  <a href="#" class="card">
     <!-- Image -->
     <div v-if="imgURL" class="img-responsive img-responsive-16x9 card-img-top d-lg-none" :style="{ backgroundImage: `url('${imgURL}')` }"></div>
     <div class="card-body">

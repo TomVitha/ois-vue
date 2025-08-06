@@ -34,7 +34,7 @@
         <div class="card">
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů</h3>
-            <p class="text-secondary">Vdala jste se? Přestěhovali jste se, nebo si změnili telefonní číslo? Tak si to nechte pro sebe, nás to nezajímá.</p>
+            <p class="text-secondary">Přestěhovali jste se, nebo si změnili telefonní číslo? Změnilo se vám pohlaví, nebo jste zemřeli? Zde nám dejte vědět o změně svých osobních údajů.</p>
             <button class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje">Otevřít</button>
             <!-- DIALOG -->
             <div class="modal fade" id="zadost-osobni-udaje" tabindex="-1">
@@ -83,7 +83,7 @@
         <div class="card">
           <div class="card-body">
             <h3 class="card-title">Změna osobních údajů 2</h3>
-            <p class="text-secondary">Jestli se něco ohledně vás změnilo, tak nám to řekněte. Jestli nám to neřeknete tak vám uřízneme... tedy, tak vám ten byt nedáme.</p>
+            <p class="text-secondary">Jestli se něco ohledně vás změnilo, tak nám o tom dejte vědět.</p>
             <button class="btn" data-bs-toggle="modal" data-bs-target="#zadost-osobni-udaje-2">Otevřít</button>
             <!-- DIALOG -->
             <div class="modal fade" id="zadost-osobni-udaje-2" tabindex="-1">

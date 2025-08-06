@@ -13,15 +13,6 @@
           position="Vedoucí skupiny prodeje" 
           phone="+420 770 317 230" 
           email="alois.vyleta@central-group.cz"
-          imgURL="alois-vyleta-photo.jpeg"
-        />
-      </div>
-      <div class="col-md-6">
-        <ContactBlock 
-          name="Ing. Alois Vyleta" 
-          position="Vedoucí skupiny prodeje" 
-          phone="+420 770 317 230" 
-          email="alois.vyleta@central-group.cz"
           imgURL="contacts/alois-vyleta-photo.jpeg"
         />
       </div>
@@ -31,32 +22,7 @@
           position="Vedoucí úseku klientského centra" 
           phone="+420 721 826 644" 
           email="	vladimir.srnec@central-group.cz"
-          imgURL="./public/contacts/vladimir-srnec-photo.jpeg"
-        />
-      </div>
-      <div class="col-md-6">
-        <ContactBlock 
-          name="Ing. Vladimír Srnec" 
-          position="Vedoucí úseku klientského centra" 
-          phone="+420 721 826 644" 
-          email="	vladimir.srnec@central-group.cz"
-          imgURL="/public/contacts/vladimir-srnec-photo.jpeg"
-        />
-      </div>
-      <div class="col-md-6">
-        <ContactBlock 
-          name="Giga Chad" 
-          phone="+420 123 456 789" 
-          email="	giga.chad@central-group.cz"
-          imgURL="gigachad.jpg"
-        />
-      </div>
-      <div class="col-md-6">
-        <ContactBlock 
-          name="Giga Chad" 
-          phone="+420 123 456 789" 
-          email="	giga.chad@central-group.cz"
-          imgURL="/gigachad.jpg"
+          imgURL="contacts/vladimir-srnec-photo.jpeg"
         />
       </div>
     </div>
