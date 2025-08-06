@@ -156,7 +156,7 @@
           </div>
           <div class="modal-body">
             <div class="space-y-4">
-              <img src="../assets/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
+              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
               <div class="space-y-2">
                 <div class="d-flex justify-content-between">
                   <span class="text-secondary">Číslo účtu</span>
