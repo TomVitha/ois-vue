@@ -198,7 +198,7 @@
                   <path d="M12 19l0 .01" />
                 </svg>
               </span>
-              <span class="nav-link-title text-truncate">Nápověda / Pomoc</span>
+              <span class="nav-link-title text-truncate">Otázky a odpovědi</span>
             </RouterLink>
           </li>
         </ul>

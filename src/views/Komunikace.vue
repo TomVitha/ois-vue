@@ -316,6 +316,7 @@
                 </div>
               </div>
             </div>
+            <!-- TODO: Reply button -->
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>

@@ -18,7 +18,7 @@
           <!-- BEGIN NAVBAR LOGO -->
           <div class="navbar-brand navbar-brand-autodark">
             <a href="https://www.central-group.cz/" aria-label="Central Group">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" xml:space="preserve" class="navbar-brand-image" style="enable-background:new 0 0 283.5 186.2; height: 38px;">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" xml:space="preserve" class="navbar-brand-image" style="enable-background:new 0 0 283.5 186.2; height: 42px;">
                 <g id="LOGO">
                   <g style="fill: #000000">
                     <path d="M180.9,118c0,5.2-2.5,7.3-6,7.3c-3.5,0-6.1-2.1-6.1-7.3v-17.3h-8.4v17.6c0,9.1,5.7,14.1,14.4,14.1s14.4-5.1,14.4-14.1v-17.6h-8.4V118z" />
@@ -43,7 +43,7 @@
           <!-- END NAVBAR LOGO -->
         </div>
         <div class="card-body">
-          <form action="./" method="post" novalidate>
+          <form action="/" method="post" novalidate>
             <div class="space-y">
               <h3 class="d-none d-md-block">Přihlašovací údaje</h3>
               <div>

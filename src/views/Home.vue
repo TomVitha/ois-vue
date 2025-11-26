@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate pretitle="Vážený kliente," title="Vítejte ve svém klientském portálu">
+  <PageTemplate pretitle="Vážený pane Nováku," title="Vítejte ve svém klientském portálu">
     <!-- <template #actions>
       <button class="btn btn-primary">Nová akce</button>
     </template> -->
@@ -149,56 +149,56 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno
+            ! platby po splatnosti
           </div>
         </div>
       </div>
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            dokumenty k podepsání (které ješte nepodepsal)
+            ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno
           </div>
         </div>
       </div>
       <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            ! dokumenty k podepsání (které ještě nebyly podepsány)
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-12">
         <div class="card">
           <div class="card-body">
             zprávy - proklik na inbox
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            platby po splatnosti
+            ! blížící se termínovky - termín výběrů
           </div>
         </div>
       </div>
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            blížící se termínovky - termín výběrů
+            ? kontrola (potvrzení) osobních údajů (jednou za čas)
           </div>
         </div>
       </div>
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            kontrola (potvrzení) osobních údajů (jednou za čas)
+            ? Základní kontaktní osoby
           </div>
         </div>
       </div>
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            Základní kontaktní osoby
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            Propagace
+            ? Propagace
           </div>
         </div>
       </div>

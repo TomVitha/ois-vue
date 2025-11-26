@@ -23,7 +23,7 @@
     dueDate.setTime(99999999999999999999999999);
   }
 
-  const dueThresholdDays = 7; // days before due date to consider as upcoming
+  const dueDaysThreshold = 7; // days before due date to consider as upcoming
   const remainingAmount = computed(() => props.amount - props.paid);
 
   const isPaid = computed(() => props.paid >= props.amount ? true : false)
@@ -37,7 +37,7 @@
   const status = computed<PaymentStatus>(() => {
 
     // const today = new Date();
-    // DEV - fixed today for testing
+    // TEMP - hard-coded today for testing
     const today = new Date('2025-08-01');
 
     const dueDate = new Date(props.duedate);
@@ -55,9 +55,9 @@
 
     if (diffDays < 0)
       return 'overdue';
-    else if (diffDays <= dueThresholdDays)
+    else if (diffDays <= dueDaysThreshold)
       return 'due';
-    else if (diffDays > dueThresholdDays)
+    else if (diffDays > dueDaysThreshold)
       return 'upcoming';
 
     return 'unknown';
@@ -139,11 +139,11 @@
           </div>
         </div>
         <div v-if="!isPaid || isInvoiceShown" class="col-12 col-md-auto order-last">
-          <div class="text-end">
+          <div class="btn-group w-100 w-md-auto text-end">
             <a v-if="isPaid && isInvoiceShown" href="#faktura" class="btn w-100">Faktura</a>
             <a 
               v-else 
-              href="#platba" 
+              href="" 
               class="btn w-100" 
               :class="status === 'overdue' ? 'btn-red' : 'btn-primary'"
               data-bs-toggle="modal" 
@@ -151,6 +151,19 @@
             >
               {{ isPartiallyPaid ? 'Doplatit' : 'Zaplatit' }}
             </a>
+            <button 
+              class="btn dropdown-toggle dropdown-toggle-split" 
+              :class="isPaid && isInvoiceShown ? '' : status === 'overdue' ? 'btn-red' : 'btn-primary'"
+              data-bs-toggle="dropdown" 
+              draggable="false"
+            >
+              <span class="visually-hidden">&darr;</span>
+            </button>
+              <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Third action</a>
+              </div>
           </div>
         </div>
       </div>
