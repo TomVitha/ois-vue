@@ -70,6 +70,11 @@ dialog {
   --tblr-nav-link-color: var(--tblr-body-color);
 }
 
+/* Active link is highlighted */
+.nav-link.active {
+  background-color: var(--tblr-nav-link-hover-bg);
+}
+
 /* Increase icon gap */
 .nav-link-icon {
   margin-right: 0.875rem;
@@ -90,7 +95,7 @@ dialog {
 }
 
 /* Limits mobile navbar to full screen height and enables overflow scroll. Without this, sticky navbar would not be possible to navigate if it overflowed */
-/* NOTE: That 2rem is the logo height = hard-coded height of .navbar-brand-image */
+/* NOTE: The 2rem is the logo height, which is the hard-coded height of .navbar-brand-image */
 @media (max-width: 991.98px) {
   .navbar.sticky-top .navbar-collapse {
     max-height: calc(100dvh - var(--tblr-navbar-padding-y) - var(--tblr-navbar-brand-padding-y) - 2rem - var(--tblr-navbar-brand-padding-y) - var(--tblr-navbar-padding-y));
@@ -119,7 +124,7 @@ dialog {
   }
 }
 
-/* NAVBAR (end) */
+/* # NAVBAR (end) */
 
 .dropdown-menu {
   --tblr-dropdown-padding-x: 0.25rem;
@@ -138,15 +143,9 @@ dialog {
   transform-origin: calc(50% - 0.05em) 75%;
 }
 
-/* The form will be invisible (but its children will not) and won't interfere with the layout */
+/* The <form> will be 'invisible' (but its children will not) and won't interfere with the layout */
 .card form {
   display: contents;
-}
-
-
-/* !! TEMP !! */
-:root {
-  /* --tblr-primary: #41a541; */
 }
 
 /* Limits dropdown height */
@@ -181,7 +180,27 @@ dialog {
   }
 }
 
-/* Fix floating label vertical alignment */
-.form-floating>label {
+/* FIX: floating label vertical alignment */
+.form-floating > label {
   align-content: center;
 }
+
+/* TESTING - TenantCloud style */
+/* :root {
+  --tblr-primary: #41a541;
+}
+
+.card {
+  border-width: 0px;
+  --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
+}
+
+.navbar {
+  box-shadow: 0 2px 4px #627d9833,0 1px 2px #102a4333;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg.navbar-vertical {
+        box-shadow: 0 4px 8px #627d9829,0 2px 4px #102a4329;
+    }
+} */

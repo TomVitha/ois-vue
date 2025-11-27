@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
+  import PaymentItem from '@/components/PaymentItem.vue'
+  import DocumentItem from '@/components/DocumentItem.vue';
 </script>
 
 <template>
@@ -109,12 +111,12 @@
             </div> -->
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <div class="card-body bg-green-lt text-center">
+                <div class="card-body bg-primary-lt text-center">
                   <div class="text-body space-y-2 align-items-center">
                     <img src="https://tabler.io/_next/image?url=%2Fillustrations%2Fdark%2Fclock-and-cat.png&w=800&q=75" alt="" srcset="" width="150">
                     <div class="card-title m-0">Add a property</div>
                     <div>Add your first property to get started using TenantCloud</div>
-                    <a href="#" class="text-green">Get started</a>
+                    <a href="#" class="text-primary">Get started</a>
                     <small class="text-secondary">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stopwatch">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -129,10 +131,10 @@
                 </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" alt="" src="https://fakeimg.ryd.tools/1600x800?text=Step%201" />
+                <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Step%201" />
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" alt="" src="https://fakeimg.ryd.tools/1600x800?text=Step%202" />
+                <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Step%202" />
               </div>
             </div>
             <a class="carousel-control-prev" data-bs-target="#carousel-1" role="button" data-bs-slide="prev">
@@ -146,40 +148,43 @@
           </div>
         </div>
       </div>
+      <!-- ! platby po splatnosti -->
       <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            ! platby po splatnosti
-          </div>
-        </div>
+        <h3 class="mt-3 mb-0">Platby po splatnosti</h3>
+      </div>
+      <div class="col-12">
+        <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
+      </div>
+      <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
+      <div class="col-12">
+        <h3 class="mt-3 mb-0">Nadcházející platby</h3>
+      </div>
+      <div class="col-12">
+        <PaymentItem title="Oprava střechy" duedate="2025-12-01" :amount="22000" :paid="0" />
+      </div>
+      <div class="col-12">
+        <PaymentItem title="Vytunelování společnosti" duedate="2026-01-01" :amount="22000" :paid="0" />
+      </div>
+      <!-- ! dokumenty k podepsání (které ještě nebyly podepsány) -->
+      <div class="col-12">
+        <h3 class="mt-3 mb-0">Dokumenty k podepsání</h3>
+      </div>
+      <div class="col-12">
+        <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+      </div>
+      <!-- ! blížící se termínovky - termín výběrů -->
+      <div class="col-12">
+        <h3 class="mt-3 mb-0">Termíny</h3>
       </div>
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno
+            blížící se termínovky
           </div>
         </div>
       </div>
       <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            ! dokumenty k podepsání (které ještě nebyly podepsány)
-          </div>
-        </div>
-      </div>
-      <!-- <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            zprávy - proklik na inbox
-          </div>
-        </div>
-      </div> -->
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            ! blížící se termínovky - termín výběrů
-          </div>
-        </div>
+        <h3 class="mt-3 mb-0">další...</h3>
       </div>
       <div class="col-12">
         <div class="card">

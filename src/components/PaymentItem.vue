@@ -99,7 +99,7 @@
 </script>
 
 <template>
-  <div class="card" :class="{ 'bg-red-lt': status === 'overdue' }">
+  <div class="card" :class="{ 'bg-danger-lt': status === 'overdue' }">
     <div class="card-body">
       <div class="row row-gap-3 align-items-center gx-4">
         <div class="col">
@@ -108,13 +108,13 @@
         </div>
         <div class="col-auto text-end order-md-1">
           <div class="fs-3 fw-bold">{{ formatCurrency(props.amount) }}</div>
-          <span v-if="status == 'paid'" class="text-green"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+          <span v-if="status == 'paid'" class="text-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
               <path d="M5 12l5 5l10 -10"></path>
             </svg>{{ statusText }}</span>
           <span v-else class="badge" :class="{
-            'bg-blue-lt': status === 'upcoming',
+            'bg-info-lt': status === 'upcoming',
             'bg-yellow-lt': status === 'due',
-            'bg-red-lt': status === 'overdue'
+            'bg-danger-lt': status === 'overdue'
           }">
             {{ statusText }}
           </span>
@@ -123,15 +123,15 @@
           <div class="row">
             <div class="col">
               <div class="text-secondary">Zaplaceno</div>
-              <div class="fs-4 fw-bold text-green">{{ formatCurrency(props.paid) }}</div>
+              <div class="fs-4 fw-bold text-success">{{ formatCurrency(props.paid) }}</div>
             </div>
             <div class="col text-end text-md-start">
               <div class="text-secondary">Zbývá</div>
               <div class="fs-4 fw-bold text text-yellow">{{ formatCurrency(remainingAmount) }}</div>
             </div>
             <div class="col-12 d-md-none">
-              <div class="progress progress-sm mt-2" :class="{ 'bg-red-lt': status === 'overdue' }">
-                <div class="progress-bar bg-green" :style="`width: ${percentagePaid}%`" :title="`${percentagePaid}% zaplaceno`" role="progressbar" :aria-valuenow="percentagePaid" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress progress-sm mt-2" :class="{ 'bg-danger-lt': status === 'overdue' }">
+                <div class="progress-bar bg-success" :style="`width: ${percentagePaid}%`" :title="`${percentagePaid}% zaplaceno`" role="progressbar" :aria-valuenow="percentagePaid" aria-valuemin="0" aria-valuemax="100">
                   <span class="visually-hidden"> {{ percentagePaid }}% zaplaceno</span>
                 </div>
               </div>
@@ -145,7 +145,7 @@
               v-else 
               href="" 
               class="btn w-100" 
-              :class="status === 'overdue' ? 'btn-red' : 'btn-primary'"
+              :class="status === 'overdue' ? 'btn-danger' : 'btn-primary'"
               data-bs-toggle="modal" 
               data-bs-target="#temp-payment-modal"
             >
@@ -153,7 +153,7 @@
             </a>
             <button 
               class="btn dropdown-toggle dropdown-toggle-split" 
-              :class="isPaid && isInvoiceShown ? '' : status === 'overdue' ? 'btn-red' : 'btn-primary'"
+              :class="isPaid && isInvoiceShown ? '' : status === 'overdue' ? 'btn-danger' : 'btn-primary'"
               data-bs-toggle="dropdown" 
               draggable="false"
             >
