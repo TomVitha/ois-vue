@@ -223,7 +223,8 @@
                   :badge="msg.meta.badge"
                   :is-unread="msg.meta.isUnread"
                   :has-attachment="Array.isArray(msg.meta.attachments) && msg.meta.attachments.length > 0"
-                  @click.prevent="selectMessage(msg.id)" />
+                  @click.prevent="selectMessage(msg.id)" 
+                />
               </div>
             </div>
           </div>
@@ -288,8 +289,8 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <div class="row">
-                    <div class="col">
+                  <div class="d-flex justify-content-between flex-wrap">
+                    <div>
                       <!-- from and date -->
                       <div class="font-weight-medium">Od: {{ selectedMessage.meta.from }}</div>
                       <div>
@@ -309,16 +310,16 @@
                         </span>
                       </div>
                     </div>
-                    <div class="col-auto">
+                    <div>
                       <!-- toolbar -->
                       <div class="btn-actions d-print-none">
-                        <button class="btn btn-action" title="Odpovědět">
+                        <button class="btn btn-action" title="Odpovědět" data-bs-toggle="tooltip" data-bs-placement="top">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-corner-up-left">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" />
                           </svg>
                         </button>
-                        <button href="#" class="btn btn-action" title="Tisk" @click="printPage()">
+                        <button href="#" class="btn btn-action" title="Tisk" data-bs-toggle="tooltip" data-bs-placement="top" @click="printPage()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-printer">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />

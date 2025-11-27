@@ -190,17 +190,21 @@ dialog {
   --tblr-primary: #41a541;
 }
 
-.card {
+.card:where(:not(.card .card)) {
   border-width: 0px;
-  --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
 }
 
-.navbar {
-  box-shadow: 0 2px 4px #627d9833,0 1px 2px #102a4333;
-}
 
 @media (min-width: 992px) {
-    .navbar-expand-lg.navbar-vertical {
-        box-shadow: 0 4px 8px #627d9829,0 2px 4px #102a4329;
-    }
+  :is(:host, :root):not([data-bs-theme=dark]) .card {
+    --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
+  }
+
+  .navbar {
+    box-shadow: 0 2px 4px #627d9833, 0 1px 2px #102a4333;
+  }
+
+  .navbar-expand-lg.navbar-vertical {
+    box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
+  }
 } */

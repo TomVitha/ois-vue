@@ -141,16 +141,15 @@
         <div v-if="!isPaid || isInvoiceShown" class="col-12 col-md-auto order-last">
           <div class="btn-group w-100 w-md-auto text-end">
             <a v-if="isPaid && isInvoiceShown" href="#faktura" class="btn w-100">Faktura</a>
-            <a 
+            <button 
               v-else 
-              href="" 
               class="btn w-100" 
               :class="status === 'overdue' ? 'btn-danger' : 'btn-primary'"
               data-bs-toggle="modal" 
               data-bs-target="#temp-payment-modal"
             >
               {{ isPartiallyPaid ? 'Doplatit' : 'Zaplatit' }}
-            </a>
+            </button>
             <button 
               class="btn dropdown-toggle dropdown-toggle-split" 
               :class="isPaid && isInvoiceShown ? '' : status === 'overdue' ? 'btn-danger' : 'btn-primary'"
