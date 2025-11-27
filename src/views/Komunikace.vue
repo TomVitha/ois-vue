@@ -20,6 +20,13 @@
   const messages = ref<{ id: string, meta: any, content: string }[]>([])
   const selectedMessageId = ref<string | null>(null)
 
+
+  // HACK
+  function printPage() {
+    window.print()
+  }
+
+
   // Import markdown messages
   onMounted(async () => {
     const modules = import.meta.glob('../messages/*.md', { query: '?raw', import: 'default' })
@@ -216,8 +223,7 @@
                   :badge="msg.meta.badge"
                   :is-unread="msg.meta.isUnread"
                   :has-attachment="Array.isArray(msg.meta.attachments) && msg.meta.attachments.length > 0"
-                  @click.prevent="selectMessage(msg.id)"
-                />
+                  @click.prevent="selectMessage(msg.id)" />
               </div>
             </div>
           </div>
@@ -250,9 +256,9 @@
           <!-- Else if a message is selected: show message content -->
           <!-- TODO? Message body into component? -->
           <div class="card scrollable" v-else id="message-view">
-            <div class="card-header">
-              <div class="space-y-3 flex-fill">
-                <div class="col-12 col-xl-auto d-lg-none">
+            <div class="card-header d-block">
+              <div class="row gy-3">
+                <div class="col-12 col-xl-auto d-lg-none d-print-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Previous message -->
                     <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = messages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
@@ -275,16 +281,17 @@
                     </button>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="w-100">
-                    <div>
-                      <h2 class="d-inline m-0">{{ selectedMessage.meta.subject }}</h2>
-                      <span v-if="selectedMessage.meta.badge" class="badge bg-default text-default-fg d-inline-block ms-2 mb-1">{{ selectedMessage.meta.badge }}</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <div class="font-weight-medium">Od: {{ selectedMessage.meta.from }}</div>
-                      </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-center">
+                    <h2 class="m-0">{{ selectedMessage.meta.subject }}</h2>
+                    <span v-if="selectedMessage.meta.badge" class="badge bg-default text-default-fg d-inline-block">{{ selectedMessage.meta.badge }}</span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col">
+                      <!-- from and date -->
+                      <div class="font-weight-medium">Od: {{ selectedMessage.meta.from }}</div>
                       <div>
                         <span class="text-secondary fs-5">
                           {{
@@ -294,29 +301,48 @@
                               day: '2-digit',
                               month: '2-digit',
                               // include year only if it is different from current year
-                              // year: new Date(datetime).getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
-                              year: 'numeric',
-                              hour: '2-digit',
-                              minute: '2-digit',
+                              year: new Date(selectedMessage.meta.datetime).getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
+                              // hour: '2-digit',
+                              // minute: '2-digit',
                             }).format(new Date(selectedMessage.meta.datetime))
                           }}
                         </span>
                       </div>
                     </div>
+                    <div class="col-auto">
+                      <!-- toolbar -->
+                      <div class="btn-actions d-print-none">
+                        <button class="btn btn-action" title="Odpovědět">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-corner-up-left">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" />
+                          </svg>
+                        </button>
+                        <button href="#" class="btn btn-action" title="Tisk" @click="printPage()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-printer">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+                            <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+                            <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- Attachments -->
-                <!-- FIXME: Only show container element if there are any attachments -->
                 <div class="col-12" v-if="Array.isArray(selectedMessage.meta.attachments) && selectedMessage.meta.attachments.length > 0">
                   <div class="row row-gap-2">
-                    <div class="col-12 col-lg-auto">
-                      <MessengerAttachment v-for="attachment in selectedMessage.meta.attachments" :filename="attachment.filename" :size="attachment.size" :filetype="attachment.filetype" :url="attachment.url"></MessengerAttachment>
+                    <div v-for="attachment in selectedMessage.meta.attachments" class="col-auto">
+                      <MessengerAttachment :filename="attachment.filename" :size="attachment.size" :filetype="attachment.filetype" :url="attachment.url"></MessengerAttachment>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!-- TODO: Reply button -->
+            <!-- TODO: Print button -->
+            <!-- TODO: Star/Important button ? -->
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>

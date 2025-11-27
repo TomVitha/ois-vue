@@ -104,7 +104,7 @@
                   <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                 </svg>
               </span>
-              <span class="nav-link-title text-truncate">Byt D&nbsp;331</span>
+              <span class="nav-link-title text-truncate">Byt 192-03-147</span>
             </a>
             <div class="dropdown-menu">
               <!-- Základní info / O bytu / Přehled bytu -->
