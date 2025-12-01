@@ -9,6 +9,8 @@
     isUnread?: boolean
   }>()
 
+  import MessageBadge from '@/components/MessageBadge.vue'
+
   import {useLocaleStore} from '@/stores/locale'
   const localeStore = useLocaleStore()
 </script>
@@ -17,12 +19,10 @@
   <button class="nav-link text-start mw-100 px-4 py-3 user-select-none border-bottom" data-bs-toggle="pill" role="tab" @click.prevent>
     <div class="align-items-center flex-fill mw-100 text-body">
       <div class="d-flex align-items-center gap-1">
-        <!-- <div v-if="isUnread" class="badge bg-primary"></div> -->
-        <span v-if="badge" class="badge bg-default text-default-fg text-nowrap">{{ badge }}</span>
+        <MessageBadge v-if="badge" :text="badge" />
         <span class="text-truncate" :class="{ 'fw-bold': isUnread }">{{ from }}</span>
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
-            <!-- If date is today: display time; else display date (and year if not current year) -->
             <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
             {{
               ((locale = localeStore.locale) => {
@@ -44,7 +44,8 @@
       </div>
       <div class="text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
       <div class="d-flex align-items-center justify-content-between gap-2">
-        <span class="text-secondary  text-truncate">{{ content?.slice(0, 100) || 'Obsah zprávy...' }}</span>
+        <span class="text-secondary  text-truncate">{{ content?.slice(0, 100) || '' }}</span>
+        <!-- TODO? Add to favorite (star) -->
         <!-- <i class="ti ti-star text-secondary fs-3"></i> -->
       </div>
     </div>

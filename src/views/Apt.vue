@@ -152,7 +152,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            Timeline? (viz Sabina Figma návrh)
+            Timeline? (viz Sabča Figma návrh)
           </div>
         </div>
       </div>
@@ -160,6 +160,13 @@
         <div class="card">
           <div class="card-body">
             Kontaktní osoby (ty v tento okamžik relevantní)
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            GALERIE ?
           </div>
         </div>
       </div>

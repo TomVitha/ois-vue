@@ -7,6 +7,8 @@
   // <select> UI control with autocomplete
   import TomSelect from 'tom-select'
 
+  import MessageBadge from '@/components/MessageBadge.vue'
+
   import messagesMeta from '../messages/meta.json'
   import MessengerListItem from '@/components/MessengerListItem.vue'
   import MessengerAttachment from '@/components/MessengerAttachment.vue'
@@ -114,6 +116,13 @@
         <!-- Messages list column -->
         <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex d-print-none': selectedMessage }">
           <div class="card">
+            <!-- ? Maybe: Inbox / Sent ? -->
+            <div class="card-header">
+              <nav class="nav nav-segmented nav-2 w-100" role="tablist">
+                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">Přijaté</button>
+                <button class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false" tabindex="-1">Odeslané</button>
+              </nav>
+            </div>
             <div class="card-header space-y-2 align-items-stretch ">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-pencil">
@@ -161,7 +170,7 @@
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Předmět: </span><input type="text" class="form-control" autocomplete="off" aria-label="Předmět zprávy">
                         </div>
-                        <textarea name="" id="" placeholder="Pište zprávu..." class="form-control flex-fill" data-bs-toggle="autosize" style="min-height: 200px"></textarea>
+                        <textarea name="" id="message-content" placeholder="Pište zprávu..." class="form-control flex-fill" style="min-height: 200px; field-sizing: content;"></textarea>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -223,8 +232,7 @@
                   :badge="msg.meta.badge"
                   :is-unread="msg.meta.isUnread"
                   :has-attachment="Array.isArray(msg.meta.attachments) && msg.meta.attachments.length > 0"
-                  @click.prevent="selectMessage(msg.id)" 
-                />
+                  @click.prevent="selectMessage(msg.id)" />
               </div>
             </div>
           </div>
@@ -236,7 +244,7 @@
             <div class="container-tight py-4">
               <div class="empty">
                 <div class="empty-img">
-                  <!-- TEMP Image from Outlook -->
+                  <!-- PLACEHOLDER: Image from Outlook -->
                   <!-- TODO: Replace with custom image -->
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/light.svg" alt="" class="hide-theme-dark" width="200">
                   <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/dark.svg" alt="" class="hide-theme-light" width="200">
@@ -283,9 +291,9 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <div class="d-flex align-items-center">
+                  <div class="d-flex flex-wrap align-items-center">
                     <h2 class="m-0">{{ selectedMessage.meta.subject }}</h2>
-                    <span v-if="selectedMessage.meta.badge" class="badge bg-default text-default-fg d-inline-block">{{ selectedMessage.meta.badge }}</span>
+                    <MessageBadge :text="selectedMessage.meta.badge" />
                   </div>
                 </div>
                 <div class="col-12">
@@ -301,8 +309,7 @@
                               weekday: 'short',
                               day: '2-digit',
                               month: '2-digit',
-                              // include year only if it is different from current year
-                              year: new Date(selectedMessage.meta.datetime).getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
+                              year: new Date(selectedMessage.meta.datetime).getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined, // include year only if it's different from current year
                               // hour: '2-digit',
                               // minute: '2-digit',
                             }).format(new Date(selectedMessage.meta.datetime))

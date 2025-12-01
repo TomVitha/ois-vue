@@ -9,16 +9,14 @@
     duedate: string,
     amount: number,
     paid: number,
-    // status: 'upcoming' | 'due' | 'overdue' | 'paid' | 'unknown', // status will be calculated based on duedate and current date
     isInvoiceShown?: boolean,
-
 
     // onPay?: () => void,
     // onDownload?: () => void,
   }>()
 
   const dueDate = new Date(props.duedate);
-  // HACK: Validate passed date - Browser will display "invalid Date"
+  // HACK to display browser's native "invalid date" text
   if (isNaN(dueDate.getTime())) {
     dueDate.setTime(99999999999999999999999999);
   }
@@ -29,7 +27,7 @@
   const isPaid = computed(() => props.paid >= props.amount ? true : false)
   const isPartiallyPaid = computed(() => (props.paid > 0 && props.paid < props.amount) ? true : false)
   const percentagePaid = computed(() => {
-    if (props.amount === 0) return 0;
+    if (props.amount === 0) return 0; // Avoids dividing by 0
     return Math.min(100, (props.paid / props.amount) * 100);
   });
 
@@ -37,17 +35,12 @@
   const status = computed<PaymentStatus>(() => {
 
     // const today = new Date();
-    // TEMP - hard-coded today for testing
-    const today = new Date('2025-08-01');
-
+    const today = new Date('2025-08-01');     // DEV: hard-coded today date for dev purposes
     const dueDate = new Date(props.duedate);
     // Normalize to midnight to avoid partial day issues
     today.setHours(0, 0, 0, 0);
     dueDate.setHours(0, 0, 0, 0);
-
-    const msPerDay = 24 * 60 * 60 * 1000;
-    const diffDays = Math.ceil((dueDate.getTime() - today.getTime()) / msPerDay);
-
+    const diffDays = Math.ceil((dueDate.getTime() - today.getTime()) / (24 * 60 * 60 * 1000));
 
     // All paid
     if (isPaid.value)
@@ -92,9 +85,6 @@
       day: '2-digit',
     });
   }
-
-
-
 
 </script>
 
@@ -141,34 +131,31 @@
         <div v-if="!isPaid || isInvoiceShown" class="col-12 col-md-auto order-last">
           <div class="btn-group w-100 w-md-auto text-end">
             <a v-if="isPaid && isInvoiceShown" href="#faktura" class="btn w-100">Faktura</a>
-            <button 
-              v-else 
-              class="btn w-100" 
+            <button
+              v-else
+              class="btn w-100"
               :class="status === 'overdue' ? 'btn-danger' : 'btn-primary'"
-              data-bs-toggle="modal" 
-              data-bs-target="#temp-payment-modal"
-            >
+              data-bs-toggle="modal"
+              data-bs-target="#temp-payment-modal">
               {{ isPartiallyPaid ? 'Doplatit' : 'Zaplatit' }}
             </button>
-            <button 
-              class="btn dropdown-toggle dropdown-toggle-split" 
+            <button
+              class="btn dropdown-toggle dropdown-toggle-split"
               :class="isPaid && isInvoiceShown ? '' : status === 'overdue' ? 'btn-danger' : 'btn-primary'"
-              data-bs-toggle="dropdown" 
-              draggable="false"
-            >
+              data-bs-toggle="dropdown"
+              draggable="false">
               <span class="visually-hidden">&darr;</span>
             </button>
-              <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Third action</a>
-              </div>
+            <div class="dropdown-menu dropdown-menu-end">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Third action</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped></style>

@@ -17,7 +17,7 @@
             <h3 class="card-title">Finanční bilance</h3>
               <div class="ms-auto lh-1">
                 <div class="dropdown">
-                  <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Vyberte zda zobrazit finanční bilanci za všechny byty dohromady, nebo jednotlivě">Dohromady</a>
+                  <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
                     <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
                     <a class="dropdown-item" href="#">Jednotlivě</a>
@@ -155,21 +155,6 @@
       <div class="col-12">
         <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
       </div>
-      <!-- ! platby po splatnosti -->
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Platby po splatnosti (alt)</h3>
-          </div>
-          <div class="card-body">
-            <div class="row row-cards">
-              <div class="col-12">
-                <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
       <div class="col-12">
         <h3 class="mt-3 mb-0">Nadcházející platby</h3>
@@ -179,24 +164,6 @@
       </div>
       <div class="col-12">
         <PaymentItem title="Vytunelování společnosti" duedate="2026-01-01" :amount="22000" :paid="0" />
-      </div>
-      <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Blížící se platby (alt)</h3>
-          </div>
-          <div class="card-body">
-            <div class="row row-cards">
-              <div class="col-12">
-                <PaymentItem title="Oprava střechy" duedate="2025-08-02" :amount="22000" :paid="0" />
-              </div>
-              <div class="col-12">
-                <PaymentItem title="Vytunelování společnosti" duedate="2025-08-03" :amount="22000" :paid="0" />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
       <div class="col-12">

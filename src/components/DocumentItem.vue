@@ -41,7 +41,7 @@
             </button>
             <!-- TEMP Preview invoice -->
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="sample-invoice.pdf">Otevřít</a>
+              <a class="dropdown-item" href="sample-invoice.pdf" target="_blank">Otevřít</a>
               <a class="dropdown-item" href="sample-invoice.pdf" download>Stáhnout</a>
             </div>
           </div>
