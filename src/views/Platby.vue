@@ -84,7 +84,7 @@
         </div>
       </div>
       <!-- TODO: Řazení? Filtrování? -->
-      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti a změny -->
+      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
       <div class="col-12">
         <h3 class="m-0 mt-3">Nadcházející</h3>
       </div>

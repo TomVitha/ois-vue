@@ -8,44 +8,89 @@
 
   <PageTemplate pretitle="Vážený pane Nováku," title="Vítejte ve svém klientském portálu">
     <!-- <template #actions>
-      <button class="btn btn-primary">Nová akce</button>
+      <div class="btn-list">
+        <button class="btn btn-primary">Primary</button>
+        <a href="#" class="btn">Secondary</a>
+      </div>
     </template> -->
-    <div class="row row-deck row-cards">
-      <div class="col-12">
-        <div class="card card-md">
-          <div class="card-header">
-            <h3 class="card-title">Finanční bilance</h3>
-            <div class="ms-auto lh-1">
-              <div class="dropdown">
-                <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
-                  <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
-                  <a class="dropdown-item" href="#">Jednotlivě</a>
-                </div>
+
+    <div class="row gx-5 gy-3">
+      <div class="col-xl-4">
+        <div class="row row-deck row-cards">
+          <!-- idk asi info -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                idk asi osobní údaje ?
               </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="row gy-2">
-              <div class="col-12 col-md-4">
-                <span class="subheader">Celá částka</span>
-                <p class="h1 m-0">35&nbsp;780&nbsp;000&nbsp;Kč</p>
+          <!-- Finanční bilance -->
+          <div class="col-12">
+            <div class="card card-md">
+              <div class="card-header">
+                <h3 class="card-title">Finanční bilance</h3>
               </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zaplaceno</span>
-                <p class="h1 m-0 text-green">24&nbsp;866&nbsp;391&nbsp;Kč</p>
-              </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zbývá zaplatit</span>
-                <p class="h1 m-0 text-red">10&nbsp;913&nbsp;609&nbsp;Kč</p>
+              <div class="card-body">
+                <div class="row gy-2">
+                  <div class="col-12">
+                    <span class="subheader">Celá částka</span>
+                    <p class="h1 m-0">35&nbsp;780&nbsp;000&nbsp;Kč</p>
+                  </div>
+                  <div class="col-12">
+                    <span class="subheader">Zaplaceno</span>
+                    <p class="h1 m-0 text-green">24&nbsp;866&nbsp;391&nbsp;Kč</p>
+                  </div>
+                  <div class="col-12">
+                    <span class="subheader">Zbývá zaplatit</span>
+                    <p class="h1 m-0 text-red">10&nbsp;913&nbsp;609&nbsp;Kč</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col">
+        <div class="row row-deck row-cards">
 
-      <!-- ? Setup block -->
-      <!-- <div class="col-lg-4">
+          <!-- Finanční bilance -->
+          <!-- ! hidden -->
+          <div class="col-12" hidden>
+            <div class="card card-md">
+              <div class="card-header">
+                <h3 class="card-title">Finanční bilance</h3>
+                <div class="ms-auto lh-1">
+                  <div class="dropdown">
+                    <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
+                      <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
+                      <a class="dropdown-item" href="#">Jednotlivě</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row gy-2">
+                  <div class="col-12 col-md-4">
+                    <span class="subheader">Celá částka</span>
+                    <p class="h1 m-0">35&nbsp;780&nbsp;000&nbsp;Kč</p>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <span class="subheader">Zaplaceno</span>
+                    <p class="h1 m-0 text-green">24&nbsp;866&nbsp;391&nbsp;Kč</p>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <span class="subheader">Zbývá zaplatit</span>
+                    <p class="h1 m-0 text-red">10&nbsp;913&nbsp;609&nbsp;Kč</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ? Setup block -->
+          <!-- <div class="col-lg-4">
         <div class="card overflow-hidden">
           <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -88,70 +133,74 @@
         </div>
       </div> -->
 
-      <!-- * platby po splatnosti -->
-      <div class="col-12 mt-3">
-        <h3 class="m-0">Platby po splatnosti</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-          </ul>
-        </div>
-      </div>
-
-      <!-- * blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
-      <div class="col-12 mt-3">
-        <h3 class="m-0">Blížící se platby</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <PaymentItem title="Oprava střechy" duedate="2025-08-03" :amount="22000" :paid="0" />
-            <PaymentItem title="Vytunelování společnosti" duedate="2025-08-04" :amount="33450" :paid="0" />
+          <!-- * platby po splatnosti -->
+          <div class="col-12 mt-3">
+            <h3 class="m-0">Platby po splatnosti</h3>
           </div>
-        </div>
-      </div>
-
-      <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
-      <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
-      <div class="col-12">
-        <h3 class="mt-3 mb-0">Dokumenty k podepsání</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+          <div class="col-12">
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- * blížící se termínovky - termín výběrů -->
-      <div class="col-12">
-        <h3 class="mt-3 mb-0">Termíny</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <div class="list-group-item">blížící se termínovky</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- DEV Další -->
-      <div class="col-12">
-        <h3 class="mt-3 mb-0">další...</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <div class="list-group-item">? kontrola (potvrzení) osobních údajů (jednou za čas)</div>
-            <div class="list-group-item">? Základní kontaktní osoby</div>
-            <div class="list-group-item">? Propagace</div>
+          <!-- * blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
+          <div class="col-12 mt-3">
+            <h3 class="m-0">Blížící se platby</h3>
           </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="list-group list-group-flush">
+                <PaymentItem title="Oprava střechy" duedate="2025-08-03" :amount="22000" :paid="0" />
+                <PaymentItem title="Vytunelování společnosti" duedate="2025-08-04" :amount="33450" :paid="0" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
+          <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
+          <div class="col-12">
+            <h3 class="mt-3 mb-0">Dokumenty k podepsání</h3>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="list-group list-group-flush">
+                <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+              </div>
+            </div>
+          </div>
+          <!-- * blížící se termínovky - termín výběrů -->
+          <div class="col-12">
+            <h3 class="mt-3 mb-0">Termíny</h3>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">blížící se termínovky</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEV Další -->
+          <div class="col-12">
+            <h3 class="mt-3 mb-0">další...</h3>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="list-group list-group-flush">
+                <div class="list-group-item">? kontrola (potvrzení) osobních údajů (jednou za čas)</div>
+                <div class="list-group-item">? Základní kontaktní osoby</div>
+                <div class="list-group-item">? Propagace</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
+
+
   </PageTemplate>
 
 </template>

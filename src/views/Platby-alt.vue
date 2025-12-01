@@ -100,7 +100,7 @@
       </div>
       <h3 class="mt-4 mb-0">Platby</h3>
       <!-- TODO: Řazení? Filtrování? -->
-      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti a změny -->
+      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
