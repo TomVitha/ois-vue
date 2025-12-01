@@ -116,13 +116,6 @@
         <!-- Messages list column -->
         <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex d-print-none': selectedMessage }">
           <div class="card">
-            <!-- ? Maybe: Inbox / Sent ? -->
-            <div class="card-header">
-              <nav class="nav nav-segmented nav-2 w-100" role="tablist">
-                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">Přijaté</button>
-                <button class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false" tabindex="-1">Odeslané</button>
-              </nav>
-            </div>
             <div class="card-header space-y-2 align-items-stretch ">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-pencil">
@@ -218,6 +211,11 @@
                 <!-- TODO: Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
                 <!-- TODO? Paginace zpráv, výpis kolik z kolika -->
               </div>
+              <!-- ? Maybe: Inbox / Sent ? -->
+              <nav class="nav nav-segmented nav-2 w-100 mt-2" role="tablist">
+                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">Přijaté</button>
+                <button class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false" tabindex="-1">Odeslané</button>
+              </nav>
             </div>
             <!-- Messages list -->
             <div class="card-body p-0 scrollable flex-fill">
