@@ -15,15 +15,15 @@
         <div class="card card-md">
           <div class="card-header">
             <h3 class="card-title">Finanční bilance</h3>
-              <div class="ms-auto lh-1">
-                <div class="dropdown">
-                  <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
-                    <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
-                    <a class="dropdown-item" href="#">Jednotlivě</a>
-                  </div>
+            <div class="ms-auto lh-1">
+              <div class="dropdown">
+                <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
+                  <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
+                  <a class="dropdown-item" href="#">Jednotlivě</a>
                 </div>
               </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="row gy-2">
@@ -43,72 +43,11 @@
           </div>
         </div>
       </div>
-      <!-- TEMP: Hidden -->
-      <!-- <div class="col-12">
-        <div class="card card-md">
-          <div class="card-body">
-            <div class="d-flex align-items-baseline">
-              <h2>Finanční bilance</h2>
-              <div class="ms-auto lh-1">
-                <div class="dropdown">
-                  <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Vyberte zda zobrazit finanční bilanci za všechny byty dohromady, nebo jednotlivě">Jednotlivě</a>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
-                    <a class="dropdown-item" href="#" aria-current="true">Dohromady</a>
-                    <a class="dropdown-item active" href="#">Jednotlivě</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 class="card-title"><a href="/apt">Byt C 310</a></h3>
-            </div>
-            <div class="row gy-2">
-              <div class="col-12 col-md-4">
-                <span class="subheader">Celá částka</span>
-                <p class="h1 m-0">5 701 000 Kč</p>
-              </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zaplaceno</span>
-                <p class="h1 m-0 text-green">4 866 391 Kč</p>
-              </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zbývá zaplatit</span>
-                <p class="h1 m-0 text-red">913 609 Kč</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="d-flex align-items-baseline">
-              <h3 class="card-title"><a href="/apt">Byt A 017</a></h3>
-            </div>
-            <div class="row gy-2">
-              <div class="col-12 col-md-4">
-                <span class="subheader">Celá částka</span>
-                <p class="h1 m-0">6 350 000 Kč</p>
-              </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zaplaceno</span>
-                <p class="h1 m-0 text-green">1 743 000 Kč</p>
-              </div>
-              <div class="col-12 col-md-4">
-                <span class="subheader">Zbývá zaplatit</span>
-                <p class="h1 m-0 text-red">4 607 000 Kč</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- TEMP: Hidden -->
-      <div class="col-lg-4" hidden>
+
+      <!-- ? Setup block -->
+      <!-- <div class="col-lg-4">
         <div class="card overflow-hidden">
           <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
-            <!-- <div class="carousel-indicators carousel-indicators-dot">
-              <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></button>
-              <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1"></button>
-              <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2"></button>
-              <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="3"></button>
-              <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="4"></button>
-            </div> -->
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <div class="card-body bg-primary-lt text-center">
@@ -147,80 +86,71 @@
             </a>
           </div>
         </div>
+      </div> -->
+
+      <!-- * platby po splatnosti -->
+      <div class="col-12 mt-3">
+        <h3 class="m-0">Platby po splatnosti</h3>
       </div>
-      <!-- ! platby po splatnosti -->
-      <div class="col-12">
-        <h3 class="mt-3 mb-0">Platby po splatnosti</h3>
-      </div>
-      <div class="col-12">
-        <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-      </div>
-      <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
-      <div class="col-12">
-        <h3 class="mt-3 mb-0">Nadcházející platby</h3>
-      </div>
-      <div class="col-12">
-        <PaymentItem title="Oprava střechy" duedate="2025-12-01" :amount="22000" :paid="0" />
-      </div>
-      <div class="col-12">
-        <PaymentItem title="Vytunelování společnosti" duedate="2026-01-01" :amount="22000" :paid="0" />
-      </div>
-      <!-- ! blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
       <div class="col-12">
         <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Blížící se platby (alt 2)</h3>
-          </div>
-          <!-- WIP TEMP -->
-          <!-- TODO: PaymentItem without .card container ?? (conditional?) -->
-          <div class="card-body"><div class="row row-gap-3 align-items-center gx-4"><div class="col"><div>Oprava střechy</div><div class="text-secondary">Splatnost: 02. 08. 2025</div></div><div class="col-auto text-end order-md-1"><div class="fs-3 fw-bold">22&nbsp;000&nbsp;Kč</div><span class="badge bg-yellow-lt">Blíží se</span></div><!--v-if--><div class="col-12 col-md-auto order-last"><div class="btn-group w-100 w-md-auto text-end"><button class="btn w-100 btn-primary" data-bs-toggle="modal" data-bs-target="#temp-payment-modal">Zaplatit</button><button class="btn dropdown-toggle dropdown-toggle-split btn-primary" data-bs-toggle="dropdown" draggable="false"><span class="visually-hidden">↓</span></button><div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Third action</a></div></div></div></div></div>
-          <div class="card-body"><div class="row row-gap-3 align-items-center gx-4"><div class="col"><div>Vytunelování společnosti</div><div class="text-secondary">Splatnost: 03. 08. 2025</div></div><div class="col-auto text-end order-md-1"><div class="fs-3 fw-bold">22&nbsp;000&nbsp;Kč</div><span class="badge bg-yellow-lt">Blíží se</span></div><!--v-if--><div class="col-12 col-md-auto order-last"><div class="btn-group w-100 w-md-auto text-end"><button class="btn w-100 btn-primary" data-bs-toggle="modal" data-bs-target="#temp-payment-modal">Zaplatit</button><button class="btn dropdown-toggle dropdown-toggle-split btn-primary" data-bs-toggle="dropdown" draggable="false"><span class="visually-hidden">↓</span></button><div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Third action</a></div></div></div></div></div>
+          <ul class="list-group list-group-flush">
+            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
+          </ul>
         </div>
       </div>
 
+      <!-- * blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
+      <div class="col-12 mt-3">
+        <h3 class="m-0">Blížící se platby</h3>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="list-group list-group-flush">
+            <PaymentItem title="Oprava střechy" duedate="2025-08-03" :amount="22000" :paid="0" />
+            <PaymentItem title="Vytunelování společnosti" duedate="2025-08-04" :amount="33450" :paid="0" />
+          </div>
+        </div>
+      </div>
 
-      <!-- ! dokumenty k podepsání (které ještě nebyly podepsány) -->
+      <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
+      <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
       <div class="col-12">
         <h3 class="mt-3 mb-0">Dokumenty k podepsání</h3>
       </div>
       <div class="col-12">
-        <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+        <div class="card">
+          <div class="list-group list-group-flush">
+            <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+          </div>
+        </div>
       </div>
-      <!-- ! blížící se termínovky - termín výběrů -->
+      <!-- * blížící se termínovky - termín výběrů -->
       <div class="col-12">
         <h3 class="mt-3 mb-0">Termíny</h3>
       </div>
       <div class="col-12">
         <div class="card">
-          <div class="card-body">
-            blížící se termínovky
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">blížící se termínovky</div>
           </div>
         </div>
       </div>
+
+      <!-- DEV Další -->
       <div class="col-12">
         <h3 class="mt-3 mb-0">další...</h3>
       </div>
       <div class="col-12">
         <div class="card">
-          <div class="card-body">
-            ? kontrola (potvrzení) osobních údajů (jednou za čas)
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">? kontrola (potvrzení) osobních údajů (jednou za čas)</div>
+            <div class="list-group-item">? Základní kontaktní osoby</div>
+            <div class="list-group-item">? Propagace</div>
           </div>
         </div>
       </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            ? Základní kontaktní osoby
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            ? Propagace
-          </div>
-        </div>
-      </div>
+
     </div>
   </PageTemplate>
 

@@ -86,54 +86,44 @@
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti a změny -->
       <div class="col-12">
-        <h3 class="m-0">Nadcházející</h3>
+        <h3 class="m-0 mt-3">Nadcházející</h3>
       </div>
-      <!-- Unpaid, upcoming -->
+
       <div class="col-12">
-        <PaymentItem title="Oprava střechy" duedate="2026-01-01" :amount="50000" :paid="0" :is-invoice-shown="true" />
+        <div class="card">
+          <div class="list-group list-group-flush">
+            <!-- Unpaid, upcoming -->
+            <PaymentItem title="Oprava střechy" duedate="2026-01-01" :amount="50000" :paid="0" :is-invoice-shown="true" />
+            <!-- Unpaid, due -->
+            <PaymentItem title="Oprava střechy" duedate="2025-08-02" :amount="22000" :paid="0" :is-invoice-shown="true" />
+            <!-- Partially paid, due -->
+            <PaymentItem title="Modernizace výtahu" duedate="2026-06-01" :amount="45000" :paid="32000" />
+            <!-- Partially paid, due -->
+            <PaymentItem title="Rekonstrukce fasády" duedate="2025-08-03" :amount="50000" :paid="22000" />
+            <!-- Overdue, unpaid -->
+            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
+            <!-- Overdue, partially paid -->
+            <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
+          </div>
+        </div>
       </div>
-      <!-- Unpaid, due -->
+
       <div class="col-12">
-        <PaymentItem title="Oprava střechy" duedate="2025-08-02" :amount="22000" :paid="0" :is-invoice-shown="true" />
+        <h3 class="m-0 mt-3">Zaplacené</h3>
       </div>
-      <!-- Partially paid, due -->
-      <div class="col-12">
-        <PaymentItem title="Modernizace výtahu" duedate="2026-06-01" :amount="45000" :paid="32000" />
-      </div>
-      <!-- Partially paid, due -->
-      <div class="col-12">
-        <PaymentItem title="Rekonstrukce fasády" duedate="2025-08-03" :amount="50000" :paid="22000" />
-      </div>
-      <!-- Overdue, unpaid -->
-      <div class="col-12">
-        <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-      </div>
-      <!-- Overdue, partially paid -->
-      <div class="col-12">
-        <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
-      </div>
-      <div class="col-12">
-        <h3 class="m-0">Zaplacené</h3>
-      </div>
-      <!-- Paid -->
-      <div class="col-12">
-        <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
-      </div>
-      <!-- Overdue, paid -->
-      <div class="col-12">
-        <PaymentItem title="Revize elektroinstalace" duedate="2024-01-01" :amount="50000" :paid="50000" />
-      </div>
-      <!-- Paid, with invoice -->
-      <div class="col-12">
-        <PaymentItem title="Nové vchodové dveře" duedate="2025-08-03" :amount="50000" :paid="50000" :is-invoice-shown="true" />
-      </div>
-      <!-- Overdue, paid, invalid date -->
-      <div class="col-12">
-        <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
-      </div>
-      <!-- Partially paid, overpaid -->
-      <div class="col-12">
-        <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
+      <div class="card">
+        <div class="list-group list-group-flush">
+          <!-- Paid -->
+          <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
+          <!-- Overdue, paid -->
+          <PaymentItem title="Revize elektroinstalace" duedate="2024-01-01" :amount="50000" :paid="50000" />
+          <!-- Paid, with invoice -->
+          <PaymentItem title="Nové vchodové dveře" duedate="2025-08-03" :amount="50000" :paid="50000" :is-invoice-shown="true" />
+          <!-- Overdue, paid, invalid date -->
+          <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
+          <!-- Partially paid, overpaid -->
+          <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
+        </div>
       </div>
 
       <!-- TEMP: TABLE -->
