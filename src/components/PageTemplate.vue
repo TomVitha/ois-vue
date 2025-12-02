@@ -26,7 +26,7 @@
   <!-- END PAGE HEADER -->
   <!-- BEGIN PAGE BODY -->
   <div class="page-body">
-    <div class="container-xl">
+    <div class="container-xl flex-fill overflow-x-hidden">
       <slot></slot>
     </div>
   </div>

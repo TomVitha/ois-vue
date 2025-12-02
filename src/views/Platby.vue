@@ -85,13 +85,20 @@
       </div>
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
-      <div class="col-12">
+      <!-- <div class="col-12">
         <h3 class="m-0 mt-3">Nadcházející</h3>
-      </div>
+      </div> -->
 
       <div class="col-12">
         <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Platby</h3>
+          </div>
           <div class="list-group list-group-flush">
+            <!-- Overdue, unpaid -->
+            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
+            <!-- Overdue, partially paid -->
+            <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
             <!-- Unpaid, upcoming -->
             <PaymentItem title="Oprava střechy" duedate="2026-01-01" :amount="50000" :paid="0" :is-invoice-shown="true" />
             <!-- Unpaid, due -->
@@ -100,31 +107,20 @@
             <PaymentItem title="Modernizace výtahu" duedate="2026-06-01" :amount="45000" :paid="32000" />
             <!-- Partially paid, due -->
             <PaymentItem title="Rekonstrukce fasády" duedate="2025-08-03" :amount="50000" :paid="22000" />
-            <!-- Overdue, unpaid -->
-            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-            <!-- Overdue, partially paid -->
-            <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
+            <!-- Paid -->
+            <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
+            <!-- Overdue, paid -->
+            <PaymentItem title="Revize elektroinstalace" duedate="2024-01-01" :amount="50000" :paid="50000" />
+            <!-- Paid, with invoice -->
+            <PaymentItem title="Nové vchodové dveře" duedate="2025-08-03" :amount="50000" :paid="50000" :is-invoice-shown="true" />
+            <!-- Overdue, paid, invalid date -->
+            <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
+            <!-- Partially paid, overpaid -->
+            <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
           </div>
         </div>
       </div>
 
-      <div class="col-12">
-        <h3 class="m-0 mt-3">Zaplacené</h3>
-      </div>
-      <div class="card">
-        <div class="list-group list-group-flush">
-          <!-- Paid -->
-          <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
-          <!-- Overdue, paid -->
-          <PaymentItem title="Revize elektroinstalace" duedate="2024-01-01" :amount="50000" :paid="50000" />
-          <!-- Paid, with invoice -->
-          <PaymentItem title="Nové vchodové dveře" duedate="2025-08-03" :amount="50000" :paid="50000" :is-invoice-shown="true" />
-          <!-- Overdue, paid, invalid date -->
-          <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
-          <!-- Partially paid, overpaid -->
-          <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
-        </div>
-      </div>
 
       <!-- TEMP: TABLE -->
       <div class="col-12">
@@ -132,23 +128,6 @@
           <div class="card-header">
             <h3 class="card-title">Invoices</h3>
           </div>
-          <!-- <div class="card-body border-bottom py-3">
-            <div class="d-flex">
-              <div class="text-secondary">
-                Show
-                <div class="mx-2 d-inline-block">
-                  <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
-                </div>
-                entries
-              </div>
-              <div class="ms-auto text-secondary">
-                Search:
-                <div class="ms-2 d-inline-block">
-                  <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div class="table-responsive">
             <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
               <thead>
@@ -397,52 +376,6 @@
     </div>
 
 
-    <!-- Footer message -->
-    <div class="col-12">
-
-    </div>
-
-    <!-- WIP -->
-    <!-- TODO: Create proper design (with proper code) -->
-    <!-- TODO: Click to copy text buttons -->
-    <!-- TODO: Breakdown for partially paid (like on payments page) -->
-    <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
-    <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->
-    <div class="modal fade" id="temp-payment-modal">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm modal-fullscreen-sm-down">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Zaplatit platbu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="space-y-4">
-              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
-              <div class="space-y-2">
-                <div class="d-flex justify-content-between">
-                  <span class="text-secondary">Číslo účtu</span>
-                  <span class="text-end">670100-1234567890 / 6210</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span class="text-secondary">Variabilní symbol</span>
-                  <span class="text-end">7464685</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span class="text-secondary">Částka</span>
-                  <span class="text-end">50 000 Kč</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span class="text-secondary">Zpráva pro příjemce</span>
-                  <span class="text-end">165-10-007 KD1</span>
-                </div>
-              </div>
-              <div>oznámení že odeslané platby se na OIS propíší až po 3 dnech.</div>
-              <!-- <div>Možná: <a href="#">Požádat o odklad platby</a> ?</div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </PageTemplate>
 
 </template>
