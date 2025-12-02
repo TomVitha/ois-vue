@@ -8,8 +8,8 @@
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
-      <div class="col-12">
-        <h3 class="mb-0 mt-3">Nedůležité</h3>
+      <div class="col-12 mt-3">
+        <h3 class="mb-0">Nedůležité</h3>
       </div>
       <div class="col-12">
         <div class="card">
@@ -20,8 +20,8 @@
         </div>
       </div>
 
-      <div class="col-12">
-        <h3 class="mb-0 mt-3">Důležité</h3>
+      <div class="col-12 mt-3">
+        <h3 class="mb-0">Důležité</h3>
       </div>
       <div class="col-12">
         <div class="card">

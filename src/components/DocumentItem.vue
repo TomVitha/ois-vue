@@ -16,10 +16,11 @@
         {{ title }}
         <span class="text-secondary">({{ filesize }})</span>
       </div>
-      <div v-if="dateValid" class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
+      <!-- 'Valid from' date will not be shown -->
+      <!-- <div v-if="dateValid" class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
         <div class="text-secondary">Platnost od</div>
         <div>{{ dateValid }}</div>
-      </div>
+      </div> -->
       <div v-if="dateAdded" class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
         <div class="text-secondary">Přidáno</div>
         <div>{{ dateAdded }}</div>

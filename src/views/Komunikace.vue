@@ -213,7 +213,10 @@
               </div>
               <!-- ? Maybe: Inbox / Sent ? -->
               <nav class="nav nav-segmented nav-2 w-100 mt-2" role="tablist">
-                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">Přijaté</button>
+                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">
+                  Přijaté
+                  <span v-if="messengerStore.unreadCount > 0" class="text-primary">{{ messengerStore.unreadCount }}</span>
+                </button>
                 <button class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false" tabindex="-1">Odeslané</button>
               </nav>
             </div>
@@ -291,7 +294,7 @@
                 <div class="col-12">
                   <div class="d-flex flex-wrap align-items-center">
                     <h2 class="m-0">{{ selectedMessage.meta.subject }}</h2>
-                    <MessageBadge :text="selectedMessage.meta.badge" />
+                    <MessageBadge v-if="selectedMessage.meta.badge" :text="selectedMessage.meta.badge" />
                   </div>
                 </div>
                 <div class="col-12">
