@@ -30,8 +30,10 @@ dialog {
 }
 
 
+
 /* # MESSENGER */
 
+/* HACK */
 .messenger > [class*="col"] > .card {
   max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));
   /* border: 1px solid red !important; */
@@ -185,8 +187,14 @@ dialog {
   align-content: center;
 }
 
+.avatar {
+  object-fit: cover;
+}
+
+
+
 /* TESTING - TenantCloud style */
-/* :root {
+:root {
   --tblr-primary: #41a541;
 }
 
@@ -207,4 +215,4 @@ dialog {
   .navbar-expand-lg.navbar-vertical {
     box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
   }
-} */
+}

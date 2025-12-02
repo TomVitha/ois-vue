@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate title="Nápověda">
+  <PageTemplate title="Otázky a odpovědi">
     <div class="space-y-4">
       <div class="card card-md">
         <div class="card-body">

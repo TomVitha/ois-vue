@@ -72,18 +72,14 @@
           <!-- * žádosti a změny -->
           <NavItem label="Žádosti" to="/zadosti">
             <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-cog">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-asterisk">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M8 9h8" />
-                <path d="M8 13h6" />
-                <path d="M12.031 18.581l-4.031 2.419v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5" />
-                <path d="M19.001 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                <path d="M19.001 15.5v1.5" />
-                <path d="M19.001 21v1.5" />
-                <path d="M22.032 17.25l-1.299 .75" />
-                <path d="M17.27 20l-1.3 .75" />
-                <path d="M15.97 17.25l1.3 .75" />
-                <path d="M20.733 20l1.3 .75" />
+                <path d="M12 12l8 -4.5" />
+                <path d="M12 12v9" />
+                <path d="M12 12l-8 -4.5" />
+                <path d="M12 12l8 4.5" />
+                <path d="M12 3v9" />
+                <path d="M12 12l-8 4.5" />
               </svg>
             </template>
           </NavItem>
@@ -93,17 +89,35 @@
             <hr class="my-1">
           </li>
 
-          <!-- * Apartment #1 -->
+          <!-- * produkty -->
+          <NavItem label="Produkty" to="/produkty">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-dashed">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+              </svg>
+            </template>
+          </NavItem>
+
+          <!-- * Product #1 (Apartment) -->
           <!-- TODO: Nested URL -> Router -->
-          <NavItem label="Byt 192-03-147" :children="[
-            { label: 'Detail bytu', to: '/apt' },
-            { label: 'Postup předání (?)', to: '/predani' },
+          <NavItem label="192-03-147" :children="[
+            { label: 'Detail', to: '/apt' },
+            // { label: 'Postup předání (?)', to: '/predani' }, // Included in Detail
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
-            { label: 'Poukázky', to: '/poukazky' },
+            // { label: 'Poukázky', to: '/poukazky' },  // Included in Payments
             { label: 'Termíny', to: '/terminy' },
-            { label: 'Reklamace', to: '/reklamace' },
+            // { label: 'Reklamace', to: '/reklamace' },  // LATER
             { label: 'Žádosti', to: '/zadosti' },
+            { label: 'Kontakty', to: '/kontakty' },
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
@@ -111,6 +125,31 @@
                 <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
                 <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                 <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+              </svg>
+            </template>
+          </NavItem>
+
+          <!-- * Product #2 (Commercial space) -->
+          <!-- TODO: Nested URL -> Router -->
+          <NavItem label="název komerce" :children="[
+            { label: 'Detail', to: '/apt' },
+            // { label: 'Postup předání (?)', to: '/predani' }, // Included in Detail
+            { label: 'Dokumenty', to: '/dokumenty' },
+            { label: 'Platby', to: '/platby' },
+            // { label: 'Poukázky', to: '/poukazky' },  // Included in Payments
+            { label: 'Termíny', to: '/terminy' },
+            // { label: 'Reklamace', to: '/reklamace' },  // LATER
+            { label: 'Žádosti', to: '/zadosti' },
+            { label: 'Kontakty', to: '/kontakty' },
+          ]">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-store">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 21l18 0" />
+                <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+                <path d="M5 21l0 -10.15" />
+                <path d="M19 21l0 -10.15" />
+                <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
               </svg>
             </template>
           </NavItem>
@@ -162,7 +201,7 @@
           </NavItem>
 
           <!-- * Contacts -->
-          <NavItem label="Kontakty" to="/kontakty">
+          <!-- <NavItem label="Kontakty" to="/kontakty">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -172,15 +211,21 @@
                 <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
               </svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- * Help / FAQ -->
-          <NavItem label="Nápověda" to="/help">
+          <NavItem label="Otázky a odpovědi" to="/help">
             <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-question-mark">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-question-mark">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4" />
                 <path d="M12 19l0 .01" />
+              </svg> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 17l0 .01" />
+                <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
               </svg>
             </template>
           </NavItem>
