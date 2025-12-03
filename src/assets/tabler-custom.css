@@ -34,25 +34,7 @@ dialog {
 /* # MESSENGER */
 
 /* HACK */
-.messenger > [class*="col"] > .card {
-  max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));
-  /* border: 1px solid red !important; */
-}
 
-/* NOTE: CSS-only resizing (maybe rework using JS?) */
-@media (min-width: 992px) {
-  .messenger__list {
-    width: 375px;
-    min-width: 250px;
-    max-width: min(650px, 100%);
-    resize: horizontal;
-    overflow: auto;
-  }
-}
-
-.messenger .nav-pills {
-  --tblr-nav-pills-border-radius: 0px;
-}
 
 /* MESSENGER (end) */
 

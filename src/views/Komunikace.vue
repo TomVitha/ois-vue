@@ -365,39 +365,24 @@
 </template>
 
 <style scoped>
-  :where(.theme-dark, [data-bs-theme="dark"]) .tblr-illustrations-not-found-a {
-    fill: #1a2030;
+  /* NOTE the custom .messenger class */
+  .messenger > [class*="col"] > .card {
+    max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));
+    /* border: 1px solid red !important; */
   }
 
-  :where(.theme-dark, [data-bs-theme="dark"]) .tblr-illustrations-not-found-b {
-    fill: black;
-    opacity: 0.07;
+  /* NOTE: CSS-only resizing (maybe rework using JS?) */
+  @media (min-width: 992px) {
+    .messenger__list {
+      width: 375px;
+      min-width: 250px;
+      max-width: min(650px, 100%);
+      resize: horizontal;
+      overflow: auto;
+    }
   }
 
-  :where(.theme-dark, [data-bs-theme="dark"]) .tblr-illustrations-not-found-c {
-    fill: #454c5e;
-  }
-
-  :where(.theme-dark, [data-bs-theme="dark"]) .tblr-illustrations-not-found-d {
-    fill: #232b41;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .tblr-illustrations-not-found-a {
-      fill: #1a2030;
-    }
-
-    .tblr-illustrations-not-found-b {
-      fill: black;
-      opacity: 0.07;
-    }
-
-    .tblr-illustrations-not-found-c {
-      fill: #454c5e;
-    }
-
-    .tblr-illustrations-not-found-d {
-      fill: #232b41;
-    }
+  .messenger .nav-pills {
+    --tblr-nav-pills-border-radius: 0px;
   }
 </style>
