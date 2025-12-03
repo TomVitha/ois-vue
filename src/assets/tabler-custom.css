@@ -173,11 +173,17 @@ dialog {
   object-fit: cover;
 }
 
+/* Yellow background behind logo in vertical navbar - desktop only, light mode only */
+@media (min-width: 992px) {
+  :is(:host, :root):not([data-bs-theme=dark]) .navbar-vertical .navbar-brand {
+    background-color: #ffed00;
+  }
+}
 
 
-/* TESTING - TenantCloud style */
+/* TESTING - TenantCloud branding */
 :root {
-  --tblr-primary: #41a541;
+  /* --tblr-primary: #41a541; */
 }
 
 .card:where(:not(.card .card)) {
@@ -197,4 +203,16 @@ dialog {
   .navbar-expand-lg.navbar-vertical {
     box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
   }
+}
+
+/* TESTING - CG Branding */
+:root {
+  /* --tblr-primary: #ffed00; */
+  /* --tblr-primary-fg: var(--tblr-dark); */
+  
+  /* --tblr-primary: #20234c; */
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  /* color: inherit; */
 }

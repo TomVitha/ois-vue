@@ -22,5 +22,14 @@
         "size": "12 MB"
       }
     ]
+  },
+  {
+    "id": "msg-3",
+    "to": "Mr. X",
+    "type": "outgoing",
+    "datetime": "2025-12-03T16:27:29",
+    "subject": "Very particular set of skills",
+    "isUnread": false,
+    "attachments": []
   }
 ]

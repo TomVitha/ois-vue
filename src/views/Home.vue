@@ -165,7 +165,7 @@
           <div class="col-12">
             <div class="card">
               <div class="list-group list-group-flush">
-                <div class="list-group-item">cislo bytu/smlouvy - n-ta terminova sekce - 1 veta kratkeho popisu</div>
+                <div class="list-group-item">datum; cislo bytu/smlouvy; n-ta terminova sekce; 1 veta kratkeho popisu</div>
               </div>
             </div>
           </div>

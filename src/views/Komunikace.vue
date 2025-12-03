@@ -21,6 +21,16 @@
 
   const messages = ref<{ id: string, meta: any, content: string }[]>([])
   const selectedMessageId = ref<string | null>(null)
+  const activeTabId = ref('inbox')
+
+  const messageTabs = computed(() => [
+    { id: 'inbox', list: messages.value.filter(m => !m.meta.to) },
+    { id: 'sent', list: messages.value.filter(m => m.meta.to) }
+  ])
+
+  const currentTabMessages = computed(() => 
+    messageTabs.value.find(t => t.id === activeTabId.value)?.list || []
+  )
 
 
   // helper function
@@ -72,7 +82,7 @@
 
   const selectedIndex = computed(() =>
     selectedMessage.value
-      ? messages.value.findIndex(msg => msg.id === selectedMessage.value?.id)
+      ? currentTabMessages.value.findIndex(msg => msg.id === selectedMessage.value?.id)
       : -1
   )
 
@@ -85,6 +95,12 @@
     if (newId) {
       router.replace({ query: { m: newId } })
       messengerStore.markAsRead(newId)
+
+      // Sync active tab with selected message
+      const msg = messages.value.find(m => m.id === newId)
+      if (msg) {
+        activeTabId.value = msg.meta.to ? 'sent' : 'inbox'
+      }
     } else {
       router.replace({ query: {} })
     }
@@ -218,21 +234,22 @@
                 <!-- TODO? Paginace zpráv, výpis kolik z kolika -->
               </div>
               <nav class="nav nav-segmented nav-2 w-100 mt-2" role="tablist">
-                <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">
-                  Přijaté
-                  <span v-if="messengerStore.unreadCount > 0" class="text-primary">{{ messengerStore.unreadCount }}</span>
-                </button>
-                <button class="nav-link" role="tab" data-bs-toggle="tab" aria-selected="false" tabindex="-1">Odeslané</button>
+                <a href="#" class="nav-link" :class="{ active: activeTabId === 'inbox' }" role="tab" aria-selected="true" draggable="false" @click.prevent="activeTabId = 'inbox'; selectedMessageId = null">
+                  Přijaté <span v-if="messengerStore.unreadCount > 0" class="text-primary">{{ messengerStore.unreadCount }}</span>
+                </a>
+                <a href="#" class="nav-link" :class="{ active: activeTabId === 'sent' }" role="tab" aria-selected="false" tabindex="-1" draggable="false" @click.prevent="activeTabId = 'sent'; selectedMessageId = null">
+                  Odeslané
+                </a>
               </nav>
             </div>
             <!-- Messages list -->
-            <div class="card-body p-0 scrollable flex-fill">
-              <div class="nav flex-column nav-pills">
+            <div class="tab-content card-body p-0 scrollable flex-fill">
+              <div v-for="tab in messageTabs" :key="tab.id" :id="tab.id" class="tab-pane nav flex-column nav-pills" :class="{ active: tab.id === activeTabId }">
                 <MessengerListItem
-                  v-for="msg in messages"
+                  v-for="msg in tab.list"
                   :key="msg.id"
                   :id="msg.id"
-                  :from="msg.meta.from"
+                  :name="tab.id === 'inbox' ? msg.meta.from : msg.meta.to"
                   :datetime="msg.meta.datetime"
                   :subject="msg.meta.subject"
                   :content="msg.content"
@@ -258,13 +275,15 @@
                 </div>
                 <p class="empty-title">
                   <span v-if="messages.some(m => m.meta.isUnread)">
-                    Nepřečtené zprávy ({{messages.filter(m => m.meta.isUnread).length}})
+                    Nepřečtených zpráv ({{messages.filter(m => m.meta.isUnread).length}})
                   </span>
                   <span v-else>Schránka</span>
                 </p>
                 <p class="empty-subtitle text-secondary" style="text-wrap: pretty">
-                  <span v-if="messages.length == 0">Nemáte žádné položky</span>
-                  <span v-else-if="messages.length > 0">Vyberte některou ze svých {{ messages.length }} zpráv</span>
+                  <span v-if="messages.filter(m => m.meta.from).length <= 0">Nemáte žádné položky</span>
+                  <span v-else>
+                    Vyberte některou ze zpráv
+                  </span>
                 </p>
               </div>
             </div>
@@ -277,13 +296,13 @@
                 <div class="col-12 col-xl-auto d-lg-none d-print-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Previous message -->
-                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = messages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
+                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                         <path d="M15 6l-6 6l6 6"></path>
                       </svg>
                     </button>
                     <!-- Next message -->
-                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessageId = messages[selectedIndex + 1]?.id" :disabled="selectedIndex === messages.length - 1 || selectedIndex === -1">
+                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex + 1]?.id" :disabled="selectedIndex === currentTabMessages.length - 1 || selectedIndex === -1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-end icon-2">
                         <path d="M9 6l6 6l-6 6"></path>
                       </svg>
@@ -306,8 +325,10 @@
                 <div class="col-12">
                   <div class="d-flex justify-content-between flex-wrap">
                     <div>
-                      <!-- from and date -->
-                      <div class="font-weight-medium">Od: {{ selectedMessage.meta.from }}</div>
+                      <!-- to/from and date -->
+                      <div class="font-weight-medium">
+                        {{ selectedMessage.meta.to ? 'Komu: ' + selectedMessage.meta.to : 'Od: ' + selectedMessage.meta.from }}
+                      </div>
                       <div>
                         <span class="text-secondary fs-5">
                           {{
@@ -368,6 +389,7 @@
 </template>
 
 <style scoped>
+
   /* NOTE the custom .messenger class */
   .messenger > [class*="col"] > .card {
     max-height: calc(100dvh - 3.5rem - var(--tblr-page-padding-y) - 0px - var(--tblr-page-padding-y));

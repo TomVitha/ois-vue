@@ -1,7 +1,7 @@
 <script setup lang="ts">
   const props = defineProps<{
     id: string | number
-    from: string
+    name: string
     datetime: string
     subject: string
     content: string
@@ -21,7 +21,7 @@
     <div class="align-items-center flex-fill mw-100 text-body">
       <div class="d-flex align-items-center gap-1">
         <MessageBadge v-if="badge" :text="badge" />
-        <span class="text-truncate" :class="{ 'fw-bold': isUnread }">{{ from }}</span>
+        <span class="text-truncate" :class="{ 'fw-bold': isUnread }">{{ name }}</span>
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
             <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
