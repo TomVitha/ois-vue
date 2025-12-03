@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentItem from '@/components/PaymentItem.vue'
+  import PaymentDialog from '@/components/PaymentDialog.vue'
   import DocumentItem from '@/components/DocumentItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
 </script>
@@ -135,6 +136,15 @@
               </div>
             </div>
           </div>
+
+          <!-- DEV: One dialog for all payments -->
+          <!-- NOTE: Obviously each payment should have its own dialog instance -->
+          <PaymentDialog
+            :amount="50000"
+            accountNumber="670100-1234567890 / 6210"
+            :varSymbol="7464685"
+            message="192-03-147 KD1"
+          />
 
           <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
           <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->

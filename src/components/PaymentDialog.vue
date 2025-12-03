@@ -1,4 +1,18 @@
-<script setup>
+<script setup lang="ts">
+  import { useLocaleStore } from '@/stores/locale'
+  const localeStore = useLocaleStore()
+
+  import PaymentDialogItem from '@/components/PaymentDialogItem.vue';
+  import CopyToClipboardButton from '@/components/CopyToClipboardButton.vue';
+
+  const props = defineProps<{
+    amount: number
+    accountNumber: string
+    varSymbol: string | number
+    message: string | number
+  }>()
+
+
 
 </script>
 
@@ -17,28 +31,42 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <div class="space-y-4">
-            <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
-            <div class="space-y-2">
-              <div class="d-flex justify-content-between">
-                <span class="text-secondary">Číslo účtu</span>
-                <span class="text-end">670100-1234567890 / 6210</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span class="text-secondary">Variabilní symbol</span>
-                <span class="text-end">7464685</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span class="text-secondary">Částka</span>
-                <span class="text-end">50 000 Kč</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span class="text-secondary">Zpráva pro příjemce</span>
-                <span class="text-end">165-10-007 KD1</span>
-              </div>
+
+          <div class="space-y-3">
+            <div>
+              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
             </div>
-            <div>oznámení že odeslané platby se na OIS propíší až po 3 dnech.</div>
-            <!-- <div>Možná: <a href="#">Požádat o odklad platby</a> ?</div> -->
+
+            <div class="text-center">
+              <div class="d-flex align-items-center justify-content-center gap-1">
+                <strong class="h1 my-0">
+                  {{
+                    ((locale = localeStore.locale) => {
+                      return new Intl.NumberFormat(localeStore.locale, {
+                        style: 'currency',
+                        currency: 'CZK',
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                      }).format(amount);
+                    })()
+                  }}
+                </strong>
+                <CopyToClipboardButton :data="amount" />
+              </div>
+              <div class="text-secondary">Částka k uhrazení</div>
+            </div>
+
+            <div class="list-group list-group-flush">
+              <PaymentDialogItem name="Číslo účtu" value="670100-1234567890 / 6210"></PaymentDialogItem>
+              <PaymentDialogItem name="Variabilní symbol" value="7464685"></PaymentDialogItem>
+              <PaymentDialogItem name="Zpráva pro příjemce" value="165-10-007 KD1"></PaymentDialogItem>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <div class="text-secondary text-center flex-fill">
+            <small>Odeslané platby se v systému mohou projevit až po 3 pracovních dnech.</small>
           </div>
         </div>
       </div>

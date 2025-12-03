@@ -20,7 +20,7 @@
     <component
       :is="children ? 'a' : RouterLink"
       :to="!children ? to : null"
-      class="nav-link kkkk"
+      class="nav-link"
       v-bind="children ? {
         'class': 'dropdown-toggle',
         'data-bs-toggle': 'dropdown',

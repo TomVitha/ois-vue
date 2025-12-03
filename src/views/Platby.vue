@@ -1,12 +1,27 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentItem from '@/components/PaymentItem.vue'
+  import PaymentDialog from '@/components/PaymentDialog.vue'
   import Alert from '@/components/Alert.vue'
 </script>
 
 <template>
   <PageTemplate title="Platby">
-    <!-- ALERTS (components) -->
+
+    <template #actions>
+      <div class="btn-list">
+        <RouterLink to="/zadosti">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 14l-4 -4l4 -4" />
+            <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+          </svg> -->
+          Podat žádost o odklad platby
+        </RouterLink>
+      </div>
+    </template>
+
+    <!-- # ALERTS (components) -->
     <!-- <Alert 
       heading="Dismissable non-important success box"
       type="success"
@@ -53,6 +68,7 @@
         <li>Include a special character</li>
       </ul>
     </Alert> -->
+
     <!-- CONTENT -->
     <div class="row row-deck row-cards">
       <div class="col-md-4">
@@ -85,10 +101,14 @@
       </div>
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
-      <!-- <div class="col-12">
-        <h3 class="m-0 mt-3">Nadcházející</h3>
-      </div> -->
 
+      <div class="col-12">
+        TODO: Toolbar (download all)
+      </div>
+
+      <!-- <div class="col-12">
+        <h3 class="m-0 mt-3">Platby</h3>
+      </div> -->
       <div class="col-12">
         <div class="card">
           <div class="card-header">
@@ -117,6 +137,20 @@
             <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
             <!-- Partially paid, overpaid -->
             <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-12">
+        <h3 class="m-0 mt-3">Poukázky</h3>
+      </div> -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Poukázky</h3>
+          </div>
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">poukázkyyyyy</div>
           </div>
         </div>
       </div>
@@ -374,6 +408,8 @@
         </div>
       </div>
     </div>
+
+    <PaymentDialog :amount="37450" accountNumber="670100-1234567890 / 6210" :varSymbol="7464685" message="192-03-147 KD1" />
 
 
   </PageTemplate>
