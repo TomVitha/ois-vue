@@ -1,5 +1,6 @@
 <script setup lang="ts">
   const props = defineProps<{
+    id: string | number
     from: string
     datetime: string
     subject: string
@@ -16,7 +17,7 @@
 </script>
 
 <template>
-  <button class="nav-link text-start mw-100 px-4 py-3 user-select-none border-bottom" data-bs-toggle="pill" role="tab" @click.prevent>
+  <a :href="'?m=' + id" class="nav-link text-start mw-100 px-4 py-3 user-select-none border-bottom" data-bs-toggle="pill" role="tab" @click.prevent>
     <div class="align-items-center flex-fill mw-100 text-body">
       <div class="d-flex align-items-center gap-1">
         <MessageBadge v-if="badge" :text="badge" />
@@ -49,7 +50,7 @@
         <!-- <i class="ti ti-star text-secondary fs-3"></i> -->
       </div>
     </div>
-  </button>
+  </a>
 </template>
 
 <style scoped>

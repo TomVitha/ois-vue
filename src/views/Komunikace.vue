@@ -23,7 +23,7 @@
   const selectedMessageId = ref<string | null>(null)
 
 
-  // HACK
+  // helper function
   function printPage() {
     window.print()
   }
@@ -100,7 +100,13 @@
   })
 
   // TODO
-  function discardDraft(event?: Event) {
+  function discardMessage(event?: Event) {
+
+    // const msgModal = tabler?.Modal.getOrCreateInstance('#new-message-modal')
+    // console.log(msgModal)
+    // msgModal.show();
+    // msgModal.hide();
+
     if (confirm("Opravdu chcete zahodit rozpracovanou zprávu?")) {
       console.debug("DISCARDED")
     } else {
@@ -169,7 +175,7 @@
                     <div class="modal-footer">
                       <div class="button-actions me-auto">
                         <!-- Discard -->
-                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" @click.prevent="discardDraft()">
+                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" @click.prevent="discardMessage()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 7l16 0" />
@@ -211,7 +217,6 @@
                 <!-- TODO: Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
                 <!-- TODO? Paginace zpráv, výpis kolik z kolika -->
               </div>
-              <!-- ? Maybe: Inbox / Sent ? -->
               <nav class="nav nav-segmented nav-2 w-100 mt-2" role="tablist">
                 <button class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" aria-current="page">
                   Přijaté
@@ -226,6 +231,7 @@
                 <MessengerListItem
                   v-for="msg in messages"
                   :key="msg.id"
+                  :id="msg.id"
                   :from="msg.meta.from"
                   :datetime="msg.meta.datetime"
                   :subject="msg.meta.subject"
@@ -349,9 +355,6 @@
                 </div>
               </div>
             </div>
-            <!-- TODO: Reply button -->
-            <!-- TODO: Print button -->
-            <!-- TODO: Star/Important button ? -->
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>
