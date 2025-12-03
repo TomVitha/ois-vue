@@ -9,7 +9,7 @@
     isUnread?: boolean
   }>()
 
-  import MessageBadge from '@/components/MessageBadge.vue'
+  import MessageBadge from '@/components/Messenger/MessageBadge.vue'
 
   import {useLocaleStore} from '@/stores/locale'
   const localeStore = useLocaleStore()

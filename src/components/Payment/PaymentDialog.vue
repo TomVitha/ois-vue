@@ -2,7 +2,7 @@
   import { useLocaleStore } from '@/stores/locale'
   const localeStore = useLocaleStore()
 
-  import PaymentDialogItem from '@/components/PaymentDialogItem.vue';
+  import PaymentDialogItem from '@/components/Payment/PaymentDialogItem.vue';
   import CopyToClipboardButton from '@/components/CopyToClipboardButton.vue';
 
   const props = defineProps<{

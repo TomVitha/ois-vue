@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps<{
-    pretitle?: string,  // Optional
     title: string
+    pretitle?: string,
   }>()
 </script>
 

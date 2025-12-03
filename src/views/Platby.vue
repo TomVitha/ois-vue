@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
-  import PaymentItem from '@/components/PaymentItem.vue'
-  import PaymentDialog from '@/components/PaymentDialog.vue'
+  import PaymentItem from '@/components/Payment/PaymentItem.vue'
+  import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
   import Alert from '@/components/Alert.vue'
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import NavbarNav from '@/components/NavbarNav.vue'
-  import NavItem from '@/components/NavItem.vue'
+  import NavbarNav from '@/components/Nav/NavbarNav.vue'
+  import NavItem from '@/components/Nav/NavItem.vue'
   import { useMessengerStore } from '@/stores/messenger'
   const messengerStore = useMessengerStore()
 </script>

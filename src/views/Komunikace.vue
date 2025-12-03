@@ -7,11 +7,11 @@
   // <select> UI control with autocomplete
   import TomSelect from 'tom-select'
 
-  import MessageBadge from '@/components/MessageBadge.vue'
+  import MessageBadge from '@/components/Messenger/MessageBadge.vue'
 
   import messagesMeta from '../messages/meta.json'
-  import MessengerListItem from '@/components/MessengerListItem.vue'
-  import MessengerAttachment from '@/components/MessengerAttachment.vue'
+  import MessengerListItem from '@/components/Messenger/MessengerListItem.vue'
+  import MessengerAttachment from '@/components/Messenger/MessageAttachment.vue'
 
   import { useMessengerStore } from '@/stores/messenger'
   const messengerStore = useMessengerStore()
