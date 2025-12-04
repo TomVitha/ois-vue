@@ -32,9 +32,9 @@
     </div>
   </div>
   <!-- END PAGE BODY -->
-  <!--  BEGIN FOOTER  -->
+  <!-- BEGIN FOOTER -->
   <!-- <Footer /> -->
-  <!--  END FOOTER  -->
+  <!-- END FOOTER -->
 </template>
 
 <style scoped></style>
