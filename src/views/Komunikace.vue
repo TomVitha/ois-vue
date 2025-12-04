@@ -28,7 +28,7 @@
     { id: 'sent', list: messages.value.filter(m => m.meta.to) }
   ])
 
-  const currentTabMessages = computed(() => 
+  const currentTabMessages = computed(() =>
     messageTabs.value.find(t => t.id === activeTabId.value)?.list || []
   )
 
@@ -148,7 +148,7 @@
                 Nová zpráva
               </button>
               <!-- Compose message window -->
-              <div class="modal" id="new-message-modal" tabindex="-1">
+              <div class="modal fade" id="new-message-modal" tabindex="-1">
                 <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down modal-dialog-scrollable" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -222,7 +222,7 @@
                 </div>
               </div>
               <!-- Search bar -->
-              <div class="input-icon">
+              <!-- <div class="input-icon">
                 <span class="input-icon-addon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                     <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
@@ -230,9 +230,7 @@
                   </svg>
                 </span>
                 <input type="text" value="" class="form-control" placeholder="Hledat ve zprávách…" aria-label="Hledat">
-                <!-- TODO: Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
-                <!-- TODO? Paginace zpráv, výpis kolik z kolika -->
-              </div>
+              </div> -->
               <nav class="nav nav-segmented nav-2 w-100 mt-2" role="tablist">
                 <a href="#" class="nav-link" :class="{ active: activeTabId === 'inbox' }" role="tab" aria-selected="true" draggable="false" @click.prevent="activeTabId = 'inbox'; selectedMessageId = null">
                   Přijaté <span v-if="messengerStore.unreadCount > 0" class="text-primary">{{ messengerStore.unreadCount }}</span>
@@ -242,8 +240,96 @@
                 </a>
               </nav>
             </div>
+            <div class="card-header py-2">
+              <!-- WIP: TOOLBAR -->
+              <!-- * Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
+              <!-- ? Paginace zpráv, výpis kolik z kolika ? -->
+              <div class="btn-actions flex-fill justify-content-end">
+                <button href="#" class="btn btn-action dropdown-toggle me-auto" title="Hledat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                    <path d="M21 21l-6 -6"></path>
+                  </svg>
+                </button>
+                <div class="dropdown">
+                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Značka">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tag">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <button class="dropdown-item" href="#">
+                      <MessageBadge text="192-03-147" />
+                    </button>
+                    <button class="dropdown-item" href="#">
+                      <MessageBadge text="komerce 1" />
+                    </button>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <button class="dropdown-item" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail dropdown-item-icon">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                        <path d="M3 7l9 6l9 -6" />
+                      </svg>
+                      Všechny
+                    </button>
+                    <button class="dropdown-item" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye-off dropdown-item-icon">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+                        <path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" />
+                        <path d="M3 3l18 18" />
+                      </svg>
+                      Nepřečtené
+                    </button>
+                    <button class="dropdown-item" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip dropdown-item-icon">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
+                      </svg>
+                      Obsahují přílohu
+                    </button>
+                    <button class="dropdown-item" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-writing-sign dropdown-item-icon">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 19c3.333 -2 5 -4 5 -6c0 -3 -1 -3 -2 -3s-2.032 1.085 -2 3c.034 2.048 1.658 2.877 2.5 4c1.5 2 2.5 2.5 3.5 1c.667 -1 1.167 -1.833 1.5 -2.5c1 2.333 2.333 3.5 4 3.5h2.5" />
+                        <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z" />
+                        <path d="M16 7h4" />
+                      </svg>
+                      S podpisem
+                    </button>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Seřadit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrows-up-down">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M7 3l0 18" />
+                      <path d="M10 6l-3 -3l-3 3" />
+                      <path d="M20 18l-3 3l-3 -3" />
+                      <path d="M17 21l0 -18" />
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <button class="dropdown-item" href="#">Od nejnovějších</button>
+                    <button class="dropdown-item" href="#">Od nejstarších</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Messages list -->
-            <div class="tab-content card-body p-0 scrollable flex-fill">
+            <div class="card-body tab-content scrollable flex-fill p-0">
               <div v-for="tab in messageTabs" :key="tab.id" :id="tab.id" class="tab-pane nav flex-column nav-pills" :class="{ active: tab.id === activeTabId }">
                 <MessengerListItem
                   v-for="msg in tab.list"

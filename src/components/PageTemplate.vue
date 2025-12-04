@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import Footer from '@/components/Footer.vue';
   defineProps<{
     title: string
     pretitle?: string,
@@ -31,6 +32,9 @@
     </div>
   </div>
   <!-- END PAGE BODY -->
+  <!--  BEGIN FOOTER  -->
+  <!-- <Footer /> -->
+  <!--  END FOOTER  -->
 </template>
 
 <style scoped></style>
