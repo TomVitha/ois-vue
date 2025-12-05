@@ -173,6 +173,14 @@ dialog {
   object-fit: cover;
 }
 
+/* FIX: Buttons being displayed as block */
+.table-mobile .btn { display: inline-flex; }
+@media (max-width: 575.98px) { .table-mobile-sm .btn { display: inline-flex; } }
+@media (max-width: 767.98px) { .table-mobile-md .btn { display: inline-flex; } }
+@media (max-width: 991.98px) { .table-mobile-lg .btn { display: inline-flex; } }
+@media (max-width: 1199.98px) { .table-mobile-xl .btn { display: inline-flex; } }
+@media (max-width: 1399.98px) { .table-mobile-xxl .btn { display: inline-flex; } } 
+
 /* Yellow background behind logo in vertical navbar - desktop only, light mode only */
 @media (min-width: 992px) {
   :is(:host, :root):not([data-bs-theme=dark]) .navbar-vertical .navbar-brand {

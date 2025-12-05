@@ -102,7 +102,7 @@
           </svg>{{ statusText }}</span>
         <span v-else class="badge" :class="{
           'bg-info-lt': status === 'upcoming',
-          'bg-yellow-lt': status === 'due',
+          'bg-warning-lt': status === 'due',
           'bg-danger-lt': status === 'overdue'
         }">
           {{ statusText }}
@@ -116,10 +116,10 @@
           </div>
           <div class="col text-end text-md-start">
             <div class="text-secondary">Zbývá</div>
-            <div class="fs-4 fw-bold text text-yellow">{{ formatCurrency(remainingAmount) }}</div>
+            <div class="fs-4 fw-bold text-yellow">{{ formatCurrency(remainingAmount) }}</div>
           </div>
           <div class="col-12 d-md-none">
-            <div class="progress progress-sm mt-2" :class="{ 'bg-danger-lt': status === 'overdue' }">
+            <div class="progress mt-2" :class="{ 'bg-danger-lt': status === 'overdue' }">
               <div class="progress-bar bg-success" :style="`width: ${percentagePaid}%`" :title="`${percentagePaid}% zaplaceno`" role="progressbar" :aria-valuenow="percentagePaid" aria-valuemin="0" aria-valuemax="100">
                 <span class="visually-hidden"> {{ percentagePaid }}% zaplaceno</span>
               </div>

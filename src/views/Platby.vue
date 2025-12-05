@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentItem from '@/components/Payment/PaymentItem.vue'
+  import PaymentRow from '@/components/Payment/PaymentRow.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
   import Alert from '@/components/Alert.vue'
 </script>
@@ -102,10 +103,6 @@
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
 
-      <div class="col-12">
-        TODO: Toolbar (download all)
-      </div>
-
       <!-- <div class="col-12">
         <h3 class="m-0 mt-3">Platby</h3>
       </div> -->
@@ -115,6 +112,7 @@
             <h3 class="card-title">Platby</h3>
           </div>
           <div class="list-group list-group-flush">
+            <div class="list-group-header">separátor dle měsíce</div>
             <!-- Overdue, unpaid -->
             <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
             <!-- Overdue, partially paid -->
@@ -149,108 +147,95 @@
           <div class="card-header">
             <h3 class="card-title">Poukázky</h3>
           </div>
-          <div class="list-group list-group-flush">
-            <div class="list-group-item">poukázkyyyyy</div>
+          <div class="card-body">
+
+            <div class="row row-cards">
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">186-06-025 Věrnostní poukázka</h4>
+                    <div class="card-subtitle">Využití: na co ji lze využít</div>
+                    <div class="row row-gap-2">
+                      <div class="col-12">
+                        <div class="progress">
+                          <div class="progress-bar bg-success" style="width: 38%"></div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-secondary">Využito</div>
+                        <div class="fw-bold text-success">7&nbsp;547&nbsp;Kč</div>
+                      </div>
+                      <div class="col-6 text-end">
+                        <div class="text-secondary">Zbývá</div>
+                        <div class="fw-bold">29&nbsp;224&nbsp;Kč</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <div class="table-responsive">
+                        <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
+                          <thead>
+                            <tr>
+                              <th class="text-start">Dodatek</th>
+                              <th class="text-center">Datum</th>
+                              <th class="text-end">Hodnota</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-start">KD2</td>
+                              <td class="text-center">26.04.2024</td>
+                              <td class="text-end">77 425 Kč</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
           </div>
         </div>
       </div>
 
 
-      <!-- TEMP: TABLE -->
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Invoices</h3>
+            <h3 class="card-title">Platby</h3>
           </div>
           <div class="table-responsive">
             <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
-              <colgroup>
-                <col>
-                <col>
-                <col style="color: red">
-                <col>
-                <col>
-                <col>
-              </colgroup>
               <thead>
                 <tr>
-                  <th class="w-100">Název platby</th>
-                  <th>Zaplaceno</th>
-                  <th>Zbývá</th>
-                  <th>Částka</th>
+                  <th>Stav</th>
                   <th>Splatnost</th>
-                  <th>Akce</th>
+                  <th class="w-100">Popis</th>
+                  <th class="text-sm-end">Částka</th>
+                  <th class="text-sm-end">Zaplaceno</th>
+                  <th class="text-sm-end">Zbývá</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><a href="invoice.html" class="text-reset" tabindex="-1">Odblokování toalety</a></td>
-                  <td>45 340 Kč</td>
-                  <td>0 Kč</td>
-                  <td>45 340 Kč</td>
-                  <td><span class="badge bg-warning me-1"></span> 01. 02. 2026</td>
-                  <td class="text-end">
-                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="invoice.html" class="text-reset" tabindex="-1">Zametení stop</a></td>
-                  <td>20 000 Kč</td>
-                  <td>16 477 Kč</td>
-                  <td>36 477 Kč</td>
-                  <td><span class="badge bg-danger me-1"></span> 13. 11. 2025</td>
-                  <td class="text-end">
-                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                  </td>
-                </tr>
+                <PaymentRow title="192-03-147 dopl.BD" duedate="2025-05-11" :amount="45000" :paid="45000" />
+                <PaymentRow title="192-03-147 SOD" duedate="2025-06-03" :amount="336600" :paid="245000" />
+                <PaymentRow title="192-03-147 Odchylka" duedate="2025-08-03" :amount="45000" :paid="32000" />
+                <PaymentRow title="192-03-147 dopLPZ" duedate="2025-10-29" :amount="45000" :paid="32000" />
               </tbody>
             </table>
           </div>
-          <div class="card-footer">
-            <div class="row g-2 justify-content-center justify-content-sm-between">
-              <div class="col-auto d-flex align-items-center">
-                <p class="m-0 text-secondary">Showing <strong>1 to 8</strong> of <strong>16 entries</strong></p>
-              </div>
-              <div class="col-auto">
-                <ul class="pagination m-0 ms-auto">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                      <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-left -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M15 6l-6 6l6 6"></path>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-right -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M9 6l6 6l-6 6"></path>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+
     </div>
+
 
     <PaymentDialog :amount="37450" accountNumber="670100-1234567890 / 6210" :varSymbol="7464685" message="192-03-147 KD1" />
 

@@ -6,6 +6,7 @@
   import { useThemeStore } from '@/stores/theme'
   const themeStore = useThemeStore()
 
+  // FIXME: Password toggling is global; should be tied to its individual input
   const passwordVisible = ref(false)
   function togglePasswordVisibility() {
     passwordVisible.value = !passwordVisible.value
@@ -32,7 +33,8 @@
           </nav>
         </div>
       </div> -->
-      <!-- Following element likely causes horizontal overflow -->
+
+
       <div class="col-xl-10" data-bs-spy="scroll" data-bs-target="#pills" data-bs-offset="0">
         <div class="row row-cards row-deck">
 
@@ -96,11 +98,13 @@
                 <div class="mt-4">
                   <div class="btn-list">
                     <RouterLink to="/zadost-nova" class="btn btn-1">Zažádat o změnu</RouterLink>
-                    <!-- <button class="btn btn-1">Zrušit</button> -->
-                    <!-- <button class="btn btn-primary btn-2">Odeslat žádost</button> -->
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card card-md">
               <div class="card-body">
                 <h3 class="card-title">Heslo</h3>
                 <p class="card-subtitle">
@@ -126,7 +130,7 @@
                         <div class="row-12">
                           <label class="form-label d-inline-block" for="current-password">Aktuální heslo</label>
                           <div class="input-group input-group-flat">
-                            <input :type="passwordVisible ? 'text' : 'password'" id="current-password" name="current-password" autocomplete="current-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
+                            <input :type="passwordVisible ? 'text' : 'password'" id="current-password" name="current-password" autocomplete="current-password" class="form-control fs-4" placeholder="" required>
                             <span class="input-group-text">
                               <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
                                 <i class="fs-2 icon" :class="['ti', passwordVisible ? 'ti-eye-off' : 'ti-eye']"></i>
@@ -137,7 +141,7 @@
                         <div class="row-12">
                           <label class="form-label d-inline-block" for="new-password-1">Nové heslo</label>
                           <div class="input-group input-group-flat">
-                            <input :type="passwordVisible ? 'text' : 'password'" id="new-password-1" name="new-password-1" autocomplete="new-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
+                            <input :type="passwordVisible ? 'text' : 'password'" id="new-password-1" name="new-password-1" autocomplete="new-password" class="form-control fs-4" placeholder="" required>
                             <span class="input-group-text">
                               <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
                                 <i class="fs-2 icon" :class="['ti', passwordVisible ? 'ti-eye-off' : 'ti-eye']"></i>
@@ -148,7 +152,7 @@
                         <div class="row-12">
                           <label class="form-label d-inline-block" for="new-password-2">Potvrďtě nové heslo</label>
                           <div class="input-group input-group-flat">
-                            <input :type="passwordVisible ? 'text' : 'password'" id="new-password-2" name="new-password-2" autocomplete="new-password" class="form-control fs-4" placeholder="Zadejte své heslo" required>
+                            <input :type="passwordVisible ? 'text' : 'password'" id="new-password-2" name="new-password-2" autocomplete="new-password" class="form-control fs-4" placeholder="" required>
                             <span class="input-group-text">
                               <a href="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Přepnout viditelnost hesla" data-bs-original-title="Přepnout viditelnost hesla" @click.prevent="togglePasswordVisibility()">
                                 <i class="fs-2 icon" :class="['ti', passwordVisible ? 'ti-eye-off' : 'ti-eye']"></i>
@@ -156,28 +160,19 @@
                             </span>
                           </div>
                         </div>
+                        <!-- TODO -->
+                        <div class="row-12">
+                          <p>Sem přijde výpis požadavků na heslo (v podobě checklistu ?)</p>
+                        </div>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn me-auto" data-bs-dismiss="modal">Zrušit</button>
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Odeslat žádost</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Uložit</button>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="card-body">
-                <h3 class="card-title">Public profile</h3>
-                <p class="card-subtitle">Making your profile public means that anyone on the Dashkit network will be able
-                  to find you.</p>
-                <div>
-                  <label class="form-check form-switch form-switch-lg">
-                    <input class="form-check-input" type="checkbox">
-                    <span class="form-check-label form-check-label-on">You're currently visible</span>
-                    <span class="form-check-label form-check-label-off">You're currently invisible</span>
-                  </label>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
