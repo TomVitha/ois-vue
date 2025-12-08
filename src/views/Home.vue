@@ -4,7 +4,6 @@
 
   import Payments from '@/components/Payment/Payments.vue'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import PaymentItem from '@/components/Payment/PaymentItem.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
   import DocumentItem from '@/components/DocumentItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
@@ -24,50 +23,15 @@
       <div class="col-xl-3">
         <div class="card h-100">
           <div class="card-body">
-            idk asi osobní údaje ?
+            info o klientovi
           </div>
         </div>
       </div>
       <div class="col">
         <div class="row row-deck row-cards">
 
-          <!-- * Finanční bilance -->
-          <!-- ! hidden -->
-          <!-- <div class="col-12">
-            <div class="card card-md">
-              <div class="card-header">
-                <h3 class="card-title">Finanční bilance</h3>
-                <div class="ms-auto lh-1">
-                  <div class="dropdown">
-                    <a class="dropdown-toggle text-secondary" id="financial-balance-units-dropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dohromady</a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="financial-balance-units-dropdown">
-                      <a class="dropdown-item active" href="#" aria-current="true">Dohromady</a>
-                      <a class="dropdown-item" href="#">Jednotlivě</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="row gy-2">
-                  <div class="col-12 col-md-4">
-                    <span class="subheader">Celá částka</span>
-                    <p class="h1 m-0">35&nbsp;780&nbsp;000&nbsp;Kč</p>
-                  </div>
-                  <div class="col-12 col-md-4">
-                    <span class="subheader">Zaplaceno</span>
-                    <p class="h1 m-0 text-green">24&nbsp;866&nbsp;391&nbsp;Kč</p>
-                  </div>
-                  <div class="col-12 col-md-4">
-                    <span class="subheader">Zbývá zaplatit</span>
-                    <p class="h1 m-0 text-red">10&nbsp;913&nbsp;609&nbsp;Kč</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
           <!-- ? Setup block -->
-          <!-- <div class="col-lg-4">
+          <div class="col-12">
             <div class="card overflow-hidden">
               <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -92,10 +56,10 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Step%201" />
+                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%201" />
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Step%202" />
+                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%202" />
                   </div>
                 </div>
                 <a class="carousel-control-prev" data-bs-target="#carousel-1" role="button" data-bs-slide="prev">
@@ -108,8 +72,12 @@
                 </a>
               </div>
             </div>
-          </div> -->
+          </div>
+        </div>
+      </div>
 
+      <div class="col-12">
+        <div class="row row-deck row-cards">
           <!-- * platby po splatnosti -->
           <div class="col-12">
             <h3 class="m-0 mt-3">Platby po splatnosti</h3>
@@ -125,14 +93,6 @@
           <div class="col-12">
             <Payments :payments="paymentsStore.duePayments" />
           </div>
-
-          <!-- DEV: One dialog for all payments -->
-          <!-- NOTE: Obviously each payment should have its own dialog instance -->
-          <PaymentDialog
-            :amount="50000"
-            accountNumber="670100-1234567890 / 6210"
-            :varSymbol="7464685"
-            message="192-03-147 KD1" />
 
           <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
           <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
@@ -171,10 +131,9 @@
               </div>
             </div>
           </div> -->
-
-
         </div>
       </div>
+
       <div class="col-12">
         <div class="row row-deck row-cards">
           <div class="col-12">
@@ -189,6 +148,14 @@
         </div>
       </div>
     </div>
+
+    <!-- DEV: One dialog for all payments -->
+    <!-- NOTE: Obviously each payment should have its own dialog instance -->
+    <PaymentDialog
+      :amount="50000"
+      accountNumber="670100-1234567890 / 6210"
+      :varSymbol="7464685"
+      message="192-03-147 KD1" />
 
 
   </PageTemplate>

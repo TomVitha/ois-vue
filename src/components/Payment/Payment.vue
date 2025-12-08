@@ -92,13 +92,11 @@
     <div class="card-body">
       <div class="row row-gap-3 align-items-center gx-4">
         <div class="col">
-          <div>
-            <strong>{{ title }}</strong>
-          </div>
+          <div>{{ title }}</div>
           <div class="text-secondary">Splatnost: {{ formatDate(dueDate) }}</div>
         </div>
         <div class="col-auto text-end">
-          <div class="fs-3 fw-bold">{{ formatCurrency(props.amount) }}</div>
+          <div class="fw-bold">{{ formatCurrency(props.amount) }}</div>
           <span
             class="badge"
             :class="{
@@ -136,9 +134,6 @@
             </div>
           </div>
         </div>
-        <div v-if="isInvoiceShown && isPaid" class="col-12 order-last text-end">
-          <span class="text-secondary">Faktura dostupná</span>
-        </div>
       </div>
     </div>
   </a>
@@ -150,7 +145,7 @@
     class="card-link position-relative">
     <td data-label="Popis">
       {{ title }}
-      <!-- ! This link covers the entire row (using class .stretched-link), making it clickable -->
+      <!-- NOTE: This link covers the entire row (using class .stretched-link), making it clickable -->
       <RouterLink
         :to="`#platba-${id}`"
         class="stretched-link"

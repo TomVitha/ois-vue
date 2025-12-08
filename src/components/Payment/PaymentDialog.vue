@@ -17,9 +17,8 @@
 </script>
 
 <template>
-  <!-- WIP -->
-  <!-- TODO: Create proper design (with proper code) -->
-  <!-- TODO: Click to copy text buttons -->
+  <!-- TODO: Data dynamically for a given payment; not hard-coded -->
+  <!-- TODO: Show different info for Paid and Unpaid payments -->
   <!-- TODO: Breakdown for partially paid (like on payments page) -->
   <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
   <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->

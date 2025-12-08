@@ -3,11 +3,11 @@ import { computed, ref } from 'vue'
 
 const paymentsData = ref([
   { id: 0, title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0 },
-  { id: 1, title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
+  // { id: 1, title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
   { id: 2, title: '192-03-147 SOD', duedate: '2025-06-03', amount: 336600, paid: 245000 },
   { id: 3, title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true },
   { id: 4, title: '192-03-147 Odchylka', duedate: '2025-08-03', amount: 45000, paid: 32000 },
-  { id: 5, title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 22000 },
+  { id: 5, title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 0 },
   { id: 6, title: '192-03-147 dopLPZ', duedate: '2025-10-29', amount: 45000, paid: 32000 },
   { id: 7, title: 'Oprava střechy', duedate: '2026-01-01', amount: 33127, paid: 0, isInvoiceShown: true },
   { id: 8, title: 'Modernizace výtahu', duedate: '2026-06-01', amount: 45000, paid: 32000 },
