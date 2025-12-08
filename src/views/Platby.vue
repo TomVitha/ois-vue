@@ -1,25 +1,10 @@
 <script setup lang="ts">
+  import { usePaymentsStore } from '@/stores/payments'
+  const paymentsStore = usePaymentsStore()
+
   import PageTemplate from '@/components/PageTemplate.vue'
   import Payments from '@/components/Payment/Payments.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
-
-  const payments = [
-    { id: 0, title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0 },
-    { id: 1, title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
-    { id: 2, title: '192-03-147 SOD', duedate: '2025-06-03', amount: 336600, paid: 245000 },
-    { id: 3, title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true },
-    { id: 4, title: '192-03-147 Odchylka', duedate: '2025-08-03', amount: 45000, paid: 32000 },
-    { id: 5, title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 22000 },
-    { id: 6, title: '192-03-147 dopLPZ', duedate: '2025-10-29', amount: 45000, paid: 32000 },
-    { id: 7, title: 'Oprava střechy', duedate: '2026-01-01', amount: 50000, paid: 0, isInvoiceShown: true },
-    { id: 8, title: 'Modernizace výtahu', duedate: '2026-06-01', amount: 45000, paid: 32000 },
-    { id: 9, title: 'Oprava výtahu', duedate: '2025-08-03', amount: 50000, paid: 50000 },
-    { id: 10, title: 'Revize elektroinstalace', duedate: '2024-01-01', amount: 50000, paid: 50000 },
-    { id: 11, title: 'Nové vchodové dveře', duedate: '2025-08-03', amount: 50000, paid: 50000, isInvoiceShown: true },
-    { id: 12, title: 'Instalace mučící komory', duedate: 'lkdahgiurn', amount: 15301, paid: 50000 },
-    { id: 13, title: 'Odklid mrtvol', duedate: '2024-01-01', amount: 14873, paid: 140000 },
-    { id: 14, title: '192-03-147 dopl.BD', duedate: '2025-05-11', amount: 45000, paid: 45000 },
-  ]
 </script>
 
 <template>
@@ -136,11 +121,6 @@
                       <div class="fs-3 fw-bold">250 000 Kč</div>
                     </div>
                     <div class="row row-gap-2 mt-3">
-                      <div class="col-12">
-                        <div class="progress">
-                          <div class="progress-bar bg-success" style="width: 85.7468%"></div>
-                        </div>
-                      </div>
                       <div class="col-6">
                         <div class="text-secondary">Využito</div>
                         <div class="fw-bold text-success">114 367 Kč</div>
@@ -148,6 +128,11 @@
                       <div class="col-6 text-end">
                         <div class="text-secondary">Zbývá</div>
                         <div class="fw-bold">35 633 Kč</div>
+                      </div>
+                      <div class="col-12">
+                        <div class="progress">
+                          <div class="progress-bar bg-success" style="width: 85.7468%"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -190,7 +175,7 @@
         <h3 class="m-0 mt-3">Platby</h3>
       </div>
       <div class="col-12">
-        <Payments :payments="payments" />
+        <Payments :payments="paymentsStore.payments" />
       </div>
 
 

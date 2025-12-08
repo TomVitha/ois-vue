@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  import { usePaymentsStore } from '@/stores/payments'
+  const paymentsStore = usePaymentsStore()
+
+  import Payments from '@/components/Payment/Payments.vue'
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentItem from '@/components/Payment/PaymentItem.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
@@ -107,34 +111,19 @@
           </div> -->
 
           <!-- * platby po splatnosti -->
-          <div class="col-12 mt-3">
-            <h3 class="m-0">Po splatnosti</h3>
+          <div class="col-12">
+            <h3 class="m-0 mt-3">Platby po splatnosti</h3>
           </div>
           <div class="col-12">
-            <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">Po splatnosti</h3>
-              </div> -->
-              <ul class="list-group list-group-flush">
-                <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-              </ul>
-            </div>
+            <Payments :payments="paymentsStore.overduePayments" />
           </div>
 
           <!-- * blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
-          <div class="col-12 mt-3">
-            <h3 class="m-0">Blížící se platby -- za všechny byty (přidat označení bytu do těla platby?)</h3>
+          <div class="col-12">
+            <h3 class="m-0 mt-3">Blížící se platby</h3>
           </div>
           <div class="col-12">
-            <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">Blížící se platby</h3>
-              </div> -->
-              <div class="list-group list-group-flush">
-                <PaymentItem title="Oprava střechy" duedate="2025-08-03" :amount="22000" :paid="0" />
-                <PaymentItem title="Vytunelování společnosti" duedate="2025-08-04" :amount="33450" :paid="0" />
-              </div>
-            </div>
+            <Payments :payments="paymentsStore.duePayments" />
           </div>
 
           <!-- DEV: One dialog for all payments -->
@@ -143,8 +132,7 @@
             :amount="50000"
             accountNumber="670100-1234567890 / 6210"
             :varSymbol="7464685"
-            message="192-03-147 KD1"
-          />
+            message="192-03-147 KD1" />
 
           <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
           <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
