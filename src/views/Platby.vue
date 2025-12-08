@@ -4,21 +4,21 @@
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
 
   const payments = [
-    { title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0 },
-    { title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
-    { title: '192-03-147 SOD', duedate: '2025-06-03', amount: 336600, paid: 245000 },
-    { title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true },
-    { title: '192-03-147 Odchylka', duedate: '2025-08-03', amount: 45000, paid: 32000 },
-    { title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 22000 },
-    { title: '192-03-147 dopLPZ', duedate: '2025-10-29', amount: 45000, paid: 32000 },
-    { title: 'Oprava střechy', duedate: '2026-01-01', amount: 50000, paid: 0, isInvoiceShown: true },
-    { title: 'Modernizace výtahu', duedate: '2026-06-01', amount: 45000, paid: 32000 },
-    { title: 'Oprava výtahu', duedate: '2025-08-03', amount: 50000, paid: 50000 },
-    { title: 'Revize elektroinstalace', duedate: '2024-01-01', amount: 50000, paid: 50000 },
-    { title: 'Nové vchodové dveře', duedate: '2025-08-03', amount: 50000, paid: 50000, isInvoiceShown: true },
-    { title: 'Instalace mučící komory', duedate: 'lkdahgiurn', amount: 15301, paid: 50000 },
-    { title: 'Odklid mrtvol', duedate: '2024-01-01', amount: 14873, paid: 140000 },
-    { title: '192-03-147 dopl.BD', duedate: '2025-05-11', amount: 45000, paid: 45000 },
+    { id: 0, title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0 },
+    { id: 1, title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
+    { id: 2, title: '192-03-147 SOD', duedate: '2025-06-03', amount: 336600, paid: 245000 },
+    { id: 3, title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true },
+    { id: 4, title: '192-03-147 Odchylka', duedate: '2025-08-03', amount: 45000, paid: 32000 },
+    { id: 5, title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 22000 },
+    { id: 6, title: '192-03-147 dopLPZ', duedate: '2025-10-29', amount: 45000, paid: 32000 },
+    { id: 7, title: 'Oprava střechy', duedate: '2026-01-01', amount: 50000, paid: 0, isInvoiceShown: true },
+    { id: 8, title: 'Modernizace výtahu', duedate: '2026-06-01', amount: 45000, paid: 32000 },
+    { id: 9, title: 'Oprava výtahu', duedate: '2025-08-03', amount: 50000, paid: 50000 },
+    { id: 10, title: 'Revize elektroinstalace', duedate: '2024-01-01', amount: 50000, paid: 50000 },
+    { id: 11, title: 'Nové vchodové dveře', duedate: '2025-08-03', amount: 50000, paid: 50000, isInvoiceShown: true },
+    { id: 12, title: 'Instalace mučící komory', duedate: 'lkdahgiurn', amount: 15301, paid: 50000 },
+    { id: 13, title: 'Odklid mrtvol', duedate: '2024-01-01', amount: 14873, paid: 140000 },
+    { id: 14, title: '192-03-147 dopl.BD', duedate: '2025-05-11', amount: 45000, paid: 45000 },
   ]
 </script>
 
@@ -186,19 +186,13 @@
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
 
-      <!-- <div class="col-12">
-        <h3 class="m-0 mt-3">Platby</h3>
-      </div> -->
       <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Platby</h3>
-          </div>
-          <div class="card-body p-0">
-            <Payments :payments="payments" />
-          </div>
-        </div>
+        <h3 class="m-0 mt-3">Platby</h3>
       </div>
+      <div class="col-12">
+        <Payments :payments="payments" />
+      </div>
+
 
     </div>
 

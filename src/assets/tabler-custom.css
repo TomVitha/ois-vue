@@ -69,6 +69,10 @@ dialog {
   display: none;
 }
 
+.navbar-vertical {
+  scrollbar-width: thin;
+}
+
 .navbar.navbar-vertical .dropdown-menu {
   --tblr-dropdown-link-hover-color: var(--tblr-navbar-active-color);
   --tblr-dropdown-link-hover-bg: transparent;
@@ -95,7 +99,7 @@ dialog {
   }
 }
 
-/* ? maybe - centers the center logo in the center column */
+/* Centers the center logo in the center column */
 @media (max-width: 991.98px) {
   .navbar-vertical.navbar-expand-lg > [class^=container] {
     display: grid;
@@ -194,7 +198,7 @@ dialog {
   /* --tblr-primary: #41a541; */
 }
 
-.card:where(:not(.card .card)) {
+/* .card:where(:not(.card .card)) {
   border-width: 0px;
 }
 
@@ -211,7 +215,7 @@ dialog {
   .navbar-expand-lg.navbar-vertical {
     box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
   }
-}
+} */
 
 /* TESTING - CG Branding */
 :root {

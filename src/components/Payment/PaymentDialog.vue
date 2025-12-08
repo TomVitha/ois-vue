@@ -27,14 +27,20 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Zaplatit platbu</h5>
+          <h5 class="modal-title">Platba</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
 
           <div class="space-y-3">
             <div>
-              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="200" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
+              <!-- QR -->
+              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="180" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
+              <!-- Success check img -->
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto bg-success-lt rounded-circle p-3 my-2" height="70">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l5 5l10 -10" />
+              </svg> -->
             </div>
 
             <div class="text-center">
