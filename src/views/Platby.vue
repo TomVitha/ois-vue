@@ -1,9 +1,25 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
-  import PaymentItem from '@/components/Payment/PaymentItem.vue'
-  import PaymentRow from '@/components/Payment/PaymentRow.vue'
+  import Payments from '@/components/Payment/Payments.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
-  import Alert from '@/components/Alert.vue'
+
+  const payments = [
+    { title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0 },
+    { title: 'Výstavba kolárny', duedate: '2024-01-01', amount: 36771, paid: 7547 },
+    { title: '192-03-147 SOD', duedate: '2025-06-03', amount: 336600, paid: 245000 },
+    { title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true },
+    { title: '192-03-147 Odchylka', duedate: '2025-08-03', amount: 45000, paid: 32000 },
+    { title: 'Rekonstrukce fasády', duedate: '2025-08-03', amount: 50000, paid: 22000 },
+    { title: '192-03-147 dopLPZ', duedate: '2025-10-29', amount: 45000, paid: 32000 },
+    { title: 'Oprava střechy', duedate: '2026-01-01', amount: 50000, paid: 0, isInvoiceShown: true },
+    { title: 'Modernizace výtahu', duedate: '2026-06-01', amount: 45000, paid: 32000 },
+    { title: 'Oprava výtahu', duedate: '2025-08-03', amount: 50000, paid: 50000 },
+    { title: 'Revize elektroinstalace', duedate: '2024-01-01', amount: 50000, paid: 50000 },
+    { title: 'Nové vchodové dveře', duedate: '2025-08-03', amount: 50000, paid: 50000, isInvoiceShown: true },
+    { title: 'Instalace mučící komory', duedate: 'lkdahgiurn', amount: 15301, paid: 50000 },
+    { title: 'Odklid mrtvol', duedate: '2024-01-01', amount: 14873, paid: 140000 },
+    { title: '192-03-147 dopl.BD', duedate: '2025-05-11', amount: 45000, paid: 45000 },
+  ]
 </script>
 
 <template>
@@ -17,7 +33,7 @@
             <path d="M9 14l-4 -4l4 -4" />
             <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
           </svg> -->
-          Podat žádost o odklad platby
+          Požádat o odklad platby
         </RouterLink>
       </div>
     </template>
@@ -100,6 +116,73 @@
           </div>
         </div>
       </div>
+
+      <!-- <div class="col-12">
+        <h3 class="m-0 mt-3">Poukázky</h3>
+      </div> -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Poukázky</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-cards">
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">192-03-147 Věrnostní poukázka</h4>
+                    <div>
+                      <div class="text-secondary">V hodnotě</div>
+                      <div class="fs-3 fw-bold">250 000 Kč</div>
+                    </div>
+                    <div class="row row-gap-2 mt-3">
+                      <div class="col-12">
+                        <div class="progress">
+                          <div class="progress-bar bg-success" style="width: 85.7468%"></div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-secondary">Využito</div>
+                        <div class="fw-bold text-success">114 367 Kč</div>
+                      </div>
+                      <div class="col-6 text-end">
+                        <div class="text-secondary">Zbývá</div>
+                        <div class="fw-bold">35 633 Kč</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
+                        <thead>
+                          <tr>
+                            <th class="text-start">Dodatek</th>
+                            <th class="text-center">Datum</th>
+                            <th class="text-end">Hodnota</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-start">KD2</td>
+                            <td class="text-center">26.04.2024</td>
+                            <td class="text-end">77 425 Kč</td>
+                          </tr>
+                          <tr>
+                            <td class="text-start">SOD-IS-I</td>
+                            <td class="text-center">16.06.2024</td>
+                            <td class="text-end">136 942 Kč</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
 
@@ -111,125 +194,8 @@
           <div class="card-header">
             <h3 class="card-title">Platby</h3>
           </div>
-          <div class="list-group list-group-flush">
-            <div class="list-group-header">separátor dle měsíce</div>
-            <!-- Overdue, unpaid -->
-            <PaymentItem title="Výmalba společných prostor" duedate="2024-01-01" :amount="12000" :paid="0" />
-            <!-- Overdue, partially paid -->
-            <PaymentItem title="Výstavba kolárny" duedate="2024-01-01" :amount="36771" :paid="7547" />
-            <!-- Unpaid, upcoming -->
-            <PaymentItem title="Oprava střechy" duedate="2026-01-01" :amount="50000" :paid="0" :is-invoice-shown="true" />
-            <!-- Unpaid, due -->
-            <PaymentItem title="Oprava střechy" duedate="2025-08-02" :amount="22000" :paid="0" :is-invoice-shown="true" />
-            <!-- Partially paid, due -->
-            <PaymentItem title="Modernizace výtahu" duedate="2026-06-01" :amount="45000" :paid="32000" />
-            <!-- Partially paid, due -->
-            <PaymentItem title="Rekonstrukce fasády" duedate="2025-08-03" :amount="50000" :paid="22000" />
-            <!-- Paid -->
-            <PaymentItem title="Oprava výtahu" duedate="2025-08-03" :amount="50000" :paid="50000" />
-            <!-- Overdue, paid -->
-            <PaymentItem title="Revize elektroinstalace" duedate="2024-01-01" :amount="50000" :paid="50000" />
-            <!-- Paid, with invoice -->
-            <PaymentItem title="Nové vchodové dveře" duedate="2025-08-03" :amount="50000" :paid="50000" :is-invoice-shown="true" />
-            <!-- Overdue, paid, invalid date -->
-            <PaymentItem title="Instalace mučící komory" duedate="lkdahgiurn" :amount="15301" :paid="50000" />
-            <!-- Partially paid, overpaid -->
-            <PaymentItem title="Odklid mrtvol" duedate="2024-01-01" :amount="14873" :paid="140000" />
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="col-12">
-        <h3 class="m-0 mt-3">Poukázky</h3>
-      </div> -->
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Poukázky</h3>
-          </div>
-          <div class="card-body">
-
-            <div class="row row-cards">
-              <div class="col-lg-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">186-06-025 Věrnostní poukázka</h4>
-                    <div class="card-subtitle">Využití: na co ji lze využít</div>
-                    <div class="row row-gap-2">
-                      <div class="col-12">
-                        <div class="progress">
-                          <div class="progress-bar bg-success" style="width: 38%"></div>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="text-secondary">Využito</div>
-                        <div class="fw-bold text-success">7&nbsp;547&nbsp;Kč</div>
-                      </div>
-                      <div class="col-6 text-end">
-                        <div class="text-secondary">Zbývá</div>
-                        <div class="fw-bold">29&nbsp;224&nbsp;Kč</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <div class="table-responsive">
-                        <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
-                          <thead>
-                            <tr>
-                              <th class="text-start">Dodatek</th>
-                              <th class="text-center">Datum</th>
-                              <th class="text-end">Hodnota</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="text-start">KD2</td>
-                              <td class="text-center">26.04.2024</td>
-                              <td class="text-end">77 425 Kč</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Platby</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
-              <thead>
-                <tr>
-                  <th>Stav</th>
-                  <th>Splatnost</th>
-                  <th class="w-100">Popis</th>
-                  <th class="text-sm-end">Částka</th>
-                  <th class="text-sm-end">Zaplaceno</th>
-                  <th class="text-sm-end">Zbývá</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <PaymentRow title="192-03-147 dopl.BD" duedate="2025-05-11" :amount="45000" :paid="45000" />
-                <PaymentRow title="192-03-147 SOD" duedate="2025-06-03" :amount="336600" :paid="245000" />
-                <PaymentRow title="192-03-147 Odchylka" duedate="2025-08-03" :amount="45000" :paid="32000" />
-                <PaymentRow title="192-03-147 dopLPZ" duedate="2025-10-29" :amount="45000" :paid="32000" />
-              </tbody>
-            </table>
+          <div class="card-body p-0">
+            <Payments :payments="payments" />
           </div>
         </div>
       </div>
