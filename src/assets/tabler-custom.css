@@ -192,6 +192,10 @@ dialog {
   }
 }
 
+.badge {
+  --tblr-badge-font-weight: var(--tblr-font-weight-normal);
+}
+
 
 /* TESTING - TenantCloud branding */
 :root {

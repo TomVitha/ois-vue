@@ -5,6 +5,7 @@
   import PageTemplate from '@/components/PageTemplate.vue'
   import Payments from '@/components/Payment/Payments.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
+  import Voucher from '@/components/Payment/Voucher.vue'
 </script>
 
 <template>
@@ -113,55 +114,19 @@
           <div class="card-body">
             <div class="row row-cards">
               <div class="col-lg-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">192-03-147 Věrnostní poukázka</h4>
-                    <div>
-                      <div class="text-secondary">V hodnotě</div>
-                      <div class="fs-3 fw-bold">250 000 Kč</div>
-                    </div>
-                    <div class="row row-gap-2 mt-3">
-                      <div class="col-6">
-                        <div class="text-secondary">Využito</div>
-                        <div class="fw-bold text-success">114 367 Kč</div>
-                      </div>
-                      <div class="col-6 text-end">
-                        <div class="text-secondary">Zbývá</div>
-                        <div class="fw-bold">35 633 Kč</div>
-                      </div>
-                      <div class="col-12">
-                        <div class="progress">
-                          <div class="progress-bar bg-success" style="width: 85.7468%"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
-                        <thead>
-                          <tr>
-                            <th class="text-start">Dodatek</th>
-                            <th class="text-center">Datum</th>
-                            <th class="text-end">Hodnota</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="text-start">KD2</td>
-                            <td class="text-center">26.04.2024</td>
-                            <td class="text-end">77 425 Kč</td>
-                          </tr>
-                          <tr>
-                            <td class="text-start">SOD-IS-I</td>
-                            <td class="text-center">16.06.2024</td>
-                            <td class="text-end">136 942 Kč</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
+                <Voucher
+                  :title="'192-03-147 Věrnostní poukázka'"
+                  :value="250000"
+                  :spent="114367"
+                  :breakdown="[
+                    { label: 'KD2', date: '26.04.2024', amount: 77_425 },
+                    { label: 'SOD-IS-I', date: '16.06.2024', amount: 136_942 }
+                  ]" />
+              </div>
+              <div class="col-lg-6">
+                <Voucher
+                  :title="'192-03-147 z lásky'"
+                  :value="69000"/>
               </div>
             </div>
           </div>
