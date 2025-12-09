@@ -62,9 +62,9 @@
           <!-- TODO: Předělat oznámení, pokud má klient aktivní podanou žádost -->
 
           <div class="col-12">
-            <div class="card card-md">
+            <div class="card card-md" id="osobni-udaje">
               <div class="card-body">
-                <h3 class="card-title">Osobní údaje (6)</h3>
+                <h3 class="card-title">Osobní údaje</h3>
                 <div class="datagrid">
                   <div class="datagrid-item">
                     <div class="datagrid-title">Klient</div>
@@ -104,7 +104,7 @@
             </div>
           </div>
           <div class="col-12">
-            <div class="card card-md">
+            <div class="card card-md" id="heslo">
               <div class="card-body">
                 <h3 class="card-title">Heslo</h3>
                 <p class="card-subtitle">
@@ -171,6 +171,34 @@
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Uložit</button>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card card-md" id="upozorneni-plateb">
+              <div class="card-body">
+                <h3 class="card-title">Upozornění blížících se plateb</h3>
+                <p class="card-subtitle">
+                  Zvolte si kolik dní před splatností má být platba považována za blížící se a chcete být na ni upozorněni.
+                </p>
+                <div>
+                  <select class="form-select w-auto">
+                    <option value="1">1 den</option>
+                    <option value="2">2 dny</option>
+                    <option value="3">3 dny</option>
+                    <option value="4">4 dny</option>
+                    <option value="5">5 dnů</option>
+                    <option value="6">6 dnů</option>
+                    <option value="7">7 dnů</option>
+                    <option value="8">8 dnů</option>
+                    <option value="9">9 dnů</option>
+                    <option value="10">10 dnů</option>
+                    <option value="11">11 dnů</option>
+                    <option value="12">12 dnů</option>
+                    <option value="13">13 dnů</option>
+                    <option value="14">14 dnů</option>
+                  </select>
                 </div>
               </div>
             </div>

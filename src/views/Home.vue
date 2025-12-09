@@ -33,7 +33,7 @@
           <!-- ? Setup block -->
           <div class="col-12">
             <div class="card overflow-hidden">
-              <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
+              <div id="carousel-1" class="carousel slide" data-bs-interval="false">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div class="card-body bg-primary-lt text-center">
@@ -88,7 +88,10 @@
 
           <!-- * blížící se platby (např v pristich 7 dnech) - výrazně co jsi nezaplatil nebo co máš zaplaceno -->
           <div class="col-12">
-            <h3 class="m-0 mt-3">Blížící se platby</h3>
+            <div class="d-flex justify-content-between align-items-baseline flex-fill">
+              <h3 class="m-0 mt-3">Blížící se platby</h3>
+              <RouterLink to="/account#upozorneni-plateb">Nastavení upozornění</RouterLink>
+            </div>
           </div>
           <div class="col-12">
             <Payments :payments="paymentsStore.duePayments" />
