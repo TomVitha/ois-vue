@@ -15,7 +15,7 @@
 
 <template>
 
-  <PageTemplate title="Nastavení účtu">
+  <PageTemplate title="Nastavení">
     <div class="row g-5">
       <!-- <div class="col-xl-2 d-none d-xl-block">
         <div class="sticky-top">
@@ -188,7 +188,7 @@
                     <option value="2">2 dny</option>
                     <option value="3">3 dny</option>
                     <option value="4">4 dny</option>
-                    <option value="5">5 dnů</option>
+                    <option value="5" selected>5 dnů</option>
                     <option value="6">6 dnů</option>
                     <option value="7">7 dnů</option>
                     <option value="8">8 dnů</option>

@@ -48,7 +48,7 @@
                 <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
               </svg>
             </div>
-            Profil a nastavení
+            Nastavení
           </RouterLink>
           <a href="#" class="dropdown-item">
             <div class="dropdown-item-icon">

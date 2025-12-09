@@ -15,7 +15,7 @@ const router = createRouter({
     },
     {
       path: '/account',
-      component: () => import('../views/Account.vue'),
+      component: () => import('../views/Settings.vue'),
     },
     {
       path: '/apt',
