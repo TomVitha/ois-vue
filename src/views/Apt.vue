@@ -4,7 +4,7 @@
 
 <template>
 
-  <PageTemplate title="D 331">
+  <PageTemplate title="192-03-D 331">
     <template #actions>
       <div class="btn-list">
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -39,8 +39,9 @@
         </div>
       </div>
     </template>
-    <div class="row row-cards">
-      <div class="col-12">
+    <div class="row row-cards row-deck">
+
+      <!-- <div class="col-12">
         <div class="card">
           <div class="card-body">
             půdorys? velká ilustrace? ostatní pohledy?
@@ -169,7 +170,86 @@
             GALERIE ?
           </div>
         </div>
+      </div> -->
+
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            INFOBOX
+          </div>
+        </div>
       </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Postup předání</h3>
+          </div>
+          <div class="card-body">
+            <ul class="steps steps-green steps-counter steps-vertical border-0 m-0 p-0 ps-2">
+              <li class="step-item">
+                <h4>Zjišťovací protokol</h4>
+                <div class="text-secondary">
+                  vysvětlení o co jde a co se po klientovi chce
+                </div>
+              </li>
+              <li class="step-item active">
+                <h4>Platby ověřeny</h4>
+                <div class="text-secondary">
+                  vysvětlení o co jde a co se po klientovi chce
+                </div>
+              </li>
+              <li class="step-item">
+                <h4>Splněné podmínky</h4>
+                <div class="text-secondary">
+                  vysvětlení o co jde a co se po klientovi chce
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-md">
+          <div class="card-body">
+            <!-- <ul>
+              <li>timeline</li>
+              <li>terminy splatnosti vsech faktur; stavebni milniky, klientske terminy (terminove sekce), nastehovani</li>
+              <li>budou tam i uvery pro uverove financovaní</li>
+            </ul> -->
+            <div class="steps steps-vertical border-0 m-0 p-0 ps-2">
+              <div class="step-item">
+                <small>26.4.2026</small>
+                <h4>Zahájení stavby</h4>
+                <div class="text-secondary">
+                  popis
+                </div>
+              </div>
+              <div class="step-item active">
+                <small>26.4.2026</small>
+                <h4>Zahájení stavby</h4>
+                <div class="text-secondary">
+                  popis
+                </div>
+              </div>
+              <div class="step-item">
+                <small>26.4.2026</small>
+                <h4>Zahájení stavby</h4>
+                <div class="text-secondary">
+                  popis
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            galerie
+          </div>
+        </div>
+      </div>
+
     </div>
   </PageTemplate>
 

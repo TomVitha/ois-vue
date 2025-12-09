@@ -14,6 +14,7 @@
     "subject": "Důležitá záležitost",
     "badge": "192-03-147",
     "isUnread": true,
+    "requiresSignature": true,
     "attachments": [
       {
         "filename": "dulezity_dokument.pdf",

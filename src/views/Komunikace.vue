@@ -104,6 +104,7 @@
     } else {
       router.replace({ query: {} })
     }
+    msgSignatureText.value = ''
   })
 
   // Watch for changes in route.query
@@ -129,6 +130,9 @@
       console.debug("canceled")
     }
   }
+
+  const msgSignatureText = ref('')
+  const isSignatureValid = computed(() => msgSignatureText.value.trim().length > 0)
 </script>
 
 <template>
@@ -465,6 +469,20 @@
             <div class="card-body">
               <div class="markdown">
                 <div v-html="selectedMessageHtml"></div>
+              </div>
+            </div>
+            <!-- ? mayabe -->
+            <div v-if="selectedMessage.meta.requiresSignature" class="card-footer">
+              <div class="row align-items-center gy-3">
+                <div class="col-12 col-xl-auto ms-xl-auto">
+                  <input type="text" class="form-control w-100" placeholder="Napište své celé jméno..." v-model="msgSignatureText">
+                </div>
+                <div class="col-6 col-xl-auto order-xl-first">
+                  <button class="btn btn-danger w-100">Odmítnout</button>
+                </div>
+                <div class="col-6 col-xl-auto">
+                  <button class="btn btn-primary btn-2 w-100" :disabled="!isSignatureValid">Akceptovat</button>
+                </div>
               </div>
             </div>
           </div>
