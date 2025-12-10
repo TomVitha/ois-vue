@@ -218,22 +218,22 @@
             </ul> -->
             <div class="steps steps-vertical border-0 m-0 p-0 ps-2">
               <div class="step-item">
-                <small>26.4.2026</small>
-                <h4>Zahájení stavby</h4>
+                <div>26.4.2026</div>
+                <div class="h2">Zahájení stavby</div>
                 <div class="text-secondary">
                   popis
                 </div>
               </div>
               <div class="step-item active">
-                <small>26.4.2026</small>
-                <h4>Zahájení stavby</h4>
+                <div>26.4.2026</div>
+                <div class="h2">Zahájení stavby</div>
                 <div class="text-secondary">
                   popis
                 </div>
               </div>
               <div class="step-item">
-                <small>26.4.2026</small>
-                <h4>Zahájení stavby</h4>
+                <div>26.4.2026</div>
+                <div class="h2">Zahájení stavby</div>
                 <div class="text-secondary">
                   popis
                 </div>

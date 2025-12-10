@@ -119,14 +119,14 @@
                   :value="250000"
                   :spent="114367"
                   :breakdown="[
-                    { label: 'KD2', date: '26.04.2024', amount: 77_425 },
-                    { label: 'SOD-IS-I', date: '16.06.2024', amount: 136_942 }
+                    { label: 'KD2', date: '2024-04-26', amount: 77_425 },
+                    { label: 'SOD-IS-I', date: '2024-06-16', amount: 136_942 }
                   ]" />
               </div>
               <div class="col-lg-6">
                 <Voucher
                   :title="'192-03-147 z lásky'"
-                  :value="69000"/>
+                  :value="69000" />
               </div>
             </div>
           </div>
@@ -146,7 +146,8 @@
 
     </div>
 
-
+    <!-- ! hard-coded values -->
+    <!-- TODO: Refactor to accept data from store -->
     <PaymentDialog :amount="37450" accountNumber="670100-1234567890 / 6210" :varSymbol="7464685" message="192-03-147 KD1" />
 
 

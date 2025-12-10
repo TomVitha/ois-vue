@@ -8,12 +8,13 @@
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
+
       <!-- <div class="col-12">
         TODO: Toolbar (download all)
       </div> -->
 
       <div class="col-12 mt-3">
-        <h3 class="mb-0">Nedůležité</h3>
+        <h3 class="mb-0">Jedna kategorie</h3>
       </div>
       <div class="col-12">
         <div class="card">
@@ -25,7 +26,7 @@
       </div>
 
       <div class="col-12 mt-3">
-        <h3 class="mb-0">Důležité</h3>
+        <h3 class="mb-0">Druhá kategorie</h3>
       </div>
       <div class="col-12">
         <div class="card">

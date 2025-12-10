@@ -160,9 +160,24 @@
                             </span>
                           </div>
                         </div>
-                        <!-- TODO -->
+                        <!-- NOTE: CHECKLIST SE BUDE DYNAMICKY AKTUALIZOVAT JAK HO UŽIVATEL PÍŠE PRO OKAMŽITOU ODEZVU -->
                         <div class="row-12">
-                          <p>Sem přijde výpis požadavků na heslo (v podobě checklistu ?)</p>
+                          <div>
+                            <ul class="space-y-1">
+                              <li class="text-success">
+                                Minimum 8 znaků
+                              </li>
+                              <li class="text-success">
+                                1 velké písmeno
+                              </li>
+                              <li class="text-secondary">
+                                1 číslo
+                              </li>
+                              <li class="text-secondary">
+                                1 speciální znak
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -5,7 +5,7 @@
   import Payments from '@/components/Payment/Payments.vue'
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
-  import DocumentItem from '@/components/DocumentItem.vue'
+  import SignaturePromptItem from '@/components/SignaturePromptItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
 </script>
 
@@ -97,24 +97,23 @@
             <Payments :payments="paymentsStore.duePayments" />
           </div>
 
-          <!-- ! REDO ! This should take you to the Message, where you "sign" the doc (there are no documents to display here) ! -->
           <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
-          <div class="col-12">
-            <h3 class="mt-3 mb-0">Dokumenty k podepsání -- BLBĚ !!</h3>
-          </div>
-          <div class="col-12">
+          <div class="col-xl-6">
             <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Dokumenty k podepsání</h3>
+              </div>
               <div class="list-group list-group-flush">
-                <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" dateValid="4.2.2025" />
+                <SignaturePromptItem title="Návrh klientského dodatku" file="218-09-006_KD2.pdf" />
               </div>
             </div>
           </div>
           <!-- * blížící se termínovky - termín výběrů -->
-          <div class="col-12">
-            <h3 class="mt-3 mb-0">Blížící se termíny klientských změn</h3>
-          </div>
-          <div class="col-12">
+          <div class="col-xl-6">
             <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Blížící se termíny klientských změn</h3>
+              </div>
               <div class="list-group list-group-flush">
                 <div class="list-group-item">datum; cislo bytu/smlouvy; n-ta terminova sekce; 1 veta kratkeho popisu</div>
               </div>

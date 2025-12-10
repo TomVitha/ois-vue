@@ -46,8 +46,6 @@
       <div class="text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
       <div class="d-flex align-items-center justify-content-between gap-2">
         <span class="text-secondary  text-truncate">{{ content?.slice(0, 100) || '' }}</span>
-        <!-- TODO? Add to favorite (star) -->
-        <!-- <i class="ti ti-star text-secondary fs-3"></i> -->
       </div>
     </div>
   </a>

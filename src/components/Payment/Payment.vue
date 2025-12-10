@@ -18,11 +18,9 @@
     variant: 'list'
   })
 
-  // Keep existing dev behaviors: hard-coded today and invalid-date hack
   const dueDate = new Date(props.duedate)
-  if (isNaN(dueDate.getTime())) {
-    dueDate.setTime(99999999999999999999999999)
-  }
+  // HACK to display browser-native invalid date message
+  if (isNaN(dueDate.getTime())) { dueDate.setTime(99999999999999999999999999) }
 
   const dueDaysThreshold = 7
   const remainingAmount = computed(() => props.amount - props.paid)
@@ -140,7 +138,6 @@
 
   <!-- Desktop: table row with pay button -->
   <tr
-    style="height: 4rem;"
     v-else
     class="card-link position-relative">
     <td data-label="Popis">
@@ -172,3 +169,10 @@
     <td class="text-sm-end" data-label="Zbývá">{{ formatCurrency(remainingAmount) }}</td>
   </tr>
 </template>
+
+<style scoped>
+  tr {
+    /* height on <tr> acts like min-height */
+    height: 4rem;
+  }
+</style>

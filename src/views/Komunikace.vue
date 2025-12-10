@@ -2,6 +2,9 @@
   import { ref, onMounted, computed, watch } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
+  import { useLocaleStore } from '@/stores/locale'
+  const localeStore = useLocaleStore()
+
   // markdown parser
   import { marked } from 'marked'
   // <select> UI control with autocomplete
@@ -67,9 +70,10 @@
     }
 
     // Initialize TomSelect
-    new TomSelect("#select-recipient", {
-      create: false,
-    });
+    // new TomSelect("#select-recipient", {
+    //   create: false,
+    // });
+
   })
 
   function selectMessage(messageId: string) {
@@ -116,8 +120,8 @@
     }
   })
 
-  // TODO
-  function discardMessage(event?: Event) {
+  // TODO: Message discard logic
+  function promptDiscardMessage(event?: Event) {
 
     // const msgModal = tabler?.Modal.getOrCreateInstance('#new-message-modal')
     // console.log(msgModal)
@@ -125,9 +129,9 @@
     // msgModal.hide();
 
     if (confirm("Opravdu chcete zahodit rozpracovanou zprávu?")) {
-      console.debug("DISCARDED")
+      // DISCARD - Close the modal and clear the message content
     } else {
-      console.debug("canceled")
+      // CANCEL - The message stays open and its content remains
     }
   }
 
@@ -157,7 +161,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title">Nová zpráva</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="promptDiscardMessage()"></button>
                     </div>
                     <div class="modal-body">
                       <!-- TODO: HugeRTE instead of plain text -->
@@ -169,15 +173,11 @@
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Od: </span><input type="text" class="form-control" autocomplete="off" value="Adam Novák" readonly>
                         </div>
-                        <!-- <div class="input-group input-group-flat">
-                          <span class="input-group-text">Komu: </span><input type="text" class="form-control" autocomplete="off">
-                        </div> -->
                         <!-- WIP - tom-select -->
-                        <!-- TODO: Generalize -->
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Komu: </span>
                           <select class="form-control" id="select-recipient" placeholder="Vyberte příjemce..." autocomplete="off">
-                            <option value="">Vyberte příjemce...</option>
+                            <option value="" disabled selected>Vyberte příjemce...</option>
                             <option value="1">Darth Vader</option>
                             <option value="2">Michael Corleone</option>
                             <option value="3">Marty McFly</option>
@@ -195,7 +195,7 @@
                     <div class="modal-footer">
                       <div class="button-actions me-auto">
                         <!-- Discard -->
-                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" @click.prevent="discardMessage()">
+                        <button type="button" class="btn btn-icon btn-ghost btn-danger" title="Zahodit" @click.prevent="promptDiscardMessage()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 7l16 0" />
@@ -358,10 +358,7 @@
             <div class="container-tight py-4">
               <div class="empty">
                 <div class="empty-img">
-                  <!-- PLACEHOLDER: Image from Outlook -->
-                  <!-- TODO: Replace with custom image -->
-                  <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/light.svg" alt="" class="hide-theme-dark" width="200">
-                  <img src="https://res.public.onecdn.static.microsoft/assets/mail/illustrations/noMailSelected/v2/dark.svg" alt="" class="hide-theme-light" width="200">
+                  <!-- TODO: Envelope image ? -->
                 </div>
                 <p class="empty-title">
                   <span v-if="messages.some(m => m.meta.isUnread)">
@@ -422,8 +419,7 @@
                       <div>
                         <span class="text-secondary fs-5">
                           {{
-                            // TODO: Set locale according to global state
-                            new Intl.DateTimeFormat(["cs-CZ"], {
+                            new Intl.DateTimeFormat([localeStore.locale], {
                               weekday: 'short',
                               day: '2-digit',
                               month: '2-digit',

@@ -54,7 +54,7 @@
         </NewRequest>
       </div>
 
-
+      <!-- Změna osobních údajů (alt) -->
       <div class="col-md-4">
         <NewRequest
           id="zmena-osobnich-udaju-2"
@@ -98,7 +98,27 @@
           id="odklad-platby"
           name="Odklad platby"
           description="Nestíháte posílat prašule? Nevadí, u nás můžete zaplatit později.">
-          <!-- todo -->
+          <!-- TODO: Tělo žádosti -->
+        </NewRequest>
+      </div>
+
+      <!-- Změna financování -->
+      <div class="col-md-4">
+        <NewRequest
+          id="zmena-financovani"
+          name="Změna financování"
+          description="Pokud potřebujete změnit způsob financování.">
+          <!-- TODO: Tělo žádosti -->
+        </NewRequest>
+      </div>
+
+      <!-- Změna spolumajitelů -->
+      <div class="col-md-4">
+        <NewRequest
+          id="zmena-spolumajitelu"
+          name="Změna spolumajitelů"
+          description="Zemřela vám babička, nebo návštěva na jednu noc se rozhodna zůstat?">
+          <!-- TODO: Tělo žádosti -->
         </NewRequest>
       </div>
 

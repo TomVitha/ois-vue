@@ -1,29 +1,32 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+  import { computed } from 'vue'
 
-interface BreakdownItem {
-  label: string
-  date: string
-  amount: number
-}
+  import { useLocaleStore } from '@/stores/locale'
+  const localeStore = useLocaleStore()
 
-const props = defineProps<{
-  title: string
-  value: number
-  spent?: number
-  breakdown?: BreakdownItem[]
-}>()
+  interface BreakdownItem {
+    label: string
+    date: string
+    amount: number
+  }
 
-const remaining = computed(() => Math.max(props.value - (props.spent || 0), 0))
-const utilizationPercent = computed(() => {
-  if (!props.value) return 0
-  const rawPercent = ((props.spent || 0) / props.value) * 100
-  return Math.max(0, Math.min(rawPercent, 100))
-})
-const isFullyUsed = computed(() => remaining.value <= 0)
+  const props = defineProps<{
+    title: string
+    value: number
+    spent?: number
+    breakdown?: BreakdownItem[]
+  }>()
 
-const formatCurrency = (amount: number) =>
-  new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 }).format(amount)
+  const remaining = computed(() => Math.max(props.value - (props.spent || 0), 0))
+  const utilizationPercent = computed(() => {
+    if (!props.value) return 0
+    const rawPercent = ((props.spent || 0) / props.value) * 100
+    return Math.max(0, Math.min(rawPercent, 100))
+  })
+  const isFullyUsed = computed(() => remaining.value <= 0)
+
+  const formatCurrency = (amount: number) =>
+    new Intl.NumberFormat(localeStore.locale, { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 }).format(amount)
 </script>
 
 <template>
@@ -63,7 +66,15 @@ const formatCurrency = (amount: number) =>
           <tbody>
             <tr v-for="item in props.breakdown" :key="`${item.label}-${item.date}`">
               <td class="text-start">{{ item.label }}</td>
-              <td class="text-center">{{ item.date }}</td>
+              <td class="text-center">
+                {{
+                  new Intl.DateTimeFormat([localeStore.locale], {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                  }).format(new Date(item.date))
+                }}
+              </td>
               <td class="text-end">{{ formatCurrency(item.amount) }}</td>
             </tr>
           </tbody>
