@@ -97,6 +97,7 @@
                 </div>
                 <div class="mt-4">
                   <div class="btn-list">
+                    <!-- Odkáže na stránku nových žádostí a otevře rovnou formulář této žádosti / Nebo otevře formulář rovnou zde -->
                     <RouterLink to="/zadost-nova" class="btn btn-1">Zažádat o změnu</RouterLink>
                   </div>
                 </div>

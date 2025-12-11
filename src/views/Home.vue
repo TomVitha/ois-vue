@@ -23,7 +23,7 @@
       <div class="col-xl-3">
         <div class="card h-100">
           <div class="card-body">
-            info o klientovi
+            TODO: info o klientovi ?
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
             <div class="card overflow-hidden">
               <div id="carousel-1" class="carousel slide" data-bs-interval="false">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
+                  <!-- <div class="carousel-item active">
                     <div class="card-body bg-primary-lt text-center">
                       <div class="text-body space-y-2 align-items-center">
                         <img src="https://tabler.io/_next/image?url=%2Fillustrations%2Fdark%2Fclock-and-cat.png&w=800&q=75" alt="" srcset="" width="150">
@@ -54,8 +54,8 @@
                         </small>
                       </div>
                     </div>
-                  </div>
-                  <div class="carousel-item">
+                  </div> -->
+                  <div class="carousel-item active">
                     <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%201" />
                   </div>
                   <div class="carousel-item">
@@ -115,7 +115,7 @@
                 <h3 class="card-title">Blížící se termíny klientských změn</h3>
               </div>
               <div class="list-group list-group-flush">
-                <div class="list-group-item">datum; cislo bytu/smlouvy; n-ta terminova sekce; 1 veta kratkeho popisu</div>
+                <div class="list-group-item">TODO: datum; číslo bytu/smlouvy; kolikátá terminova sekce; 1 věta krátkého popisu</div>
               </div>
             </div>
           </div>

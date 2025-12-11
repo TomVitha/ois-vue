@@ -87,7 +87,7 @@
                 <path d="M5 12l6 6"></path>
                 <path d="M5 12l6 -6"></path>
               </svg>
-              Zpět na přehled
+              Zpět domů
             </RouterLink>
           </div>
         </div>

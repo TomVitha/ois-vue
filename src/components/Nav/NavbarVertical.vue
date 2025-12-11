@@ -46,14 +46,21 @@
         <ul class="navbar-nav p-2 pt-3 gap-1">
 
           <!-- * Dashboard -->
-          <NavItem label="Přehled" to="/">
+          <NavItem label="Nástěnka" to="/">
             <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+              </svg> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                <path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
+                <path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                <path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
               </svg>
             </template>
           </NavItem>
@@ -110,18 +117,19 @@
             <hr class="my-1">
           </li>
 
-          <!-- * produkty -->
-          <NavItem label="Produkty" to="/produkty">
+          <!-- ? Maybe ? -->
+          <!-- * Produkty - výpis a přehled všech vlastněných produktů -->
+          <NavItem label="Produkty" to="/produkty" hidden>
             <template #icon>
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-community">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-community">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8" />
                 <path d="M13 7l0 .01" />
                 <path d="M17 7l0 .01" />
                 <path d="M17 11l0 .01" />
                 <path d="M17 15l0 .01" />
-              </svg> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-buildings">
+              </svg>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-buildings">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 21v-15c0 -1 1 -2 2 -2h5c1 0 2 1 2 2v15" />
                 <path d="M16 8h2c1 0 2 1 2 2v11" />
@@ -134,7 +142,7 @@
                 <path d="M7 8v0" />
                 <path d="M17 12v0" />
                 <path d="M17 16v0" />
-              </svg>
+              </svg> -->
             </template>
           </NavItem>
 
@@ -142,14 +150,13 @@
           <!-- TODO: Nested URL -> Router -->
           <NavItem label="192-03-147" :children="[
             { label: 'Detail', to: '/apt' },
-            // { label: 'Postup předání (?)', to: '/predani' }, // Included in Detail
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
-            // { label: 'Poukázky', to: '/poukazky' },  // Included in Payments
-            { label: 'Termíny', to: '/terminy' },
-            // { label: 'Reklamace', to: '/reklamace' },  // LATER
-            { label: 'Žádosti', to: '/zadosti' },
-            { label: 'Kontakty', to: '/kontakty' },
+            // { label: 'Poukázky', to: '/poukazky' },          // Deprecated: Included in Payments
+            { label: 'Klientské změny', to: '/klientske-zmeny' },
+            // { label: 'Reklamace', to: '/reklamace' },        // TODO: Pozdější fáze
+            { label: 'Žádosti', to: '/zadosti' },               // With active filter for this unit
+            { label: 'Kontakty', to: '/kontakty' },             // ? Maybe - Like with requests, take to all contacts page with filter for this unit ?
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
@@ -165,14 +172,13 @@
           <!-- TODO: Nested URL -> Router -->
           <NavItem label="název komerce" :children="[
             { label: 'Detail', to: '/apt' },
-            // { label: 'Postup předání (?)', to: '/predani' }, // Included in Detail
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
-            // { label: 'Poukázky', to: '/poukazky' },  // Included in Payments
-            { label: 'Termíny', to: '/terminy' },
-            // { label: 'Reklamace', to: '/reklamace' },  // LATER
-            { label: 'Žádosti', to: '/zadosti' },
-            { label: 'Kontakty', to: '/kontakty' },
+            // { label: 'Poukázky', to: '/poukazky' },          // Deprecated: Included in Payments
+            { label: 'Klientské změny', to: '/klientske-zmeny' },
+            // { label: 'Reklamace', to: '/reklamace' },        // TODO: Pozdější fáze
+            { label: 'Žádosti', to: '/zadosti' },               // With active filter for this unit
+            { label: 'Kontakty', to: '/kontakty' },             // ? Maybe - Like with requests, take to all contacts page with filter for this unit ?
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-store">
@@ -192,7 +198,7 @@
           </li>
 
           <!-- * vzorkovna -->
-          <NavItem label="Vzorkovna" to="/vzorkovna">
+          <!-- <NavItem label="Vzorkovna" to="/vzorkovna">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stack">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -200,10 +206,22 @@
                 <path d="M4 14l8 4l8 -4" />
               </svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- * interierove studio (central interier) -->
-          <NavItem label="Interiérové studio" to="/ci">
+          <!-- <NavItem label="Interiérové studio" to="/ci">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-key">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z" />
+                <path d="M15 9h.01" />
+              </svg>
+            </template>
+          </NavItem> -->
+
+          <!-- TODO -->
+          <!-- * Vzorkovna + interierove studio (central interier) -->
+          <NavItem label="Vzorkovna a CI" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-key">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -218,8 +236,9 @@
               <hr class="my-1">
             </li> -->
 
-          <!-- * News -->
-          <NavItem label="Novinky (a nabídky)" to="/news">
+          <!-- TODO: Implementovat v pozdější fázi -->
+          <!-- * Novinky a nabídky -->
+          <!-- <NavItem label="Novinky" to="/news">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-world">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -230,7 +249,7 @@
                 <path d="M12.5 3a17 17 0 0 1 0 18"></path>
               </svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- * Contacts -->
           <!-- <NavItem label="Kontakty" to="/kontakty">
@@ -248,11 +267,6 @@
           <!-- * Help / FAQ -->
           <NavItem label="Otázky a odpovědi" to="/help">
             <template #icon>
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-question-mark">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4" />
-                <path d="M12 19l0 .01" />
-              </svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />

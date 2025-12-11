@@ -4,8 +4,8 @@
 
 <template>
 
-  <PageTemplate title="192-03-D 331">
-    <template #actions>
+  <PageTemplate title="192-03-147">
+    <!-- <template #actions>
       <div class="btn-list">
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-pencil">
@@ -19,10 +19,6 @@
       <div class="modal" id="exampleModal" tabindex="-1">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
           <div class="modal-content">
-            <!-- <div class="modal-header">
-              <h5 class="modal-title">Přejmenovat</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> -->
             <div class="modal-body">
               <div>
                 <label class="form-label d-inline-flex" for="apt-name">Název</label>
@@ -38,7 +34,8 @@
           </div>
         </div>
       </div>
-    </template>
+    </template> -->
+    
     <div class="row row-cards row-deck">
 
       <!-- <div class="col-12">
@@ -175,7 +172,20 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            INFOBOX
+            <p>TODO: INFOBOX</p>
+            <p>Základní údaje jako např:</p>
+            <div class="row">
+              <div class="col-auto">
+                <ul>
+                  <li>Číslo jednotky</li>
+                  <li>Projekt</li>
+                  <li>Lokalita</li>
+                  <li>Dispozice</li>
+                  <li>Bytový dům</li>
+                  <li>Patro</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -245,7 +255,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            galerie
+            TODO: Galerie
           </div>
         </div>
       </div>

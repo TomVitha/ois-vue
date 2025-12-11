@@ -21,29 +21,94 @@
       </div>
     </template>
 
-    <!-- * No requests -->
+    <!-- * No requests alert -->
+    <!-- <div class="empty">
+      <p class="empty-title">Žádné podané žádosti</p>
+      <p class="empty-subtitle text-secondary">
+        Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
+      </p>
+      <div class="empty-action">
+        <RouterLink to="/zadosti-nova" class="btn btn-primary btn-4">
+          Vytvořit novou žádost
+        </RouterLink>
+      </div>
+    </div> -->
+
+    <!-- * List of requests -->
     <div class="row row-deck row-cards">
-      <div class="row-12">
-        <div class="card card-md">
+
+      <!-- WIP: Active requests -->
+      <div class="col-12" hidden>
+        <div class="card">
           <div class="card-body">
-            <div class="text-center">
-              <div class="my-5">
-                <h2 class="h1">Žádné aktivní žádosti</h2>
-                <p class="fs-h3 text-secondary">
-                  Zde uvidíte detaily a stav všech žádostí, které jste podali.
-                </p>
+            <div class="row align-items-center">
+              <div class="col">
+                Změna osobních údajů
               </div>
-              <!-- <div class="text-center text-secondary mt-3">
-                Can't see the email? Please check the spam folder.<br>
-                Wrong email? Please <a href="#">re-enter your address</a>.
-              </div> -->
+              <div class="col">
+                <span class="badge">192-01-123</span>
+              </div>
+              <div class="col">
+                <span class="badge bg-info-lt">
+                  Otevřená
+                </span>
+                <span class="status status-info">
+                  Otevřená
+                </span>
+              </div>
+              <div class="col-auto">
+                <!-- TODO: Otevře dialog s tou žádostí vyplněné právě těmi údaji jako jsme ji zaslali (jen samozřejmě read-only) -->
+                <RouterLink to="#zadost-detail">
+                  Zobrazit
+                </RouterLink>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- TODO: List of all active requests -->
+      <div class="col-12">
+        <div class="card">
+          <div class="table-responsive ">
+            <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
+              <thead>
+                <tr>
+                  <th>Název</th>
+                  <th>Zasláno</th>
+                  <th>Stav</th>
+                  <th>Jednotka</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Název">Změna osobních údajů</td>
+                  <td data-label="Zasláno">2023-01-01</td>
+                  <td data-label="Stav">
+                    <span class="status status-info">Otevřená</span>
+                  </td>
+                  <td data-label="Jednotka">192-03-147</td>
+                  <td class="w-1" data-label="">
+                    <RouterLink to="#zadost-detail">
+                      Zobrazit
+                    </RouterLink>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIP - Alt request design -->
+      <!-- <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Změna osobních údajů</h4>
+          </div>
+        </div>
+      </div> -->
+    </div>
 
   </PageTemplate>
 

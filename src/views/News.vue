@@ -5,7 +5,7 @@
 
 <template>
 
-  <PageTemplate title="Novinky a nabídky">
+  <PageTemplate title="Novinky">
     <div class="row row-cards">
       <div class="col-12">
         <NewsItem 

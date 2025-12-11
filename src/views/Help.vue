@@ -24,7 +24,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-1-1" class="accordion-collapse collapse show" role="tabpanel" data-bs-parent="#faq-1">
+              <div id="faq-1-1" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -55,7 +55,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-1-2" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-1">
+              <div id="faq-1-2" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -86,7 +86,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-1-3" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-1">
+              <div id="faq-1-3" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -124,7 +124,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-2-1" class="accordion-collapse collapse show" role="tabpanel" data-bs-parent="#faq-2">
+              <div id="faq-2-1" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -155,7 +155,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-2-2" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-2">
+              <div id="faq-2-2" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -186,7 +186,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-2-3" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-2">
+              <div id="faq-2-3" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -217,7 +217,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-2-4" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-2">
+              <div id="faq-2-4" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -255,7 +255,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-3-1" class="accordion-collapse collapse show" role="tabpanel" data-bs-parent="#faq-3">
+              <div id="faq-3-1" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -286,7 +286,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-3-2" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-3">
+              <div id="faq-3-2" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>
@@ -317,7 +317,7 @@
                   </div>
                 </button>
               </div>
-              <div id="faq-3-3" class="accordion-collapse collapse" role="tabpanel" data-bs-parent="#faq-3">
+              <div id="faq-3-3" class="accordion-collapse collapse" role="tabpanel">
                 <div class="accordion-body pt-0">
                   <div>
                     <p>

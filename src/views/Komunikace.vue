@@ -173,7 +173,7 @@
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Od: </span><input type="text" class="form-control" autocomplete="off" value="Adam Novák" readonly>
                         </div>
-                        <!-- WIP - tom-select -->
+                        <!-- tom-select -->
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Komu: </span>
                           <select class="form-control" id="select-recipient" placeholder="Vyberte příjemce..." autocomplete="off">
@@ -245,7 +245,6 @@
               </nav>
             </div>
             <div class="card-header py-2">
-              <!-- WIP: TOOLBAR -->
               <!-- * Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
               <!-- ? Paginace zpráv, výpis kolik z kolika ? -->
               <div class="btn-actions flex-fill justify-content-end">
