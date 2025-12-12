@@ -29,8 +29,4 @@
   </RouterLink>
 </template>
 
-<style scoped>
-  /* .list-group-item {
-    min-height: 4rem;
-  } */
-</style>
+<style scoped></style>

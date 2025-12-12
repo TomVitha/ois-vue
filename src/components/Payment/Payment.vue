@@ -171,7 +171,7 @@
 </template>
 
 <style scoped>
-  tr {
+  tbody tr {
     /* height on <tr> acts like min-height */
     height: 4rem;
   }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
   const props = defineProps<{
     title: string
     filesize?: string
@@ -12,6 +11,9 @@
 <template>
   <div class="list-group-item">
     <div class="row align-items-center">
+      <div class="col-auto">
+        <input type="checkbox" class="form-check-input">
+      </div>
       <div class="col">
         {{ title }}
         <span class="text-secondary">({{ filesize }})</span>

@@ -17,27 +17,8 @@ export const useThemeStore = defineStore('theme', () => {
         theme.value = newTheme;
         localStorage.setItem("theme", theme.value);
         document.documentElement.setAttribute("data-bs-theme", newTheme);
+        document.documentElement.setAttribute("data-bs-theme-base", "neutral"); // Base theme fixed to "neutral"
     }
-
-    //// Old init function 
-    // function initTheme() {
-    //     const storedTheme = localStorage.getItem("theme");
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     const urlTheme = urlParams.get("theme");
-
-    //     if (urlTheme && validThemes.includes(urlTheme)) {
-    //         theme.value = urlTheme;
-    //     } else if (storedTheme && validThemes.includes(storedTheme)) {
-    //         // Load from localStorage
-    //         theme.value = storedTheme;
-    //     } else {
-    //         // Default to system preference
-    //         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    //         theme.value = systemTheme;
-    //     }
-
-    //     applyTheme(theme.value);
-    // }
 
     function initTheme() {
         const getValidTheme = (value: string | null) => value && validThemes.includes(value) ? value : null;
@@ -50,7 +31,6 @@ export const useThemeStore = defineStore('theme', () => {
 
     // Watching the state and its changes through the $subscribe() method of a store
     useThemeStore().$subscribe((mutation, state) => {
-        // console.debug('Theme store changed:', mutation, state)
         // applyTheme(state.theme);
     })
 
