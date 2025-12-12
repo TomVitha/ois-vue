@@ -1,8 +1,13 @@
 <script setup lang="ts">
-  import Footer from '@/components/Footer.vue';
+  // import Footer from '@/components/Footer.vue';
+  import { useSlots } from 'vue';
+
+  const slots = useSlots();
+
   defineProps<{
     title: string
     pretitle?: string,
+    extra?: string
   }>()
 </script>
 
@@ -10,16 +15,25 @@
   <!-- BEGIN PAGE HEADER -->
   <div class="page-header">
     <div class="container-xl">
-      <div class="row g-2 align-items-center">
-        <div class="col">
+      <div class="row align-items-center">
+        <div class="col-auto">
           <hgroup>
             <p v-if="pretitle" class="page-pretitle m-0">{{ pretitle }}</p>
             <h1 class="page-title">{{ title }}</h1>
           </hgroup>
-          <!-- Page title actions -->
         </div>
+        <div v-if="slots.extra" class="col-auto mx-2">
+          <slot name="extra"></slot>
+        </div>
+        <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
           <slot name="actions"></slot>
+        </div>
+      </div>
+      <!-- Toolbar -->
+      <div v-if="slots.toolbar" class="row">
+        <div class="border-bottom py-3">
+          <slot name="toolbar"></slot>
         </div>
       </div>
     </div>

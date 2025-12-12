@@ -19,59 +19,59 @@
       </div>
     </template> -->
 
-    <div class="row gx-5 gy-3">
+    <div class="row row-deck row-cards">
       <div class="col-xl-3">
-        <div class="card h-100">
+        <div class="card">
           <div class="card-body">
-            TODO: info o klientovi ?
+            <!-- TODO: info o klientovi ? -->
+            <div class="space-y-1 justify-content-center text-center">
+              <h3>Adam Novák</h3>
+              <div>+420721584630</div>
+              <div>novak@seznam.cz</div>
+              <div>Pryskyřicova 304/11, Praha 0, 100 00</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col">
-        <div class="row row-deck row-cards">
-
-          <!-- ? Setup block -->
-          <div class="col-12">
-            <div class="card overflow-hidden">
-              <div id="carousel-1" class="carousel slide" data-bs-interval="false">
-                <div class="carousel-inner">
-                  <!-- <div class="carousel-item active">
-                    <div class="card-body bg-primary-lt text-center">
-                      <div class="text-body space-y-2 align-items-center">
-                        <img src="https://tabler.io/_next/image?url=%2Fillustrations%2Fdark%2Fclock-and-cat.png&w=800&q=75" alt="" srcset="" width="150">
-                        <div class="card-title m-0">Add a property</div>
-                        <div>Add your first property to get started using TenantCloud</div>
-                        <a href="#" class="text-primary">Get started</a>
-                        <small class="text-secondary">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stopwatch">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M5 13a7 7 0 1 0 14 0a7 7 0 0 0 -14 0z" />
-                            <path d="M14.5 10.5l-2.5 2.5" />
-                            <path d="M17 8l1 -1" />
-                            <path d="M14 3h-4" />
-                          </svg>
-                          Est. 2 min set up
-                        </small>
-                      </div>
-                    </div>
-                  </div> -->
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%201" />
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%202" />
+        <div class="card overflow-hidden">
+          <div id="carousel-1" class="carousel slide" data-bs-interval="false">
+            <div class="carousel-inner">
+              <!-- <div class="carousel-item active">
+                <div class="card-body bg-primary-lt text-center">
+                  <div class="text-body space-y-2 align-items-center">
+                    <img src="https://tabler.io/_next/image?url=%2Fillustrations%2Fdark%2Fclock-and-cat.png&w=800&q=75" alt="" srcset="" width="150">
+                    <div class="card-title m-0">Add a property</div>
+                    <div>Add your first property to get started using TenantCloud</div>
+                    <a href="#" class="text-primary">Get started</a>
+                    <small class="text-secondary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stopwatch">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 13a7 7 0 1 0 14 0a7 7 0 0 0 -14 0z" />
+                        <path d="M14.5 10.5l-2.5 2.5" />
+                        <path d="M17 8l1 -1" />
+                        <path d="M14 3h-4" />
+                      </svg>
+                      Est. 2 min set up
+                    </small>
                   </div>
                 </div>
-                <a class="carousel-control-prev" data-bs-target="#carousel-1" role="button" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </a>
-                <a class="carousel-control-next" data-bs-target="#carousel-1" role="button" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </a>
+              </div> -->
+              <div class="carousel-item active">
+                <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%201" />
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%202" />
               </div>
             </div>
+            <a class="carousel-control-prev" data-bs-target="#carousel-1" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" data-bs-target="#carousel-1" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </a>
           </div>
         </div>
       </div>

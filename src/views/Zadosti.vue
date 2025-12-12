@@ -21,6 +21,10 @@
       </div>
     </template>
 
+    <template #extra>
+      <div class="text-secondary">1 otevřená</div>
+    </template>
+
     <!-- * No requests alert -->
     <!-- <div class="empty">
       <p class="empty-title">Žádné podané žádosti</p>
@@ -70,25 +74,25 @@
       <div class="col-12">
         <div class="card">
           <div class="table-responsive ">
-            <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
+            <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-md">
               <thead>
                 <tr>
-                  <th>Název</th>
-                  <th>Zasláno</th>
+                  <th class="w-50">Název</th>
                   <th>Stav</th>
+                  <th>Zasláno</th>
                   <th>Jednotka</th>
-                  <th></th>
+                  <th class="w-0"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td data-label="Název">Změna osobních údajů</td>
-                  <td data-label="Zasláno">2023-01-01</td>
                   <td data-label="Stav">
                     <span class="status status-info">Otevřená</span>
                   </td>
+                  <td data-label="Zasláno">01.12.2025</td>
                   <td data-label="Jednotka">192-03-147</td>
-                  <td class="w-1" data-label="">
+                  <td data-label="">
                     <RouterLink to="#zadost-detail">
                       Zobrazit
                     </RouterLink>
@@ -100,14 +104,6 @@
         </div>
       </div>
 
-      <!-- WIP - Alt request design -->
-      <!-- <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Změna osobních údajů</h4>
-          </div>
-        </div>
-      </div> -->
     </div>
 
   </PageTemplate>
@@ -115,4 +111,12 @@
 
 </template>
 
-<style scoped></style>
+<style scoped>
+  @media (min-width: 768px) {
+    tbody tr {
+      /* height on <tr> acts like min-height */
+      height: 4rem;
+    }
+  }
+
+</style>
