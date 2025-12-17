@@ -14,13 +14,29 @@
     <template #actions>
       <div class="btn-list">
         <RouterLink to="/zadosti">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M9 14l-4 -4l4 -4" />
-            <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
-          </svg> -->
           Požádat o odklad platby
         </RouterLink>
+      </div>
+    </template>
+
+    <template #toolbar>
+      <!-- Filter: Dropdown (units) -->
+      <div class="dropdown">
+        <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+          Produkty
+          <!-- <span class="badge ms-2">192-03-147</span> -->
+        </a>
+        <div class="dropdown-menu">
+          <label class="dropdown-item">
+            <input class="form-check-input m-0 me-2" type="checkbox" />192-03-147
+          </label>
+          <label class="dropdown-item">
+            <input class="form-check-input m-0 me-2" type="checkbox" />Product 2
+          </label>
+          <label class="dropdown-item">
+            <input class="form-check-input m-0 me-2" type="checkbox" />Product 3
+          </label>
+        </div>
       </div>
     </template>
 
@@ -72,13 +88,13 @@
       </ul>
     </Alert> -->
 
-    <!-- CONTENT -->
+
     <div class="row row-deck row-cards">
-      <div class="col-md-4">
+
+      <!-- <div class="col-md-4">
         <div class="card">
           <div class="card-body">
             <h3 class="card-title">Celá částka</h3>
-            <!-- <div class="subheader">Celá částka</div> -->
             <p class="h1 m-0">5&nbsp;780&nbsp;000&nbsp;Kč</p>
             <div class="text-secondary mt-2">Splácení do: 31.12.2035</div>
           </div>
@@ -97,6 +113,34 @@
         <div class="card">
           <div class="card-body">
             <h3 class="card-title">Zbývá</h3>
+            <p class="h1 m-0 text-red">913&nbsp;609&nbsp;Kč</p>
+            <div class="text-secondary mt-2">Další platba: 31.02.2026</div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-md-4">
+        <div class="card card-md">
+          <div class="card-body">
+            <div class="subheader mb-1">Celá částka</div>
+            <p class="h1 mb-0 me-2">5&nbsp;780&nbsp;000&nbsp;Kč</p>
+            <div class="text-secondary mt-2">Splácení do: 31.12.2035</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-md">
+          <div class="card-body">
+            <div class="subheader mb-1">Zaplaceno</div>
+            <p class="h1 m-0 text-green">4&nbsp;866&nbsp;391&nbsp;Kč</p>
+            <div class="text-secondary mt-2">Poslední platba: 26.04.2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-md">
+          <div class="card-body">
+            <div class="subheader mb-1">Zbývá</div>
             <p class="h1 m-0 text-red">913&nbsp;609&nbsp;Kč</p>
             <div class="text-secondary mt-2">Další platba: 31.02.2026</div>
           </div>
