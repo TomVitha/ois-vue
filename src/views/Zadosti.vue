@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
+  import RequestRow from '@/components/RequestRow.vue'
 </script>
 
 <template>
@@ -25,52 +26,18 @@
       <div class="text-secondary">1 otevřená</div>
     </template>
 
-    <!-- * No requests alert -->
+    <!-- * When there are no requests -->
     <!-- <div class="empty">
       <p class="empty-title">Žádné podané žádosti</p>
       <p class="empty-subtitle text-secondary">
         Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
       </p>
-      <div class="empty-action">
-        <RouterLink to="/zadosti-nova" class="btn btn-primary btn-4">
-          Vytvořit novou žádost
-        </RouterLink>
-      </div>
     </div> -->
 
     <!-- * List of requests -->
     <div class="row row-deck row-cards">
 
       <!-- WIP: Active requests -->
-      <div class="col-12" hidden>
-        <div class="card">
-          <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col">
-                Změna osobních údajů
-              </div>
-              <div class="col">
-                <span class="badge">192-01-123</span>
-              </div>
-              <div class="col">
-                <span class="badge bg-info-lt">
-                  Otevřená
-                </span>
-                <span class="status status-info">
-                  Otevřená
-                </span>
-              </div>
-              <div class="col-auto">
-                <!-- TODO: Otevře dialog s tou žádostí vyplněné právě těmi údaji jako jsme ji zaslali (jen samozřejmě read-only) -->
-                <RouterLink to="#zadost-detail">
-                  Zobrazit
-                </RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="col-12">
         <div class="card">
           <div class="table-responsive ">
@@ -80,24 +47,13 @@
                   <th class="w-50">Název</th>
                   <th>Stav</th>
                   <th>Zasláno</th>
-                  <th>Jednotka</th>
+                  <th>Záležitost</th>
                   <th class="w-0"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td data-label="Název">Změna osobních údajů</td>
-                  <td data-label="Stav">
-                    <span class="status status-info">Otevřená</span>
-                  </td>
-                  <td data-label="Zasláno">01.12.2025</td>
-                  <td data-label="Jednotka">192-03-147</td>
-                  <td data-label="">
-                    <RouterLink to="#zadost-detail">
-                      Zobrazit
-                    </RouterLink>
-                  </td>
-                </tr>
+                <RequestRow title="Změna osobních údajů" :status="1" date-created="2025-07-04" concern="generic" />
+                <RequestRow title="Odklad platby - 192-03-147 SOD" :status="4" date-created="2025-04-21" :concern="['192-03-147']" />
               </tbody>
             </table>
           </div>

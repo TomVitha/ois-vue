@@ -473,7 +473,7 @@
                   <input type="text" class="form-control w-100" placeholder="Napište své celé jméno..." v-model="msgSignatureText">
                 </div>
                 <div class="col-6 col-xl-auto order-xl-first">
-                  <button class="btn btn-danger w-100">Odmítnout</button>
+                  <button class="btn btn-ghost-danger w-100">Odmítnout</button>
                 </div>
                 <div class="col-6 col-xl-auto">
                   <button class="btn btn-primary btn-2 w-100" :disabled="!isSignatureValid">Akceptovat</button>

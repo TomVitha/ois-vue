@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <div class="list-group-item px-0 d-flex align-items-center justify-content-between">
+  <div class="list-group-item p-0 d-flex align-items-center justify-content-between">
     <span class="text-secondary">{{ name }}</span>
     <span class="text-end">
       {{ value }}
@@ -18,4 +18,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .list-group-item {
+    min-height: 3.25rem;
+  }
+</style>
