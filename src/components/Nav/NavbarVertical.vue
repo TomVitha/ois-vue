@@ -48,24 +48,24 @@
           <!-- * Dashboard -->
           <NavItem label="Nástěnka" to="/">
             <template #icon>
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-grid">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                 <path d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-              </svg> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
+              </svg>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
                 <path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
                 <path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
                 <path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
-              </svg>
+              </svg> -->
             </template>
           </NavItem>
 
-          <!-- * Communication -->
+          <!-- ? Communication -->
           <!-- <NavItem label="Komunikace" to="/komunikace" :badge="messengerStore.unreadCount > 0 ? true : false">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
@@ -75,21 +75,6 @@
               </svg>
             </template>
           </NavItem> -->
-
-          <!-- * žádosti a změny -->
-          <NavItem label="Žádosti" to="/zadosti">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-asterisk">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 12l8 -4.5" />
-                <path d="M12 12v9" />
-                <path d="M12 12l-8 -4.5" />
-                <path d="M12 12l8 4.5" />
-                <path d="M12 3v9" />
-                <path d="M12 12l-8 4.5" />
-              </svg>
-            </template>
-          </NavItem>
 
           <!-- TODO: V POZDĚJŠÍ FÁZI -->
           <!-- * schůzky (kalendář) -->
@@ -111,6 +96,71 @@
               </svg>
             </template>
           </NavItem> -->
+
+          <!-- TODO: Zviditelnit separátor až budou Schůzky -->
+          <!-- Separator -->
+          <!-- <li class="nav-item">
+            <hr class="my-1">
+          </li> -->
+
+          <!-- ? dokumenty -->
+          <NavItem label="Dokumenty" to="/dokumenty">
+            <template #icon>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-description">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                <path d="M9 17h6" />
+                <path d="M9 13h6" />
+              </svg> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                <path d="M9 9l1 0" />
+                <path d="M9 13l6 0" />
+                <path d="M9 17l6 0" />
+              </svg>
+            </template>
+          </NavItem>
+
+          <!-- ? platby -->
+          <NavItem label="Platby" to="/platby">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-coins">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z" />
+                <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4" />
+                <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z" />
+                <path d="M3 6v10c0 .888 .772 1.45 2 2" />
+                <path d="M3 11c0 .888 .772 1.45 2 2" />
+              </svg>
+            </template>
+          </NavItem>
+
+          <!-- * žádosti a změny -->
+          <NavItem label="Žádosti" to="/zadosti">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-flag">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                <path d="M5 21v-7" />
+              </svg>
+            </template>
+          </NavItem>
+
+          <!-- ? Contacts -->
+          <NavItem label="Kontakty" to="/kontakty">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+              </svg>
+            </template>
+          </NavItem>
 
           <!-- Separator -->
           <li class="nav-item">
@@ -219,7 +269,13 @@
             </template>
           </NavItem> -->
 
-          <!-- TODO -->
+          <!-- Separator -->
+          <!-- <li class="nav-item">
+              <hr class="my-1">
+            </li> -->
+
+
+          <!-- TODO PAGE -->
           <!-- * Vzorkovna + interierove studio (central interier) -->
           <NavItem label="Vzorkovna a CI" to="/todo">
             <template #icon>
@@ -230,11 +286,6 @@
               </svg>
             </template>
           </NavItem>
-
-          <!-- Separator -->
-          <!-- <li class="nav-item">
-              <hr class="my-1">
-            </li> -->
 
           <!-- TODO: Implementovat v pozdější fázi -->
           <!-- * Novinky a nabídky -->
@@ -247,19 +298,6 @@
                 <path d="M3.6 15h16.8"></path>
                 <path d="M11.5 3a17 17 0 0 0 0 18"></path>
                 <path d="M12.5 3a17 17 0 0 1 0 18"></path>
-              </svg>
-            </template>
-          </NavItem> -->
-
-          <!-- * Contacts -->
-          <!-- <NavItem label="Kontakty" to="/kontakty">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
               </svg>
             </template>
           </NavItem> -->
