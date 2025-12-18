@@ -36,7 +36,7 @@
         }).format(new Date(dateCreated))
       }}
     </td>
-    <td data-label="Jednotka">
+    <td data-label="Záležitost">
       <template v-if="Array.isArray(concern)">
         <span
           v-for="(el, index) in concern"

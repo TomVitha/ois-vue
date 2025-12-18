@@ -7,6 +7,10 @@
 
   <PageTemplate title="Žádosti">
 
+    <template #extra>
+      <div class="text-secondary">1 otevřená</div>
+    </template>
+
     <template #actions>
       <div class="btn-list">
         <RouterLink to="/zadost-nova" type="button" class="btn btn-primary">
@@ -20,10 +24,6 @@
           Nová žádost
         </RouterLink>
       </div>
-    </template>
-
-    <template #extra>
-      <div class="text-secondary">1 otevřená</div>
     </template>
 
     <!-- * When there are no requests -->
