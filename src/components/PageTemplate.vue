@@ -8,6 +8,8 @@
     title: string
     pretitle?: string,
     extra?: string
+    backTo?: string
+    description?: string
   }>()
 </script>
 
@@ -16,6 +18,15 @@
   <div class="page-header">
     <div class="container-xl">
       <div class="row align-items-center">
+        <!-- back button -->
+        <div v-if="backTo" class="col-auto pe-0">
+          <RouterLink :to="backTo" class="btn btn-action">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M15 6l-6 6l6 6"></path>
+            </svg>
+          </RouterLink>
+        </div>
         <div class="col-auto">
           <hgroup>
             <p v-if="pretitle" class="page-pretitle m-0">{{ pretitle }}</p>
@@ -30,9 +41,13 @@
           <slot name="actions"></slot>
         </div>
       </div>
+      <!-- Description -->
+      <div v-if="description" class="row my-3">
+        <p class="m-0">{{ description }}</p>
+      </div>
       <!-- Toolbar -->
-      <div v-if="slots.toolbar" class="row">
-        <div class="border-bottom py-3">
+      <div v-if="slots.toolbar" class="row mt-3">
+        <div class="border-bottom pb-3">
           <slot name="toolbar"></slot>
         </div>
       </div>
