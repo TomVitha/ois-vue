@@ -11,6 +11,10 @@
 <template>
   <PageTemplate title="Platby">
 
+    <template #extra>
+      <div class="text-secondary">15 celkem</div>
+    </template>
+
     <template #actions>
       <div class="btn-list">
         <RouterLink to="/zadosti">
@@ -19,26 +23,6 @@
       </div>
     </template>
 
-    <template #toolbar>
-      <!-- Filter: Dropdown (units) -->
-      <div class="dropdown">
-        <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">
-          Produkty
-          <!-- <span class="badge ms-2">192-03-147</span> -->
-        </a>
-        <div class="dropdown-menu">
-          <label class="dropdown-item">
-            <input class="form-check-input m-0 me-2" type="checkbox" />192-03-147
-          </label>
-          <label class="dropdown-item">
-            <input class="form-check-input m-0 me-2" type="checkbox" />Product 2
-          </label>
-          <label class="dropdown-item">
-            <input class="form-check-input m-0 me-2" type="checkbox" />Product 3
-          </label>
-        </div>
-      </div>
-    </template>
 
     <!-- # ALERTS (components) -->
     <!-- <Alert 
@@ -179,10 +163,56 @@
 
       <!-- TODO: Řazení? Filtrování? -->
       <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
-
       <div class="col-12">
-        <h3 class="m-0 mt-3">Platby</h3>
+        <div class="w-100">
+          <!-- <h3 class="m-0 mt-3">Platby</h3> -->
+          <div class="border-bottom py-3">
+            <!-- FILTERS: -->
+            <!-- Units -->
+            <div class="btn-list">
+              <div class="dropdown">
+                <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                  Produkty
+                  <span class="badge ms-2">192-03-147</span>
+                </a>
+                <div class="dropdown-menu">
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" checked />192-03-147
+                  </label>
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Product 2
+                  </label>
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Product 3
+                  </label>
+                </div>
+              </div>
+              <!-- Stav -->
+              <div class="dropdown">
+                <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                  Stav
+                </a>
+                <div class="dropdown-menu">
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Zaplaceno
+                  </label>
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Nadcházející
+                  </label>
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Blíží se
+                  </label>
+                  <label class="dropdown-item">
+                    <input class="form-check-input m-0 me-2" type="checkbox" />Po splatnosti
+                  </label>
+                </div>
+              </div>
+              <button type="button" class="btn-link text-body">Zrušit filtry</button>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="col-12">
         <Payments :payments="paymentsStore.payments" />
       </div>
