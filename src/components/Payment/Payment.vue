@@ -19,8 +19,7 @@
   })
 
   const dueDate = new Date(props.duedate)
-  // HACK to display browser-native invalid date message
-  if (isNaN(dueDate.getTime())) { dueDate.setTime(99999999999999999999999999) }
+  if (isNaN(dueDate.getTime())) { dueDate.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
 
   const dueDaysThreshold = 7
   const remainingAmount = computed(() => props.amount - props.paid)
@@ -28,13 +27,13 @@
   const isPaid = computed(() => props.paid >= props.amount)
   const isPartiallyPaid = computed(() => props.paid > 0 && props.paid < props.amount)
   const percentagePaid = computed(() => {
-    if (props.amount === 0) return 0            // avoid division by zero
+    if (props.amount === 0) return 0      // avoid division by zero
     return Math.min(100, (props.paid / props.amount) * 100).toFixed(2)
   })
 
   type PaymentStatus = 'unknown' | 'upcoming' | 'due' | 'overdue' | 'paid'
   const status = computed<PaymentStatus>(() => {
-    const today = new Date('2025-08-01') // DEV: hard-coded today date for dev purposes
+    const today = new Date('2025-08-01')    // DEV: hard-coded today date for dev purposes
     const dueDate = new Date(props.duedate)
     today.setHours(0, 0, 0, 0)
     dueDate.setHours(0, 0, 0, 0)

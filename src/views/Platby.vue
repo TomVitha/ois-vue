@@ -103,34 +103,36 @@
         </div>
       </div> -->
 
-      <div class="col-md-4">
-        <div class="card card-md">
-          <div class="card-body">
+      <div class="col-12 col-lg-4">
+        <div class="card">
+          <div class="card-body p-sm-5">
             <div class="subheader mb-1">Celá částka</div>
-            <p class="h1 mb-0 me-2">5&nbsp;780&nbsp;000&nbsp;Kč</p>
+            <p class="h1 m-0 text-nowrap">125&nbsp;780&nbsp;000&nbsp;Kč</p>
             <div class="text-secondary mt-2">Splácení do: 31.12.2035</div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card card-md">
-          <div class="card-body">
+      <div class="col-12 col-lg-4">
+        <div class="card">
+          <div class="card-body p-sm-5">
             <div class="subheader mb-1">Zaplaceno</div>
-            <p class="h1 m-0 text-green">4&nbsp;866&nbsp;391&nbsp;Kč</p>
+            <p class="h1 m-0 text-nowrap text-green">14&nbsp;866&nbsp;391&nbsp;Kč</p>
             <div class="text-secondary mt-2">Poslední platba: 26.04.2025</div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card card-md">
-          <div class="card-body">
+      <div class="col-12 col-lg-4">
+        <div class="card">
+          <div class="card-body p-sm-5">
             <div class="subheader mb-1">Zbývá</div>
-            <p class="h1 m-0 text-red">913&nbsp;609&nbsp;Kč</p>
+            <p class="h1 m-0 text-nowrap text-red">3&nbsp;913&nbsp;609&nbsp;Kč</p>
             <div class="text-secondary mt-2">Další platba: 31.02.2026</div>
           </div>
         </div>
       </div>
 
+      <!-- ! Poukázky jsou strašne ugly -->
+      <!-- TODO: Rework poukázky -->
       <!-- <div class="col-12">
         <h3 class="m-0 mt-3">Poukázky</h3>
       </div> -->

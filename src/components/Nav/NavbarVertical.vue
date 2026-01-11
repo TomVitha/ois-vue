@@ -314,6 +314,8 @@
             </template>
           </NavItem>
 
+          <!-- ? Maybe: Deprecate top navbar, and move profile/settings to the bottom of sidebar ? -->
+
         </ul>
       </div>
     </div>
