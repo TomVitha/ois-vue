@@ -173,18 +173,10 @@
         <div class="card card-md overflow-hidden">
           <div class="row row-0">
             <!-- vizualizace -->
-            <!-- <div class="col-12 col-xl-4">
+            <div class="col-12 col-lg-4">
               <img src="https://www.central-group.cz/Uloziste/c5/c5048395-8411-40a4-812e-306447b0961f.jpg" class="w-100 h-100 object-cover" alt="">
-            </div> -->
-            <!-- půdorys -->
-            <div class="col-12 col-xl-5">
-              <div class="p-5">
-                <!-- <img src="https://www.central-group.cz/Uloziste/92/92d17a61-24dc-49e0-8271-758e7c374319.gif" class="w-100 h-100 object-contain floor-plan" alt=""> -->
-                <!-- <img src="https://www.central-group.cz/Uloziste/f8/f8312d63-b478-44ab-a0ff-d0ad422ab612.gif" class="w-100 object-contain floor-plan" alt=""> -->
-                <img src="https://www.central-group.cz/Uloziste/1b/1b61efdf-3d70-4d5d-b66a-5abbb7214da1.gif" class="w-100 object-contain floor-plan" alt="">
-              </div>
             </div>
-            <div class="col-12 col-xl">
+            <div class="col-12 col-lg">
               <div class="card-body p-md-5">
                 <!-- <h2>192-03-147</h2> -->
                 <!-- <p class="text-secondary">
