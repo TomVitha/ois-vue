@@ -1,347 +1,91 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
+  import AccordionGroup from '@/components/AccordionGroup.vue'
+  import AccordionItem from '@/components/AccordionItem.vue'
 </script>
 
 <template>
 
   <PageTemplate title="Otázky a odpovědi">
-    <div class="space-y-4">
-      <div class="card card-md">
-        <div class="card-body">
-          <h2 class="mb-3">1. Introduction</h2>
-          <div id="faq-1" class="accordion accordion-tabs" role="tablist" aria-multiselectable="true">
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq-1-1" role="tab">
-                  Welcome to our service!
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-1-1" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-1-2" role="tab">
-                  Who are we?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-1-2" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-1-3" role="tab">
-                  What are our values?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-1-3" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
+
+    <div class="row">
+      <div class="col-xl-10">
+        <div class="row row-deck row-cards">
+          <div class="col-12">
+            <h3 class="m-0 mt-3">Nadpis sekce</h3>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">Nadpis sekce</h3>
+              </div> -->
+              <div class="card-body p-0">
+                <AccordionGroup id="sekce-jedna" class="accordion-flush">
+                  <AccordionItem title="What makes Tabler different from other UI frameworks?">
+                    Tabler offers a modern, responsive design with a clean aesthetic, built on Bootstrap for ease of use and flexibility.
+                  </AccordionItem>
+                  <AccordionItem title="How can I customize Tabler components to fit my design needs?">
+                    You can customize Tabler components using CSS variables, SCSS, and utility classes to match your design preferences.
+                  </AccordionItem>
+                  <AccordionItem title="Is Tabler optimized for performance and fast loading times?">
+                    Yes, Tabler is lightweight, optimized for modern browsers, and follows best practices for fast loading and efficiency.
+                  </AccordionItem>
+                  <AccordionItem title="How accessible are Tabler components?">
+                    Tabler components follow WAI-ARIA standards and support keyboard navigation, screen readers, and accessibility best practices.
+                  </AccordionItem>
+                </AccordionGroup>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card card-md">
-        <div class="card-body">
-          <h2 class="mb-3">2. Functionality</h2>
-          <div id="faq-2" class="accordion accordion-tabs" role="tablist" aria-multiselectable="true">
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq-2-1" role="tab">
-                  What are the key features?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-2-1" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-2-2" role="tab">
-                  Does your App support mobile devices?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-2-2" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-2-3" role="tab">
-                  Why should I choose your service?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-2-3" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-2-4" role="tab">
-                  Is my data secure?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-2-4" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-12">
+            <h3 class="m-0 mt-3">Nadpis sekce</h3>
           </div>
-        </div>
-      </div>
-      <div class="card card-md">
-        <div class="card-body">
-          <h2 class="mb-3">3. Payments</h2>
-          <div id="faq-3" class="accordion accordion-tabs" role="tablist" aria-multiselectable="true">
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq-3-1" role="tab">
-                  Is there any free plan?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-3-1" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-3-2" role="tab">
-                  What are the available payment options?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-3-2" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-header">
-                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq-3-3" role="tab">
-                  Can I get a refund?
-                  <div class="accordion-button-toggle">
-                    <!-- Download SVG icon from http://tabler.io/icons/icon/chevron-down -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          class="icon icon-1">
-                          <path d="M6 9l6 6l6 -6"></path>
-                        </svg>
-                  </div>
-                </button>
-              </div>
-              <div id="faq-3-3" class="accordion-collapse collapse" role="tabpanel">
-                <div class="accordion-body pt-0">
-                  <div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias dignissimos dolorum
-                      ea est eveniet, excepturi illum
-                      in iste iure maiores nemo recusandae rerum saepe sed, sunt totam! Explicabo, ipsa?
-                    </p>
-                  </div>
-                </div>
+          <div class="col-12">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">Nadpis sekce</h3>
+              </div> -->
+              <div class="card-body p-0">
+                <AccordionGroup id="sekce-jedna" class="accordion-flush">
+                  <AccordionItem title="What makes Tabler different from other UI frameworks?">
+                    Tabler offers a modern, responsive design with a clean aesthetic, built on Bootstrap for ease of use and flexibility.
+                  </AccordionItem>
+                  <AccordionItem title="How can I customize Tabler components to fit my design needs?">
+                    You can customize Tabler components using CSS variables, SCSS, and utility classes to match your design preferences.
+                  </AccordionItem>
+                  <AccordionItem title="Is Tabler optimized for performance and fast loading times?">
+                    Yes, Tabler is lightweight, optimized for modern browsers, and follows best practices for fast loading and efficiency.
+                  </AccordionItem>
+                  <AccordionItem title="How accessible are Tabler components?">
+                    Tabler components follow WAI-ARIA standards and support keyboard navigation, screen readers, and accessibility best practices.
+                  </AccordionItem>
+                </AccordionGroup>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+    <!-- 
+      = FUNGOVÁNÍ KLIENTSKÉHO PORTÁLU (technikálie)
+      - Jak si mohu změnit heslo?
+      - Jak můžu změnit osobní údaje?
+      - Zapomněl(a) jsem příhlašovací údaje
+    
+
+      Pro správné fungování klientského portálu je vyžadována minimální verze prohlížečů Chrome X, Firefox Y a Safari Z.
+      Pokud jste na verzi iOS/iPad OS starší než 16.2, pak se vám stránka klientského portálu nemusí zobrazovat správně. Doporučujeme proto následující kroky:
+      1)	Aktualizujte zařízení na nejnovější verzi operačního systému.
+      2)	Pokud upozornění přetrvává, otevřete Nastavení > (Aplikace) > Safari > Pokročilé (úplně vespod) > Experimentální funkce / Příznaky funkcí - a ujistěte se, že máte zapnuté následující položky:
+      -	:has() pseudo-class
+      -	CSS color-mix()
+
+    -->
+
   </PageTemplate>
 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
