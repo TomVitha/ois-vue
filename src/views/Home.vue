@@ -6,6 +6,7 @@
   import PageTemplate from '@/components/PageTemplate.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
   import SignaturePromptItem from '@/components/SignaturePromptItem.vue'
+  import ClientTermItem from '@/components/ClientTermItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
 </script>
 
@@ -76,10 +77,10 @@
                   </div>
                 </div> -->
                 <div class="carousel-item active">
-                  <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%201" />
+                  <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Byt%201" />
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Unit%202" />
+                  <img class="d-block w-100" alt="" src="https://imagefaker.access.mx.com/1600x800?text=Byt%202" />
                 </div>
               </div>
               <!-- <a class="carousel-control-prev" data-bs-target="#carousel-1" role="button" data-bs-slide="prev">
@@ -151,10 +152,10 @@
           <div class="col-xl-6">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Blížící se termíny klientských změn</h3>
+                <h3 class="card-title">Termíny klientských změn</h3>
               </div>
               <div class="list-group list-group-flush">
-                <div class="list-group-item">TODO: datum; číslo bytu/smlouvy; kolikátá terminova sekce; 1 věta krátkého popisu</div>
+                <ClientTermItem></ClientTermItem>
               </div>
             </div>
           </div>
