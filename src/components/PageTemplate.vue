@@ -56,7 +56,7 @@
   <!-- END PAGE HEADER -->
   <!-- BEGIN PAGE BODY -->
   <div class="page-body">
-    <div class="container-xl flex-fill overflow-x-hidden">
+    <div class="container-xl flex-fill">
       <slot></slot>
     </div>
   </div>
