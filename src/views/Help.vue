@@ -8,56 +8,43 @@
 
   <PageTemplate title="Otázky a odpovědi">
 
-    <div class="row">
+    <div class="row gx-5" data-bs-spy="scroll" data-bs-target="#pills">
       <div class="col-xl-10">
-        <div class="row row-deck row-cards">
+        <div class="row row-cards">
           <div class="col-12">
-            <h3 class="m-0 mt-3">Nadpis sekce</h3>
-          </div>
-          <div class="col-12">
+            <h3 class="my-2">Klientský portál</h3>
             <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">Nadpis sekce</h3>
-              </div> -->
               <div class="card-body p-0">
-                <AccordionGroup id="sekce-jedna" class="accordion-flush">
-                  <AccordionItem title="What makes Tabler different from other UI frameworks?">
-                    Tabler offers a modern, responsive design with a clean aesthetic, built on Bootstrap for ease of use and flexibility.
+                <AccordionGroup id="klientsky-portal" class="accordion-flush">
+                  <AccordionItem title="Jak si můžu změnit přístupové heslo?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
-                  <AccordionItem title="How can I customize Tabler components to fit my design needs?">
-                    You can customize Tabler components using CSS variables, SCSS, and utility classes to match your design preferences.
+                  <AccordionItem title="Co dělat, když jsem zapomněl své přihlašovací údaje?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
-                  <AccordionItem title="Is Tabler optimized for performance and fast loading times?">
-                    Yes, Tabler is lightweight, optimized for modern browsers, and follows best practices for fast loading and efficiency.
-                  </AccordionItem>
-                  <AccordionItem title="How accessible are Tabler components?">
-                    Tabler components follow WAI-ARIA standards and support keyboard navigation, screen readers, and accessibility best practices.
+                  <AccordionItem title="Jak můžu změnit osobní údaje?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
                 </AccordionGroup>
               </div>
             </div>
           </div>
           <div class="col-12">
-            <h3 class="m-0 mt-3">Nadpis sekce</h3>
-          </div>
-          <div class="col-12">
+            <h3 class="my-2">Termínové sekce</h3>
             <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">Nadpis sekce</h3>
-              </div> -->
               <div class="card-body p-0">
-                <AccordionGroup id="sekce-jedna" class="accordion-flush">
-                  <AccordionItem title="What makes Tabler different from other UI frameworks?">
-                    Tabler offers a modern, responsive design with a clean aesthetic, built on Bootstrap for ease of use and flexibility.
+                <AccordionGroup id="terminove-sekce" class="accordion-flush">
+                  <AccordionItem title="Jak se připravit na danou termínovou sekci?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
-                  <AccordionItem title="How can I customize Tabler components to fit my design needs?">
-                    You can customize Tabler components using CSS variables, SCSS, and utility classes to match your design preferences.
+                  <AccordionItem title="Jaký je proces, co znamená termínová sekce?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
-                  <AccordionItem title="Is Tabler optimized for performance and fast loading times?">
-                    Yes, Tabler is lightweight, optimized for modern browsers, and follows best practices for fast loading and efficiency.
+                  <AccordionItem title="Kdy nejlépe termínovou sekci začít řešit?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
-                  <AccordionItem title="How accessible are Tabler components?">
-                    Tabler components follow WAI-ARIA standards and support keyboard navigation, screen readers, and accessibility best practices.
+                  <AccordionItem title="Co která termínová sekce obsahuje, co je jejím předmětem?">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio sunt minus esse ex iusto suscipit laborum veniam voluptatum numquam, mollitia ipsa adipisci temporibus non libero, aliquam id tempore, quasi deserunt.
                   </AccordionItem>
                 </AccordionGroup>
               </div>
@@ -65,6 +52,15 @@
           </div>
         </div>
       </div>
+      <!-- <div class="d-none d-xl-block col-xl-2">
+        <div class="sticky-top">
+          <nav class="nav nav-vertical nav-pills" id="pills">
+            <a class="nav-link" href="#klientsky-portal">Klientský portál</a>
+            <a class="nav-link" href="#terminove-sekce">Termínové sekce</a>
+            <a class="nav-link" href="#temp">temp</a>
+          </nav>
+        </div>
+      </div> -->
     </div>
 
 

@@ -46,7 +46,7 @@
         </span>
       </template>
       <template v-else-if="concern === 'generic'">
-        <span class="text-secondary">Obecná žádost</span>
+        <span class="text-secondary">Obecné</span>
       </template>
       <template v-else>
         <span class="text-secondary">-</span>
