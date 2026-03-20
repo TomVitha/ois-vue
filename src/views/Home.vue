@@ -38,8 +38,15 @@
         <div class="col-12">
           <div class="row row-deck row-cards">
 
+            <!-- Úvodní text -->
+            <div class="col-12">
+              <p>
+                Vítejte v klientském portálu společnosti Central Group. Zde najdete všechny důležité informace o svých projektech, termínech, platbách a dokumentech. Pro rychlý přehled jsme pro vás připravili několik sekcí, které vám pomohou zůstat informovaní a včas reagovat na všechny důležité události týkající se vašich projektů.
+              </p>
+            </div>
 
-            <!-- * platby -->
+
+            <!-- * Platby -->
             <!-- <div class="col-12">
               <div class="d-flex justify-content-between align-items-baseline flex-fill">
                 <h3 class="m-0 mt-3">Platby po splatnosti</h3>
@@ -67,7 +74,7 @@
             </div>
 
 
-            <!-- * dokumenty k podepsání (které ještě nebyly podepsány) -->
+            <!-- * Dokumenty k podepsání (které ještě nebyly podepsány) -->
             <div class="col-xl-6">
               <div class="card">
                 <div class="card-header">
@@ -77,17 +84,38 @@
                   <SignaturePromptItem title="Návrh klientského dodatku" file="192-03-147_KD2.pdf" />
                   <SignaturePromptItem title="Návrh smlouvy o dílo" file="192-03-147_XY3.pdf" />
                 </div>
+                <!-- * Empty state -- zobrazí se pokud nejsou žádné dokumenty k podepsání -->
+                <!-- <div class="empty">
+                  <p class="empty-title">
+                    Žádné dokumenty
+                  </p>
+                  <p class="empty-subtitle text-secondary">
+                    Nemáte žádné dokumenty, které by čekaly na váš podpis.
+                  </p>
+                </div> -->
               </div>
             </div>
-            <!-- * blížící se termínovky - termín výběrů -->
+
+            <!-- * Blížící se termínovky - termín výběrů -->
+            <!-- NOTE: Ke každé jednotce ukáže tu jednu nejbližší termínovku -->
             <div class="col-xl-6">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Termíny klientských změn</h3>
                 </div>
                 <div class="list-group list-group-flush">
-                  <ClientTermItem></ClientTermItem>
+                  <ClientTermItem />
+                  <ClientTermItem />
                 </div>
+                <!-- * Empty state -- zobrazí se pokud nejsou žádné termínovky -->
+                <!-- <div class="empty">
+                  <p class="empty-title">
+                    Žádné termíny
+                  </p>
+                  <p class="empty-subtitle text-secondary">
+                    Nemáte žádné nadcházející termíny klientských změn.
+                  </p>
+                </div> -->
               </div>
             </div>
 
@@ -135,32 +163,16 @@
             <div class="col-12">
               <h3 class="mt-3 mb-0">Obecné kontakty</h3>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-md-4">
               <ContactBlock name="Homo Sapiens" position="Lidský zástupce společnosti" phone="+420 123 456 789" email="homo.sapiens@central-group.cz" imgURL="https://files.idyllic.app/files/static/151604?width=256&optimizer=image" />
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-md-4">
               <ContactBlock name="Ing. Homo Sapiensová" position="Lidská zástupkyně společnosti" phone="+420 987 654 321" email="	homo.sapiensova@central-group.cz" imgURL="https://files.idyllic.app/files/static/152445?width=256&optimizer=image" />
             </div>
 
-            <!-- DEV Další -->
-            <!-- <div class="col-12">
-            <h3 class="mt-3 mb-0">další...</h3>
-          </div>
-          <div class="col-12">
-            <div class="card">
-              <div class="list-group list-group-flush">
-                <div class="list-group-item">? kontrola (potvrzení) osobních údajů (jednou za čas)</div>
-                <div class="list-group-item">? Základní kontaktní osoby</div>
-                <div class="list-group-item">? Propagace</div>
-              </div>
-            </div>
-          </div> -->
-
           </div>
         </div>
-
       </div>
-
     </div>
 
     <!-- DEV: One dialog for all payments -->
