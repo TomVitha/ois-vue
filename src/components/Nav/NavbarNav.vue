@@ -25,13 +25,24 @@
       <!-- Messenger -->
       <div class="nav-item">
         <RouterLink to="/komunikace" class="nav-link px-0" data-bs-toggle="tooltip" data-bs-placement="bottom" :title="messengerStore.unreadCount > 0 ? 'Nové zprávy' : 'Komunikace'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+            <path d="M3 7l9 6l9 -6" />
+          </svg>
           <span v-if="messengerStore.unreadCount > 0" class="badge badge-sm bg-red text-red-fg">{{ messengerStore.unreadCount }}</span>
         </RouterLink>
       </div>
+      <!-- Separator -->
+      <div class="nav-item h-100">
+        <div class="vr mx-2 d-none d-lg-block h-50"></div>
+      </div>
       <!-- User -->
       <div class="nav-item dropdown user-select-none">
-        <button class="nav-link d-flex lh-1 p-0 px-2" data-bs-toggle="dropdown" aria-label="Open user menu">
+        <button class="nav-link d-flex lh-1 p-0 px-2 text-start" data-bs-toggle="dropdown" aria-label="Open user menu">
+          <div class="d-none d-lg-block pe-2">
+            <div>Novák Adam a Eva</div>
+          </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
@@ -50,7 +61,7 @@
             </div>
             Nastavení
           </RouterLink>
-          <a href="#" class="dropdown-item">
+          <!-- <a href="#" class="dropdown-item">
             <div class="dropdown-item-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-language">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -62,7 +73,7 @@
               </svg>
             </div>
             Switch to English
-          </a>
+          </a> -->
           <div class="dropdown-divider"></div>
           <RouterLink to="/sign-in" class="dropdown-item">
             <div class="dropdown-item-icon">
