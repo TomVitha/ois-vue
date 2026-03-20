@@ -20,7 +20,7 @@
     <div class="row row-cards row-deck">
 
       <div class="col-12 mt-3">
-        <h3 class="m-0">Kontakty jednotku 192-03-147</h3>
+        <h3 class="m-0">Kontakty pro 192-03-147</h3>
       </div>
 
       <div class="col-sm-6 col-lg-6 col-xxl-4">

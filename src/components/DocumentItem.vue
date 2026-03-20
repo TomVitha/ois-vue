@@ -11,9 +11,10 @@
 <template>
   <div class="list-group-item">
     <div class="row align-items-center">
-      <div class="col-auto">
+      <!-- * Checkbox pro hromadné akce -- UNUSED -->
+      <!-- <div class="col-auto">
         <input type="checkbox" class="form-check-input">
-      </div>
+      </div> -->
       <div class="col">
         {{ title }}
         <span class="text-secondary">({{ filesize }})</span>
@@ -22,7 +23,7 @@
         <div class="text-secondary">Přidáno</div>
         <div>{{ dateAdded }}</div>
       </div>
-      <!-- Hamburger - Open, Download -->
+      <!-- * Actions - Open, Download -->
       <div class="col-auto text-end d-print-none">
         <!-- FIXME: Opening dropdown causes page to scroll -->
         <div class="dropdown">

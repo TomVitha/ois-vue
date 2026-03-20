@@ -356,9 +356,9 @@
           <div v-if="!selectedMessage" class="page page-center" id="empty-state">
             <div class="container-tight py-4">
               <div class="empty">
-                <div class="empty-img">
+                <!-- <div class="empty-img"> -->
                   <!-- TODO: Envelope image ? -->
-                </div>
+                <!-- </div> -->
                 <p class="empty-title">
                   <span v-if="messages.some(m => m.meta.isUnread)">
                     Nepřečtených zpráv ({{messages.filter(m => m.meta.isUnread).length}})
