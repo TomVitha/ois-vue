@@ -41,7 +41,7 @@
             <!-- Úvodní text -->
             <div class="col-12">
               <p>
-                Vítejte v klientském portálu společnosti Central Group. Zde najdete všechny důležité informace o svých projektech, termínech, platbách a dokumentech. Pro rychlý přehled jsme pro vás připravili několik sekcí, které vám pomohou zůstat informovaní a včas reagovat na všechny důležité události týkající se vašich projektů.
+                Zde najdete všechny důležité informace o svých projektech, termínech, platbách a dokumentech.
               </p>
             </div>
 

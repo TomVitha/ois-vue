@@ -11,9 +11,6 @@
     varSymbol: string | number
     message: string | number
   }>()
-
-
-
 </script>
 
 <template>
@@ -43,6 +40,7 @@
             </div>
 
             <div class="text-center">
+              <div class="text-secondary">Částka k uhrazení</div>
               <div class="d-flex align-items-center justify-content-center gap-1">
                 <strong class="h1 my-0">
                   {{
@@ -58,7 +56,6 @@
                 </strong>
                 <CopyToClipboardButton :data="amount" />
               </div>
-              <div class="text-secondary">Částka k uhrazení</div>
             </div>
 
             <div class="list-group list-group-flush">
@@ -79,4 +76,6 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

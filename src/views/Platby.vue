@@ -145,9 +145,10 @@
             <div class="row row-cards">
               <div class="col-lg-6">
                 <Voucher
-                  :title="'192-03-147 Věrnostní poukázka'"
+                  title="192-03-147 Věrnostní poukázka"
                   :value="250000"
-                  :spent="114367"
+                  :spent="35000"
+                  date="2025-11-07"
                   :breakdown="[
                     { label: 'KD2', date: '2024-04-26', amount: 77_425 },
                     { label: 'SOD-IS-I', date: '2024-06-16', amount: 136_942 }
@@ -155,8 +156,10 @@
               </div>
               <div class="col-lg-6">
                 <Voucher
-                  :title="'192-03-147 z lásky'"
-                  :value="69000" />
+                  title="192-03-147 z lásky"
+                  :value="69000"
+                  :spent="0"
+                  date="2025-11-07" />
               </div>
             </div>
           </div>
@@ -215,14 +218,14 @@
         </div>
       </div>
 
-            <div class="col-12">
-              <div class="card">
-                <!-- <div class="card-header">
+      <div class="col-12">
+        <div class="card">
+          <!-- <div class="card-header">
                   <h3 class="card-title">Platby</h3>
                 </div> -->
-                <Payments :payments="paymentsStore.payments" />
-              </div>
-            </div>
+          <Payments :payments="paymentsStore.payments" />
+        </div>
+      </div>
 
 
     </div>
