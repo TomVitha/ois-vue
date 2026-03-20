@@ -82,11 +82,11 @@
   <a
     v-if="props.variant === 'list'"
     href="#temp-payment-modal"
-    class="card"
+    class="list-group-item m-0 card-link"
     role="button"
     data-bs-toggle="modal"
     data-bs-target="#temp-payment-modal">
-    <div class="card-body">
+    <div>
       <div class="row row-gap-3 align-items-center gx-4">
         <div class="col">
           <div>{{ title }}</div>
@@ -139,7 +139,7 @@
   <tr
     v-else
     class="card-link position-relative">
-    <td data-label="Popis">
+    <td data-label="Popis" class="text-wrap">
       {{ title }}
       <!-- NOTE: This link covers the entire row (using class .stretched-link), making it clickable -->
       <RouterLink

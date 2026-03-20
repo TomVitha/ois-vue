@@ -215,9 +215,14 @@
         </div>
       </div>
 
-      <div class="col-12">
-        <Payments :payments="paymentsStore.payments" />
-      </div>
+            <div class="col-12">
+              <div class="card">
+                <!-- <div class="card-header">
+                  <h3 class="card-title">Platby</h3>
+                </div> -->
+                <Payments :payments="paymentsStore.payments" />
+              </div>
+            </div>
 
 
     </div>
