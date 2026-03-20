@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 </script>
 
@@ -25,4 +25,6 @@
   </RouterLink>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
