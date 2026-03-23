@@ -28,7 +28,7 @@
   <!-- Desktop: table rendering -->
   <!-- <div class="card d-none d-lg-block"> -->
   <div class="table-responsive d-none d-lg-block">
-    <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
+    <table class="table table-hover table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
       <thead>
         <tr>
           <th>Popis</th>

@@ -88,7 +88,7 @@
   <a
     v-if="props.variant === 'list'"
     href="#payment-modal"
-    class="list-group-item m-0 card-link"
+    class="list-group-item list-group-item-action"
     role="button"
     data-bs-toggle="modal"
     data-bs-target="#payment-modal"
@@ -145,7 +145,7 @@
   <!-- Desktop: table row with pay button -->
   <tr
     v-else
-    class="card-link position-relative">
+    class="position-relative">
     <td data-label="Popis" class="text-wrap">
       {{ title }}
       <!-- NOTE: This link covers the entire row (using class .stretched-link), making it clickable -->

@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <RouterLink to="/komunikace?m=msg-2" class="list-group-item d-flex align-items-center card-link m-0">
+  <RouterLink to="/komunikace?m=msg-2" class="list-group-item d-flex align-items-center list-group-item-action">
     <div class="row align-items-center flex-fill">
       <div class="col">
         <div>{{ title }}</div>

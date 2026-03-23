@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <RouterLink to="/kalendar" class="list-group-item d-flex align-items-center card-link mx-0">
+  <RouterLink to="/kalendar" class="list-group-item d-flex align-items-center list-group-item-action">
     <div class="row flex-fill">
       <div class="col-auto text-end d-print-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-md icon-tabler-calendar-event">
@@ -19,7 +19,6 @@
         <div class="fw-bold">31. červen 2026 <span class="badge bg-default text-default-fg text-nowrap">192-03-147</span></div>
         <!-- ? prohodit Jednotku a termínovou sekci ? -->
         <div>
-          
           1. termínová sekce 
         </div>
         <div class="text-secondary small">Dispoziční změny zasahující do nosných konstrukcí.</div>
