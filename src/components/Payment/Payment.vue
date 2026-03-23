@@ -3,8 +3,10 @@
   import { RouterLink } from 'vue-router'
 
   import { useLocaleStore } from '@/stores/locale'
+  import { usePaymentsStore } from '@/stores/payments'
 
   const localeStore = useLocaleStore()
+  const paymentsStore = usePaymentsStore()
 
   const props = withDefaults(defineProps<{
     id: number
@@ -74,6 +76,10 @@
       day: '2-digit',
     })
   }
+
+  function openPaymentDialog() {
+    paymentsStore.selectPaymentById(props.id)
+  }
 </script>
 
 <template>
@@ -81,11 +87,12 @@
   <!-- NOTE: Href will point to the actual individual payment -->
   <a
     v-if="props.variant === 'list'"
-    href="#temp-payment-modal"
+    href="#payment-modal"
     class="list-group-item m-0 card-link"
     role="button"
     data-bs-toggle="modal"
-    data-bs-target="#temp-payment-modal">
+    data-bs-target="#payment-modal"
+    @click="openPaymentDialog">
     <div>
       <div class="row row-gap-3 align-items-center gx-4">
         <div class="col">
@@ -146,8 +153,8 @@
         :to="`#platba-${id}`"
         class="stretched-link"
         data-bs-toggle="modal"
-        data-bs-target="#temp-payment-modal"
-        @click.prevent>
+        data-bs-target="#payment-modal"
+        @click.prevent="openPaymentDialog">
       </RouterLink>
     </td>
     <td data-label="Splatnost">{{ formatDate(dueDate) }}</td>

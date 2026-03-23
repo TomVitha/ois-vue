@@ -49,7 +49,7 @@
     class="card card-link"
     role="button"
     data-bs-toggle="modal"
-    data-bs-target="#temp-payment-modal">
+    data-bs-target="#payment-modal">
     <div class="card-body">
       <div class="row row-gap-3 gx-4">
         <div class="col">

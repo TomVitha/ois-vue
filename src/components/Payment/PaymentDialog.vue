@@ -1,25 +1,36 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
+
   import { useLocaleStore } from '@/stores/locale'
+  import { usePaymentsStore } from '@/stores/payments'
+
   const localeStore = useLocaleStore()
+  const paymentsStore = usePaymentsStore()
 
   import PaymentDialogItem from '@/components/Payment/PaymentDialogItem.vue';
   import CopyToClipboardButton from '@/components/CopyToClipboardButton.vue';
 
-  const props = defineProps<{
-    amount: number
-    accountNumber: string
-    varSymbol: string | number
-    message: string | number
-  }>()
+  const selectedPayment = computed(() => paymentsStore.selectedPayment)
+
+  const amountToShow = computed(() => {
+    return selectedPayment.value?.amount ?? 0
+  })
+
+  function formatCurrency(amount: number): string {
+    return new Intl.NumberFormat(localeStore.locale, {
+      style: 'currency',
+      currency: 'CZK',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount)
+  }
 </script>
 
 <template>
-  <!-- TODO: Data dynamically for a given payment; not hard-coded -->
   <!-- TODO: Show different info for Paid and Unpaid payments -->
-  <!-- TODO: Breakdown for partially paid (like on payments page) -->
   <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
   <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->
-  <div class="modal fade" id="temp-payment-modal">
+  <div class="modal fade" id="payment-modal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="modal-header">
@@ -27,48 +38,84 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <template v-if="selectedPayment">
 
-          <div class="space-y-3">
-            <div>
-              <!-- QR -->
-              <img src="/qr-temp.svg" alt="QR kód se nepodařilo načíst" width="180" class="d-block mx-auto" title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
-              <!-- Success check img -->
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto bg-success-lt rounded-circle p-3 my-2" height="70">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M5 12l5 5l10 -10" />
-              </svg> -->
-            </div>
+            <div class="space-y-3">
+              <div>
+                <template v-if="!selectedPayment.isPaid">
+                  <img
+                    src="/qr-temp.svg"
+                    alt="QR kód se nepodařilo načíst"
+                    width="180"
+                    class="d-block mx-auto"
+                    title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
+                </template>
+                <template v-else>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="d-block mx-auto bg-success-lt rounded-circle p-3 my-2 text-success"
+                    height="70"
+                    aria-label="Platba byla uhrazena">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                  </svg>
+                  <div class="text-center text-success">
+                    Platba uhrazena
+                  </div>
+                </template>
+              </div>
 
-            <div class="text-center">
-              <div class="text-secondary">Částka k uhrazení</div>
-              <div class="d-flex align-items-center justify-content-center gap-1">
-                <strong class="h1 my-0">
-                  {{
-                    ((locale = localeStore.locale) => {
-                      return new Intl.NumberFormat(localeStore.locale, {
-                        style: 'currency',
-                        currency: 'CZK',
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
-                      }).format(amount);
-                    })()
-                  }}
-                </strong>
-                <CopyToClipboardButton :data="amount" />
+              <div class="text-center">
+                <!-- <div class="text-secondary">{{ selectedPayment.isPaid ? 'Uhrazena částka' : 'Částka k uhrazení' }}</div> -->
+                <div class="d-flex align-items-center justify-content-center gap-1">
+                  <strong class="h1 my-0">{{ formatCurrency(amountToShow) }}</strong>
+                  <CopyToClipboardButton :data="amountToShow" />
+                </div>
+
+                <div v-if="selectedPayment.isPartiallyPaid" class="mt-3 text-start">
+                  <div class="row">
+                    <div class="col">
+                      <div class="small text-secondary">Zaplaceno</div>
+                      <div class="fw-semibold text-success">{{ formatCurrency(selectedPayment.paid) }}</div>
+                    </div>
+                    <div class="col text-end">
+                      <div class="small text-secondary">Zbývá</div>
+                      <div class="fw-semibold text-warning">{{ formatCurrency(selectedPayment.remaining) }}</div>
+                    </div>
+                    <div class="col-12">
+                      <div class="progress progress-sm mt-1" role="progressbar" :aria-valuenow="selectedPayment.percentPaid" aria-valuemin="0" aria-valuemax="100" :aria-label="`Zaplaceno ${selectedPayment.percentPaid}%`">
+                        <div
+                          class="progress-bar bg-success"
+                          :style="`width: ${selectedPayment.percentPaid}%`"
+                          :title="`${selectedPayment.percentPaid}% zaplaceno`">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="list-group list-group-flush">
+                <PaymentDialogItem name="Číslo účtu" :value="selectedPayment.accountNumber"></PaymentDialogItem>
+                <PaymentDialogItem name="Variabilní symbol" :value="selectedPayment.varSymbol"></PaymentDialogItem>
+                <PaymentDialogItem name="Zpráva pro příjemce" :value="selectedPayment.message"></PaymentDialogItem>
               </div>
             </div>
-
-            <div class="list-group list-group-flush">
-              <PaymentDialogItem name="Číslo účtu" value="670100-1234567890 / 6210"></PaymentDialogItem>
-              <PaymentDialogItem name="Variabilní symbol" value="7464685"></PaymentDialogItem>
-              <PaymentDialogItem name="Zpráva pro příjemce" value="165-10-007 KD1"></PaymentDialogItem>
-            </div>
+          </template>
+          <div v-else class="text-secondary text-center py-4">
+            Vyberte platbu pro zobrazení detailu.
           </div>
 
         </div>
         <div class="modal-footer">
           <div class="text-secondary text-center flex-fill">
-            <small>Odeslané platby se v systému mohou projevit až po 3 pracovních dnech.</small>
+            <small>Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</small>
           </div>
         </div>
       </div>
@@ -76,6 +123,4 @@
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -243,7 +243,9 @@ dialog {
     --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
   }
 
-  .card:where(:not(.card .card)) {
+  /* .card that is not a child of another .card OR .card that is not a child of .modal */
+  /* Cards that are not inside of another .card or a .modal */
+  .card:not(:is(.card, .modal) .card) {
     border-width: 0px;
   }
 
@@ -281,11 +283,12 @@ html {
 
 /* HACK: QUICK AND DIRTY */
 @media (min-width: 992px) {
-    .navbar-vertical.navbar-expand-lg .navbar-brand {
-        /* padding: 0.75rem 0; */
-        padding: 0;
-    }
-    .navbar-brand-image {
-      height: 100px;
-    }
+  .navbar-vertical.navbar-expand-lg .navbar-brand {
+    /* padding: 0.75rem 0; */
+    padding: 0;
+  }
+
+  .navbar-brand-image {
+    height: 100px;
+  }
 }

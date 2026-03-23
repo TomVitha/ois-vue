@@ -19,10 +19,13 @@ const paymentsData = ref([
   { id: 14, title: '192-03-147 dopl.BD', duedate: '2025-05-11', amount: 45000, paid: 45000 },
 ])
 
+const defaultAccountNumber = '670100-1234567890 / 6210'
+
 export const usePaymentsStore = defineStore('payments', () => {
 
   const dueDaysThreshold = ref(7)
   const today = ref(new Date('2025-08-01')) // DEV: hard-coded today date for dev purposes
+  const selectedPaymentId = ref<number | null>(null)
 
   const payments = computed(() =>
     paymentsData.value.map((p) => {
@@ -45,14 +48,29 @@ export const usePaymentsStore = defineStore('payments', () => {
         isPartiallyPaid: p.paid > 0 && p.paid < p.amount,
         percentPaid: Math.min(100, Math.round((p.paid / p.amount) * 100)),
         daysBetweenTodayAndDueDate,
-        status
+        status,
+        accountNumber: defaultAccountNumber,
+        varSymbol: `74646${String(p.id).padStart(2, '0')}`,
+        message: '192-03-147 KD1'
       }
     })
+  )
+
+  const selectedPayment = computed(() =>
+    payments.value.find((p) => p.id === selectedPaymentId.value) ?? null
   )
 
 
   function setDueDaysThreshold(newValue: number) {
     dueDaysThreshold.value = newValue
+  }
+
+  function selectPaymentById(paymentId: number) {
+    selectedPaymentId.value = paymentId
+  }
+
+  function clearSelectedPayment() {
+    selectedPaymentId.value = null
   }
 
   const paidPayments = computed(() => payments.value.filter(p => p.status === 'paid'))
@@ -66,7 +84,11 @@ export const usePaymentsStore = defineStore('payments', () => {
     dueDaysThreshold,
     today,
     payments,
+    selectedPaymentId,
+    selectedPayment,
     setDueDaysThreshold,
+    selectPaymentById,
+    clearSelectedPayment,
     paidPayments,
     overduePayments,
     upcomingPayments,

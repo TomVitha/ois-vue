@@ -230,9 +230,7 @@
 
     </div>
 
-    <!-- ! hard-coded values -->
-    <!-- TODO: Refactor to accept data from store -->
-    <PaymentDialog :amount="37450" accountNumber="670100-1234567890 / 6210" :varSymbol="7464685" message="192-03-147 KD1" />
+    <PaymentDialog />
 
 
   </PageTemplate>
