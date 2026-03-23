@@ -16,9 +16,12 @@
         </svg>
       </div>
       <div class="col">
-        <div class="fw-bold">31. červen 2026</div>
+        <div class="fw-bold">31. červen 2026 <span class="badge bg-default text-default-fg text-nowrap">192-03-147</span></div>
         <!-- ? prohodit Jednotku a termínovou sekci ? -->
-        <div>1. termínová sekce <span class="badge bg-default text-default-fg text-nowrap">192-03-147</span></div>
+        <div>
+          
+          1. termínová sekce 
+        </div>
         <div class="text-secondary small">Dispoziční změny zasahující do nosných konstrukcí.</div>
       </div>
     </div>
