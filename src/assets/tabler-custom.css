@@ -239,7 +239,7 @@ dialog {
 }
 
 @media (min-width: 992px) {
-  :is(:host, :root):not([data-bs-theme=dark]) .card {
+  :is(:host, :root):not([data-bs-theme=dark]) .card:not(:is(.card, .modal) .card) {
     --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
   }
 

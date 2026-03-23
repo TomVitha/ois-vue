@@ -42,22 +42,22 @@
   <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
   <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->
   <div class="modal fade" id="payment-modal">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm modal-fullscreen-sm-down">
-      <div class="modal-content" style="max-height: 850px;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md modal-fullscreen-sm-down">
+      <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Detail platby</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <template v-if="selectedPayment">
 
-            <div class="space-y-3">
-              <div class="pb-3">
+          <div class="space-y-3">
+            <template v-if="selectedPayment">
+              <div>
                 <template v-if="!selectedPayment.isPaid">
                   <img
                     src="/qr-temp.svg"
                     alt="QR kód se nepodařilo načíst"
-                    width="180"
+                    width="150"
                     class="d-block mx-auto"
                     title="Zaplaťte načtením QR kódu ve své bankovní mobilní aplikaci" />
                 </template>
@@ -113,46 +113,64 @@
                 </div>
               </div>
 
-              <div class="list-group list-group-flush">
-                <PaymentDialogItem name="Číslo účtu" :value="selectedPayment.accountNumber"></PaymentDialogItem>
-                <PaymentDialogItem name="Variabilní symbol" :value="selectedPayment.varSymbol"></PaymentDialogItem>
-                <PaymentDialogItem name="Zpráva pro příjemce" :value="selectedPayment.message"></PaymentDialogItem>
+              <div class="card">
+                <div class="card-body">
+                  <!-- <div class="list-group list-group-flush"> -->
+                  <div class="datagrid">
+                    <PaymentDialogItem name="Číslo účtu" :value="selectedPayment.accountNumber"></PaymentDialogItem>
+                    <PaymentDialogItem name="Variabilní symbol" :value="selectedPayment.varSymbol"></PaymentDialogItem>
+                    <PaymentDialogItem name="Zpráva pro příjemce" :value="selectedPayment.message"></PaymentDialogItem>
+                  </div>
+                </div>
               </div>
 
-              <div class="pt-2">
-                <template v-if="selectedPayment.paymentHistory.length > 0">
+
+
+              <template v-if="selectedPayment.paymentHistory.length > 0">
+                <div class="pt-2">
                   <div class="small mb-2">Historie dílčích úhrad</div>
-                  <div class="list-group list-group-flush border rounded">
-                    <div
-                      v-for="item in selectedPayment.paymentHistory"
-                      :key="item.id"
-                      class="list-group-item d-flex justify-content-between">
-                      <div>
-                        <div class="text-secondary">{{ formatDate(item.date) }}</div>
-                        <!-- ? maybe ? -->
-                        <!-- <div v-if="item.note" class="small text-secondary">{{ item.note }}</div> -->
+                  <div class="card">
+                    <div class="list-group list-group-flush rounded">
+                      <div
+                        v-for="item in selectedPayment.paymentHistory"
+                        :key="item.id"
+                        class="list-group-item d-flex justify-content-between">
+                        <div>
+                          <div class="text-secondary">{{ formatDate(item.date) }}</div>
+                          <!-- <div v-if="item.note" class="small text-secondary">{{ item.note }}</div> -->
+                        </div>
+                        <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                       </div>
-                      <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                     </div>
                   </div>
-                </template>
-                <!-- <div v-else class="small text-secondary">K této platbě zatím neevidujeme žádnou dílčí úhradu.</div> -->
-              </div>
-            </div>
-          </template>
-          <div v-else class="text-secondary text-center py-4">
-            Vyberte platbu pro zobrazení detailu.
-          </div>
+                </div>
+              </template>
 
-        </div>
-        <div class="modal-footer">
-          <div class="text-secondary text-center flex-fill">
-            <small>Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</small>
+            </template>
+
+            <template v-else>
+              <div class="text-secondary text-center py-4">
+                Vyberte platbu pro zobrazení detailu.
+              </div>
+            </template>
+
+            <p class="text-center text-secondary mt-auto fs-5 mb-0">Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</p>
+
           </div>
         </div>
+        <!-- <div class="modal-footer">
+          <div class="text-secondary text-center flex-fill">
+            <p><small>Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</small></p>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .modal {
+    --tblr-modal-bg: var(--tblr-bg-surface-tertiary);
+    /* --tblr-modal-bg: red; */
+  }
+</style>
