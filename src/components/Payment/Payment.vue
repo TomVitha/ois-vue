@@ -94,7 +94,7 @@
     data-bs-target="#payment-modal"
     @click="openPaymentDialog">
     <div>
-      <div class="row row-gap-3 align-items-center gx-4">
+      <div class="row row-gap-2 align-items-center gx-4">
         <div class="col">
           <div>{{ title }}</div>
           <div class="text-secondary">Splatnost: {{ formatDate(dueDate) }}</div>
@@ -115,12 +115,12 @@
         <div class="col-12" v-if="isPartiallyPaid">
           <div class="row">
             <div class="col">
-              <div class="text-secondary">Zaplaceno</div>
-              <div class="fs-4 fw-bold text-success">{{ formatCurrency(props.paid) }}</div>
+              <!-- <div class="text-secondary">Zaplaceno</div> -->
+              <div class="fs-4 text-success">{{ formatCurrency(props.paid) }}</div>
             </div>
             <div class="col text-end">
-              <div class="text-secondary">Zbývá</div>
-              <div class="fs-4 fw-bold text-warning">{{ formatCurrency(remainingAmount) }}</div>
+              <!-- <div class="text-secondary">Zbývá</div> -->
+              <div class="fs-4 text-warning">{{ formatCurrency(remainingAmount) }}</div>
             </div>
             <div class="col-12">
               <div class="progress progress-sm mt-2">

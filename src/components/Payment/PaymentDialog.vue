@@ -24,6 +24,17 @@
       maximumFractionDigits: 0,
     }).format(amount)
   }
+
+  function formatDate(value: string): string {
+    const date = new Date(value)
+    if (isNaN(date.getTime())) return value
+
+    return date.toLocaleDateString(localeStore.locale, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+  }
 </script>
 
 <template>
@@ -32,16 +43,16 @@
   <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->
   <div class="modal fade" id="payment-modal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm modal-fullscreen-sm-down">
-      <div class="modal-content">
+      <div class="modal-content" style="max-height: 850px;">
         <div class="modal-header">
-          <h5 class="modal-title">Platba</h5>
+          <h5 class="modal-title">Detail platby</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <template v-if="selectedPayment">
 
             <div class="space-y-3">
-              <div>
+              <div class="pb-3">
                 <template v-if="!selectedPayment.isPaid">
                   <img
                     src="/qr-temp.svg"
@@ -73,6 +84,7 @@
 
               <div class="text-center">
                 <!-- <div class="text-secondary">{{ selectedPayment.isPaid ? 'Uhrazena částka' : 'Částka k uhrazení' }}</div> -->
+                <div class="text-secondary">Částka platby</div>
                 <div class="d-flex align-items-center justify-content-center gap-1">
                   <strong class="h1 my-0">{{ formatCurrency(amountToShow) }}</strong>
                   <CopyToClipboardButton :data="amountToShow" />
@@ -105,6 +117,26 @@
                 <PaymentDialogItem name="Číslo účtu" :value="selectedPayment.accountNumber"></PaymentDialogItem>
                 <PaymentDialogItem name="Variabilní symbol" :value="selectedPayment.varSymbol"></PaymentDialogItem>
                 <PaymentDialogItem name="Zpráva pro příjemce" :value="selectedPayment.message"></PaymentDialogItem>
+              </div>
+
+              <div class="pt-2">
+                <template v-if="selectedPayment.paymentHistory.length > 0">
+                  <div class="small mb-2">Historie dílčích úhrad</div>
+                  <div class="list-group list-group-flush border rounded">
+                    <div
+                      v-for="item in selectedPayment.paymentHistory"
+                      :key="item.id"
+                      class="list-group-item d-flex justify-content-between">
+                      <div>
+                        <div class="text-secondary">{{ formatDate(item.date) }}</div>
+                        <!-- ? maybe ? -->
+                        <!-- <div v-if="item.note" class="small text-secondary">{{ item.note }}</div> -->
+                      </div>
+                      <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
+                    </div>
+                  </div>
+                </template>
+                <!-- <div v-else class="small text-secondary">K této platbě zatím neevidujeme žádnou dílčí úhradu.</div> -->
               </div>
             </div>
           </template>
