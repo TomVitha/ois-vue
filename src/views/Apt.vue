@@ -4,7 +4,8 @@
 
 <template>
 
-  <PageTemplate title="192-03-147">
+  <!-- NOTE: Pretitle je typ produktu: Byt/Bytová jednotka, Ateliér, Rodinný dům, Komerční prostor atd. -->
+  <PageTemplate pretitle="Bytová jednotka" title="192-03-147">
     <!-- <template #actions>
       <div class="btn-list">
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
