@@ -67,6 +67,10 @@
                   <h3 class="card-title me-auto">Platby</h3>
                   <RouterLink to="/platby">
                     Všechny
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M9 6l6 6l-6 6" />
+                    </svg>
                   </RouterLink>
                 </div>
                 <Payments :payments="paymentsStore.upcomingPayments" />
@@ -84,7 +88,8 @@
                   <SignaturePromptItem title="Návrh klientského dodatku" file="192-03-147_KD2.pdf" />
                   <SignaturePromptItem title="Návrh smlouvy o dílo" file="192-03-147_XY3.pdf" />
                 </div>
-                <!-- * Empty state -- zobrazí se pokud nejsou žádné dokumenty k podepsání -->
+                <!-- * Empty state -->
+                <!-- NOTE: Zobrazí se pokud nejsou žádné dokumenty k podepsání -->
                 <!-- <div class="empty">
                   <p class="empty-title">
                     Žádné dokumenty
@@ -104,10 +109,11 @@
                   <h3 class="card-title">Termíny klientských změn</h3>
                 </div>
                 <div class="list-group list-group-flush">
-                  <ClientTermItem />
-                  <ClientTermItem />
+                  <ClientTermItem date="2026-06-31" product="192-03-147" title="2. termínová sekce" description="Dispoziční změny zasahující do nosných konstrukcí." />
+                  <ClientTermItem date="2027-07-15" product="192-RD-007" title="1. termínová sekce" description="Další změny v konstrukci." />
                 </div>
-                <!-- * Empty state -- zobrazí se pokud nejsou žádné termínovky -->
+                <!-- * Empty state -->
+                <!-- NOTE: zobrazí se pokud nejsou žádné termínovky -->
                 <!-- <div class="empty">
                   <p class="empty-title">
                     Žádné termíny
