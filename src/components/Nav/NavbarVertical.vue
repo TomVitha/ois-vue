@@ -13,10 +13,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="navbar-brand">
+      <!-- CG Logo with BG (desktop) -->
+      <div class="navbar-brand d-none d-lg-inline-flex">
         <RouterLink to="/" aria-label="CENTRAL GROUP">
-          <!-- CG Logo with BG (desktop) -->
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 155 129" style="enable-background:new 0 0 155 129;" xml:space="preserve" class="navbar-brand-image d-none d-lg-block">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 155 129" style="enable-background:new 0 0 155 129;" xml:space="preserve" class="navbar-brand-image">
             <rect width="155" height="129" fill="#FFED00" />
             <g>
               <path d="M98.9,91.7c0,2.8-1.4,4-3.3,4s-3.3-1.1-3.3-4v-9.5h-4.6v9.6c0,4.9,3.1,7.7,7.9,7.7s7.9-2.8,7.9-7.7v-9.6h-4.6L98.9,91.7   L98.9,91.7z" />
@@ -35,10 +35,15 @@
               <path d="M118.3,74h4.7l-7.3-16.8h-4.6L103.9,74h4.6l1.2-2.9h7.5L118.3,74L118.3,74z M111.2,67.4l2.3-5.7l2.3,5.7   C115.7,67.4,111.1,67.4,111.2,67.4z" />
             </g>
           </svg>
-          <!-- CG Logo Wordmark (mobile) -->
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" style="enable-background:new 0 0 283.5 186.2;" xml:space="preserve" class="navbar-brand-image d-lg-none">
+        </RouterLink>
+      </div>
+
+      <!-- CG Logo Wordmark (mobile) -->
+      <div class="navbar-brand navbar-brand-autodark d-lg-none">
+        <RouterLink to="/" aria-label="CENTRAL GROUP">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" style="enable-background:new 0 0 283.5 186.2;" xml:space="preserve" class="navbar-brand-image">
             <g>
-              <g style="fill: #000000">
+              <g fill="#000000">
                 <path d="M180.9,118c0,5.2-2.5,7.3-6,7.3c-3.5,0-6.1-2.1-6.1-7.3v-17.3h-8.4v17.6c0,9.1,5.7,14.1,14.4,14.1s14.4-5.1,14.4-14.1v-17.6h-8.4V118z" />
                 <polygon points="103.2,69.1 116.1,85.5 122.9,85.5 122.9,54.8 114.8,54.8 114.8,71.2 101.9,54.8 95.1,54.8 95.1,85.5 103.2,85.5" />
                 <polygon points="137.6,85.5 145.9,85.5 145.9,61.7 156.3,61.7 156.3,54.8 127.2,54.8 127.2,61.7 137.6,61.7" />
