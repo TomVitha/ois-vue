@@ -1,3 +1,15 @@
+<script lang="ts">
+import type { RequestTemplateDefinition } from '@/requests/types'
+
+export const requestTemplateMeta: RequestTemplateDefinition = {
+  id: 'update-contact-information',
+  name: 'Změna osobních údajů',
+  description: 'Nahlaste změny vašich kontaktních údajů.',
+  category: 'Osobní údaje',
+  availableForPropertyIds: ['192-03-147', '215-02-018'],
+}
+</script>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { RequestFormExpose } from '@/requests/forms/types'

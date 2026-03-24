@@ -8,8 +8,7 @@ import type {
   RequestTemplateDefinition,
   RequestTemplateId,
 } from '@/requests/types'
-import { genericRequestTemplate } from '@/requests/templates/genericRequest'
-import { updateContactInformationTemplate } from '@/requests/templates/updateContactInformation'
+import { getRequestTemplates } from '@/requests/forms/registry'
 
 const propertyDefinitions = ref<PropertyDefinition[]>([
   { id: '192-03-147', name: '192-03-147' },
@@ -17,10 +16,7 @@ const propertyDefinitions = ref<PropertyDefinition[]>([
   { id: '301-11-024', name: '301-11-024' },
 ])
 
-const requestTemplates = ref<RequestTemplateDefinition[]>([
-  genericRequestTemplate,
-  updateContactInformationTemplate,
-])
+const requestTemplates = ref<RequestTemplateDefinition[]>(getRequestTemplates())
 
 const activeRequests = ref<ActiveRequest[]>([])
 

@@ -6,7 +6,6 @@
   import { getRequestFormComponent } from '@/requests/forms/registry'
   import type { RequestFormExpose } from '@/requests/forms/types'
   import { useRequestsStore } from '@/stores/requests'
-  import type { RequestTemplateId } from '@/requests/types'
 
   const route = useRoute()
   const router = useRouter()
@@ -32,7 +31,7 @@
 
     return requestsStore.isTemplateAvailableForProperty(
       property.value.id,
-      template.value.id as RequestTemplateId,
+      template.value.id,
     )
   })
 

@@ -1,4 +1,4 @@
-export type RequestTemplateId = 'generic-request' | 'update-contact-information'
+export type RequestTemplateId = string
 
 export type RequestTemplateDefinition = {
   id: RequestTemplateId
