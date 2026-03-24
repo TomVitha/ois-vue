@@ -13,39 +13,16 @@
       <!-- Obecná -->
       <div class="col-md-4">
         <NewRequest id="obecna" name="Obecná žádost" description="Když žádná z předem zvolených možností není to co potřebujete.">
-          <p>až bude obsah tak bude tady</p>
+          <!-- TODO -->
         </NewRequest>
       </div>
+
 
       <!-- Změna osobních údajů -->
       <div class="col-md-4">
-        <NewRequest id="zmena-osobnich-udaju" name="Změna osobních údajů" description="Přestěhovali jste se, nebo si změnili telefonní číslo? Změnilo se vám pohlaví, nebo jste zemřeli? Zde nám dejte vědět o změně svých osobních údajů.">
-          <div class="row align-items-center gy-3">
-            <div class="col-md-4">
-              <span class="form-label">Údaj</span>
-              <select name="lang" class="form-select">
-                <option value="1">Rodinný stav</option>
-                <option value="2">Jméno</option>
-                <option value="3">Adresa</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <span class="form-label">Současná hodnota</span>
-              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Ženatý" disabled>
-            </div>
-            <div class="col-md-4">
-              <span class="form-label">Nová hodnota</span>
-              <input type="text" class="form-control" name="example-text-input" placeholder="Input placeholder" value="Svobodný">
-            </div>
-          </div>
-        </NewRequest>
-      </div>
-
-      <!-- Změna osobních údajů (alt) -->
-      <div class="col-md-4">
         <NewRequest
-          id="zmena-osobnich-udaju-2"
-          name="Změna osobních údajů (2)"
+          id="zmena-osobnich-udaju"
+          name="Změna osobních údajů"
           description="Jestli se něco ohledně vás změnilo, tak si to nechte pro sebe... ale ne, nám o tom dejte vědět.">
           <div class="row g-3">
             <div class="col-md-4">
@@ -79,35 +56,6 @@
         </NewRequest>
       </div>
 
-      <!-- odklad platby -->
-      <div class="col-md-4">
-        <NewRequest
-          id="odklad-platby"
-          name="Odklad platby"
-          description="Nestíháte posílat prašule? Nevadí, u nás můžete zaplatit později.">
-          <!-- TODO: Tělo žádosti -->
-        </NewRequest>
-      </div>
-
-      <!-- Změna financování -->
-      <div class="col-md-4">
-        <NewRequest
-          id="zmena-financovani"
-          name="Změna financování"
-          description="Pokud potřebujete změnit způsob financování.">
-          <!-- TODO: Tělo žádosti -->
-        </NewRequest>
-      </div>
-
-      <!-- Změna spolumajitelů -->
-      <div class="col-md-4">
-        <NewRequest
-          id="zmena-spolumajitelu"
-          name="Změna spolumajitelů"
-          description="Zemřela vám babička, nebo návštěva na jednu noc se rozhodna zůstat?">
-          <!-- TODO: Tělo žádosti -->
-        </NewRequest>
-      </div>
 
 
     </div>

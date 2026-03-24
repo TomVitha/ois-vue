@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import RequestRow from '@/components/RequestRow.vue'
+
+  import ProductGroup from '@/components/ProductGroup.vue';
+  import ProductGroupItem from '@/components/ProductGroupItem.vue';
 </script>
 
 <template>
@@ -34,32 +37,35 @@
       </p>
     </div> -->
 
-    <!-- * List of requests -->
     <div class="row row-deck row-cards">
 
-      <!-- WIP: Active requests -->
+      <!-- Property 1 -->
       <div class="col-12">
-        <div class="card">
-          <div class="table-responsive ">
-            <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-md">
-              <thead>
-                <tr>
-                  <th class="w-50">Název</th>
-                  <th>Stav</th>
-                  <th>Zasláno</th>
-                  <th>Záležitost</th>
-                  <th class="w-0"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <RequestRow title="Změna osobních údajů" :status="1" date-created="2025-07-04" concern="generic" />
-                <RequestRow title="Odklad platby - 192-03-147 SOD" :status="4" date-created="2025-04-21" :concern="['192-03-147']" />
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <ProductGroup>
+          <ProductGroupItem title="192-03-147" subtitle="2 položky" id="192-03-147">
+            <div class="card">
+              <div class="table-responsive ">
+                <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-md">
+                  <thead>
+                    <tr>
+                      <th class="w-50">Název</th>
+                      <th>Stav</th>
+                      <th>Zasláno</th>
+                      <th>Záležitost</th>
+                      <th class="w-0"></th>
+                    </tr>
+                  </thead>
+                  <!-- List of active requests for this property -->
+                  <tbody>
+                    <RequestRow title="Změna osobních údajů" :status="1" date-created="2025-07-04" :concern="['192-03-147']" />
+                    <RequestRow title="Odklad platby - 192-03-147 SOD" :status="4" date-created="2025-04-21" :concern="['192-03-147']" />
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </ProductGroupItem>
+        </ProductGroup>
       </div>
-
     </div>
 
   </PageTemplate>
@@ -71,7 +77,7 @@
   @media (min-width: 768px) {
     tbody tr {
       /* height on <tr> acts like min-height */
-      height: 3.5rem;
+      /* height: 3.5rem; */
     }
   }
 
