@@ -2,7 +2,10 @@
   import { computed } from 'vue'
 
   import { useLocaleStore } from '@/stores/locale'
+  import { useVouchersStore } from '@/stores/vouchers'
+
   const localeStore = useLocaleStore()
+  const vouchersStore = useVouchersStore()
 
   interface BreakdownItem {
     label: string
@@ -11,6 +14,7 @@
   }
 
   const props = defineProps<{
+    id: number
     title: string
     value: number
     spent?: number
@@ -39,17 +43,22 @@
 
   const formatCurrency = (amount: number) =>
     new Intl.NumberFormat(localeStore.locale, { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 }).format(amount)
+
+  function openVoucherDialog() {
+    vouchersStore.selectVoucherById(props.id)
+  }
 </script>
 
 <template>
   <!-- Kliknutí otevře modal dialog s breakdownem utrácení poukázky -->
-  <!-- TODO: Udělat ten dialog -->
+  <!-- TODO: Dedicated modal dialog for Vouchers -->
   <a
-    href="#todo"
+    href="#voucher-modal"
     class="card card-link"
     role="button"
     data-bs-toggle="modal"
-    data-bs-target="#payment-modal">
+    data-bs-target="#voucher-modal"
+    @click="openVoucherDialog">
     <div class="card-body">
       <div class="row row-gap-3 gx-4">
         <div class="col">
@@ -89,47 +98,4 @@
       </div>
     </div>
   </a>
-
-  <!-- Breakdown využití poukázky -->
-  <!-- TEMP: Přijde do modal dialogu -->
-  <div class="card">
-    <!-- Pokud byla poukázka někdy využita, zobrazit tabulku s breakdownem -->
-    <div v-if="props.spent">
-      <!-- Pokud poukázka ještě nebyla využita, zobrazit empty -->
-      <div class="table-responsive">
-        <table class="table table-selectable card-table table-vcenter text-nowrap datatable">
-          <thead>
-            <tr>
-              <th>Dodatek</th>
-              <th>Datum</th>
-              <th>Hodnota</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in props.breakdown" :key="`${item.label}-${item.date}`">
-              <td>{{ item.label }}</td>
-              <td>
-                {{
-                  new Intl.DateTimeFormat([localeStore.locale], {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                  }).format(new Date(item.date))
-                }}
-              </td>
-              <td>{{ formatCurrency(item.amount) }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- WIP -->
-    <div v-else class="empty">
-      <!-- <p class="empty-title">Nevyužito</p> -->
-      <p class="empty-subtitle text-secondary">
-        Tato poukázka nebyla zatím nijak využita.
-      </p>
-    </div>
-
-  </div>
 </template>

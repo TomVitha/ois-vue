@@ -50,7 +50,7 @@
         </div>
         <div class="modal-body">
 
-          <div class="space-y-3">
+          <div class="space-y-4">
             <template v-if="selectedPayment">
               <div>
                 <template v-if="!selectedPayment.isPaid">
@@ -83,8 +83,7 @@
               </div>
 
               <div class="text-center">
-                <!-- <div class="text-secondary">{{ selectedPayment.isPaid ? 'Uhrazena částka' : 'Částka k uhrazení' }}</div> -->
-                <div class="text-secondary">Částka platby</div>
+                <div class="subheader">Částka platby</div>
                 <div class="d-flex align-items-center justify-content-center gap-1">
                   <strong class="h1 my-0">{{ formatCurrency(amountToShow) }}</strong>
                   <CopyToClipboardButton :data="amountToShow" />
@@ -93,11 +92,11 @@
                 <div v-if="selectedPayment.isPartiallyPaid" class="mt-3 text-start">
                   <div class="row">
                     <div class="col">
-                      <div class="small text-secondary">Zaplaceno</div>
+                      <div class="text-secondary">Zaplaceno</div>
                       <div class="fw-semibold text-success">{{ formatCurrency(selectedPayment.paid) }}</div>
                     </div>
                     <div class="col text-end">
-                      <div class="small text-secondary">Zbývá</div>
+                      <div class="text-secondary">Zbývá</div>
                       <div class="fw-semibold text-warning">{{ formatCurrency(selectedPayment.remaining) }}</div>
                     </div>
                     <div class="col-12">
@@ -124,11 +123,9 @@
                 </div>
               </div>
 
-
-
               <template v-if="selectedPayment.paymentHistory.length > 0">
-                <div class="pt-2">
-                  <div class="small mb-2">Historie dílčích úhrad</div>
+                <div>
+                  <div class="subheader mb-2">Historie úhrad</div>
                   <div class="card">
                     <div class="list-group list-group-flush rounded">
                       <div
@@ -171,6 +168,5 @@
 <style scoped>
   .modal {
     --tblr-modal-bg: var(--tblr-bg-surface-tertiary);
-    /* --tblr-modal-bg: red; */
   }
 </style>

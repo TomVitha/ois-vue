@@ -1,11 +1,15 @@
 <script setup lang="ts">
   import { usePaymentsStore } from '@/stores/payments'
+  import { useVouchersStore } from '@/stores/vouchers'
+
   const paymentsStore = usePaymentsStore()
+  const vouchersStore = useVouchersStore()
 
   import PageTemplate from '@/components/PageTemplate.vue'
   import Payments from '@/components/Payment/Payments.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
   import Voucher from '@/components/Payment/Voucher.vue'
+  import VoucherDialog from '@/components/Payment/VoucherDialog.vue'
 </script>
 
 <template>
@@ -143,23 +147,14 @@
           </div>
           <div class="card-body">
             <div class="row row-cards">
-              <div class="col-lg-6">
+              <div v-for="voucher in vouchersStore.vouchers" :key="voucher.id" class="col-lg-6">
                 <Voucher
-                  title="192-03-147 Věrnostní poukázka"
-                  :value="250000"
-                  :spent="35000"
-                  date="2025-11-07"
-                  :breakdown="[
-                    { label: 'KD2', date: '2024-04-26', amount: 77_425 },
-                    { label: 'SOD-IS-I', date: '2024-06-16', amount: 136_942 }
-                  ]" />
-              </div>
-              <div class="col-lg-6">
-                <Voucher
-                  title="192-03-147 z lásky"
-                  :value="69000"
-                  :spent="0"
-                  date="2025-11-07" />
+                  :id="voucher.id"
+                  :title="voucher.title"
+                  :value="voucher.value"
+                  :spent="voucher.spent"
+                  :date="voucher.date"
+                  :breakdown="voucher.breakdown" />
               </div>
             </div>
           </div>
@@ -221,8 +216,8 @@
       <div class="col-12">
         <div class="card">
           <!-- <div class="card-header">
-                  <h3 class="card-title">Platby</h3>
-                </div> -->
+            <h3 class="card-title">Platby</h3>
+          </div> -->
           <Payments :payments="paymentsStore.payments" />
         </div>
       </div>
@@ -231,6 +226,7 @@
     </div>
 
     <PaymentDialog />
+    <VoucherDialog />
 
 
   </PageTemplate>
