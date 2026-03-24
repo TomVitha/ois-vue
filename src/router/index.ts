@@ -59,6 +59,10 @@ const router = createRouter({
       component: () => import('../views/ZadostNova.vue'),
     },
     {
+      path: '/zadost-nova/:propertyId/:templateId',
+      component: () => import('../views/ZadostNovaForm.vue'),
+    },
+    {
       path: '/404',
       // meta: { layout: LayoutBlank },
       component: () => import('../views/404.vue'),

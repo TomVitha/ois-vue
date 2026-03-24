@@ -1,67 +1,83 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
+
   import PageTemplate from '@/components/PageTemplate.vue'
-  import NewRequestDialog from '@/components/NewRequestDialog.vue';
-  import NewRequest from '@/components/NewRequest.vue';
+  import ProductGroup from '@/components/ProductGroup.vue'
+  import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import { useRequestsStore } from '@/stores/requests'
+
+  const requestsStore = useRequestsStore()
+
+  const groupedTemplates = computed(
+    () => requestsStore.availableTemplatesByCategoryForSelectedProperty,
+  )
+
+  function handlePropertyChange(event: Event) {
+    const target = event.target as HTMLSelectElement
+    requestsStore.setSelectedProperty(target.value)
+  }
+
+  function categoryCollapseId(category: string) {
+    return `request-category-${category
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')}`
+  }
 </script>
 
 <template>
-
-  <PageTemplate title="Nová žádost" back-to="/Zadosti">
-
-    <div class="row row-deck row-cards">
-
-      <!-- Obecná -->
-      <div class="col-md-4">
-        <NewRequest id="obecna" name="Obecná žádost" description="Když žádná z předem zvolených možností není to co potřebujete.">
-          <!-- TODO -->
-        </NewRequest>
+  <PageTemplate title="Nová žádost" back-to="/zadosti">
+    <template #toolbar>
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-6 col-xl-4">
+          <label class="form-label" for="request-property-select">Nemovitost</label>
+          <select
+            id="request-property-select"
+            class="form-select"
+            :value="requestsStore.selectedPropertyId"
+            @change="handlePropertyChange">
+            <option
+              v-for="property in requestsStore.properties"
+              :key="property.id"
+              :value="property.id">
+              {{ property.name }}
+            </option>
+          </select>
+        </div>
       </div>
+    </template>
 
+    <div v-if="groupedTemplates.length === 0" class="empty">
+      <p class="empty-title">Pro vybranou nemovitost nejsou dostupné žádné žádosti</p>
+      <p class="empty-subtitle text-secondary">Vyberte jinou nemovitost.</p>
+    </div>
 
-      <!-- Změna osobních údajů -->
-      <div class="col-md-4">
-        <NewRequest
-          id="zmena-osobnich-udaju"
-          name="Změna osobních údajů"
-          description="Jestli se něco ohledně vás změnilo, tak si to nechte pro sebe... ale ne, nám o tom dejte vědět.">
-          <div class="row g-3">
-            <div class="col-md-4">
-              <div class="form-label">Jméno</div><input type="text" class="form-control" autocomplete="name" required value="Adam Novák">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">Adresa</div><input type="text" class="form-control" required value="Skopičkova 748/9, Praha 4, 143 00">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">Email</div><input type="email" class="form-control" required value="novak@seznam.cz">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">Telefon</div><input type="tel" class="form-control" autocomplete="tel" required value="+420721584630">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">IČ</div><input type="text" class="form-control" required value="38171674">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">DIČ</div><input type="text" class="form-control" required value="CZ8706080086">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">DIČ</div><input type="text" class="form-control" required value="CZ8706080086">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">DIČ</div><input type="text" class="form-control" required value="CZ8706080086">
-            </div>
-            <div class="col-md-4">
-              <div class="form-label">DIČ</div><input type="text" class="form-control" required value="CZ8706080086">
+    <div v-else class="row row-deck row-cards">
+      <template v-for="group in groupedTemplates" :key="group.category">
+        <div class="col-12">
+          <h3>{{ group.category }}</h3>
+          <!-- <div class="text-secondary">{{ `${group.templates.length} položky` }}</div> -->
+        </div>
+        <div class="col-12">
+          <div class="row row-cards">
+            <div
+              v-for="requestTemplate in group.templates"
+              :key="requestTemplate.id"
+              class="col-12 col-md-6 col-xl-4">
+              <RouterLink
+                :to="`/zadost-nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
+                class="card card-md card-link text-center w-100 h-100">
+                <div class="card-body">
+                  <h3 class="card-title mb-2">{{ requestTemplate.name }}</h3>
+                  <p class="text-secondary mb-0">{{ requestTemplate.description }}</p>
+                </div>
+              </RouterLink>
             </div>
           </div>
-        </NewRequest>
-      </div>
-
-
-
+        </div>
+      </template>
     </div>
   </PageTemplate>
-
-
 </template>
 
 <style scoped></style>

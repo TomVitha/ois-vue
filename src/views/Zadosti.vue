@@ -1,17 +1,52 @@
 <script setup lang="ts">
-  import PageTemplate from '@/components/PageTemplate.vue'
-  import RequestRow from '@/components/RequestRow.vue'
+  import { nextTick, ref, watch } from 'vue'
 
-  import ProductGroup from '@/components/ProductGroup.vue';
-  import ProductGroupItem from '@/components/ProductGroupItem.vue';
+  import PageTemplate from '@/components/PageTemplate.vue'
+  import ProductGroup from '@/components/ProductGroup.vue'
+  import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import RequestStatusDialog from '@/components/RequestStatusDialog.vue'
+  import { useLocaleStore } from '@/stores/locale'
+  import { useRequestsStore } from '@/stores/requests'
+  import type { LastSubmissionResult } from '@/requests/types'
+
+  const requestsStore = useRequestsStore()
+  const localeStore = useLocaleStore()
+
+  const modalTrigger = ref<HTMLButtonElement | null>(null)
+  const statusResult = ref<LastSubmissionResult | null>(null)
+
+  function formatDate(isoDate: string) {
+    return new Intl.DateTimeFormat([localeStore.locale], {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(new Date(isoDate))
+  }
+
+  function openStatusModal(result: LastSubmissionResult) {
+    statusResult.value = { ...result }
+    requestsStore.consumeLastSubmissionResult()
+
+    nextTick(() => {
+      modalTrigger.value?.click()
+    })
+  }
+
+  watch(
+    () => requestsStore.lastSubmissionResult,
+    (result) => {
+      if (result) {
+        openStatusModal(result)
+      }
+    },
+    { immediate: true },
+  )
 </script>
 
 <template>
-
   <PageTemplate title="Žádosti">
-
     <template #extra>
-      <div class="text-secondary">1 otevřená</div>
+      <div class="text-secondary">{{ requestsStore.openRequestsCount }} {{ requestsStore.openRequestsCount == 1 ? `otevřená` : requestsStore.openRequestsCount < 5 ? `otevřené` : `otevřených` }}</div>
     </template>
 
     <template #actions>
@@ -29,22 +64,25 @@
       </div>
     </template>
 
-    <!-- * When there are no requests -->
-    <!-- <div class="empty">
+    <div v-if="requestsStore.activeRequestsByProperty.length === 0" class="empty">
       <p class="empty-title">Žádné podané žádosti</p>
       <p class="empty-subtitle text-secondary">
         Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
       </p>
-    </div> -->
+    </div>
 
-    <div class="row row-deck row-cards">
-
-      <!-- Property 1 -->
-      <div class="col-12">
+    <div v-else class="row row-deck row-cards">
+      <div
+        v-for="group in requestsStore.activeRequestsByProperty"
+        :key="group.property.id"
+        class="col-12">
         <ProductGroup>
-          <ProductGroupItem title="192-03-147" subtitle="2 položky" id="192-03-147">
+          <ProductGroupItem
+            :title="group.property.name"
+            :subtitle="`${group.requests.length} položky`"
+            :id="`request-property-${group.property.id}`">
             <div class="card">
-              <div class="table-responsive ">
+              <div class="table-responsive">
                 <table class="table table-selectable card-table table-vcenter text-nowrap datatable table-mobile-md">
                   <thead>
                     <tr>
@@ -52,13 +90,19 @@
                       <th>Stav</th>
                       <th>Zasláno</th>
                       <th>Záležitost</th>
-                      <th class="w-0"></th>
                     </tr>
                   </thead>
-                  <!-- List of active requests for this property -->
                   <tbody>
-                    <RequestRow title="Změna osobních údajů" :status="1" date-created="2025-07-04" :concern="['192-03-147']" />
-                    <RequestRow title="Odklad platby - 192-03-147 SOD" :status="4" date-created="2025-04-21" :concern="['192-03-147']" />
+                    <tr v-for="request in group.requests" :key="request.id">
+                      <td data-label="Název">{{ request.templateName }}</td>
+                      <td data-label="Stav">
+                        <span class="status status-info">Otevřená</span>
+                      </td>
+                      <td data-label="Zasláno">{{ formatDate(request.createdAt) }}</td>
+                      <td data-label="Záležitost">
+                        <span class="badge">{{ request.propertyId }}</span>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -68,9 +112,14 @@
       </div>
     </div>
 
+    <button
+      ref="modalTrigger"
+      type="button"
+      class="d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#request-submit-status-modal"></button>
+    <RequestStatusDialog :result="statusResult" />
   </PageTemplate>
-
-
 </template>
 
 <style scoped>

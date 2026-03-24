@@ -8,6 +8,7 @@
 </script>
 
 <template>
+  <!-- DEPRECATED -- Component replaced and will be removed -->
   <div class="modal fade" tabindex="-1" :id="id">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down" role="document">
       <div class="modal-content">
