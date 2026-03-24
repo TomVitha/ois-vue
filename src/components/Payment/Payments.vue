@@ -15,6 +15,8 @@
   }>()
 </script>
 
+<!-- TODO: Improve display rendering for different screen sizes (instead of Bootstrap classes) -->
+
 <template>
   <!-- Mobile: list rendering -->
   <div class="list-group list-group-flush d-lg-none">
@@ -26,7 +28,6 @@
   </div>
 
   <!-- Desktop: table rendering -->
-  <!-- <div class="card d-none d-lg-block"> -->
   <div class="table-responsive d-none d-lg-block">
     <table class="table table-hover table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
       <thead>
@@ -48,7 +49,6 @@
       </tbody>
     </table>
   </div>
-  <!-- </div> -->
 
 
 </template>

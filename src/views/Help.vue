@@ -52,15 +52,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="d-none d-xl-block col-xl-2">
-        <div class="sticky-top">
-          <nav class="nav nav-vertical nav-pills" id="pills">
-            <a class="nav-link" href="#klientsky-portal">Klientský portál</a>
-            <a class="nav-link" href="#terminove-sekce">Termínové sekce</a>
-            <a class="nav-link" href="#temp">temp</a>
-          </nav>
-        </div>
-      </div> -->
     </div>
 
 

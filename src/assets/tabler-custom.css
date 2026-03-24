@@ -246,7 +246,7 @@ dialog {
   /* .card that is not a child of another .card OR .card that is not a child of .modal */
   /* Cards that are not inside of another .card or a .modal */
   .card:not(:is(.card, .modal) .card) {
-    border-width: 0px;
+    /* border-width: 0px; */
   }
 
 

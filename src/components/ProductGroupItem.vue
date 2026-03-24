@@ -26,13 +26,15 @@
         data-bs-toggle="collapse"
         :data-bs-target="`#${collapseId}`"
         aria-expanded="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-folder">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
-        </svg>
         <div class="hr-text hr-text-left hr-text-spaceless flex-fill">
-          <h3 class="mb-0">{{ title }}</h3>
-          <span class="text-secondary">({{ subtitle }})</span>
+          <div class="space-x-2 align-items-center px-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-folder">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+            </svg>
+            <h3 class="mb-0">{{ title }}</h3>
+            <span class="text-secondary">({{ subtitle }})</span>
+          </div>
         </div>
         <div class="accordion-button-toggle">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">

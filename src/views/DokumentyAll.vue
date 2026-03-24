@@ -59,7 +59,7 @@
 
       <div class="col-12">
         <ProductGroup>
-          <ProductGroupItem title="194-RD-007" subtitle="5 položek" id="194-RD-007">
+          <ProductGroupItem title="194-RD-007" subtitle="3 položky" id="194-RD-007">
             <div class="row row-deck row-cards">
               <div class="col-12 mt-3">
                 <h3 class="mb-0">Jedna kategorie</h3>

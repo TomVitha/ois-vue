@@ -143,6 +143,9 @@
   <div class="page-body">
     <div class="container-fluid flex-fill space-y-0">
       <div class="messenger row row-deck row-cards flex-fill">
+
+        <!-- TODO: Improve element rendering (hiding) based programatically (instead of Bootstrap classes) -->
+
         <!-- Messages list column -->
         <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex d-print-none': selectedMessage }">
           <div class="card">
