@@ -26,6 +26,10 @@ const router = createRouter({
       component: () => import('../views/Dokumenty.vue'),
     },
     {
+      path: '/dokumenty-all',
+      component: () => import('../views/DokumentyAll.vue'),
+    },
+    {
       path: '/help',
       component: () => import('../views/Help.vue'),
     },

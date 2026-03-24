@@ -1,0 +1,60 @@
+<script setup lang="ts">
+  import { computed, inject, type ComputedRef } from 'vue'
+
+  const props = defineProps<{ 
+    title: string
+    subtitle?: string
+    id: string
+   }>()
+
+  type AccordionContext = {
+    groupId: string
+    exclusive: ComputedRef<boolean>
+    registerItem: () => number
+  }
+
+  const collapseId = computed(() => props.id)
+</script>
+
+<template>
+  <div class="accordion-item flex-fill">
+    <!-- Header -->
+    <div class="accordion-header">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        :data-bs-target="`#${collapseId}`"
+        aria-expanded="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-folder">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+        </svg>
+        <div class="hr-text hr-text-left hr-text-spaceless flex-fill">
+          <h3 class="mb-0">{{ title }}</h3>
+          <span class="text-secondary">({{ subtitle }})</span>
+        </div>
+        <div class="accordion-button-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+            <path d="M6 9l6 6l6 -6"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+    <!-- Body -->
+    <div :id="collapseId" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+        <slot />
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+  .accordion-body {
+    color: var(--tblr-body-color);
+  }
+  .accordion-button {
+    padding-top: 0;
+  }
+</style>

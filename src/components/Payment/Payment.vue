@@ -148,7 +148,7 @@
     class="position-relative">
     <td data-label="Popis" class="text-wrap">
       {{ title }}
-      <!-- NOTE: This link covers the entire row (using class .stretched-link), making it clickable -->
+      <!-- NOTE: Odkaz je absolutně napozicován a tento odkaz pokrývá celý řádek (použitím třídy .stretched-link), aby byl celý řádek klikatelný -->
       <RouterLink
         :to="`#platba-${id}`"
         class="stretched-link"
@@ -179,6 +179,6 @@
 <style scoped>
   tbody tr {
     /* height on <tr> acts like min-height */
-    height: 4rem;
+    height: 3.5rem;
   }
 </style>

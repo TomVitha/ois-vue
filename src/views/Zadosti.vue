@@ -71,7 +71,7 @@
   @media (min-width: 768px) {
     tbody tr {
       /* height on <tr> acts like min-height */
-      height: 4rem;
+      height: 3.5rem;
     }
   }
 
