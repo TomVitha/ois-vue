@@ -1,52 +1,56 @@
 <script lang="ts">
-import type { RequestTemplateDefinition } from '@/requests/types'
+  import type { RequestTemplateDefinition } from '@/requests/types'
 
-export const requestTemplateMeta: RequestTemplateDefinition = {
-  id: 'update-contact-information',
-  name: 'Změna osobních údajů',
-  description: 'Nahlaste změny vašich kontaktních údajů.',
-  category: 'Osobní údaje',
-  availableForPropertyIds: ['192-03-147', '194-RD-007'],
-}
+  import Alert from '@/components/Alert.vue'
+
+  export const requestTemplateMeta: RequestTemplateDefinition = {
+    id: 'update-contact-information',
+    name: 'Změna osobních údajů',
+    description: 'Nahlaste změny vašich kontaktních údajů.',
+    category: 'Osobní údaje',
+    availableForPropertyIds: ['192-03-147', '194-RD-007'],
+  }
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { RequestFormExpose } from '@/requests/forms/types'
+  import { ref } from 'vue'
+  import type { RequestFormExpose } from '@/requests/forms/types'
 
-const fullName = ref('')
-const address = ref('')
-const email = ref('')
-const phone = ref('')
+  // ! Placeholder values
+  const fullName = ref('Jan Novák')
+  const address = ref('Praha 1, Česká republika')
+  const email = ref('jan.novak@seznam.cz')
+  const phone = ref('+420 123 456 789')
 
-function validate() {
-  return (
-    fullName.value.trim().length > 0 &&
-    address.value.trim().length > 0 &&
-    email.value.trim().length > 0 &&
-    phone.value.trim().length > 0
-  )
-}
-
-function getValues() {
-  return {
-    fullName: fullName.value,
-    address: address.value,
-    email: email.value,
-    phone: phone.value,
+  function validate() {
+    return (
+      fullName.value.trim().length > 0 &&
+      address.value.trim().length > 0 &&
+      email.value.trim().length > 0 &&
+      phone.value.trim().length > 0
+    )
   }
-}
 
-defineExpose<RequestFormExpose>({
-  getValues,
-  validate,
-})
+  function getValues() {
+    return {
+      fullName: fullName.value,
+      address: address.value,
+      email: email.value,
+      phone: phone.value,
+    }
+  }
+
+  defineExpose<RequestFormExpose>({
+    getValues,
+    validate,
+  })
 </script>
 
 <template>
-  <div class="row g-3">
-    <div class="col-12 col-md-6">
-      <label class="form-label required" for="update-contact-full-name">Jméno a příjmení</label>
+  <div class="space-y">
+
+    <div>
+      <label class="form-label required" for="update-contact-full-name">Smluvní strana (partner)</label>
       <input
         id="update-contact-full-name"
         v-model="fullName"
@@ -54,34 +58,16 @@ defineExpose<RequestFormExpose>({
         type="text"
         autocomplete="name"
         required
-      >
+        disabled>
+      <small class="form-hint">Tato položka je pouze informativní a nelze ji samostatně změnit. Pro změnu kupujících využijte žádost Změna klienta ve smlouvě.</small>
     </div>
 
-    <div class="col-12 col-md-6">
-      <label class="form-label required" for="update-contact-address">Adresa</label>
-      <input
-        id="update-contact-address"
-        v-model="address"
-        class="form-control"
-        type="text"
-        autocomplete="street-address"
-        required
-      >
-    </div>
+    <Alert
+      type="warning">
+      Změna telefonního čísla pro podepisování dokumentů je možná pouze písemně. Po odeslání žádosti připravíme dokument k podpisu (lze podepsat přes platformu SOFA). Dokument bude zaslán na stávající telefonní číslo, dokud nebude změna potvrzena.
+    </Alert>
 
-    <div class="col-12 col-md-6">
-      <label class="form-label required" for="update-contact-email">Email</label>
-      <input
-        id="update-contact-email"
-        v-model="email"
-        class="form-control"
-        type="email"
-        autocomplete="email"
-        required
-      >
-    </div>
-
-    <div class="col-12 col-md-6">
+    <div>
       <label class="form-label required" for="update-contact-phone">Telefon</label>
       <input
         id="update-contact-phone"
@@ -89,9 +75,46 @@ defineExpose<RequestFormExpose>({
         class="form-control"
         type="tel"
         autocomplete="tel"
-        required
-      >
+        required>
+      <small class="form-hint">Používá se pro podepisování elektronických dokumentů (SOFA)</small>
     </div>
+
+    <div>
+      <label class="form-label required" for="update-contact-email">Email</label>
+      <input
+        id="update-contact-email"
+        v-model="email"
+        class="form-control"
+        type="email"
+        autocomplete="email"
+        required>
+    </div>
+
+    <div>
+      <label class="form-label required" for="update-contact-address">Adresa trvalého bydliště</label>
+      <input
+        id="update-contact-address"
+        v-model="address"
+        class="form-control"
+        type="text"
+        autocomplete="street-address"
+        required>
+    </div>
+
+    <div>
+      <label class="form-label" for="update-contact-proof">
+        Kopie občanského průkazu
+        <span
+          class="form-help"
+          data-bs-toggle="popover"
+          data-bs-placement="top"
+          data-bs-html="true"
+          data-bs-content="<p>Nahrajte čitelnou kopii občanského průkazu (přední i zadní strana), pokud měníte adresu trvalého bydliště.</p><p class='mb-0'>Soubor může být ve formátu PDF, JPG nebo PNG.</p>">?</span>
+      </label>
+      <input type="file" class="form-control">
+      <small class="form-hint">Povinné pouze při změně adresy trvalého bydliště.</small>
+    </div>
+
   </div>
 </template>
 
