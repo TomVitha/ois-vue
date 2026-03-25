@@ -23,7 +23,7 @@
       <!-- WIP -->
       <div class="col-12">
         <ProductGroup>
-          <ProductGroupItem title="192-03-147" subtitle="2 kontakty" id="192-03-147">
+          <ProductGroupItem title="192-03-147" subtitle="Celkem 2" id="192-03-147">
             <div class="row row-cards row-deck">
               <div class="col-sm-6 col-lg-6 col-xxl-4">
                 <ContactBlock
@@ -43,7 +43,7 @@
               </div>
             </div>
           </ProductGroupItem>
-          <ProductGroupItem title="Obecné" subtitle="2 kontakty" id="obecne">
+          <ProductGroupItem title="Obecné" subtitle="Celkem 2" id="obecne">
             <div class="row row-cards row-deck">
               <div class="col-sm-6 col-lg-6 col-xxl-4">
                 <ContactBlock

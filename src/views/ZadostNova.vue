@@ -2,8 +2,6 @@
   import { computed } from 'vue'
 
   import PageTemplate from '@/components/PageTemplate.vue'
-  import ProductGroup from '@/components/ProductGroup.vue'
-  import ProductGroupItem from '@/components/ProductGroupItem.vue'
   import { useRequestsStore } from '@/stores/requests'
 
   const requestsStore = useRequestsStore()
@@ -16,13 +14,6 @@
     const target = event.target as HTMLSelectElement
     requestsStore.setSelectedProperty(target.value)
   }
-
-  function categoryCollapseId(category: string) {
-    return `request-category-${category
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '')}`
-  }
 </script>
 
 <template>
@@ -30,7 +21,7 @@
     <template #toolbar>
       <div class="row g-2 align-items-end">
         <div class="col-12 col-md-6 col-xl-4">
-          <label class="form-label" for="request-property-select">Nemovitost</label>
+          <label class="form-label" for="request-property-select">Produkt</label>
           <select
             id="request-property-select"
             class="form-select"

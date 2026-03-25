@@ -16,7 +16,7 @@
 
       <div class="col-12">
         <ProductGroup>
-          <ProductGroupItem title="192-03-147" subtitle="5 položek" id="192-03-147">
+          <ProductGroupItem title="192-03-147" subtitle="Celkem 5" id="192-03-147">
             <div class="row row-deck row-cards">
               <div class="col-12 mt-3">
                 <h3 class="mb-0">Obchodní složky</h3>
@@ -53,7 +53,7 @@
               </div>
             </div>
           </ProductGroupItem>
-          <ProductGroupItem title="194-RD-007" subtitle="3 položky" id="194-RD-007">
+          <ProductGroupItem title="194-RD-007" subtitle="Celkem 3" id="194-RD-007">
             <div class="row row-deck row-cards">
               <div class="col-12 mt-3">
                 <h3 class="mb-0">Jedna kategorie</h3>

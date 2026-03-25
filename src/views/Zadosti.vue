@@ -78,7 +78,7 @@
             v-for="group in requestsStore.activeRequestsByProperty"
             :key="group.property.id"
             :title="group.property.name"
-            :subtitle="`${group.requests.length} položek`"
+            :subtitle="`Celkem ${group.requests.length}`"
             :id="`request-property-${group.property.id}`">
             <div class="card">
               <div class="table-responsive">
