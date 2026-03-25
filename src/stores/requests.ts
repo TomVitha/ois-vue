@@ -12,8 +12,8 @@ import { getRequestTemplates } from '@/requests/forms/registry'
 
 const propertyDefinitions = ref<PropertyDefinition[]>([
   { id: '192-03-147', name: '192-03-147' },
-  { id: '215-02-018', name: '215-02-018' },
-  { id: '301-11-024', name: '301-11-024' },
+  { id: '192-666-999', name: '192-666-999' },
+  { id: '194-RD-007', name: '194-RD-007' },
 ])
 
 const requestTemplates = ref<RequestTemplateDefinition[]>(getRequestTemplates())

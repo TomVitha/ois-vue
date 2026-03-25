@@ -6,7 +6,7 @@ export const requestTemplateMeta: RequestTemplateDefinition = {
   name: 'Změna osobních údajů',
   description: 'Nahlaste změny vašich kontaktních údajů.',
   category: 'Osobní údaje',
-  availableForPropertyIds: ['192-03-147', '215-02-018'],
+  availableForPropertyIds: ['192-03-147', '194-RD-007'],
 }
 </script>
 

@@ -79,7 +79,7 @@
         <ProductGroup>
           <ProductGroupItem
             :title="group.property.name"
-            :subtitle="`${group.requests.length} položky`"
+            :subtitle="`${group.requests.length} položek`"
             :id="`request-property-${group.property.id}`">
             <div class="card">
               <div class="table-responsive">

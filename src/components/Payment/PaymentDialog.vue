@@ -54,6 +54,7 @@
             <template v-if="selectedPayment">
               <div>
                 <template v-if="!selectedPayment.isPaid">
+                  <!-- TODO: Actions - share, download -->
                   <img
                     src="/qr-temp.svg"
                     alt="QR kód se nepodařilo načíst"
