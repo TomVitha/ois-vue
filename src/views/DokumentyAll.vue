@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import DocumentItem from '@/components/DocumentItem.vue';
-  // WIP
   import ProductGroup from '@/components/ProductGroup.vue';
   import ProductGroupItem from '@/components/ProductGroupItem.vue';
 </script>
@@ -54,11 +53,6 @@
               </div>
             </div>
           </ProductGroupItem>
-        </ProductGroup>
-      </div>
-
-      <div class="col-12">
-        <ProductGroup>
           <ProductGroupItem title="194-RD-007" subtitle="3 položky" id="194-RD-007">
             <div class="row row-deck row-cards">
               <div class="col-12 mt-3">
@@ -86,29 +80,6 @@
           </ProductGroupItem>
         </ProductGroup>
       </div>
-
-      <!-- <div class="col-12 mt-3">
-        <h3 class="mb-0">Třetí kategorie</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" />
-            <DocumentItem title="Klientské administrativní poplatky pro BD.pdf" filesize="9 kB" dateAdded="11.9.2024" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 mt-3">
-        <h3 class="mb-0">Čtvrtá kategorie</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <DocumentItem title="Oznámení o demolici rodinného domu.pdf" filesize="1 kB" dateAdded="31.7.2025" />
-          </div>
-        </div>
-      </div> -->
 
     </div>
   </PageTemplate>

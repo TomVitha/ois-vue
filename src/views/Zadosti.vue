@@ -72,12 +72,11 @@
     </div>
 
     <div v-else class="row row-deck row-cards">
-      <div
-        v-for="group in requestsStore.activeRequestsByProperty"
-        :key="group.property.id"
-        class="col-12">
+      <div class="col-12">
         <ProductGroup>
           <ProductGroupItem
+            v-for="group in requestsStore.activeRequestsByProperty"
+            :key="group.property.id"
             :title="group.property.name"
             :subtitle="`${group.requests.length} položek`"
             :id="`request-property-${group.property.id}`">
@@ -122,12 +121,3 @@
   </PageTemplate>
 </template>
 
-<style scoped>
-  @media (min-width: 768px) {
-    tbody tr {
-      /* height on <tr> acts like min-height */
-      /* height: 3.5rem; */
-    }
-  }
-
-</style>
