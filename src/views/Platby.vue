@@ -154,7 +154,8 @@
                   :title="voucher.title"
                   :value="voucher.value"
                   :spent="voucher.spent"
-                  :date="voucher.date"
+                  :date-received="voucher.dateReceived"
+                  :date-expiration="voucher.dateExpiration"
                   :breakdown="voucher.breakdown" />
               </div>
             </div>

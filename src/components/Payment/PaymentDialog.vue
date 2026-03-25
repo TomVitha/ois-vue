@@ -169,4 +169,9 @@
   .modal {
     --tblr-modal-bg: var(--tblr-bg-surface-tertiary);
   }
+  @media (min-width: 576px) {
+    .modal-content {
+      max-height: 850px;
+    }
+  }
 </style>

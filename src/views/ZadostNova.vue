@@ -80,4 +80,6 @@
   </PageTemplate>
 </template>
 
-<style scoped></style>
+<style scoped>
+  /* TODO: Curtail card size -- limit number of lines in description ? max-height ? */
+</style>

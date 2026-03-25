@@ -12,7 +12,8 @@ type VoucherDataItem = {
   id: number
   title: string
   value: number
-  date: string
+  dateReceived: string
+  dateExpiration: string
   breakdown?: VoucherBreakdownItem[]
 }
 
@@ -21,7 +22,8 @@ const vouchersData = ref<VoucherDataItem[]>([
     id: 1,
     title: '192-03-147 Věrnostní poukázka',
     value: 250000,
-    date: '2025-11-07',
+    dateReceived: '2025-11-07',
+    dateExpiration: '2026-12-31',
     breakdown: [
       { id: 101, label: 'KD2', date: '2024-04-26', amount: 77425 },
       { id: 102, label: 'SOD-IS-I', date: '2024-06-16', amount: 136942 },
@@ -31,7 +33,8 @@ const vouchersData = ref<VoucherDataItem[]>([
     id: 2,
     title: '192-03-147 z lásky',
     value: 69000,
-    date: '2025-11-07',
+    dateReceived: '2025-11-07',
+    dateExpiration: '2026-12-31',
     breakdown: [],
   },
 ])

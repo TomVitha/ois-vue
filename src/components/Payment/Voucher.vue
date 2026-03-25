@@ -18,12 +18,13 @@
     title: string
     value: number
     spent?: number
-    date: string
+    dateReceived: string
+    dateExpiration: string
     breakdown?: BreakdownItem[]
   }>()
 
-  const date = new Date(props.date)
-  if (isNaN(date.getTime())) { date.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
+  const dateReceived = new Date(props.dateReceived)
+  if (isNaN(dateReceived.getTime())) { dateReceived.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
 
   function formatDate(date: Date): string {
     return date.toLocaleDateString(localeStore.locale, {
@@ -63,7 +64,7 @@
       <div class="row row-gap-3 gx-4">
         <div class="col">
           <div>{{ title }}</div>
-          <div class="text-secondary">Obdržena: {{ formatDate(date) }}</div>
+          <div class="text-secondary">Obdržena: {{ formatDate(dateReceived) }}</div>
         </div>
         <div class="col-auto text-end">
           <div class="text-secondary">V hodnotě</div>

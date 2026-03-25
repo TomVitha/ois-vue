@@ -37,7 +37,11 @@
 
         <div class="modal-body">
           <template v-if="vouchersStore.selectedVoucher">
-            <div class="space-y-4">
+            <div class="space-y-3">
+
+              <div class="text-center">
+                <h3 class="m-0">{{ vouchersStore.selectedVoucher.title }}</h3>
+              </div>
 
               <div>
                 <svg
@@ -63,11 +67,6 @@
                 <strong class="h1 my-0">{{ formatCurrency(vouchersStore.selectedVoucher.value) }}</strong>
               </div>
 
-              <div>
-                <h3 class="m-0">{{ vouchersStore.selectedVoucher.title }}</h3>
-                <div class="text-secondary">Obdržena: {{ formatDate(vouchersStore.selectedVoucher.date) }}</div>
-              </div>
-
               <div v-if="!vouchersStore.selectedVoucher.isFullyUsed">
                 <div class="row">
                   <div class="col">
@@ -90,6 +89,17 @@
                 </div>
               </div>
 
+              <div class="row gy-2">
+                <div class="col-12">
+                  <div class="text-secondary">Obdržena:</div>
+                  <div>{{ formatDate(vouchersStore.selectedVoucher.dateReceived) }}</div>
+                </div>
+                <div class="col-12">
+                  <div class="text-secondary">Splatnost:</div>
+                  <div>{{ formatDate(vouchersStore.selectedVoucher.dateExpiration) }}</div>
+                </div>
+              </div>
+
               <div v-if="vouchersStore.selectedVoucher.breakdown.length > 0">
                 <div class="subheader mb-2">Historie čerpání</div>
                 <div class="card">
@@ -97,12 +107,29 @@
                     <div
                       v-for="item in vouchersStore.selectedVoucher.breakdown"
                       :key="item.id"
-                      class="list-group-item d-flex justify-content-between align-items-center">
-                      <div>
+                      class="list-group-item d-flex align-items-center">
+                      <div class="me-auto">
                         <div>{{ item.label }}</div>
                         <div class="text-secondary">{{ formatDate(item.date) }}</div>
                       </div>
-                      <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
+                      <div class="text-nowrap">-{{ formatCurrency(item.amount) }}</div>
+                      <!-- NOTE: S každým čerpáním je spjatý dokument (který se také zobrazuje na stránce Dokumenty), tenhle odkaz ten dokument přímo otevírá -->
+                      <a
+                        class="btn btn-action"
+                        href="#"
+                        target="_blank"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Dokument čerpání">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                          <path d="M9 9l1 0"></path>
+                          <path d="M9 13l6 0"></path>
+                          <path d="M9 17l6 0"></path>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
