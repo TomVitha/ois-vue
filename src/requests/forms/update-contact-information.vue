@@ -101,7 +101,7 @@
         required>
     </div>
 
-    <div>
+    <!-- <div>
       <label class="form-label" for="update-contact-proof">
         Kopie občanského průkazu
         <span
@@ -113,7 +113,7 @@
       </label>
       <input type="file" class="form-control">
       <small class="form-hint">Povinné pouze při změně adresy trvalého bydliště.</small>
-    </div>
+    </div> -->
 
   </div>
 </template>
