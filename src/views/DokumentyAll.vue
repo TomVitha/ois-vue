@@ -1,8 +1,47 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import DocumentItem from '@/components/DocumentItem.vue';
-  import ProductGroup from '@/components/ProductGroup.vue';
-  import ProductGroupItem from '@/components/ProductGroupItem.vue';
+  import DocumentItem from '@/components/DocumentItem.vue'
+  import ProductGroup from '@/components/ProductGroup.vue'
+  import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import { useDocumentsStore } from '@/stores/documents'
+
+  const documentsStore = useDocumentsStore()
+
+  const sortedDocuments = computed(() => {
+    return [...documentsStore.documents].sort((a, b) => {
+      return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+    })
+  })
+
+  const productGroups = computed(() => {
+    const productIds = Array.from(new Set(sortedDocuments.value.map((document) => document.productId)))
+
+    return productIds.map((productId) => {
+      const productDocuments = sortedDocuments.value.filter((document) => document.productId === productId)
+
+      const categories = documentsStore.categories
+        .map((category) => {
+          const categoryDocuments = productDocuments.filter((document) => document.categoryId === category.id)
+
+          return {
+            category,
+            documents: categoryDocuments,
+          }
+        })
+        .filter((entry) => entry.documents.length > 0)
+
+      return {
+        productId,
+        totalCount: productDocuments.length,
+        categories,
+      }
+    })
+  })
+
+  function formatDate(isoDate: string) {
+    return new Intl.DateTimeFormat('cs-CZ').format(new Date(`${isoDate}T00:00:00`))
+  }
 </script>
 
 <template>
@@ -16,66 +55,32 @@
 
       <div class="col-12">
         <ProductGroup>
-          <ProductGroupItem title="192-03-147" subtitle="Celkem 5" id="192-03-147">
+          <ProductGroupItem
+            v-for="group in productGroups"
+            :key="group.productId"
+            :title="group.productId"
+            :subtitle="`Celkem ${group.totalCount}`"
+            :id="group.productId">
             <div class="row row-deck row-cards">
-              <div class="col-12 mt-3">
-                <h3 class="mb-0">Obchodní složky</h3>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="list-group list-group-flush">
-                    <DocumentItem title="192-03-147_OS2.pdf" filesize="6 kB" dateAdded="27.03.2025" />
-                    <DocumentItem title="192-03-147_OS1.pdf" filesize="6 kB" dateAdded="14.01.2025" />
+              <template v-for="item in group.categories" :key="`${group.productId}-${item.category.id}`">
+                <div class="col-12 mt-3">
+                  <h3 class="mb-0">{{ item.category.name }}</h3>
+                </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="list-group list-group-flush">
+                      <DocumentItem
+                        v-for="document in item.documents"
+                        :key="document.id"
+                        :title="document.name"
+                        :filesize="document.fileSize"
+                        :dateAdded="formatDate(document.dateAdded)"
+                        :dateValid="document.dateValid"
+                        :fileUrl="document.fileUrl" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-12 mt-3">
-                <h3 class="mb-0">Smlouvy a dokumenty</h3>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="list-group list-group-flush">
-                    <DocumentItem title="Dodatek klientský č.2 192-03-147 8218090061 .pdf" filesize="9 kB" dateAdded="3.2.2025" />
-                    <DocumentItem title="Dodatek klientský č.1 192-03-147 8218090061.pdf" filesize="9 kB" dateAdded="11.9.2024" />
-                    <DocumentItem title="Smlouva o budoucí kupní smlouvě 192-03-147 B218090061.pdf" filesize="5 kB" dateAdded="11.9.2024" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 mt-3">
-                <h3 class="mb-0">Ostatní</h3>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="list-group list-group-flush">
-                    <DocumentItem title="Návod na údržbu bytu obecný.pdf" filesize="3 kB" dateAdded="31.7.2025" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ProductGroupItem>
-          <ProductGroupItem title="194-RD-007" subtitle="Celkem 3" id="194-RD-007">
-            <div class="row row-deck row-cards">
-              <div class="col-12 mt-3">
-                <h3 class="mb-0">Jedna kategorie</h3>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="list-group list-group-flush">
-                    <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" />
-                    <DocumentItem title="Klientské administrativní poplatky pro BD.pdf" filesize="9 kB" dateAdded="11.9.2024" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 mt-3">
-                <h3 class="mb-0">Druhá kategorie</h3>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="list-group list-group-flush">
-                    <DocumentItem title="Oznámení o demolici rodinného domu.pdf" filesize="1 kB" dateAdded="31.7.2025" />
-                  </div>
-                </div>
-              </div>
+              </template>
             </div>
           </ProductGroupItem>
         </ProductGroup>

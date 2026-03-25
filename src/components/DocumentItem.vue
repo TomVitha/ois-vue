@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  const props = defineProps<{
+  defineProps<{
     title: string
     filesize?: string
     dateAdded?: string
     dateValid?: string
+    fileUrl?: string
   }>()
 
 </script>
@@ -13,7 +14,7 @@
     <div class="row align-items-center">
       <div class="col">
         {{ title }}
-        <span class="text-secondary">({{ filesize }})</span>
+        <span v-if="filesize" class="text-secondary">({{ filesize }})</span>
       </div>
       <div v-if="dateAdded" class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
         <!-- <div class="text-secondary">Přidáno</div> -->
@@ -30,10 +31,9 @@
               <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
             </svg>
           </button>
-          <!-- TEMP odkaz -->
           <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" href="sample-invoice.pdf" target="_blank">Otevřít</a>
-            <a class="dropdown-item" href="sample-invoice.pdf" download>Stáhnout</a>
+            <a class="dropdown-item" :href="fileUrl" target="_blank">Otevřít</a>
+            <a class="dropdown-item" :href="fileUrl" download>Stáhnout</a>
           </div>
         </div>
       </div>
