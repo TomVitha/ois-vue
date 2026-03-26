@@ -72,5 +72,5 @@
 </template>
 
 <style scoped>
-  /* TODO: Curtail card size -- limit number of lines in description ? max-height ? */
+
 </style>

@@ -49,10 +49,6 @@
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
-      <!-- <div class="col-12">
-        TODO: Toolbar (download all)
-      </div> -->
-
       <div class="col-12">
         <ProductGroup>
           <ProductGroupItem

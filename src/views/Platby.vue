@@ -136,11 +136,8 @@
         </div>
       </div>
 
-      <!-- ! Poukázky jsou strašne ugly -->
+      <!-- Poukázky jsou pořád ugly -->
       <!-- TODO: Rework poukázky -->
-      <!-- <div class="col-12">
-        <h3 class="m-0 mt-3">Poukázky</h3>
-      </div> -->
       <div class="col-12">
         <div class="card">
           <div class="card-header">
@@ -164,7 +161,7 @@
       </div>
 
       <!-- TODO: Řazení? Filtrování? -->
-      <!-- TODO: Lidé chtějí odklad plateb -> Odkaz "pod čarou" na Žádosti -->
+      <!-- Lidé chtějí odklad plateb -> Odkaz na Žádosti ? -->
       <div class="col-12">
         <div class="w-100">
           <!-- <h3 class="m-0 mt-3">Platby</h3> -->

@@ -51,8 +51,6 @@
 </script>
 
 <template>
-  <!-- Kliknutí otevře modal dialog s breakdownem utrácení poukázky -->
-  <!-- TODO: Dedicated modal dialog for Vouchers -->
   <a
     href="#voucher-modal"
     class="card card-link"

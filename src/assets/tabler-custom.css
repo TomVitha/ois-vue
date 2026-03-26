@@ -35,16 +35,6 @@ dialog {
   border: none;
 }
 
-
-
-/* # MESSENGER */
-
-/* HACK */
-
-
-/* MESSENGER (end) */
-
-
 /* # NAVBAR */
 .navbar {
   --tblr-navbar-active-color: var(--tblr-primary);
@@ -233,11 +223,6 @@ dialog {
 }
 
 
-/* TESTING - TenantCloud branding */
-:root {
-  /* --tblr-primary: #41a541; */
-}
-
 @media (min-width: 992px) {
   :is(:host, :root):not([data-bs-theme=dark]) .card:not(:is(.card, .modal) .card) {
     --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
@@ -257,15 +242,6 @@ dialog {
   .navbar-expand-lg.navbar-vertical {
     box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
   }
-}
-
-
-/* TESTING - CG Branding */
-:root {
-  /* --tblr-primary: #ffed00; */
-  /* --tblr-primary-fg: var(--tblr-dark); */
-
-  /* --tblr-primary: #20234c; */
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {

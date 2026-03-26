@@ -206,7 +206,7 @@
                       <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                     </svg>
                   </a>
-                  <!-- TEMP Preview invoice -->
+                  <!-- TEMP file -->
                   <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="../assets/sample-invoice.pdf">Otevřít</a>
                     <a class="dropdown-item" href="../assets/sample-invoice.pdf" download>Stáhnout</a>

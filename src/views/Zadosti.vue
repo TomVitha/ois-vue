@@ -101,6 +101,7 @@
                       <td data-label="Záležitost">
                         <span class="badge">{{ request.propertyId }}</span>
                       </td>
+                      <!-- TODO: Přidat funkci "zobrazit" kde klient uvidí údaje dané žádosti -->
                     </tr>
                   </tbody>
                 </table>

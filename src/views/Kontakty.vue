@@ -16,11 +16,8 @@
       </div>
     </template>
 
-    <!-- TODO: Filter (units) -->
-
     <div class="row row-cards row-deck">
 
-      <!-- WIP -->
       <div class="col-12">
         <ProductGroup>
           <ProductGroupItem title="192-03-147" subtitle="Celkem 2" id="192-03-147">

@@ -356,38 +356,6 @@
         </div>
       </div>
 
-      <!-- * postup předání old -->
-      <!-- <div class="col-lg-5">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Postup předání</h3>
-          </div>
-          <div class="card-body">
-            <ul class="steps steps-green steps-counter steps-vertical border-0 m-0 p-0 ps-2">
-              <li class="step-item">
-                <h4>Zjišťovací protokol</h4>
-                <div class="text-secondary">
-                  vysvětlení o co jde a co se po klientovi chce
-                </div>
-              </li>
-              <li class="step-item active">
-                <h4>Platby ověřeny</h4>
-                <div class="text-secondary">
-                  vysvětlení o co jde a co se po klientovi chce
-                </div>
-              </li>
-              <li class="step-item">
-                <h4>Splněné podmínky</h4>
-                <div class="text-secondary">
-                  vysvětlení o co jde a co se po klientovi chce
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- WIP -->
       <div class="col-lg-5">
         <div class="card">
           <div class="card-header">
@@ -398,11 +366,6 @@
               <!-- * Completed -->
               <div class="row g-3">
                 <div class="col-auto">
-                  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-md text-success icon-tabler icons-tabler-outline icon-tabler-circle-check">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M9 12l2 2l4 -4" />
-                  </svg> -->
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-md text-success icon-tabler icons-tabler-filled icon-tabler-circle-check">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" />
@@ -416,11 +379,6 @@
               <!-- * Completed -->
               <div class="row g-3">
                 <div class="col-auto">
-                  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-md text-success icon-tabler icons-tabler-outline icon-tabler-circle-check">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M9 12l2 2l4 -4" />
-                  </svg> -->
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-md text-success icon-tabler icons-tabler-filled icon-tabler-circle-check">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" />
@@ -504,7 +462,7 @@
 
               <!-- TODO: Přidat splatnosti faktur (platby k zaplacení) -->
 
-              <!-- TODO: ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
+              <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
 
               <div class="step-item inactive">
                 <div class="row">
@@ -732,15 +690,11 @@
 
 <style scoped>
 
-  /* .floor-plan {
-    max-height: 300px;
-  } */
-  /* WIP */
+  /* * Custom class .inactive */
   .step-item.inactive {
     color: var(--tblr-disabled-color);
   }
 
-  /* * Custom class .inactive */
   .step-item.inactive:after, .step-item.inactive:before {
     background: var(--tblr-steps-inactive-color);
   }

@@ -15,7 +15,7 @@
   }>()
 </script>
 
-<!-- TODO: Improve display rendering for different screen sizes (instead of Bootstrap classes) -->
+<!-- TODO: Vylepšit logiku zobrazení pro různé velikosti obrazovky - teď ohavně řešeno přes Bootstrap třídy -->
 
 <template>
   <!-- Mobile: list rendering -->

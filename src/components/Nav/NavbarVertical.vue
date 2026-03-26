@@ -193,7 +193,7 @@
           </li>
 
           <!-- ? Maybe ? -->
-          <!-- * Produkty - výpis a přehled všech vlastněných produktů -->
+          <!-- * Produkty - přehled všech vlastněných produktů -->
           <!-- <NavItem label="Produkty" to="/produkty">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-community">
@@ -213,9 +213,9 @@
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
-            // { label: 'Reklamace', to: '/reklamace' },        // TODO: Pozdější fáze
-            { label: 'Žádosti', to: '/zadosti' },               // Vyfiltrováno na danou jednotku
-            { label: 'Kontakty', to: '/kontakty' },             // ? Maybe - Like with requests, take to all contacts page with filter for this unit ?
+            // { label: 'Reklamace', to: '/reklamace' },          // TODO: Pozdější fáze
+            { label: 'Žádosti', to: '/zadosti' },                 // Vyfiltrováno na danou jednotku
+            { label: 'Kontakty', to: '/kontakty' },               // Vyfiltrováno na danou jednotku
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-buildings">
@@ -241,9 +241,9 @@
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
-            // { label: 'Reklamace', to: '/reklamace' },        // TODO: Pozdější fáze
-            { label: 'Žádosti', to: '/zadosti' },               // Vyfiltrováno na danou jednotku
-            { label: 'Kontakty', to: '/kontakty' },             // ? Maybe - Like with requests, take to all contacts page with filter for this unit ?
+            // { label: 'Reklamace', to: '/reklamace' },
+            { label: 'Žádosti', to: '/zadosti' },
+            { label: 'Kontakty', to: '/kontakty' },
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-store">
@@ -267,9 +267,9 @@
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
-            // { label: 'Reklamace', to: '/reklamace' },        // TODO: Pozdější fáze
-            { label: 'Žádosti', to: '/zadosti' },               // Vyfiltrováno na danou jednotku
-            { label: 'Kontakty', to: '/kontakty' },             // ? Maybe - Like with requests, take to all contacts page with filter for this unit ?
+            // { label: 'Reklamace', to: '/reklamace' },
+            { label: 'Žádosti', to: '/zadosti' },
+            { label: 'Kontakty', to: '/kontakty' },
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home">
@@ -314,7 +314,7 @@
             </li> -->
 
 
-          <!-- TODO PAGE -->
+          <!-- TODO: Vytvořit stránku -->
           <!-- * Vzorkovna + interierove studio (central interier) -->
           <NavItem label="Vzorkovna a CI" to="/todo">
             <template #icon>

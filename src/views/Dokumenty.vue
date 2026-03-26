@@ -10,7 +10,7 @@
 
 
       <!-- <div class="col-12">
-        TODO: Toolbar (download all)
+        ? Toolbar (download all)
       </div> -->
 
       <div class="col-12 mt-3">
