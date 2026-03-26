@@ -38,9 +38,6 @@
 </script>
 
 <template>
-  <!-- TODO: Show different info for Paid and Unpaid payments -->
-  <!-- * Povinné údaje: částka, variabilní symbol, číslo účtu  -->
-  <!-- * Nepovinné/případné údaje: qr kód, podrobnější popis -->
   <div class="modal fade" id="payment-modal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md modal-fullscreen-sm-down">
       <div class="modal-content">
@@ -54,7 +51,7 @@
             <template v-if="selectedPayment">
               <div>
                 <template v-if="!selectedPayment.isPaid">
-                  <!-- TODO: Actions - share, download -->
+                  <!-- TODO: QR Actions - share, download -->
                   <img
                     src="/qr-temp.svg"
                     alt="QR kód se nepodařilo načíst"
@@ -132,18 +129,19 @@
                       <div
                         v-for="item in selectedPayment.paymentHistory"
                         :key="item.id"
-                        class="list-group-item d-flex justify-content-between">
+                        class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
                           <div class="text-secondary">{{ formatDate(item.date) }}</div>
-                          <!-- <div v-if="item.note" class="small text-secondary">{{ item.note }}</div> -->
+                          <!-- Poznámka - nejčastěji že k úhradě byla využita poukázka -->
+                          <div v-if="item.note" class="small text-secondary">{{ item.note }}</div>
                         </div>
                         <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
+                        <!-- TODO: Odkaz na dokument (pouze pro ty co mají IČO) -->
                       </div>
                     </div>
                   </div>
                 </div>
               </template>
-
             </template>
 
             <template v-else>
@@ -151,16 +149,10 @@
                 Vyberte platbu pro zobrazení detailu.
               </div>
             </template>
-
             <p class="text-center text-secondary mt-auto fs-5 mb-0">Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</p>
-
+            <!-- TODO: Odkaz na žádost o odklad platby -->
           </div>
         </div>
-        <!-- <div class="modal-footer">
-          <div class="text-secondary text-center flex-fill">
-            <p><small>Odeslané platby se v systému mohou projevit až po 3&nbsp;pracovních dnech.</small></p>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -170,6 +162,7 @@
   .modal {
     --tblr-modal-bg: var(--tblr-bg-surface-tertiary);
   }
+
   @media (min-width: 576px) {
     .modal-content {
       max-height: 850px;

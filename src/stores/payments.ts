@@ -28,13 +28,13 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 336600,
     paid: 245000,
     paymentHistory: [
-      { id: 2001, date: '2025-01-15', amount: 35000, note: '1. záloha' },
-      { id: 2002, date: '2025-01-31', amount: 35000, note: '2. záloha' },
-      { id: 2003, date: '2025-02-14', amount: 35000, note: '3. záloha' },
-      { id: 2004, date: '2025-02-28', amount: 35000, note: '4. záloha' },
-      { id: 2005, date: '2025-03-14', amount: 35000, note: '5. záloha' },
-      { id: 2006, date: '2025-03-28', amount: 35000, note: '6. záloha' },
-      { id: 2007, date: '2025-04-11', amount: 35000, note: '7. záloha' },
+      { id: 2001, date: '2025-01-15', amount: 35000 },
+      { id: 2002, date: '2025-01-31', amount: 35000, note: 'Využita poukázka [název poukázky]' },
+      { id: 2003, date: '2025-02-14', amount: 35000 },
+      { id: 2004, date: '2025-02-28', amount: 35000, note: 'Využita poukázka [název poukázky]' },
+      { id: 2005, date: '2025-03-14', amount: 35000 },
+      { id: 2006, date: '2025-03-28', amount: 35000 },
+      { id: 2007, date: '2025-04-11', amount: 35000 },
     ],
   },
   { id: 3, title: 'Oprava střechy', duedate: '2025-08-02', amount: 22000, paid: 0, isInvoiceShown: true, paymentHistory: [] },
@@ -57,7 +57,7 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 45000,
     paid: 32000,
     paymentHistory: [
-      { id: 6001, date: '2025-08-21', amount: 32000, note: 'Částečná úhrada' },
+      { id: 6001, date: '2025-08-21', amount: 32000, note: 'Využita poukázka [název poukázky]' },
     ],
   },
   { id: 7, title: 'Oprava střechy', duedate: '2026-01-01', amount: 33127, paid: 0, isInvoiceShown: true, paymentHistory: [] },
@@ -79,7 +79,7 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 50000,
     paid: 50000,
     paymentHistory: [
-      { id: 9001, date: '2025-07-29', amount: 50000, note: 'Jednorázová úhrada' },
+      { id: 9001, date: '2025-07-29', amount: 50000, note: 'Využita poukázka [název poukázky]' },
     ],
   },
   {
@@ -111,7 +111,7 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 15301,
     paid: 50000,
     paymentHistory: [
-      { id: 12001, date: '2025-08-11', amount: 15301, note: 'Přeplatek vrácen mimo systém' },
+      { id: 12001, date: '2025-08-11', amount: 15301 },
     ],
   },
   {
