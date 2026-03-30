@@ -99,7 +99,7 @@ dialog {
 
 .navbar-nav {
   --tblr-nav-link-color: var(--tblr-body-color);
-  --tblr-nav-link-font-weight: 500;
+  /* --tblr-nav-link-font-weight: 500; */
 }
 
 /* Active link is highlighted */
@@ -276,7 +276,9 @@ dialog {
 
 @media (min-width: 992px) {
   :is(:host, :root):not([data-bs-theme=dark]) .card:not(:is(.card, .modal) .card) {
-    /* --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12); */
+    --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
+    --tblr-card-box-shadow: 0 4px 16px rgba(98, 125, 152, .10);
+    --tblr-card-box-shadow: none;
   }
 
   /* .card that is not a child of another .card OR .card that is not a child of .modal */
@@ -317,5 +319,41 @@ html {
 
   .navbar-brand-image {
     height: 100px;
+  }
+}
+
+/* WIP */
+:root {
+  /* ! CUSTOM CLASS ! */
+  --tblr-navbar-vertical-width: 18rem;
+}
+/* HACK: Tabler má hard-coded šířku vertikálního navbaru. Proto jsem ji tady přepsal pomocí jednotné proměnné. (Vypsal jsem jen třídy relevantní pro náš -lg breakpoint, zbylé se nás stejně netýkají.) */
+@media (min-width: 992px) {
+  .navbar-expand-lg.navbar-vertical ~ .navbar,
+  .navbar-expand-lg.navbar-vertical ~ .page-wrapper {
+    margin-left: var(--tblr-navbar-vertical-width);
+  }
+
+  .navbar-expand-lg.navbar-vertical.navbar-right ~ .navbar,
+  .navbar-expand-lg.navbar-vertical.navbar-right ~ .page-wrapper, .navbar-expand-lg.navbar-vertical.navbar-end ~ .navbar,
+  .navbar-expand-lg.navbar-vertical.navbar-end ~ .page-wrapper {
+    margin-right: var(--tblr-navbar-vertical-width);
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-vertical.navbar-expand-lg {
+    width: var(--tblr-navbar-vertical-width);
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-vertical.navbar-expand-lg ~ .page {
+    padding-left: var(--tblr-navbar-vertical-width);
+  }
+
+  .navbar-vertical.navbar-expand-lg.navbar-right ~ .page, .navbar-vertical.navbar-expand-lg.navbar-end ~ .page {
+    padding-left: 0;
+    padding-right: var(--tblr-navbar-vertical-width);
   }
 }

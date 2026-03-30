@@ -69,7 +69,7 @@
 
       <div class="collapse navbar-collapse user-select-none" id="sidebar-menu">
 
-        <ul class="navbar-nav p-2 pt-3 gap-1">
+        <ul class="navbar-nav p-2 p-lg-3 pt-3 gap-1">
 
           <!-- * Dashboard -->
           <NavItem label="Nástěnka" to="/">
