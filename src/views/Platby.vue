@@ -145,7 +145,7 @@
           </div>
           <div class="card-body">
             <div class="row row-cards">
-              <div v-for="voucher in vouchersStore.vouchers" :key="voucher.id" class="col-lg-6">
+              <div v-for="voucher in vouchersStore.vouchers" :key="voucher.id" class="col-lg-4">
                 <Voucher
                   :id="voucher.id"
                   :title="voucher.title"
