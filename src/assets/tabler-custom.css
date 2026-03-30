@@ -1,19 +1,70 @@
+/* TODO: Clean up ! */
+
+/* GEIST font */
+/* https://vercel.com/font */
+/* NOTE: Nepoužíváme Google Fonts verzi, protože nepodporuje glyphs a 'font-feature-settings'. Alternativně je možné použít přes npm. */
+@font-face {
+  font-family: 'Geist';
+  src:
+    url('./fonts/geist/webfonts/Geist[wght].woff2') format('woff2'),
+    url('./fonts/geist/webfonts/Geist[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src:
+    url('./fonts/geist/webfonts/Geist-Italic[wght].woff2') format('woff2'),
+    url('./fonts/geist/webfonts/Geist-Italic[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* GEIST MONO font */
+@font-face {
+  font-family: 'Geist Mono';
+  src:
+    url('./fonts/geist/webfonts/GeistMono[wght].woff2') format('woff2'),
+    url('./fonts/geist/webfonts/GeistMono[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src:
+    url('./fonts/geist/webfonts/GeistMono-Italic[wght].woff2') format('woff2'),
+    url('./fonts/geist/webfonts/GeistMono-Italic[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+:host, :root {
+  --tblr-font-sans-serif: "Geist", "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --tblr-font-monospace: "Geist Mono", Monaco, Consolas, Liberation Mono, Courier New, monospace;
+}
+
+body {
+  font-variant-numeric: tabular-nums;
+}
+
 /* Required CSS features
   :has()
   color-mix
 
 */
 
-/* ! HIDES VUE INSPECTOR */
+/* DEV: HIDES VUE INSPECTOR */
 #vue-inspector-container,
 #__vue-devtools-container__ {
   display: none !important;
 }
 
 
-/* Fixes scrollbar */
+/* FIX: scrollbar */
 :host, :root {
-  margin: 0 !important
+  margin: 0 !important;
 }
 
 /* More emphasized selection background for light theme */
@@ -225,7 +276,7 @@ dialog {
 
 @media (min-width: 992px) {
   :is(:host, :root):not([data-bs-theme=dark]) .card:not(:is(.card, .modal) .card) {
-    --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12);
+    /* --tblr-card-box-shadow: 0 8px 16px rgba(98, 125, 152, .12); */
   }
 
   /* .card that is not a child of another .card OR .card that is not a child of .modal */
@@ -236,11 +287,11 @@ dialog {
 
 
   .navbar {
-    box-shadow: 0 2px 4px #627d9833, 0 1px 2px #102a4333;
+    /* box-shadow: 0 2px 4px #627d9833, 0 1px 2px #102a4333; */
   }
 
   .navbar-expand-lg.navbar-vertical {
-    box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329;
+    /* box-shadow: 0 4px 8px #627d9829, 0 2px 4px #102a4329; */
   }
 }
 
@@ -250,7 +301,7 @@ dialog {
 
 
 .card-title {
-  font-weight: var(--tblr-font-weight-bold);
+  /* font-weight: var(--tblr-font-weight-bold); */
 }
 
 html {
