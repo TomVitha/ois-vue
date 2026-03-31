@@ -78,7 +78,7 @@
             </div>
 
 
-            <!-- * Dokumenty k podepsání (které ještě nebyly podepsány) -->
+            <!-- * Dokumenty k podepsání (Akceptace dodatků) (které ještě nebyly podepsány) -->
             <div class="col-xl-6">
               <div class="card">
                 <div class="card-header">

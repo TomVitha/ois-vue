@@ -68,22 +68,7 @@
       </div>
     </div>
 
-
-    <!-- 
-      = FUNGOVÁNÍ KLIENTSKÉHO PORTÁLU (technikálie)
-      - Jak si mohu změnit heslo?
-      - Jak můžu změnit osobní údaje?
-      - Zapomněl(a) jsem příhlašovací údaje
-    
-
-      Pro správné fungování klientského portálu je vyžadována minimální verze prohlížečů Chrome X, Firefox Y a Safari Z.
-      Pokud jste na verzi iOS/iPad OS starší než 16.2, pak se vám stránka klientského portálu nemusí zobrazovat správně. Doporučujeme proto následující kroky:
-      1)	Aktualizujte zařízení na nejnovější verzi operačního systému.
-      2)	Pokud upozornění přetrvává, otevřete Nastavení > (Aplikace) > Safari > Pokročilé (úplně vespod) > Experimentální funkce / Příznaky funkcí - a ujistěte se, že máte zapnuté následující položky:
-      -	:has() pseudo-class
-      -	CSS color-mix()
-
-    -->
+    <!-- TODO: pod klient. termínama odkaz na vzorkovnu a int studio -->
 
   </PageTemplate>
 

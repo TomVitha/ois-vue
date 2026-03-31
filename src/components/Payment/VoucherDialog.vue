@@ -135,6 +135,11 @@
                 </div>
               </div>
 
+              <!-- TODO: Jak ji má klient čerpat ?? Co pro to musí udělat? A za co? -->
+              <!-- TODO: Možnost ji rovnou nějak použít - asi bude potřebovat implementovat CI/nadstandardy/klientské změny -->
+              <!-- Zatím jen holý výpis, potřeba nějakých akcí -->
+              <!-- Nějak dát vědět kde/jak můžeš poukázku získat? -->
+
             </div>
           </template>
 

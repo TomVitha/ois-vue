@@ -99,7 +99,7 @@ dialog {
 
 .navbar-nav {
   --tblr-nav-link-color: var(--tblr-body-color);
-  /* --tblr-nav-link-font-weight: 500; */
+  --tblr-nav-link-font-weight: 500;
 }
 
 /* Active link is highlighted */
