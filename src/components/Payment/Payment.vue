@@ -60,6 +60,7 @@
     return map[status.value][locale]
   })
 
+  // TODO: Deprecate after implementing formatting composable
   function formatCurrency(amount: number): string {
     return new Intl.NumberFormat(localeStore.locale, {
       style: 'currency',
@@ -69,6 +70,7 @@
     }).format(amount)
   }
 
+  // TODO: Deprecate after implementing formatting composable
   function formatDate(date: Date): string {
     return date.toLocaleDateString(localeStore.locale, {
       year: 'numeric',
@@ -77,24 +79,25 @@
     })
   }
 
-  function openPaymentDialog() {
+  function openPayment() {
     paymentsStore.selectPaymentById(props.id)
   }
 </script>
 
 <template>
-  <!-- Mobile: list item is clickable anchor that opens payment dialog -->
-  <!-- NOTE: Href will point to the actual individual payment -->
+  <!-- * Mobile: list item -->
+  <!-- NOTE: Href odkaz povede na konkrétní platbu -->
+  <!-- FIXME: Měl by být <RouterLink> namísto <a>, ale pak se tam cpe třída .active, protože adresa odkazu sedí se současnou adresou -->
   <a
     v-if="props.variant === 'list'"
     href="#payment-modal"
     class="list-group-item list-group-item-action"
     role="button"
-    data-bs-toggle="modal"
-    data-bs-target="#payment-modal"
-    @click="openPaymentDialog">
+    data-bs-toggle="offcanvas"
+    data-bs-target="#payment-offcanvas"
+    @click="openPayment">
     <div>
-      <div class="row gy-3 align-items-center">
+      <div class="row gy-2 align-items-center">
         <div class="col">
           <div>{{ title }}</div>
           <div class="text-secondary">Splatnost: {{ formatDate(dueDate) }}</div>
@@ -142,7 +145,7 @@
     </div>
   </a>
 
-  <!-- Desktop: table row with pay button -->
+  <!-- * Desktop: table row -->
   <tr
     v-else
     class="position-relative">
@@ -152,9 +155,9 @@
       <RouterLink
         :to="`#platba-${id}`"
         class="stretched-link"
-        data-bs-toggle="modal"
-        data-bs-target="#payment-modal"
-        @click.prevent="openPaymentDialog">
+        data-bs-toggle="offcanvas"
+        data-bs-target="#payment-offcanvas"
+        @click.prevent="openPayment">
       </RouterLink>
     </td>
     <td data-label="Splatnost">{{ formatDate(dueDate) }}</td>

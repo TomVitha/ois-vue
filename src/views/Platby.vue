@@ -8,6 +8,7 @@
   import PageTemplate from '@/components/PageTemplate.vue'
   import Payments from '@/components/Payment/Payments.vue'
   import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
+  import PaymentOffcanvas from '@/components/Payment/PaymentOffcanvas.vue'
   import Voucher from '@/components/Payment/Voucher.vue'
   import VoucherDialog from '@/components/Payment/VoucherDialog.vue'
   // import Alert from '@/components/Alert.vue'
@@ -225,6 +226,7 @@
     </div>
 
     <PaymentDialog />
+    <PaymentOffcanvas />
     <VoucherDialog />
 
 
