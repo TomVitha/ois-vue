@@ -9,6 +9,8 @@
     </div>
     <div class="card-body">
       <div class="space-y">
+        <!-- TODO: Přidat splatnosti faktur (platby k zaplacení) -->
+        <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
         <slot></slot>
       </div>
     </div>

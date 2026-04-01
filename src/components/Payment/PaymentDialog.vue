@@ -18,6 +18,7 @@
 </script>
 
 <template>
+  <!-- DEPRECATED - Component replaced by PaymentOffcanvas.vue -->
   <div class="modal fade" id="payment-modal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md modal-fullscreen-sm-down">
       <div class="modal-content">
@@ -113,7 +114,7 @@
                         <div>
                           <div class="text-secondary">{{ formatDate(item.date) }}</div>
                           <!-- Poznámka - nejčastěji že k úhradě byla využita poukázka -->
-                          <div v-if="item.note" class="small text-secondary">{{ item.note }}</div>
+                          <div v-if="item.voucher" class="small text-secondary">{{ item.voucher }}</div>
                         </div>
                         <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                         <!-- TODO: Odkaz na dokument (pouze pro ty co mají IČO) -->

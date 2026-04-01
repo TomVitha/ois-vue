@@ -4,7 +4,7 @@
 
   import Payments from '@/components/Payment/Payments.vue'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import PaymentDialog from '@/components/Payment/PaymentDialog.vue'
+  import PaymentOffcanvas from '@/components/Payment/PaymentOffcanvas.vue'
   import SignaturePromptItem from '@/components/SignaturePromptItem.vue'
   import ClientTermItem from '@/components/ClientTermItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
@@ -181,8 +181,7 @@
       </div>
     </div>
 
-    <PaymentDialog />
-
+    <PaymentOffcanvas />
 
   </PageTemplate>
 
