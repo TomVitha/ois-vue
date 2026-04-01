@@ -65,11 +65,11 @@
           <div class="row">
             <div class="col">
               <!-- <div class="text-secondary">Vyčerpáno</div> -->
-              <div class="fs-5 text-success" title="Vyčerpáno">{{ formatCurrency(props.spent || 0) }}</div>
+              <div class="text-success" title="Vyčerpáno">{{ formatCurrency(props.spent || 0) }}</div>
             </div>
             <div class="col text-end">
               <!-- <div class="text-secondary">Zbývá</div> -->
-              <div class="fs-5 text-secondary" title="Zbývá">{{ formatCurrency(remaining) }}</div>
+              <div class="text-secondary" title="Zbývá">{{ formatCurrency(remaining) }}</div>
             </div>
             <div class="col-12">
               <div class="progress progress-sm mt-2">
