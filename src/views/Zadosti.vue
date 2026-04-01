@@ -5,23 +5,15 @@
   import ProductGroup from '@/components/ProductGroup.vue'
   import ProductGroupItem from '@/components/ProductGroupItem.vue'
   import RequestStatusDialog from '@/components/RequestStatusDialog.vue'
-  import { useLocaleStore } from '@/stores/locale'
+  import { useFormatting } from '@/composables/formatting'
   import { useRequestsStore } from '@/stores/requests'
   import type { LastSubmissionResult } from '@/requests/types'
 
   const requestsStore = useRequestsStore()
-  const localeStore = useLocaleStore()
+  const { formatDate } = useFormatting()
 
   const modalTrigger = ref<HTMLButtonElement | null>(null)
   const statusResult = ref<LastSubmissionResult | null>(null)
-
-  function formatDate(isoDate: string) {
-    return new Intl.DateTimeFormat([localeStore.locale], {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    }).format(new Date(isoDate))
-  }
 
   function openStatusModal(result: LastSubmissionResult) {
     statusResult.value = { ...result }
@@ -64,12 +56,20 @@
       </div>
     </template>
 
-    <div v-if="requestsStore.activeRequestsByProperty.length === 0" class="empty">
-      <p class="empty-title">Žádné podané žádosti</p>
-      <p class="empty-subtitle text-secondary">
-        Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
-      </p>
+    <div v-if="requestsStore.activeRequestsByProperty.length === 0" class="row row-deck row-cards">
+      <div class="col-12">
+        <div class="card">
+          <div class="empty">
+            <p class="empty-title">Žádné podané žádosti</p>
+            <p class="empty-subtitle text-secondary">
+              Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+
+
 
     <div v-else class="row row-deck row-cards">
       <div class="col-12">
@@ -121,4 +121,3 @@
     <RequestStatusDialog :result="statusResult" />
   </PageTemplate>
 </template>
-

@@ -2,9 +2,11 @@
   import { computed } from 'vue'
   import { RouterLink } from 'vue-router'
 
+  import { useFormatting } from '@/composables/formatting'
   import { useLocaleStore } from '@/stores/locale'
   import { usePaymentsStore } from '@/stores/payments'
 
+  const { formatDate, formatCurrency } = useFormatting()
   const localeStore = useLocaleStore()
   const paymentsStore = usePaymentsStore()
 
@@ -60,25 +62,6 @@
     return map[status.value][locale]
   })
 
-  // TODO: Deprecate after implementing formatting composable
-  function formatCurrency(amount: number): string {
-    return new Intl.NumberFormat(localeStore.locale, {
-      style: 'currency',
-      currency: 'CZK',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount)
-  }
-
-  // TODO: Deprecate after implementing formatting composable
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
-
   function openPayment() {
     paymentsStore.selectPaymentById(props.id)
   }
@@ -87,7 +70,7 @@
 <template>
   <!-- * Mobile: list item -->
   <!-- NOTE: Href odkaz povede na konkrétní platbu -->
-  <!-- FIXME: Měl by být <RouterLink> namísto <a>, ale pak se tam cpe třída .active, protože adresa odkazu sedí se současnou adresou -->
+   <!-- FIXME: Měl by být <RouterLink> namísto <a>, ale pak se tam cpe třída .active, protože adresa odkazu sedí se současnou adresou -->
   <a
     v-if="props.variant === 'list'"
     href="#payment-modal"

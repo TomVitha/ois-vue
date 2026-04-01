@@ -1,13 +1,11 @@
 <script setup lang="ts">
   import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 
-  import { useLocaleStore } from '@/stores/locale'
+  import { useFormatting } from '@/composables/formatting'
   import { usePaymentsStore } from '@/stores/payments'
-  // import { useFormatting } from '@/composables/formatting'
 
-  const localeStore = useLocaleStore()
+  const { formatDate, formatCurrency } = useFormatting()
   const paymentsStore = usePaymentsStore()
-  // const { formatDate, formatCurrency } = useFormatting()
 
   import PaymentDialogItem from '@/components/Payment/PaymentDialogItem.vue';
   import CopyToClipboardButton from '@/components/CopyToClipboardButton.vue';
@@ -20,25 +18,6 @@
 
   // NOTE: Potřeba dát do proměnné protože window nejde na přímo použít, jinak error: "Property 'window' does not exist on type..."
   const win = window
-
-  // TODO: Deprecate after implementing formatting composable
-  function formatCurrency(amount: number): string {
-    return new Intl.NumberFormat(localeStore.locale, {
-      style: 'currency',
-      currency: 'CZK',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount)
-  }
-
-  // TODO: Deprecate after implementing formatting composable
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
 
 </script>
 
@@ -295,7 +274,6 @@
 
     border-radius: var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) 0 0;
   }
-
   @media (min-width: 992px) {
     .offcanvas {
       border-radius: 0;

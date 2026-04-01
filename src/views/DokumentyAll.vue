@@ -38,10 +38,6 @@
       }
     })
   })
-
-  function formatDate(isoDate: string) {
-    return new Intl.DateTimeFormat('cs-CZ').format(new Date(`${isoDate}T00:00:00`))
-  }
 </script>
 
 <template>
@@ -70,7 +66,7 @@
                         :key="document.id"
                         :title="document.name"
                         :filesize="document.fileSize"
-                        :dateAdded="formatDate(document.dateAdded)"
+                        :dateAdded="document.dateAdded"
                         :dateValid="document.dateValid"
                         :fileUrl="document.fileUrl" />
                     </div>

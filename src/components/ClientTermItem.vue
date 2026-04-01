@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import { useLocaleStore } from '@/stores/locale'
-  const localeStore = useLocaleStore()
+  import { useFormatting } from '@/composables/formatting'
+
+  const { formatDate } = useFormatting()
 
   const props = defineProps<{
     date: string
@@ -8,17 +9,6 @@
     title: string
     description: string
   }>()
-
-  function formatDate(value: string): string {
-    const date = new Date(value)
-    if (isNaN(date.getTime())) return value
-
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: 'long',
-      day: '2-digit',
-    })
-  }
 </script>
 
 <template>

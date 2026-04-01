@@ -1,29 +1,9 @@
 <script setup lang="ts">
-  import { useLocaleStore } from '@/stores/locale'
+  import { useFormatting } from '@/composables/formatting'
   import { useVouchersStore } from '@/stores/vouchers'
 
-  const localeStore = useLocaleStore()
+  const { formatDate, formatCurrency } = useFormatting()
   const vouchersStore = useVouchersStore()
-
-  function formatCurrency(amount: number): string {
-    return new Intl.NumberFormat(localeStore.locale, {
-      style: 'currency',
-      currency: 'CZK',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount)
-  }
-
-  function formatDate(value: string): string {
-    const date = new Date(value)
-    if (isNaN(date.getTime())) return value
-
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
 </script>
 
 <template>

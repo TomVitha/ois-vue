@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import { useLocaleStore } from '@/stores/locale'
-  const localeStore = useLocaleStore()
+  import { useFormatting } from '@/composables/formatting'
 
   const props = defineProps<{
     title: string
@@ -10,17 +9,8 @@
     category: 'construction' | 'changes' | 'handover' | 'payments' | 'documents'
   }>()
 
+  const { formatDate } = useFormatting()
 
-  const milestoneDate = new Date(props.date)
-  if (isNaN(milestoneDate.getTime())) { milestoneDate.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
-
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
 </script>
 
 <template>
@@ -52,7 +42,7 @@
         </span>
       </div>
       <div class="col">
-        <div class="text-reset">{{ formatDate(milestoneDate) }}</div>
+        <div class="text-reset">{{ formatDate(props.date) }}</div>
         <div class="fw-semibold">{{ props.title }}</div>
         <div class="text-secondary" v-if="props.note">{{ props.note }}</div>
       </div>

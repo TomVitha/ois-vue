@@ -1,10 +1,10 @@
 <script setup lang="ts">
   import { computed } from 'vue'
 
-  import { useLocaleStore } from '@/stores/locale'
+  import { useFormatting } from '@/composables/formatting'
   import { useVouchersStore } from '@/stores/vouchers'
 
-  const localeStore = useLocaleStore()
+  const { formatDate, formatCurrency } = useFormatting()
   const vouchersStore = useVouchersStore()
 
   interface BreakdownItem {
@@ -23,17 +23,6 @@
     breakdown?: BreakdownItem[]
   }>()
 
-  const dateReceived = new Date(props.dateReceived)
-  if (isNaN(dateReceived.getTime())) { dateReceived.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
-
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString(localeStore.locale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-  }
-
   const remaining = computed(() => Math.max(props.value - (props.spent || 0), 0))
   const remainingPercent = computed(() => {
     if (!props.value) return 0
@@ -41,9 +30,6 @@
     return Math.max(0, Math.min(rawPercent, 100))
   })
   const isFullyUsed = computed(() => remaining.value <= 0)
-
-  const formatCurrency = (amount: number) =>
-    new Intl.NumberFormat(localeStore.locale, { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 }).format(amount)
 
   function openVoucherDialog() {
     vouchersStore.selectVoucherById(props.id)
@@ -62,7 +48,7 @@
       <div class="row row-gap-3 gx-4">
         <div class="col">
           <div>{{ title }}</div>
-          <div class="text-secondary">Obdržena: {{ formatDate(dateReceived) }}</div>
+          <div class="text-secondary">Obdržena: {{ formatDate(props.dateReceived) }}</div>
         </div>
         <div class="col-auto text-end">
           <div class="text-secondary">V hodnotě</div>

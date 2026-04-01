@@ -1,9 +1,13 @@
 <script setup lang="ts">
+  import { useFormatting } from '@/composables/formatting'
+
+  const { formatDate } = useFormatting()
+
   defineProps<{
     title: string
     filesize?: string
-    dateAdded?: string
-    dateValid?: string
+    dateAdded: string
+    dateValid?: string  // unused - not displayed
     fileUrl?: string
   }>()
 
@@ -16,9 +20,9 @@
         {{ title }}
         <span v-if="filesize" class="text-secondary">({{ filesize }})</span>
       </div>
-      <div v-if="dateAdded" class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
+      <div class="col-auto col-md-2 text-end text-md-start d-none d-md-block">
         <!-- <div class="text-secondary">Přidáno</div> -->
-        <div>{{ dateAdded }}</div>
+        <div>{{ formatDate(dateAdded) }}</div>
       </div>
       <!-- * Actions: Open, Download -->
       <div class="col-auto text-end d-print-none">
