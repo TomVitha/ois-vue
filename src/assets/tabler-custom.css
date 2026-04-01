@@ -310,6 +310,18 @@ html {
   scroll-padding-top: 4rem;
 }
 
+/* ? maybe ? */
+@media (min-width: 768px) {
+  .empty {
+    padding: 3rem;
+  }
+}
+/* ? maybe ? */
+.empty-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 /* HACK: QUICK AND DIRTY */
 @media (min-width: 992px) {
   .navbar-vertical.navbar-expand-lg .navbar-brand {
@@ -327,8 +339,10 @@ html {
   /* ! CUSTOM CLASS ! */
   --tblr-navbar-vertical-width: 18rem;
 }
+
 /* HACK: Tabler má hard-coded šířku vertikálního navbaru. Proto jsem ji tady přepsal pomocí jednotné proměnné. (Vypsal jsem jen třídy relevantní pro náš -lg breakpoint, zbylé se nás stejně netýkají.) */
 @media (min-width: 992px) {
+
   .navbar-expand-lg.navbar-vertical ~ .navbar,
   .navbar-expand-lg.navbar-vertical ~ .page-wrapper {
     margin-left: var(--tblr-navbar-vertical-width);

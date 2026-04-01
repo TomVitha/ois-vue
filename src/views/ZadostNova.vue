@@ -2,6 +2,7 @@
   import { computed } from 'vue'
 
   import PageTemplate from '@/components/PageTemplate.vue'
+  import Empty from '@/components/Empty.vue'
   import { useRequestsStore } from '@/stores/requests'
 
   const requestsStore = useRequestsStore()
@@ -38,39 +39,39 @@
       </div>
     </template>
 
-    <div v-if="groupedTemplates.length === 0" class="empty">
-      <p class="empty-title">Pro vybranou nemovitost nejsou dostupné žádné žádosti</p>
-      <p class="empty-subtitle text-secondary">Vyberte jinou nemovitost.</p>
-    </div>
-
-    <div v-else class="row row-deck row-cards">
-      <template v-for="group in groupedTemplates" :key="group.category">
-        <div class="col-12">
-          <h3>{{ group.category }}</h3>
-          <!-- <div class="text-secondary">{{ `${group.templates.length} položky` }}</div> -->
-        </div>
-        <div class="col-12">
-          <div class="row row-cards">
-            <div
-              v-for="requestTemplate in group.templates"
-              :key="requestTemplate.id"
-              class="col-12 col-md-6 col-xl-4">
-              <RouterLink
-                :to="`/zadost-nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
-                class="card card-md card-link text-center w-100 h-100">
-                <div class="card-body">
-                  <h3 class="card-title mb-2">{{ requestTemplate.name }}</h3>
-                  <p class="text-secondary mb-0">{{ requestTemplate.description }}</p>
-                </div>
-              </RouterLink>
+    <div class="row row-deck row-cards">
+      <!-- * Empty state -->
+      <template v-if="groupedTemplates.length === 0">
+        <Empty title="Žádné dostupné žádosti" subtitle="Pro vybraný produkt nejsou dostupné žádné žádosti." />
+      </template>
+      <!-- * Kategorie požadavků a požadavky  -->
+      <template v-else>
+        <template v-for="group in groupedTemplates" :key="group.category">
+          <div class="col-12">
+            <h3>{{ group.category }}</h3>
+            <!-- <div class="text-secondary">{{ `${group.templates.length} položky` }}</div> -->
+          </div>
+          <div class="col-12">
+            <div class="row row-cards">
+              <div
+                v-for="requestTemplate in group.templates"
+                :key="requestTemplate.id"
+                class="col-12 col-md-6 col-xl-4">
+                <RouterLink
+                  :to="`/zadost-nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
+                  class="card card-md card-link text-center w-100 h-100">
+                  <div class="card-body">
+                    <h3 class="card-title mb-2">{{ requestTemplate.name }}</h3>
+                    <p class="text-secondary mb-0">{{ requestTemplate.description }}</p>
+                  </div>
+                </RouterLink>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </template>
     </div>
   </PageTemplate>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

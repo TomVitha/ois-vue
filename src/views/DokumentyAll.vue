@@ -4,6 +4,7 @@
   import DocumentItem from '@/components/DocumentItem.vue'
   import ProductGroup from '@/components/ProductGroup.vue'
   import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import Empty from '@/components/Empty.vue'
   import { useDocumentsStore } from '@/stores/documents'
 
   const documentsStore = useDocumentsStore()
@@ -45,6 +46,12 @@
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
+      <!-- * Empty state - Zobrazí se pokud nejsou žádné dokumenty -->
+      <!-- <div class="col-12">
+        <Empty title="Žádné dokumenty" subtitle="Nemáte žádné dokumenty." />
+      </div> -->
+
+      <!-- * Dokumenty -->
       <div class="col-12">
         <ProductGroup>
           <ProductGroupItem

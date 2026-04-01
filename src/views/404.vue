@@ -1,16 +1,13 @@
 <script setup lang="ts">
-
+  import Empty from '@/components/Empty.vue'
 </script>
 
 <template>
   <div class="page-wrapper">
-    <!-- BEGIN PAGE HEADER -->
-    <!-- END PAGE HEADER -->
-    <!-- BEGIN PAGE BODY -->
     <div class="page-body">
       <div class="container-xl my-auto">
-        <div class="empty">
-          <div class="empty-img">
+        <Empty title="Stránka nenalezena" subtitle="Omlouváme se, ale stránka, kterou hledáte, nebyla nalezena." header="404" :icon="false">
+          <template #image>
             <svg class="w-100 h-auto" xmlns="http://www.w3.org/2000/svg" height="256" fill="none" viewBox="0 0 800 600">
               <path d="M649.951 544.225C649.951 547.416 541.744 550 408.158 550C274.571 550 166.365 547.416 166.365 544.225C166.365 541.034 274.571 538.45 408.158 538.45C541.744 538.45 649.951 541.034 649.951 544.225Z" fill="#A6A9B3" class="tblr-illustrations-not-found-a"></path>
               <path d="M146 285.714C146 327.964 190.681 358.511 210.286 392.553C230.65 427.66 235.514 481.459 270.62 501.672C304.663 521.429 353.143 499.392 395.392 499.392C437.641 499.392 486.122 521.429 520.164 501.672C555.271 481.307 560.134 427.66 580.499 392.553C600.255 358.511 644.784 327.812 644.784 285.714C644.784 243.617 600.103 212.918 580.499 178.875C560.286 143.769 555.271 89.9697 520.164 69.7569C486.122 50.0001 437.641 72.0366 395.392 72.0366C353.143 72.0366 304.663 50.0001 270.62 69.7569C235.514 90.1217 230.65 143.769 210.286 178.875C190.529 212.918 146 243.617 146 285.714Z" fill="#F7F8FC" class="tblr-illustrations-not-found-b"></path>
@@ -75,25 +72,22 @@
               <path d="M219.86 293.769C225.939 294.681 242.961 295.745 249.192 284.65C250.103 282.979 250.863 281.003 251.319 279.179C251.319 279.027 251.471 278.875 251.471 278.723C251.623 278.267 251.623 277.66 251.623 277.204V277.052C251.775 275.836 251.623 274.468 251.319 273.252C250.103 276.292 248.28 279.179 246.152 281.611C235.362 293.921 217.733 292.097 214.845 291.945H214.693C216.213 292.553 218.037 293.313 219.86 293.769Z" fill="black" opacity="0.5"></path>
               <path d="M501.775 256.991C497.672 256.079 492.049 254.407 486.122 251.368C480.802 248.632 476.851 245.593 473.812 243.009C476.243 242.705 483.234 242.249 490.529 246.049C497.216 249.544 500.559 254.711 501.775 256.991Z" fill="#232B41" class="tblr-illustrations-not-found-c"></path>
             </svg>
-          </div>
-          <div class="empty-header">404</div>
-          <p class="empty-title">Stránka nenalezena</p>
-          <p class="empty-subtitle text-secondary">Omlouváme se, ale stránka, kterou hledáte, nebyla nalezena.</p>
-          <div class="empty-action">
-            <RouterLink to="/" class="btn btn-primary btn-4">
-              <!-- Download SVG icon from http://tabler.io/icons/icon/arrow-left -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-2">
-                <path d="M5 12l14 0"></path>
-                <path d="M5 12l6 6"></path>
-                <path d="M5 12l6 -6"></path>
-              </svg>
-              Zpět domů
-            </RouterLink>
-          </div>
-        </div>
+          </template>
+          <template #actions>
+            <div class="btn-list">
+              <RouterLink to="/" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-2">
+                  <path d="M5 12l14 0"></path>
+                  <path d="M5 12l6 6"></path>
+                  <path d="M5 12l6 -6"></path>
+                </svg>
+                Zpět domů
+              </RouterLink>
+            </div>
+          </template>
+        </Empty>
       </div>
     </div>
-    <!-- END PAGE BODY -->
   </div>
 </template>
 

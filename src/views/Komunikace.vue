@@ -16,6 +16,8 @@
   import MessengerListItem from '@/components/Messenger/MessengerListItem.vue'
   import MessengerAttachment from '@/components/Messenger/MessageAttachment.vue'
 
+  import Empty from '@/components/Empty.vue'
+
   import { useMessengerStore } from '@/stores/messenger'
   const messengerStore = useMessengerStore()
 
@@ -355,29 +357,29 @@
         </div>
         <!-- Message body column -->
         <div class="col d-flex flex-column messenger__body" :class="{ 'd-none d-lg-flex d-print-none': !selectedMessage }">
-          <!-- If no message is selected: show empty welcome -->
+          <!-- * Empty state - Pokud není žádné aktivní vybraná zpráva -->
           <div v-if="!selectedMessage" class="page page-center" id="empty-state">
-            <div class="container-tight py-4">
+            <!-- <div class="container-tight"> -->
               <div class="empty">
                 <!-- <div class="empty-img"> -->
-                  <!-- TODO: Envelope image ? -->
+                  <!-- TODO: Obrázek obálky -->
                 <!-- </div> -->
                 <p class="empty-title">
                   <span v-if="messages.some(m => m.meta.isUnread)">
                     Nepřečtených zpráv ({{messages.filter(m => m.meta.isUnread).length}})
                   </span>
-                  <span v-else>Schránka</span>
+                  <span v-else>Žádná vybraná zpráva</span>
                 </p>
                 <p class="empty-subtitle text-secondary" style="text-wrap: pretty">
                   <span v-if="messages.filter(m => m.meta.from).length <= 0">Nemáte žádné položky</span>
                   <span v-else>
-                    Vyberte některou ze zpráv
+                    Vyberte některou ze zpráv.
                   </span>
                 </p>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
-          <!-- Else if a message is selected: show message content -->
+          <!-- * Message content -->
           <!-- TODO? Message body into component? -->
           <div class="card scrollable" v-else id="message-view">
             <div class="card-header d-block">

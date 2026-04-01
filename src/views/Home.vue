@@ -8,6 +8,7 @@
   import SignaturePromptItem from '@/components/SignaturePromptItem.vue'
   import ClientTermItem from '@/components/ClientTermItem.vue'
   import ContactBlock from '@/components/ContactCard.vue'
+  import Empty from '@/components/Empty.vue'
 </script>
 
 <template>
@@ -45,25 +46,11 @@
               </p>
             </div>
 
-
             <!-- * Platby -->
-            <!-- <div class="col-12">
-              <div class="d-flex justify-content-between align-items-baseline flex-fill">
-                <h3 class="m-0 mt-3">Platby po splatnosti</h3>
-                <div class="btn-actions h-0">
-                  <RouterLink to="/account#upozorneni-plateb" class="btn btn-action" data-bs-toggle="tooltip" data-bs-placement="top" title="Žádost o odklad platby">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-flag">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
-                      <path d="M5 21v-7" />
-                    </svg>
-                  </RouterLink>
-                </div>
-              </div>
-            </div> -->
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
+                  <!-- * Výpis plateb -->
                   <h3 class="card-title me-auto">Platby</h3>
                   <RouterLink to="/platby">
                     Všechny
@@ -73,10 +60,12 @@
                     </svg>
                   </RouterLink>
                 </div>
+                <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
+                <!-- <Empty title="Žádné platby" subtitle="Nemáte žádné nadcházející platby." /> -->
+                <!-- * Výpis plateb -->
                 <Payments :payments="paymentsStore.upcomingPayments" />
               </div>
             </div>
-
 
             <!-- * Dokumenty k podepsání (Akceptace dodatků) (které ještě nebyly podepsány) -->
             <div class="col-xl-6">
@@ -88,16 +77,8 @@
                   <SignaturePromptItem title="Návrh klientského dodatku" file="192-03-147_KD2.pdf" />
                   <SignaturePromptItem title="Návrh smlouvy o dílo" file="192-03-147_XY3.pdf" />
                 </div>
-                <!-- * Empty state -->
-                <!-- NOTE: Zobrazí se pokud nejsou žádné dokumenty k podepsání -->
-                <!-- <div class="empty">
-                  <p class="empty-title">
-                    Žádné dokumenty
-                  </p>
-                  <p class="empty-subtitle text-secondary">
-                    Nemáte žádné dokumenty, které by čekaly na váš podpis.
-                  </p>
-                </div> -->
+                <!-- * Empty state - Zobrazí se pokud nejsou žádné dokumenty k podepsání -->
+                <!-- <Empty title="Žádné dokumenty" subtitle="Nemáte žádné dokumenty, které by čekaly na váš podpis." /> -->
               </div>
             </div>
 
@@ -112,59 +93,10 @@
                   <ClientTermItem date="2026-06-31" product="192-03-147" title="2. termínová sekce" description="Dispoziční změny zasahující do nosných konstrukcí." />
                   <ClientTermItem date="2027-07-15" product="192-RD-007" title="1. termínová sekce" description="Další změny v konstrukci." />
                 </div>
-                <!-- * Empty state -->
-                <!-- NOTE: zobrazí se pokud nejsou žádné termínovky -->
-                <!-- <div class="empty">
-                  <p class="empty-title">
-                    Žádné termíny
-                  </p>
-                  <p class="empty-subtitle text-secondary">
-                    Nemáte žádné nadcházející termíny klientských změn.
-                  </p>
-                </div> -->
+                <!-- * Empty state - Zobrazí se pokud nejsou žádné termínovky -->
+                <!-- <Empty title="Žádné termíny" subtitle="Nemáte žádné nadcházející termíny klientských změn." /> -->
               </div>
             </div>
-
-            <!-- Payments breakdown -->
-            <!-- <div class="col-xl-6">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title">Rozklad plateb</h3>
-                  <div class="progress progress-separated mb-3">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 68.6%" aria-label="Regular"></div>
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 23.9%" aria-label="System"></div>
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 5.8%" aria-label="Shared"></div>
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 01.6%" aria-label="Shared"></div>
-                  </div>
-                  <div class="space-y-2">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <span class="legend me-2 bg-success"></span> Zaplacené
-                      </div>
-                      <span>8 751 500 Kč</span>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <span class="legend me-2 bg-info"></span> Nadcházející
-                      </div>
-                      <span>3 047 880 Kč</span>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <span class="legend me-2 bg-warning"></span> Blížící se
-                      </div>
-                      <span>745 000 Kč</span>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <span class="legend me-2 bg-danger"></span> Po splatnosti
-                      </div>
-                      <span>204 633 Kč</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
             <div class="col-12">
               <h3 class="mt-3 mb-0">Obecné kontakty</h3>

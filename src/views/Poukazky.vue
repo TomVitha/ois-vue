@@ -6,6 +6,7 @@
   import Voucher from '@/components/Payment/Voucher.vue'
   import VoucherDialog from '@/components/Payment/VoucherDialog.vue'
   import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import Empty from '@/components/Empty.vue'
 
   import { useVouchersStore } from '@/stores/vouchers'
   const vouchersStore = useVouchersStore()
@@ -18,6 +19,12 @@
   <PageTemplate title="Poukázky">
     <div class="row row-deck row-cards">
 
+      <!-- * Empty state - Zobrazí se pokud nejsou žádné poukázky -->
+      <!-- <div class="col-12">
+        <Empty title="Žádné poukázky" subtitle="Poukázky možné je získat například jako odměnu za věrnost, či při nákupu nějakého z našich produktů." />
+      </div> -->
+
+      <!-- * Poukázky -->
       <div class="col-12">
         <ProductGroup>
           <ProductGroupItem

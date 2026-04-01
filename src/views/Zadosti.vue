@@ -7,6 +7,7 @@
   import RequestStatusDialog from '@/components/RequestStatusDialog.vue'
   import { useFormatting } from '@/composables/formatting'
   import { useRequestsStore } from '@/stores/requests'
+  import Empty from '@/components/Empty.vue'
   import type { LastSubmissionResult } from '@/requests/types'
 
   const requestsStore = useRequestsStore()
@@ -56,23 +57,13 @@
       </div>
     </template>
 
-    <div v-if="requestsStore.activeRequestsByProperty.length === 0" class="row row-deck row-cards">
-      <div class="col-12">
-        <div class="card">
-          <div class="empty">
-            <p class="empty-title">Žádné podané žádosti</p>
-            <p class="empty-subtitle text-secondary">
-              Zde uvidíte přehled vašich aktivních a uzavřených žádostí.
-            </p>
-          </div>
-        </div>
+    <div class="row row-deck row-cards">
+      <!-- * Empty state -->
+      <div v-if="requestsStore.activeRequestsByProperty.length === 0" class="col-12">
+        <Empty title="Žádné žádosti" subtitle="Zde uvidíte všechny své otevřené a uzavřené žádosti." />
       </div>
-    </div>
-
-
-
-    <div v-else class="row row-deck row-cards">
-      <div class="col-12">
+      <!-- * Žádosti -->
+      <div v-else class="col-12">
         <ProductGroup>
           <ProductGroupItem
             v-for="group in requestsStore.activeRequestsByProperty"

@@ -3,6 +3,8 @@
   import { useRoute, useRouter } from 'vue-router'
 
   import PageTemplate from '@/components/PageTemplate.vue'
+  import Empty from '@/components/Empty.vue'
+
   import { getRequestFormComponent } from '@/requests/forms/registry'
   import type { RequestFormExpose } from '@/requests/forms/types'
   import { useRequestsStore } from '@/stores/requests'
@@ -67,21 +69,21 @@
     :pretitle="property ? property.name : undefined"
     back-to="/zadost-nova">
     <div class="row">
-      <div class="col-xl-10">
+      
+      <!-- * Empty state -->
+      <template v-if="!canRenderForm || !template || !property">
+        <div class="col-12">
+          <Empty title="Žádost nenalezena" subtitle="Tato žádost není dostupná." :icon="false">
+            <template #actions>
+              <div class="btn-list"><button class="btn btn-primary" type="button" @click="goBackToSelection">Zpět na výběr žádosti</button></div>
+            </template>
+          </Empty>
+        </div>
+      </template>
 
-        <template v-if="!canRenderForm || !template || !property">
-          <div class="empty">
-            <p class="empty-title">Šablona žádosti nebyla nalezena</p>
-            <p class="empty-subtitle text-secondary">
-              Vybraná kombinace nemovitosti, žádosti nebo formuláře není dostupná.
-            </p>
-            <div class="empty-action">
-              <button class="btn btn-primary" type="button" @click="goBackToSelection">Zpět na výběr žádosti</button>
-            </div>
-          </div>
-        </template>
-
-        <template v-else>
+      <!-- * Tělo formuláře žádosti -->
+      <template v-else>
+        <div class="col-xl-10">
           <form @submit.prevent="handleSubmit">
             <div class="card">
               <div class="card-header">
@@ -105,9 +107,9 @@
               </div>
             </div>
           </form>
-        </template>
+        </div>
+      </template>
 
-      </div>
     </div>
   </PageTemplate>
 </template>
