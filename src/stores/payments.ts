@@ -5,7 +5,7 @@ type PaymentHistoryItem = {
   id: number
   date: string
   amount: number
-  note?: string
+  voucher?: string
 }
 
 type PaymentDataItem = {
@@ -29,9 +29,9 @@ const paymentsData = ref<PaymentDataItem[]>([
     paid: 245000,
     paymentHistory: [
       { id: 2001, date: '2025-01-15', amount: 35000 },
-      { id: 2002, date: '2025-01-31', amount: 35000, note: 'Využita poukázka [název poukázky]' },
+      { id: 2002, date: '2025-01-31', amount: 35000, voucher: 'Věrnostní poukázka' },
       { id: 2003, date: '2025-02-14', amount: 35000 },
-      { id: 2004, date: '2025-02-28', amount: 35000, note: 'Využita poukázka [název poukázky]' },
+      { id: 2004, date: '2025-02-28', amount: 35000, voucher: 'Věrnostní poukázka' },
       { id: 2005, date: '2025-03-14', amount: 35000 },
       { id: 2006, date: '2025-03-28', amount: 35000 },
       { id: 2007, date: '2025-04-11', amount: 35000 },
@@ -57,7 +57,7 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 45000,
     paid: 32000,
     paymentHistory: [
-      { id: 6001, date: '2025-08-21', amount: 32000, note: 'Využita poukázka [název poukázky]' },
+      { id: 6001, date: '2025-08-21', amount: 32000, voucher: 'Využita poukázka [název poukázky]' },
     ],
   },
   { id: 7, title: 'Oprava střechy', duedate: '2026-01-01', amount: 33127, paid: 0, isInvoiceShown: true, paymentHistory: [] },
@@ -79,7 +79,7 @@ const paymentsData = ref<PaymentDataItem[]>([
     amount: 50000,
     paid: 50000,
     paymentHistory: [
-      { id: 9001, date: '2025-07-29', amount: 50000, note: 'Využita poukázka [název poukázky]' },
+      { id: 9001, date: '2025-07-29', amount: 50000, voucher: 'Využita poukázka [název poukázky]' },
     ],
   },
   {

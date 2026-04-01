@@ -136,9 +136,8 @@
         </div>
       </div>
 
-      <!-- Poukázky jsou pořád ugly -->
-      <!-- TODO: Rework poukázky -->
-      <div class="col-12">
+      <!-- ! SEKCE POUKÁZKY SKRYTY - PŘESUNUTY NA VLASTNÍ STRÁNKU POUKÁZKY -->
+      <div class="col-12" hidden>
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Poukázky</h3>

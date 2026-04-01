@@ -114,8 +114,8 @@
                     class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
                       <div class="text-secondary">{{ formatDate(item.date) }}</div>
-                      <!-- Poznámka - nejčastěji že k úhradě byla využita poukázka -->
-                      <div v-if="item.note" class="small text-secondary">{{ item.note }}</div>
+                      <!-- Odkaz povede na stránku Poukázky a otevře okno dané poukázky -->
+                      <div v-if="item.voucher" class="small text-secondary">Využita poukázka: <RouterLink to="/poukazky">{{ item.voucher }}</RouterLink></div>
                     </div>
                     <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                     <!-- TODO: Odkaz na dokument (pouze pro ty co mají IČO) -->
@@ -232,7 +232,7 @@
                         <div>
                           <div class="text-secondary">{{ formatDate(item.date) }}</div>
                           <!-- Poznámka - nejčastěji že k úhradě byla využita poukázka -->
-                          <div v-if="item.note" class="small text-secondary">{{ item.note }}</div>
+                          <div v-if="item.voucher" class="small text-secondary">{{ item.voucher }}</div>
                         </div>
                         <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                         <!-- TODO: Odkaz na dokument (pouze pro ty co mají IČO) -->

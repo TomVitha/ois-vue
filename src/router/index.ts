@@ -45,6 +45,10 @@ const router = createRouter({
       path: '/platby',
       component: () => import('../views/Platby.vue'),
     },
+    {
+      path: '/poukazky',
+      component: () => import('../views/Poukazky.vue'),
+    },
     // Klientské změny / Termínové sekce
     {
       path: '/klientske-zmeny',
