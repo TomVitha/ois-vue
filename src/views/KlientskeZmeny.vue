@@ -9,6 +9,8 @@
   <PageTemplate title="Klientské změny">
 
     <div class="row gx-5" data-bs-spy="scroll" data-bs-target="#pills">
+      <!-- TODO: Někde nějak bude že pokud si chceš actually udělat změnu, musíš nás kontaktovat a budeš muset k nám fyzicky přijít -->
+
       <div class="col-xl-10">
         <div class="row row-cards">
           <div class="col-12">
@@ -63,6 +65,9 @@
                 </p>
               </div>
             </div>
+
+            <!-- TODO: Kontakty na dodavatele -->
+
           </div>
         </div>
       </div>

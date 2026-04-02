@@ -133,11 +133,18 @@
 
       <div class="col-12">
         <div class="card">
-          <!-- <div class="card-header">
-            <h3 class="card-title">Platby</h3>
-          </div> -->
-          <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
+          <!-- * Empty state - Pokud nejsou žádné platby -->
           <!-- <Empty title="Žádné platby" subtitle="Nemáte žádné nadcházející, či zaplacené platby platby." /> -->
+          <!-- * Empty state - Pokud filtru neodpovídají žádné platby -->
+          <!-- <Empty title="Nenalezeny žádné výsledky" subtitle="Vaším požadavkům nevyhovují žádné položky. Upravte parametry a zkuste to znovu.">
+            <template #icon>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-zoom">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                <path d="M21 21l-6 -6" />
+              </svg>
+            </template>
+          </Empty> -->
           <!-- * Platby -->
           <Payments :payments="paymentsStore.payments" />
         </div>

@@ -35,9 +35,9 @@
           <th>Popis</th>
           <th>Splatnost</th>
           <th>Stav</th>
-          <th class="text-sm-end">Částka</th>
-          <th class="text-sm-end">Zaplaceno</th>
-          <th class="text-sm-end">Zbývá</th>
+          <th class="text-end">Částka</th>
+          <th class="text-end">Zaplaceno</th>
+          <th class="text-end">Zbývá</th>
         </tr>
       </thead>
       <tbody>

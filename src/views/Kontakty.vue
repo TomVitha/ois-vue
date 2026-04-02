@@ -43,8 +43,9 @@
           <ProductGroupItem title="Obecné" subtitle="Celkem 2" id="obecne">
             <div class="row row-cards row-deck">
               <div class="col-sm-6 col-lg-6 col-xxl-4">
+                <!-- TODO: Oddělení budou mít non-human obrázky -->
                 <ContactBlock
-                  name="Homo Sapiens"
+                  name="Konzultační centrum"
                   position="Lidský zástupce společnosti"
                   phone="+420 123 456 789"
                   email="homo.sapiens@central-group.cz"
@@ -52,7 +53,7 @@
               </div>
               <div class="col-sm-6 col-lg-6 col-xxl-4">
                 <ContactBlock
-                  name="Ing. Homo Sapiensová"
+                  name="uverove poradenství"
                   position="Lidská zástupkyně společnosti"
                   phone="+420 987 654 321"
                   email="	homo.sapiensova@central-group.cz"
