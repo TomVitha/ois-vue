@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { LastSubmissionResult } from '@/requests/types'
 
-  defineProps<{
+  const props = defineProps<{
     result: LastSubmissionResult | null
   }>()
 </script>
@@ -18,7 +18,7 @@
         <div class="modal-body">
           <div class="text-center py-2">
             <!-- * Success state -->
-            <template v-if="result">
+            <template v-if="props.result">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -34,8 +34,8 @@
                 <path d="M5 12l5 5l10 -10" />
               </svg>
               <h2 class="mb-2">Žádost zaslána</h2>
-              <p class="text-secondary mb-1">{{ result.templateName }}</p>
-              <p class="text-secondary mb-0">Produkt: {{ result.propertyName }}</p>
+              <p class="text-secondary mb-1">{{ props.result.templateName }}</p>
+              <p class="text-secondary mb-0">Produkt: {{ props.result.propertyName }}</p>
             </template>
             <!-- * Fail state -->
             <template v-else>

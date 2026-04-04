@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
   const props = defineProps<{
     title: string
     file: string
@@ -24,8 +23,8 @@
         </div>
       </div>
       <div class="col">
-        <div>{{ title }}</div>
-        <div class="text-secondary">{{ file }}</div>
+        <div>{{ props.title }}</div>
+        <div class="text-secondary">{{ props.file }}</div>
       </div>
       <div class="col-auto align-self-center text-end d-print-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">

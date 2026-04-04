@@ -22,9 +22,11 @@
     variant: 'list'
   })
 
+  // TODO: DEPRECATE - In favor of formatDate() composable
   const dueDate = new Date(props.duedate)
   if (isNaN(dueDate.getTime())) { dueDate.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
 
+  // TODO: Get from store
   const dueDaysThreshold = 7
   const remainingAmount = computed(() => props.amount - props.paid)
 

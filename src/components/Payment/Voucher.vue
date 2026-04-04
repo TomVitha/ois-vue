@@ -23,7 +23,9 @@
     breakdown?: BreakdownItem[]
   }>()
 
+  // TODO: Use logic from store
   const remaining = computed(() => Math.max(props.value - (props.spent || 0), 0))
+  // TODO: DEPRECATE in favor of percentageSpent in vouchers store
   const percentageUsed = computed(() => {
     if (!props.value) return 0
     const ratio = (props.spent || 0) / props.value

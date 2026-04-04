@@ -4,6 +4,8 @@
 
 <template>
 
+  <!-- TODO: DELETE component - old designs no longer needed to be kept -->
+
   <PageTemplate title="Dokumenty">
     <!-- <template #actions>
       <div class="btn-list">

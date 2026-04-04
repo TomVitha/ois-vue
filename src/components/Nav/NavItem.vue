@@ -1,15 +1,14 @@
 <script setup lang="ts">
   import { RouterLink } from 'vue-router'
 
-  // export interface NavItemChild {
-  //   label: string
-  //   to: string
-  // }
-
   defineProps<{
     label: string
     to?: string
-    children?: { label: string; to: string }[]
+    children?: 
+      { 
+        label: string; 
+        to: string 
+      }[]
     badge?: boolean
   }>()
 </script>

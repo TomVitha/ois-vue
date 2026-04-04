@@ -1,13 +1,14 @@
 <script setup lang="ts">
   import { useMessengerStore } from '@/stores/messenger'
-  const messengerStore = useMessengerStore()
   import { useThemeStore } from '@/stores/theme'
+  const messengerStore = useMessengerStore()
   const themeStore = useThemeStore()
 </script>
 
 <template>
   <div class="navbar-nav flex-row order-lg-last ms-auto">
     <div class="d-flex align-items-center">
+
       <!-- Theme switch -->
       <div class="nav-item">
         <button class="nav-link px-0 hide-theme-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zapnout tmavý režim" @click.prevent="themeStore.applyTheme('dark')">
@@ -22,6 +23,7 @@
           </svg>
         </button>
       </div>
+
       <!-- Messenger -->
       <div class="nav-item">
         <RouterLink to="/komunikace" class="nav-link px-0" data-bs-toggle="tooltip" data-bs-placement="bottom" :title="messengerStore.unreadCount > 0 ? 'Nové zprávy' : 'Komunikace'">
@@ -33,10 +35,12 @@
           <span v-if="messengerStore.unreadCount > 0" class="badge badge-sm bg-red text-red-fg">{{ messengerStore.unreadCount }}</span>
         </RouterLink>
       </div>
+
       <!-- Separator -->
       <div class="nav-item h-100">
         <div class="vr mx-2 d-none d-lg-block h-50"></div>
       </div>
+
       <!-- User -->
       <div class="nav-item dropdown user-select-none">
         <button class="nav-link d-flex lh-1 p-0 px-2 text-start" data-bs-toggle="dropdown" aria-label="Open user menu">
@@ -50,7 +54,9 @@
             <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
           </svg>
         </button>
+
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
           <RouterLink to="/account" class="dropdown-item">
             <div class="dropdown-item-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
@@ -61,6 +67,7 @@
             </div>
             Nastavení
           </RouterLink>
+
           <!-- <a href="#" class="dropdown-item">
             <div class="dropdown-item-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-language">
@@ -74,7 +81,9 @@
             </div>
             Switch to English
           </a> -->
+
           <div class="dropdown-divider"></div>
+          
           <RouterLink to="/sign-in" class="dropdown-item">
             <div class="dropdown-item-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout">
@@ -87,6 +96,7 @@
             Odhlásit se
           </RouterLink>
         </div>
+
       </div>
     </div>
   </div>

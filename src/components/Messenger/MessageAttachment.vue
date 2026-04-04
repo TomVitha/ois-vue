@@ -9,15 +9,15 @@
 
 <template>
   <div class="card card-sm">
-    <a :href="url" class="card-body p-2 d-flex align-items-center gap-2 text-decoration-none" download>
-      <div v-if="filetype">
+    <a :href="props.url" class="card-body p-2 d-flex align-items-center gap-2 text-decoration-none" download>
+      <div v-if="props.filetype">
         <div class="avatar">
           <i class="ti ti-paperclip"></i>
         </div>
       </div>
       <div class="">
-        <div class="font-weight-medium">{{ filename }}</div>
-        <div v-if="size" class="text-secondary fs-5">{{ size }}</div>
+        <div class="font-weight-medium">{{ props.filename }}</div>
+        <div v-if="props.size" class="text-secondary fs-5">{{ props.size }}</div>
       </div>
     </a>
   </div>

@@ -336,8 +336,8 @@ html {
 
 /* WIP */
 :root {
-  /* ! CUSTOM CLASS ! */
-  --tblr-navbar-vertical-width: 18rem;
+  /* ! CUSTOM VARIABLE ! */
+  --tblr-navbar-vertical-width: 17rem;
 }
 
 /* HACK: Tabler má hard-coded šířku vertikálního navbaru. Proto jsem ji tady přepsal pomocí jednotné proměnné. (Vypsal jsem jen třídy relevantní pro náš -lg breakpoint, zbylé se nás stejně netýkají.) */

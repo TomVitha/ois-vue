@@ -93,8 +93,9 @@
                         <div class="text-secondary">{{ formatDate(item.date) }}</div>
                       </div>
                       <div class="text-nowrap">-{{ formatCurrency(item.amount) }}</div>
+                      <!-- DEPRECATED -->
                       <!-- NOTE: S každým čerpáním je spjatý dokument (který se také zobrazuje na stránce Dokumenty), tenhle odkaz ten dokument přímo otevírá -->
-                      <a
+                      <!-- <a
                         class="btn btn-action"
                         href="#"
                         target="_blank"
@@ -109,7 +110,7 @@
                           <path d="M9 13l6 0"></path>
                           <path d="M9 17l6 0"></path>
                         </svg>
-                      </a>
+                      </a> -->
                     </div>
                   </div>
                 </div>

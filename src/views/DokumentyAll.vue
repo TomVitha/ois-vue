@@ -43,6 +43,8 @@
 
 <template>
 
+  <!-- TODO: RENAME to Dokumenty.vue (after deprecating old Dokumenty.vue) -->
+
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 

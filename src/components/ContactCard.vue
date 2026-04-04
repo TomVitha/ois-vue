@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
-
   const props = defineProps<{
     name: string
     position?: string
@@ -8,19 +6,12 @@
     email?: string
     imgURL?: string
   }>()
-
-  const basedImgURL = computed(() =>
-    props.imgURL && (!props.imgURL.startsWith('/') || props.imgURL.startsWith('http'))
-      ? props.imgURL
-      : `${import.meta.env.BASE_URL}${props.imgURL}`
-  )
-
 </script>
 
 <template>
   <div class="card">
     <div class="card-body p-4 text-center">
-      <img v-if="imgURL" class="avatar avatar-xl mb-3" :src="basedImgURL"> </img>
+      <img v-if="props.imgURL" class="avatar avatar-xl mb-3" :src="props.imgURL"> </img>
       <span v-else class="avatar avatar-xl mb-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

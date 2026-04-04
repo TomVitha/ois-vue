@@ -47,6 +47,7 @@ export const useVouchersStore = defineStore('vouchers', () => {
       const breakdown = v.breakdown ?? []
       const spent = breakdown.reduce((sum, item) => sum + item.amount, 0)
       const remaining = Math.max(v.value - spent, 0)
+      // TODO: Change from remainingPercent to percentageSpent
       const remainingPercent = v.value === 0 ? 0 : Math.max(0, Math.min((remaining / v.value) * 100, 100))
 
       return {
@@ -59,6 +60,8 @@ export const useVouchersStore = defineStore('vouchers', () => {
       }
     })
   )
+
+  // TODO: Do not use select/selected/clear voucher logic in the store, but rather handle logic in compoenent
 
   const selectedVoucher = computed(() =>
     vouchers.value.find((v) => v.id === selectedVoucherId.value) ?? null

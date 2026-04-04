@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import NavbarNav from '@/components/Nav/NavbarNav.vue'
   import NavItem from '@/components/Nav/NavItem.vue'
-  import { useMessengerStore } from '@/stores/messenger'
-  const messengerStore = useMessengerStore()
 </script>
 
 <template>
@@ -99,17 +97,6 @@
             </template>
           </NavItem>
 
-          <!-- ? Communication -->
-          <!-- <NavItem label="Komunikace" to="/komunikace" :badge="messengerStore.unreadCount > 0 ? true : false">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                <path d="M3 7l9 6l9 -6" />
-              </svg>
-            </template>
-          </NavItem> -->
-
           <!-- TODO: V POZDĚJŠÍ FÁZI -->
           <!-- * Schůzky (kalendář) -->
           <!-- <NavItem label="Schůzky" to="/schuzky">
@@ -176,7 +163,6 @@
             </template>
           </NavItem>
 
-          <!-- ? skrýt ? -->
           <!-- * Dokumenty -->
           <NavItem label="Dokumenty" to="/dokumenty-all">
             <template #icon>
@@ -204,7 +190,6 @@
             </template>
           </NavItem>
 
-
           <li class="nav-item">
             <hr class="my-1">
           </li>
@@ -229,15 +214,17 @@
             </template>
           </NavItem> -->
 
+          <!-- NOTE: Všiměte si, že každý typ produktu (byt, rodinný dům, komerční prostor má jinou ikonu) -->
+
           <!-- * Produkt #1 (Byt) -->
           <NavItem label="192-03-147" :children="[
             { label: 'Detail', to: '/apt' },
-            { label: 'Dokumenty', to: '/dokumenty' },
+            { label: 'Dokumenty', to: '/dokumenty' },             // Vyfiltrováno na danou jednotku - všechny ProductGroup accordiony budou collapsed kromě daného produktu
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
             // { label: 'Reklamace', to: '/reklamace' },          // TODO: Pozdější fáze
-            { label: 'Žádosti', to: '/zadosti' },                 // Vyfiltrováno na danou jednotku
-            { label: 'Kontakty', to: '/kontakty' },               // Vyfiltrováno na danou jednotku
+            { label: 'Žádosti', to: '/zadosti' },                 // Vyfiltrováno na danou jednotku - všechny ProductGroup accordiony budou collapsed kromě daného produktu
+            { label: 'Kontakty', to: '/kontakty' },               // Vyfiltrováno na danou jednotku - všechny ProductGroup accordiony budou collapsed kromě daného produktu a Obecné
           ]">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-buildings">
@@ -308,33 +295,6 @@
             <hr class="my-1">
           </li>
 
-          <!-- * vzorkovna -->
-          <!-- <NavItem label="Vzorkovna" to="/vzorkovna">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stack">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 6l-8 4l8 4l8 -4l-8 -4" />
-                <path d="M4 14l8 4l8 -4" />
-              </svg>
-            </template>
-          </NavItem> -->
-
-          <!-- * interierove studio (central interier) -->
-          <!-- <NavItem label="Interiérové studio" to="/ci">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-key">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z" />
-                <path d="M15 9h.01" />
-              </svg>
-            </template>
-          </NavItem> -->
-
-          <!-- Separator -->
-          <!-- <li class="nav-item">
-              <hr class="my-1">
-            </li> -->
-
 
           <!-- TODO: Vytvořit stránku -->
           <!-- * Vzorkovna + interierove studio (central interier) -->
@@ -345,6 +305,11 @@
                 <path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z" />
                 <path d="M15 9h.01" />
               </svg>
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-stack">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 6l-8 4l8 4l8 -4l-8 -4" />
+                <path d="M4 14l8 4l8 -4" />
+              </svg> -->
             </template>
           </NavItem>
 
@@ -374,8 +339,6 @@
               </svg>
             </template>
           </NavItem>
-
-          <!-- ? Maybe: Deprecate top navbar, and move profile/settings to the bottom of sidebar ? -->
 
         </ul>
       </div>

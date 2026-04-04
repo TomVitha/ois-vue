@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, inject, type ComputedRef } from 'vue'
+  import { computed, type ComputedRef } from 'vue'
 
   const props = defineProps<{
     title: string
@@ -7,6 +7,7 @@
     id: string
   }>()
 
+  // TODO: DEPRECATE
   type AccordionContext = {
     groupId: string
     exclusive: ComputedRef<boolean>

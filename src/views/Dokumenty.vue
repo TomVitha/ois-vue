@@ -5,6 +5,8 @@
 
 <template>
 
+  <!-- TODO: DELETE - single-product Documents replaced with a view of all documents for all products (currently in DokumentyAll.vue) -->
+
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 

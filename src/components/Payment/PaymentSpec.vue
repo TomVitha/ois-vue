@@ -9,18 +9,18 @@
 </script>
 
 <template>
-  <!-- <div class="list-group-item">
+  <div class="list-group-item">
     <div class="row">
       <div class="col">
-        <div class="text-secondary">{{ name }}</div>
+        <div class="subheader text-secondary mb-1">{{ name }}</div>
         <div>{{ value }}</div>
       </div>
       <div class="col-auto">
         <CopyToClipboardButton :data="value" />
       </div>
     </div>
-  </div> -->
-  <div class="datagrid-item">
+  </div>
+  <!-- <div class="datagrid-item">
     <div class="row">
       <div class="col">
         <div class="datagrid-title">{{ name }}</div>
@@ -30,7 +30,7 @@
         <CopyToClipboardButton :data="value" />
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

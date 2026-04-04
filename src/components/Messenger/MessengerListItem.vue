@@ -12,7 +12,7 @@
 
   import MessageBadge from '@/components/Messenger/MessageBadge.vue'
 
-  import {useLocaleStore} from '@/stores/locale'
+  import { useLocaleStore } from '@/stores/locale'
   const localeStore = useLocaleStore()
 </script>
 
@@ -24,23 +24,24 @@
         <span class="text-truncate" :class="{ 'fw-bold': isUnread }">{{ name }}</span>
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
-            <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
+          <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
+            <!-- TODO: REFACTOR this mess - Create function to format date and use it here - formatMessageDate() -->
             {{
               ((locale = localeStore.locale) => {
-              const date = new Date(datetime)
-              const now = new Date()
-              const isToday = date.toDateString() === now.toDateString()
-              if (isToday) {
-                return date.toLocaleTimeString([locale], { hour: '2-digit', minute: '2-digit' })
-              }
-              const isCurrentYear = date.getFullYear() === now.getFullYear()
-              if (isCurrentYear) {
-                return date.toLocaleDateString([locale], { month: '2-digit', day: '2-digit' })
-              }
-              return date.toLocaleDateString([locale], { year: '2-digit', month: '2-digit', day: '2-digit' })
+                const date = new Date(datetime)
+                const now = new Date()
+                const isToday = date.toDateString() === now.toDateString()
+                if (isToday) {
+                  return date.toLocaleTimeString([locale], { hour: '2-digit', minute: '2-digit' })
+                }
+                const isCurrentYear = date.getFullYear() === now.getFullYear()
+                if (isCurrentYear) {
+                  return date.toLocaleDateString([locale], { month: '2-digit', day: '2-digit' })
+                }
+                return date.toLocaleDateString([locale], { year: '2-digit', month: '2-digit', day: '2-digit' })
               })()
             }}
-            </span>
+          </span>
         </div>
       </div>
       <div class="text-truncate w-100" :class="{ 'fw-bold': isUnread }">{{ subject }}</div>
@@ -51,6 +52,4 @@
   </a>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

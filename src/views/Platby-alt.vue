@@ -4,6 +4,8 @@
 
 <template>
 
+  <!-- TODO: DELETE - old designs no longer needed -->
+
   <PageTemplate title="Platby">
     <!-- ALERTS -->
     <div class="alert alert-danger alert-dismissible" role="alert">
