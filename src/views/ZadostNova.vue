@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { computed } from 'vue'
-
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
   import { useRequestsStore } from '@/stores/requests'
@@ -49,7 +48,6 @@
         <template v-for="group in groupedTemplates" :key="group.category">
           <div class="col-12">
             <h3>{{ group.category }}</h3>
-            <!-- <div class="text-secondary">{{ `${group.templates.length} položky` }}</div> -->
           </div>
           <div class="col-12">
             <div class="row row-cards">

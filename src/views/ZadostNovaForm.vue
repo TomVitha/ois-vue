@@ -58,7 +58,6 @@
   }
 
   function goBackToSelection() {
-    requestsStore.setSelectedProperty(propertyId.value)
     router.push('/zadost-nova')
   }
 </script>
@@ -69,13 +68,15 @@
     :pretitle="property ? property.name : undefined"
     back-to="/zadost-nova">
     <div class="row">
-      
+
       <!-- * Empty state -->
       <template v-if="!canRenderForm || !template || !property">
         <div class="col-12">
           <Empty title="Žádost nenalezena" subtitle="Tato žádost není dostupná." :icon="false">
             <template #actions>
-              <div class="btn-list"><button class="btn btn-primary" type="button" @click="goBackToSelection">Zpět na výběr žádosti</button></div>
+              <div class="btn-list">
+                <RouterLink class="btn btn-primary" to="/zadost-nova">Zpět na výběr žádosti</RouterLink>
+              </div>
             </template>
           </Empty>
         </div>
@@ -90,14 +91,10 @@
                 <h3 class="card-title">{{ template.name }}</h3>
               </div>
               <div class="card-body">
-                <!-- <p class="text-secondary">{{ template.description }}</p> -->
+                <!-- <p v-if="template.description" class="text-secondary">{{ template.description }}</p> -->
                 <component
                   :is="formComponent"
                   ref="formRef" />
-                <!-- <div class="mt-4 d-flex gap-2 justify-content-end">
-                  <button type="button" class="btn" @click="goBackToSelection">Zrušit</button>
-                  <button type="submit" class="btn btn-primary">Odeslat žádost</button>
-                </div> -->
               </div>
               <div class="card-footer">
                 <div class="btn-list justify-content-end">

@@ -103,6 +103,7 @@
       </div>
     </div>
 
+    <!-- HACK: This button is used to trigger the modal programmatically -->
     <button
       ref="modalTrigger"
       type="button"
