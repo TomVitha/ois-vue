@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  import MessageBadge from '@/components/Messenger/MessageBadge.vue'
+  import { useLocaleStore } from '@/stores/locale'
+  const localeStore = useLocaleStore()
+
   const props = defineProps<{
     id: string | number
     name: string
@@ -10,10 +14,26 @@
     isUnread?: boolean
   }>()
 
-  import MessageBadge from '@/components/Messenger/MessageBadge.vue'
+  function formatMessageDateTime(datetime: string, locale: string = localeStore.locale): string {
+    const date = new Date(datetime)
+    const now = new Date()
+    const isToday = date.toDateString() === now.toDateString()
+    const isCurrentYear = date.getFullYear() === now.getFullYear()
 
-  import { useLocaleStore } from '@/stores/locale'
-  const localeStore = useLocaleStore()
+    // Pokud zpráva pochází z dnešního dne, zobrazíme pouze čas
+    if (isToday) {
+      return date.toLocaleTimeString([locale], { hour: '2-digit', minute: '2-digit' })
+    }
+    // Pokud zpráva pochází z aktuálního roku, zobrazíme měsíc a den
+    if (isCurrentYear) {
+      return date.toLocaleDateString([locale], { month: '2-digit', day: '2-digit' })
+    } 
+    // Jinak zobrazíme rok, měsíc a den
+    else {
+      return date.toLocaleDateString([locale], { year: '2-digit', month: '2-digit', day: '2-digit' })
+    }
+  }
+
 </script>
 
 <template>
@@ -25,22 +45,7 @@
         <div class="d-flex align-items-center gap-2 fs-5 ms-auto">
           <i v-if="hasAttachment" class="ti ti-paperclip"></i>
           <span class="text-secondary text-nowrap" :class="{ 'fw-bold': isUnread }">
-            <!-- TODO: REFACTOR this mess - Create function to format date and use it here - formatMessageDate() -->
-            {{
-              ((locale = localeStore.locale) => {
-                const date = new Date(datetime)
-                const now = new Date()
-                const isToday = date.toDateString() === now.toDateString()
-                if (isToday) {
-                  return date.toLocaleTimeString([locale], { hour: '2-digit', minute: '2-digit' })
-                }
-                const isCurrentYear = date.getFullYear() === now.getFullYear()
-                if (isCurrentYear) {
-                  return date.toLocaleDateString([locale], { month: '2-digit', day: '2-digit' })
-                }
-                return date.toLocaleDateString([locale], { year: '2-digit', month: '2-digit', day: '2-digit' })
-              })()
-            }}
+            {{ formatMessageDateTime(props.datetime) }}
           </span>
         </div>
       </div>
