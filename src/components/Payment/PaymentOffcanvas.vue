@@ -96,7 +96,7 @@
             <div class="card-body p-0">
               <div class="list-group list-group-flush">
               <!-- <div class="datagrid"> -->
-                <PaymentSpec name="Číslo účtu" :value="selectedPayment.accountNumber"></PaymentSpec>
+                <PaymentSpec name="Číslo účtu" :value="selectedPayment.accountNumberCG"></PaymentSpec>
                 <PaymentSpec name="Variabilní symbol" :value="selectedPayment.varSymbol"></PaymentSpec>
                 <PaymentSpec name="Zpráva pro příjemce" :value="selectedPayment.message"></PaymentSpec>
               </div>

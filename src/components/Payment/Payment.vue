@@ -22,10 +22,6 @@
     variant: 'list'
   })
 
-  // TODO: DEPRECATE - In favor of formatDate() composable
-  const dueDate = new Date(props.duedate)
-  if (isNaN(dueDate.getTime())) { dueDate.setTime(99999999999999999999999999) }   // HACK to display browser-native invalid date message
-
   // TODO: Get from store
   const dueDaysThreshold = 7
   const remainingAmount = computed(() => props.amount - props.paid)
@@ -84,8 +80,8 @@
     <div>
       <div class="row gy-2 align-items-center">
         <div class="col">
-          <div>{{ title }}</div>
-          <div class="text-secondary">Splatnost: {{ formatDate(dueDate) }}</div>
+          <div>{{ props.title }}</div>
+          <div class="text-secondary">Splatnost: {{ formatDate(props.duedate) }}</div>
         </div>
         <div class="col-auto text-end">
           <div class="fw-bold">{{ formatCurrency(props.amount) }}</div>
@@ -145,7 +141,7 @@
         @click.prevent="openPayment">
       </RouterLink>
     </td>
-    <td data-label="Splatnost">{{ formatDate(dueDate) }}</td>
+    <td data-label="Splatnost">{{ formatDate(props.duedate) }}</td>
     <td data-label="Stav">
       <span
         class="badge"
