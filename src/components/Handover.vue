@@ -3,15 +3,10 @@
 </script>
 
 <template>
-  <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Postup předání</h3>
-    </div>
-    <div class="list-group list-group-flush">
-      <!-- TODO: Přidat splatnosti faktur (platby k zaplacení) -->
-      <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
-      <slot></slot>
-    </div>
+  <div class="list-group list-group-flush">
+    <!-- TODO: Přidat splatnosti faktur (platby k zaplacení) -->
+    <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
+    <slot></slot>
   </div>
 </template>
 

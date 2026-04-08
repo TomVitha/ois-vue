@@ -41,24 +41,7 @@
 </template>
 
 <style scoped>
-
-  /* .icon-sm {
-    --tblr-icon-size: 1rem;
-    stroke-width: 1;
-  }
-
-  .icon-md {
-    --tblr-icon-size: 2.5rem;
-    stroke-width: 1;
-  }
-
-  .icon-lg {
-    --tblr-icon-size: 3.5rem;
-    stroke-width: 1;
-  } */
-
   .icon {
-    /* --tblr-icon-size: 2rem; */
-    /* stroke-width: 1; */
+    --tblr-icon-size: 2rem;
   }
 </style>
