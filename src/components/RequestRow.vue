@@ -25,7 +25,7 @@
   <tr>
     <td data-label="Název">{{ title }}</td>
     <td data-label="Stav">
-      <span :class="['status', statusMap[status]?.class || statusMap[0].class]">{{ statusMap[status]?.text || statusMap[0].text }}</span>
+      <span :class="['status', statusMap[status]?.class || statusMap[0]?.class]">{{ statusMap[status]?.text || statusMap[0]?.text }}</span>
     </td>
     <td data-label="Zasláno">
       {{

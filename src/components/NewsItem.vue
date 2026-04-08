@@ -32,10 +32,10 @@
   }
 
   const icon = computed(() => {
-    return categoryIconsMap[props.category ?? '']?.code || categoryIconsMap.default.code
+    return categoryIconsMap[props.category ?? '']?.code || categoryIconsMap.default?.code
   })
   const iconColor = computed(() => {
-    return categoryIconsMap[props.category ?? '']?.color || categoryIconsMap.default.color
+    return categoryIconsMap[props.category ?? '']?.color || categoryIconsMap.default?.color
   })
 </script>
 

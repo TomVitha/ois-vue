@@ -387,13 +387,13 @@
                 <div class="col-12 col-xl-auto d-lg-none d-print-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Previous message -->
-                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex - 1]?.id" :disabled="selectedIndex <= 0">
+                    <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex - 1]?.id ?? null" :disabled="selectedIndex <= 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                         <path d="M15 6l-6 6l6 6"></path>
                       </svg>
                     </button>
                     <!-- Next message -->
-                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex + 1]?.id" :disabled="selectedIndex === currentTabMessages.length - 1 || selectedIndex === -1">
+                    <button class="btn btn-link btn-action" title="Další zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex + 1]?.id ?? null" :disabled="selectedIndex === currentTabMessages.length - 1 || selectedIndex === -1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-end icon-2">
                         <path d="M9 6l6 6l-6 6"></path>
                       </svg>
