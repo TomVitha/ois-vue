@@ -47,15 +47,14 @@ export const useVouchersStore = defineStore('vouchers', () => {
       const breakdown = v.breakdown ?? []
       const spent = breakdown.reduce((sum, item) => sum + item.amount, 0)
       const remaining = Math.max(v.value - spent, 0)
-      // TODO: Change from remainingPercent to percentageSpent
-      const remainingPercent = v.value === 0 ? 0 : Math.max(0, Math.min((remaining / v.value) * 100, 100))
+      const percentageSpent = v.value === 0 ? 0 : Math.max(0, Math.min((spent / v.value) * 100, 100))
 
       return {
         ...v,
         breakdown,
         spent,
         remaining,
-        remainingPercent,
+        percentageSpent,
         isFullyUsed: remaining <= 0,
       }
     })

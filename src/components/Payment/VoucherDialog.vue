@@ -58,11 +58,11 @@
                     <div class="fw-semibold">{{ formatCurrency(vouchersStore.selectedVoucher.spent) }}</div>
                   </div>
                   <div class="col-12">
-                    <div class="progress progress-sm mt-1" role="progressbar" :aria-valuenow="vouchersStore.selectedVoucher.remainingPercent" aria-valuemin="0" aria-valuemax="100" :aria-label="`Zbývá ${Math.round(vouchersStore.selectedVoucher.remainingPercent)}%`">
+                    <div class="progress progress-sm mt-1" role="progressbar" :aria-valuenow="vouchersStore.selectedVoucher.percentageSpent" aria-valuemin="0" aria-valuemax="100" :aria-label="`Zbývá ${Math.round(vouchersStore.selectedVoucher.percentageSpent)}%`">
                       <div
                         class="progress-bar bg-success"
-                        :style="`width: ${vouchersStore.selectedVoucher.remainingPercent}%`"
-                        :title="`${Math.round(vouchersStore.selectedVoucher.remainingPercent)}% zbývá`">
+                        :style="`width: ${vouchersStore.selectedVoucher.percentageSpent}%`"
+                        :title="`${Math.round(vouchersStore.selectedVoucher.percentageSpent)}% zbývá`">
                       </div>
                     </div>
                   </div>
