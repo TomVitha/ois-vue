@@ -33,7 +33,7 @@
     <!-- * Napsat zprávu -->
     <!-- NOTE: Odkáže na Komunikaci, otevře novou zprávu a předvyplní příjemce -->
     <div class="d-flex">
-      <RouterLink to="/komunikace" class="card-btn">
+      <RouterLink to="/komunikace" class="card-btn" draggable="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon me-2 text-muted icon-tabler icons-tabler-outline icon-tabler-mail">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
@@ -43,7 +43,7 @@
       </RouterLink>
       <!-- * Sjednat schůzku  -->
       <!-- NOTE: Bude dostupné až bude implementováno sjednávání schůzek -->
-      <!-- <RouterLink to="#" class="card-btn">
+      <!-- <RouterLink to="#" class="card-btn" draggable="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon me-2 text-muted icon-tabler icons-tabler-outline icon-tabler-calendar-time">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />

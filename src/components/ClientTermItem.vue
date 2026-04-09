@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <RouterLink to="/kalendar" class="list-group-item d-flex align-items-center list-group-item-action">
+  <RouterLink to="/kalendar" class="list-group-item d-flex align-items-center list-group-item-action" draggable="false">
     <div class="row flex-fill">
       <div class="col-auto text-end d-print-none">
         <div class="avatar">

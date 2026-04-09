@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import NavbarVertical from '../components/Nav/NavbarVertical.vue'
 import Navbar from '../components/Nav/Navbar.vue'
+
+// Experiment: Mobilní nav - nejspíše nevyužijeme
 // import MobileNav from '../components/MobileNav.vue'
 </script>
 

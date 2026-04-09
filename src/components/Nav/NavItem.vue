@@ -26,7 +26,8 @@
         'data-bs-auto-close': 'outside',
         'role': 'button',
         'aria-expanded': 'false'
-      } : {}">
+      } : {}"
+      draggable="false">
       <span class="nav-link-icon d-inline-block">
         <slot name="icon"></slot>
       </span>
@@ -42,7 +43,8 @@
         v-for="(child, index) in children"
         :key="index"
         :to="child.to"
-        class="dropdown-item">
+        class="dropdown-item"
+        draggable="false">
         {{ child.label }}
       </RouterLink>
     </div>
