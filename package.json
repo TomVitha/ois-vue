@@ -12,10 +12,8 @@
   },
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-    "@hugerte/hugerte-vue": "^2.0.2",
     "datatables.net-dt": "^2.3.7",
-    "hugerte": "^1.0.10",
-    "marked": "^17.0.5",
+    "marked": "^18.0.0",
     "pinia": "^3.0.4",
     "tom-select": "^2.5.2",
     "vue": "^3.5.32",
@@ -28,7 +26,7 @@
     "@vue/tsconfig": "^0.9.1",
     "npm-run-all2": "^8.0.4",
     "typescript": "~6.0.2",
-    "vite": "^8.0.3",
+    "vite": "^8.0.8",
     "vite-plugin-vue-devtools": "^8.1.1",
     "vue-tsc": "^3.2.6"
   },

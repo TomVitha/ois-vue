@@ -1,45 +1,92 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import DocumentItem from '@/components/DocumentItem.vue';
+  import DocumentItem from '@/components/DocumentItem.vue'
+  import ProductGroup from '@/components/ProductGroup.vue'
+  import ProductGroupItem from '@/components/ProductGroupItem.vue'
+  import Empty from '@/components/Empty.vue'
+  import { useDocumentsStore } from '@/stores/documents'
+
+  const documentsStore = useDocumentsStore()
+
+  const sortedDocuments = computed(() => {
+    return [...documentsStore.documents].sort((a, b) => {
+      return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
+    })
+  })
+
+  const productGroups = computed(() => {
+    const productIds = Array.from(new Set(sortedDocuments.value.map((document) => document.productId)))
+
+    return productIds.map((productId) => {
+      const productDocuments = sortedDocuments.value.filter((document) => document.productId === productId)
+
+      const categories = documentsStore.categories
+        .map((category) => {
+          const categoryDocuments = productDocuments.filter((document) => document.categoryId === category.id)
+
+          return {
+            category,
+            documents: categoryDocuments,
+          }
+        })
+        .filter((entry) => entry.documents.length > 0)
+
+      return {
+        productId,
+        totalCount: productDocuments.length,
+        categories,
+      }
+    })
+  })
 </script>
 
 <template>
 
-  <!-- TODO: DELETE - single-product Documents replaced with a view of all documents for all products (currently in DokumentyAll.vue) -->
+  <!-- TODO: RENAME to Dokumenty.vue (after deprecating old Dokumenty.vue) -->
 
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
-
+      <!-- * Empty state - Zobrazí se pokud nejsou žádné dokumenty -->
       <!-- <div class="col-12">
-        ? Toolbar (download all)
+        <Empty title="Žádné dokumenty" subtitle="Nemáte žádné dokumenty." />
       </div> -->
 
-      <div class="col-12 mt-3">
-        <h3 class="mb-0">Jedna kategorie</h3>
-      </div>
+      <!-- * Dokumenty -->
       <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <DocumentItem title="Informace o postupu předávacího řízení (SBKS nedokončená).pdf" filesize="14 kB" dateAdded="3.2.2025" />
-            <DocumentItem title="Klientské administrativní poplatky pro BD.pdf" filesize="9 kB" dateAdded="11.9.2024" />
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 mt-3">
-        <h3 class="mb-0">Druhá kategorie</h3>
-      </div>
-      <div class="col-12">
-        <div class="card">
-          <div class="list-group list-group-flush">
-            <DocumentItem title="Oznámení o demolici rodinného domu.pdf" filesize="1 kB" dateAdded="31.7.2025" />
-          </div>
-        </div>
+        <ProductGroup>
+          <ProductGroupItem
+            v-for="group in productGroups"
+            :key="group.productId"
+            :title="group.productId"
+            :subtitle="`Celkem ${group.totalCount}`"
+            :id="group.productId">
+            <div class="row row-deck row-cards">
+              <template v-for="item in group.categories" :key="`${group.productId}-${item.category.id}`">
+                <div class="col-12 mt-3">
+                  <h3 class="mb-0">{{ item.category.name }}</h3>
+                </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="list-group list-group-flush">
+                      <DocumentItem
+                        v-for="document in item.documents"
+                        :key="document.id"
+                        :title="document.name"
+                        :filesize="document.fileSize"
+                        :dateAdded="document.dateAdded"
+                        :dateValid="document.dateValid"
+                        :fileUrl="document.fileUrl" />
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </ProductGroupItem>
+        </ProductGroup>
       </div>
 
     </div>
   </PageTemplate>
 </template>
-
-<style scoped></style>

@@ -26,10 +26,6 @@ const router = createRouter({
       component: () => import('../views/Dokumenty.vue'),
     },
     {
-      path: '/dokumenty-all',
-      component: () => import('../views/DokumentyAll.vue'),
-    },
-    {
       path: '/help',
       component: () => import('../views/Help.vue'),
     },
@@ -83,15 +79,6 @@ const router = createRouter({
     {
       path: '/komunikace',
       component: () => import('../views/Komunikace.vue'),
-    },
-    // Old/Alt designs preserved
-    {
-      path: '/dokumenty-alt',
-      component: () => import('../views/Dokumenty-alt.vue'),
-    },
-    {
-      path: '/platby-alt',
-      component: () => import('../views/Platby-alt.vue'),
     },
   ],
 })

@@ -169,11 +169,6 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="promptDiscardMessage()"></button>
                     </div>
                     <div class="modal-body">
-                      <!-- TODO: HugeRTE instead of plain text -->
-                      <!-- <form method="post">
-                        <textarea id="hugerte-mytextarea">Hello, <b>Tabler</b>!</textarea>
-                      </form> -->
-                      <!-- <hugerteIframe></hugerteIframe> -->
                       <div class="space-y-3 h-100">
                         <div class="input-group input-group-flat">
                           <span class="input-group-text">Od: </span><input type="text" class="form-control" autocomplete="off" value="Adam Novák" readonly>
