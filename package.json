@@ -13,6 +13,7 @@
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@hugerte/hugerte-vue": "^2.0.2",
+    "datatables.net-dt": "^2.3.7",
     "hugerte": "^1.0.10",
     "marked": "^17.0.5",
     "pinia": "^3.0.4",
