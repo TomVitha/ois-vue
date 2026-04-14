@@ -114,8 +114,9 @@
                     class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
                       <div class="text-secondary">{{ formatDate(item.date) }}</div>
-                      <!-- Odkaz povede na stránku Poukázky a otevře okno dané poukázky -->
-                      <div v-if="item.voucher" class="small text-secondary">Využita poukázka: <RouterLink to="/poukazky">{{ item.voucher }}</RouterLink></div>
+                      <!-- NOTE: V budoucnu bychom chtěli přidat propojení mezi platbou a poukázkou. Zde by byla vypsána poukázka použitá k uhrazení s odkazem na ni. -->
+                      <!-- Odkaz povede na stránku Poukázky a otevře detail dané poukázky -->
+                      <!-- <div v-if="item.voucher" class="small text-secondary">Využita poukázka: <RouterLink to="/poukazky">{{ item.voucher }}</RouterLink></div> -->
                     </div>
                     <div class="text-nowrap">{{ formatCurrency(item.amount) }}</div>
                     <!-- TODO: Odkaz na dokument (pouze pro ty co mají IČO) -->

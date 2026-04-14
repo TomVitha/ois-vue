@@ -66,7 +66,7 @@ const paymentsData = ref<PaymentDataItem[]>([
   },
   {
     id: 9, title: 'Oprava výtahu', duedate: '2025-08-03', amount: 50000, paid: 50000, paymentHistory: [
-      { id: 9001, date: '2025-07-29', amount: 50000, voucher: 'Využita poukázka [název poukázky]' },
+      { id: 9001, date: '2025-07-29', amount: 50000, voucher: 'Věrnostní poukázka' },
     ],
   },
   {
