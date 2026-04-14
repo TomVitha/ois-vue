@@ -1,3 +1,7 @@
+/**
+ * NOTE: Tento store je pro pouze demonstrativní data, která se v produkci budou brát z databáze
+ */
+
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -18,6 +22,7 @@ type PaymentDataItem = {
   paymentHistory?: PaymentHistoryItem[]
 }
 
+// VÝCHOZÍ DATA
 const paymentsData = ref<PaymentDataItem[]>([
   {
     id: 1, title: 'Výmalba společných prostor', duedate: '2024-01-01', amount: 12000, paid: 0, paymentHistory: []
@@ -100,16 +105,15 @@ export const usePaymentsStore = defineStore('payments', () => {
   const today = ref(new Date('2025-08-01')) // DEV: hard-coded datum dneška, aby byly vidět všechny stavy plateb
   const selectedPaymentId = ref<number | null>(null)
 
-  // DEV: Vymmyšlené číslo účtu
+  // DEV: Vymyšlené číslo účtu
   const accountNumberCG = '670100-1234567890 / 6210'
 
+  // ODVOZENÁ DATA
   const payments = computed(() =>
     paymentsData.value.map((p) => {
       const paymentHistory = p.paymentHistory ?? []
       const paidFromHistory = paymentHistory.reduce((sum, h) => sum + h.amount, 0)
       const paid = paymentHistory.length > 0 ? paidFromHistory : p.paid
-
-      // Computed properties
       const isPaid = paid >= p.amount
       const daysBetweenTodayAndDueDate = Math.ceil(
         (new Date(p.duedate).getTime() - today.value.getTime()) / (24 * 60 * 60 * 1000)
@@ -137,10 +141,17 @@ export const usePaymentsStore = defineStore('payments', () => {
     })
   )
 
+  // PŘEHLEDY
+  const paidPayments = computed(() => payments.value.filter(p => p.status === 'paid'))
+  const overduePayments = computed(() => payments.value.filter(p => p.status === 'overdue'))
+  const upcomingPayments = computed(() => payments.value.filter(p => { return p.status === 'due' || p.status === 'upcoming' }))
+  const upcomingNotDuePayments = computed(() => payments.value.filter(p => p.status === 'upcoming'))
+  const duePayments = computed(() => payments.value.filter(p => p.status === 'due'))
+  const partiallyPaidPayments = computed(() => payments.value.filter(p => p.isPartiallyPaid))
+
   const selectedPayment = computed(() =>
     payments.value.find((p) => p.id === selectedPaymentId.value) ?? null
   )
-
 
   function setDueDaysThreshold(newValue: number) {
     dueDaysThreshold.value = newValue
@@ -154,28 +165,21 @@ export const usePaymentsStore = defineStore('payments', () => {
     selectedPaymentId.value = null
   }
 
-  const paidPayments = computed(() => payments.value.filter(p => p.status === 'paid'))
-  const overduePayments = computed(() => payments.value.filter(p => p.status === 'overdue'))
-  const upcomingPayments = computed(() => payments.value.filter(p => { return p.status === 'due' || p.status === 'upcoming' }))
-  const upcomingNotDuePayments = computed(() => payments.value.filter(p => p.status === 'upcoming'))
-  const duePayments = computed(() => payments.value.filter(p => p.status === 'due'))
-  const partiallyPaidPayments = computed(() => payments.value.filter(p => p.isPartiallyPaid))
-
   return {
     dueDaysThreshold,
     today,
     payments,
     selectedPaymentId,
-    selectedPayment,
-    setDueDaysThreshold,
-    selectPaymentById,
-    clearSelectedPayment,
     paidPayments,
     overduePayments,
     upcomingPayments,
     upcomingNotDuePayments,
     duePayments,
-    partiallyPaidPayments
+    partiallyPaidPayments,
+    selectedPayment,
+    setDueDaysThreshold,
+    selectPaymentById,
+    clearSelectedPayment
   }
 
 })

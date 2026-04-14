@@ -1,3 +1,7 @@
+/**
+ * NOTE: Tento store je pro pouze demonstrativní data, která se v produkci budou brát z databáze
+ */
+
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 

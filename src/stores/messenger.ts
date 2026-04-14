@@ -1,3 +1,7 @@
+/**
+ * NOTE: Tento store a s ním spjatá složka messages jsou pouze pro demonstrativní data, která se v produkci budou brát z databáze
+ */
+
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 

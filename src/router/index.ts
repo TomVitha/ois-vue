@@ -10,7 +10,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      // meta: { layout: LayoutDefault }, // Unnecessary to specify LayoutDefault as we default to it in App.vue
+      // meta: { layout: LayoutDefault }, // Není nutné všude v routeru specifikovat LayoutDefault, protože je výchozí v App.vue
       component: Home,
     },
     {
@@ -30,11 +30,15 @@ const router = createRouter({
       component: () => import('../views/Help.vue'),
     },
     {
+      path: '/komunikace',
+      component: () => import('../views/Komunikace.vue'),
+    },
+    {
       path: '/kontakty',
       component: () => import('../views/Kontakty.vue'),
     },
     {
-      path: '/news',
+      path: '/novinky',
       component: () => import('../views/News.vue'),
     },
     {
@@ -75,11 +79,7 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)',
       component: () => import('../views/404.vue'),
-    },
-    {
-      path: '/komunikace',
-      component: () => import('../views/Komunikace.vue'),
-    },
+    }
   ],
 })
 
