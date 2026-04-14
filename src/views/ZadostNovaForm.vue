@@ -58,7 +58,7 @@
   }
 
   function goBackToSelection() {
-    router.push('/zadost-nova')
+    router.push('/zadosti/nova')
   }
 </script>
 
@@ -66,7 +66,7 @@
   <PageTemplate
     title="Nová žádost"
     :pretitle="property ? property.name : undefined"
-    back-to="/zadost-nova">
+    back-to="/zadosti/nova">
     <div class="row">
 
       <!-- * Empty state -->
@@ -75,7 +75,7 @@
           <Empty title="Žádost nenalezena" subtitle="Tato žádost není dostupná." :icon="false">
             <template #actions>
               <div class="btn-list">
-                <RouterLink class="btn btn-primary" to="/zadost-nova">Zpět na výběr žádosti</RouterLink>
+                <RouterLink class="btn btn-primary" to="/zadosti/nova">Zpět na výběr žádosti</RouterLink>
               </div>
             </template>
           </Empty>

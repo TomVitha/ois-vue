@@ -102,8 +102,8 @@
                 </div>
                 <div class="mt-4">
                   <div class="btn-list">
-                    <!-- Odkáže na stránku nových žádostí a otevře rovnou formulář této žádosti / Nebo otevře formulář rovnou zde -->
-                    <RouterLink to="/zadost-nova" class="btn btn-1">Zažádat o změnu</RouterLink>
+                    <!-- NOTE: Odkáže na konkrétní žádost -->
+                    <RouterLink to="/zadosti/nova" class="btn">Zažádat o změnu údajů</RouterLink>
                   </div>
                 </div>
               </div>
@@ -140,21 +140,21 @@
                 </div>
                 <div class="mt-4">
                   <div class="btn-list">
-                    <!-- Odkáže na stránku nových žádostí a otevře rovnou formulář této žádosti / Nebo otevře formulář rovnou zde -->
-                    <RouterLink to="/zadost-nova" class="btn btn-1">Zažádat o změnu</RouterLink>
+                    <!-- NOTE: Odkáže na konkrétní žádost -->
+                    <RouterLink to="/zadosti/nova" class="btn">Zažádat o změnu údajů</RouterLink>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- * Kontaktní email -->
+
           <div class="col-12">
             <div class="card card-md" id="heslo">
               <div class="card-body">
                 <h3 class="card-title">Upozornění blížících se plateb</h3>
                 <p class="card-subtitle">
-                  Zvolte si kolik dní před splatností má být platba považována za blížící se a chcete být na ni upozorněni.
+                  Zvolte si kolik dní před splatností platby chcete být na upozorněni.
                 </p>
                 <div>
                   <select class="form-select w-auto">
@@ -186,9 +186,7 @@
                   </div>
                 </div>
                 <div class="btn-list mt-4">
-                  <a href="#dialog-email-change" class="btn" data-bs-toggle="modal" data-bs-target="#dialog-email-change">
-                    Změnit
-                  </a>
+                  <RouterLink to="/zadosti/nova" class="btn">Zažádat o změnu</RouterLink>
                 </div>
               </div>
               <div class="card-body">

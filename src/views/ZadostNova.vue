@@ -56,7 +56,7 @@
                 :key="requestTemplate.id"
                 class="col-12 col-md-6 col-xl-4">
                 <RouterLink
-                  :to="`/zadost-nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
+                  :to="`/zadosti/nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
                   class="card card-md card-link text-center w-100 h-100">
                   <div class="card-body">
                     <h3 class="card-title mb-2">{{ requestTemplate.title }}</h3>
