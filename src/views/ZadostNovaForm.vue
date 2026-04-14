@@ -64,7 +64,7 @@
 
 <template>
   <PageTemplate
-    title="Nová žádost"
+    :title="template ? template.title : 'Nová žádost'"
     :pretitle="property ? property.name : undefined"
     back-to="/zadosti/nova">
     <div class="row">
@@ -87,9 +87,9 @@
         <div class="col-xl-10">
           <form @submit.prevent="handleSubmit">
             <div class="card">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <h3 class="card-title">{{ template.title }}</h3>
-              </div>
+              </div> -->
               <div class="card-body">
                 <!-- <p v-if="template.description" class="text-secondary">{{ template.description }}</p> -->
                 <component

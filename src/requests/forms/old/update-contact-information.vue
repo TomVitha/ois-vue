@@ -1,50 +1,48 @@
 <script lang="ts">
-  import type { RequestTemplateDefinition } from '@/requests/types'
+  // import type { RequestTemplateDefinition } from '@/requests/types'
 
-  import Alert from '@/components/Alert.vue'
+  // import Alert from '@/components/Alert.vue'
 
-  export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 3,
-    name: 'update-contact-information',
-    title: 'Změna osobních údajů',
-    description: 'Nahlaste změny vašich kontaktních údajů.',
-    category: 'Osobní údaje',
-    availableForPropertyIds: ['192-03-147', '194-RD-007'],
-  }
-</script>
+  // export const requestTemplateMeta: RequestTemplateDefinition = {
+  //   id: 3,
+  //   name: 'update-contact-information',
+  //   title: 'Změna osobních údajů',
+  //   description: 'Nahlaste změny vašich kontaktních údajů.',
+  //   category: 'Osobní údaje',
+  //   availableForPropertyIds: ['192-03-147', '194-RD-007'],
+  // }
 
-<script setup lang="ts">
-  import { ref } from 'vue'
-  import type { RequestFormExpose } from '@/requests/forms/types'
+  // import { ref } from 'vue'
+  // import type { RequestFormExpose } from '@/requests/forms/types'
 
-  // ! Placeholder values
-  const fullName = ref('Jan Novák')
-  const address = ref('Praha 1, Česká republika')
-  const email = ref('jan.novak@seznam.cz')
-  const phone = ref('+420 123 456 789')
+  // // ! Placeholder values
+  // const fullName = ref('Jan Novák')
+  // const address = ref('Praha 1, Česká republika')
+  // const email = ref('jan.novak@seznam.cz')
+  // const phone = ref('+420 123 456 789')
 
-  function validate() {
-    return (
-      fullName.value.trim().length > 0 &&
-      address.value.trim().length > 0 &&
-      email.value.trim().length > 0 &&
-      phone.value.trim().length > 0
-    )
-  }
+  // function validate() {
+  //   return (
+  //     fullName.value.trim().length > 0 &&
+  //     address.value.trim().length > 0 &&
+  //     email.value.trim().length > 0 &&
+  //     phone.value.trim().length > 0
+  //   )
+  // }
 
-  function getValues() {
-    return {
-      fullName: fullName.value,
-      address: address.value,
-      email: email.value,
-      phone: phone.value,
-    }
-  }
+  // function getValues() {
+  //   return {
+  //     fullName: fullName.value,
+  //     address: address.value,
+  //     email: email.value,
+  //     phone: phone.value,
+  //   }
+  // }
 
-  defineExpose<RequestFormExpose>({
-    getValues,
-    validate,
-  })
+  // defineExpose<RequestFormExpose>({
+  //   getValues,
+  //   validate,
+  // })
 </script>
 
 <template>

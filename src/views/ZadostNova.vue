@@ -50,6 +50,7 @@
             <h3>{{ group.category }}</h3>
           </div>
           <div class="col-12">
+            <!-- NOTE: ZDE VYTVOŘENÉ ŽÁDOSTI JSOU POUZE PRO ILUSTRACI!! KONKRÉTNÍ ŽÁDOSTI, KATEGORIE A DALŠÍ ÚDAJE SE BUDOU LIŠIT!! -->
             <div class="row row-cards">
               <div
                 v-for="requestTemplate in group.templates"

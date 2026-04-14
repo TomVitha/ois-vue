@@ -2,12 +2,12 @@
   import type { RequestTemplateDefinition } from '@/requests/types'
 
   export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 1,
-    name: 'generic-request',
-    title: 'Obecná žádost',
-    description: 'Použijte, když žádná z předvolených možností neodpovídá tomu, co potřebujete.',
-    category: 'Obecné',
-    availableForPropertyIds: ['192-03-147', '192-666-999', '194-RD-007'],
+    id: 2,
+      name: 'update-contact-information',
+      title: 'Změna osobních údajů',
+      description: 'Nahlaste změny vašich kontaktních údajů.',
+      category: 'Osobní údaje',
+      availableForPropertyIds: ['192-03-147', '194-RD-007'],
   }
 </script>
 
@@ -38,12 +38,6 @@
 </script>
 
 <template>
-  <Alert
-    type="info"
-    :is-dismissable="false">
-    Tuto žádost využívejte pouze v případě, že žádná z předvolených šablon neodpovídá tomu, co potřebujete. V předmětu stručně uveďte, o co žádáte, a v detailech popište svou situaci a požadavek co nejpřesněji.
-  </Alert>
-
   <div class="row g-3">
     <div class="col-12">
       <label class="form-label required" for="generic-request-subject">Předmět žádosti</label>
@@ -53,7 +47,7 @@
         class="form-control"
         type="text"
         required
-        placeholder="">
+        placeholder="Zde vypište, které údaje chcete změnit (např. e-mail, telefon, adresa).">
     </div>
 
     <div class="col-12">
@@ -64,9 +58,11 @@
         class="form-control"
         rows="5"
         required
-        placeholder=""></textarea>
+        placeholder="Zde podrobně popište, jaké změny chcete provést. Uveďte jak starou, tak novou hodnotu údaje."></textarea>
     </div>
   </div>
+
+  <!-- TODO: Attach files (drag and drop) -->
 </template>
 
 <style scoped></style>

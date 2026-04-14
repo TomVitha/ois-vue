@@ -1,44 +1,42 @@
 <script lang="ts">
-  import type { RequestTemplateDefinition } from '@/requests/types'
+  // import type { RequestTemplateDefinition } from '@/requests/types'
 
-  export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 2,
-    name: 'change-building-exterior',
-    title: 'Změna vnějšího vzhledu budovy',
-    description: 'Nahlaste změny vzhledu budovy.',
-    category: 'Klientské změny',
-    availableForPropertyIds: ['192-03-147'],
-  }
-</script>
+  // export const requestTemplateMeta: RequestTemplateDefinition = {
+  //   id: 2,
+  //   name: 'change-building-exterior',
+  //   title: 'Změna vnějšího vzhledu budovy',
+  //   description: 'Nahlaste změny vzhledu budovy.',
+  //   category: 'Klientské změny',
+  //   availableForPropertyIds: ['192-03-147'],
+  // }
 
-<script setup lang="ts">
-  import { ref } from 'vue'
-  import type { RequestFormExpose } from '@/requests/forms/types'
+  // import { ref } from 'vue'
+  // import type { RequestFormExpose } from '@/requests/forms/types'
 
-  const type = ref('')
-  const description = ref('')
-  const location = ref('')
+  // const type = ref('')
+  // const description = ref('')
+  // const location = ref('')
 
-  function validate() {
-    return (
-      type.value.trim().length > 0 &&
-      description.value.trim().length > 0 &&
-      location.value.trim().length > 0
-    )
-  }
+  // function validate() {
+  //   return (
+  //     type.value.trim().length > 0 &&
+  //     description.value.trim().length > 0 &&
+  //     location.value.trim().length > 0
+  //   )
+  // }
 
-  function getValues() {
-    return {
-      type: type.value,
-      description: description.value,
-      location: location.value,
-    }
-  }
+  // function getValues() {
+  //   return {
+  //     type: type.value,
+  //     description: description.value,
+  //     location: location.value,
+  //   }
+  // }
 
-  defineExpose<RequestFormExpose>({
-    getValues,
-    validate,
-  })
+  // defineExpose<RequestFormExpose>({
+  //   getValues,
+  //   validate,
+  // })
 </script>
 
 <template>
