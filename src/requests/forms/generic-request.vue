@@ -2,8 +2,9 @@
   import type { RequestTemplateDefinition } from '@/requests/types'
 
   export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 'generic-request',
-    name: 'Obecná žádost',
+    id: 1,
+    name: 'generic-request',
+    title: 'Obecná žádost',
     description: 'Použijte, když žádná z předvolených možností neodpovídá tomu, co potřebujete.',
     category: 'Obecné',
     availableForPropertyIds: ['192-03-147', '192-666-999', '194-RD-007'],

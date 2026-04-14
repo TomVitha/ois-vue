@@ -60,7 +60,7 @@ const router = createRouter({
       component: () => import('../views/Zadosti.vue'),
     },
     {
-      path: '/zadost-nova',
+      path: '/zadosti/nova',
       component: () => import('../views/ZadostNova.vue'),
     },
     {

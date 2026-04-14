@@ -80,7 +80,7 @@ export const useRequestsStore = defineStore('requests', () => {
     selectedPropertyId.value = propertyId
   }
 
-  function getTemplateById(templateId: string): RequestTemplateDefinition | null {
+  function getTemplateById(templateId: RequestTemplateId): RequestTemplateDefinition | null {
     return templates.value.find((template) => template.id === templateId) ?? null
   }
 
@@ -121,7 +121,7 @@ export const useRequestsStore = defineStore('requests', () => {
     const newRequest: ActiveRequest = {
       id: newRequestId,
       templateId: template.id,
-      templateName: template.name,
+      templateName: template.title,
       propertyId: property.id,
       propertyName: property.name,
       createdAt: nowIso,

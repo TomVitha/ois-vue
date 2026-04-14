@@ -1,8 +1,9 @@
-export type RequestTemplateId = string
+export type RequestTemplateId = number
 
 export type RequestTemplateDefinition = {
   id: RequestTemplateId
   name: string
+  title: string
   description: string
   category: string
   availableForPropertyIds: string[]

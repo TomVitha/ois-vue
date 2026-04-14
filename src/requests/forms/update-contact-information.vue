@@ -4,8 +4,9 @@
   import Alert from '@/components/Alert.vue'
 
   export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 'update-contact-information',
-    name: 'Změna osobních údajů',
+    id: 3,
+    name: 'update-contact-information',
+    title: 'Změna osobních údajů',
     description: 'Nahlaste změny vašich kontaktních údajů.',
     category: 'Osobní údaje',
     availableForPropertyIds: ['192-03-147', '194-RD-007'],

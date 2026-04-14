@@ -11,7 +11,7 @@ const formModules = import.meta.glob('./*.vue', {
 }) as Record<string, RequestFormModule>
 
 const templates: RequestTemplateDefinition[] = []
-const requestFormComponentByTemplateId: Record<string, Component> = {}
+const requestFormComponentByTemplateId = new Map<RequestTemplateId, Component>()
 
 for (const [path, moduleExports] of Object.entries(formModules)) {
   const formComponent = moduleExports.default
@@ -21,11 +21,11 @@ for (const [path, moduleExports] of Object.entries(formModules)) {
     throw new Error(`Form module ${path} is missing default export or requestTemplateMeta export.`)
   }
 
-  if (requestFormComponentByTemplateId[templateMeta.id]) {
+  if (requestFormComponentByTemplateId.has(templateMeta.id)) {
     throw new Error(`Duplicate request template id detected: ${templateMeta.id}`)
   }
 
-  requestFormComponentByTemplateId[templateMeta.id] = formComponent
+  requestFormComponentByTemplateId.set(templateMeta.id, formComponent)
   templates.push(templateMeta)
 }
 
@@ -34,5 +34,5 @@ export function getRequestTemplates(): RequestTemplateDefinition[] {
 }
 
 export function getRequestFormComponent(templateId: RequestTemplateId): Component | null {
-  return requestFormComponentByTemplateId[templateId] ?? null
+  return requestFormComponentByTemplateId.get(templateId) ?? null
 }

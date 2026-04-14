@@ -2,8 +2,9 @@
   import type { RequestTemplateDefinition } from '@/requests/types'
 
   export const requestTemplateMeta: RequestTemplateDefinition = {
-    id: 'change-building-exterior',
-    name: 'Změna vnějšího vzhledu budovy',
+    id: 2,
+    name: 'change-building-exterior',
+    title: 'Změna vnějšího vzhledu budovy',
     description: 'Nahlaste změny vzhledu budovy.',
     category: 'Klientské změny',
     availableForPropertyIds: ['192-03-147'],

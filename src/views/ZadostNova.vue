@@ -59,7 +59,7 @@
                   :to="`/zadost-nova/${requestsStore.selectedPropertyId}/${requestTemplate.id}`"
                   class="card card-md card-link text-center w-100 h-100">
                   <div class="card-body">
-                    <h3 class="card-title mb-2">{{ requestTemplate.name }}</h3>
+                    <h3 class="card-title mb-2">{{ requestTemplate.title }}</h3>
                     <p class="text-secondary mb-0">{{ requestTemplate.description }}</p>
                   </div>
                 </RouterLink>

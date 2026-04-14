@@ -14,7 +14,7 @@
   const requestsStore = useRequestsStore()
 
   const propertyId = computed(() => String(route.params.propertyId ?? ''))
-  const templateId = computed(() => String(route.params.templateId ?? ''))
+  const templateId = computed(() => Number(route.params.templateId ?? 0))
 
   const property = computed(() => requestsStore.getPropertyById(propertyId.value))
   const template = computed(() => requestsStore.getTemplateById(templateId.value))
@@ -88,7 +88,7 @@
           <form @submit.prevent="handleSubmit">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">{{ template.name }}</h3>
+                <h3 class="card-title">{{ template.title }}</h3>
               </div>
               <div class="card-body">
                 <!-- <p v-if="template.description" class="text-secondary">{{ template.description }}</p> -->
