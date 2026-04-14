@@ -43,8 +43,6 @@
 
 <template>
 
-  <!-- TODO: RENAME to Dokumenty.vue (after deprecating old Dokumenty.vue) -->
-
   <PageTemplate title="Dokumenty">
     <div class="row row-deck row-cards">
 
@@ -53,7 +51,8 @@
         <Empty title="Žádné dokumenty" subtitle="Nemáte žádné dokumenty." />
       </div> -->
 
-      <!-- * Dokumenty -->
+      <!-- * Výpis Dokumentů -->
+      <!-- NOTE: Pokud bude mít klient více než 1 produkt, budou všechny kategorie by default collapsed. Pokud bude mít právě 1 produkt, bude kategorie by default otevřená -->
       <div class="col-12">
         <ProductGroup>
           <ProductGroupItem
@@ -61,7 +60,8 @@
             :key="group.productId"
             :title="group.productId"
             :subtitle="`Celkem ${group.totalCount}`"
-            :id="group.productId">
+            :id="group.productId"
+            :isOpen="productGroups.length === 1">
             <div class="row row-deck row-cards">
               <template v-for="item in group.categories" :key="`${group.productId}-${item.category.id}`">
                 <div class="col-12 mt-3">

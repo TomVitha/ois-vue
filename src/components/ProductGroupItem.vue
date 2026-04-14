@@ -1,18 +1,16 @@
 <script setup lang="ts">
   import { computed, type ComputedRef } from 'vue'
 
-  const props = defineProps<{
+  const props = withDefaults(defineProps<{
     title: string
     subtitle?: string
     id: string
-  }>()
-
-  // TODO: DEPRECATE
-  type AccordionContext = {
-    groupId: string
-    exclusive: ComputedRef<boolean>
-    registerItem: () => number
-  }
+    isOpen
+    ?: boolean
+  }>(), {
+    isOpen
+    : true
+  })
 
   const collapseId = computed(() => props.id)
 </script>
@@ -26,7 +24,8 @@
         type="button"
         data-bs-toggle="collapse"
         :data-bs-target="`#${collapseId}`"
-        aria-expanded="true">
+        :aria-expanded="isOpen
+        ">
         <div class="hr-text hr-text-left hr-text-spaceless flex-fill">
           <div class="space-x-2 align-items-center px-0">
             <!-- folder icon -->
@@ -46,7 +45,9 @@
       </button>
     </div>
     <!-- Body -->
-    <div :id="collapseId" class="accordion-collapse collapse show">
+    <div :id="collapseId" class="accordion-collapse collapse" :class="[{ show: isOpen
+      
+     }]">
       <div class="accordion-body">
         <slot />
       </div>
