@@ -217,7 +217,7 @@
 
           <!-- * Produkt #1 (Byt) -->
           <NavItem label="192-03-147" :children="[
-            { label: 'Detail', to: '/apt' },
+            { label: 'Detail', to: '/produkt/192-03-147' },
             { label: 'Dokumenty', to: '/dokumenty' },             // Vyfiltrováno na danou jednotku - všechny ProductGroup accordiony budou collapsed kromě daného produktu
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
@@ -245,7 +245,7 @@
 
           <!-- * Produkt #2 (Komerční prostor) -->
           <NavItem label="192-666-999" :children="[
-            { label: 'Detail', to: '/apt' },
+            { label: 'Detail', to: '/produkt/192-666-999' },
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },
@@ -271,7 +271,7 @@
 
           <!-- * Produkt #3 (rodinný dům) -->
           <NavItem label="194-RD-007" :children="[
-            { label: 'Detail', to: '/apt' },
+            { label: 'Detail', to: '/produkt/194-RD-007' },
             { label: 'Dokumenty', to: '/dokumenty' },
             { label: 'Platby', to: '/platby' },
             { label: 'Klientské změny', to: '/klientske-zmeny' },

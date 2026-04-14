@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
 
   import Handover from '@/components/Handover.vue'
@@ -6,12 +7,15 @@
 
   import Milestones from '@/components/Milestones.vue'
   import MilestonesItem from '@/components/MilestonesItem.vue'
+
+  const route = useRoute()
 </script>
 
 <template>
 
+  <!-- NOTE: URL Bude kód produktu, tedy např /produkt/192-03-147 -->
   <!-- NOTE: Pretitle je typ produktu: Byt/Bytová jednotka, Ateliér, Rodinný dům, Komerční prostor atd. -->
-  <PageTemplate pretitle="Bytová jednotka" title="192-03-147">
+  <PageTemplate pretitle="Bytová jednotka" :title="route.params.productId as string">
 
     <div class="row row-cards">
 
@@ -24,29 +28,6 @@
             </div>
             <div class="col-12 col-lg">
               <div class="card-body p-md-5">
-                <!-- ! hidden -->
-                <!-- <div class="datagrid" hidden>
-                  <div class="datagrid-item">
-                    <div class="datagrid-title">Projekt</div>
-                    <div>Rezidenční čtvrť Tesla Hloubětín</div>
-                  </div>
-                  <div class="datagrid-item">
-                    <div class="datagrid-title">Lokalita</div>
-                    <div>Praha 9 - Hloubětín</div>
-                  </div>
-                  <div class="datagrid-item">
-                    <div class="datagrid-title">Bytový dům</div>
-                    <div>A</div>
-                  </div>
-                  <div class="datagrid-item">
-                    <div class="datagrid-title">Patro</div>
-                    <div>2 NP</div>
-                  </div>
-                  <div class="datagrid-item">
-                    <div class="datagrid-title">Dispozice</div>
-                    <div>3+kk</div>
-                  </div>
-                </div> -->
                 <div class="mb-3">
                   <h2 class="mb-0">Rezidenční čtvrť Tesla Hloubětín</h2>
                   <h3>Praha 9 - Hloubětín</h3>

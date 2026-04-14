@@ -18,8 +18,9 @@ const router = createRouter({
       component: () => import('../views/Settings.vue'),
     },
     {
-      path: '/apt',
-      component: () => import('../views/Apt.vue'),
+      // NOTE: Path bude korespondovat se skutečným kódem produktu!
+      path: '/produkt/:productId',
+      component: () => import('../views/Produkt.vue'),
     },
     {
       path: '/dokumenty',

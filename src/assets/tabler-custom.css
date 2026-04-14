@@ -185,10 +185,10 @@ dialog {
 }
 
 /* Limits dropdown height */
-.dropdown-menu {
+/* .dropdown-menu {
   max-height: min(300px, 80vh);
   overflow: auto;
-}
+} */
 
 /* Increase backdrop intensity */
 .modal-backdrop.show {
@@ -316,6 +316,7 @@ html {
     padding: 3rem;
   }
 }
+
 /* ? maybe ? */
 .empty-icon {
   width: 2.5rem;
@@ -334,7 +335,6 @@ html {
   }
 }
 
-/* WIP */
 :root {
   /* ! CUSTOM VARIABLE ! */
   --tblr-navbar-vertical-width: 17rem;
@@ -370,4 +370,8 @@ html {
     padding-left: 0;
     padding-right: var(--tblr-navbar-vertical-width);
   }
+}
+
+.progress, .progress-stacked {
+  --tblr-progress-bar-transition: none;
 }
