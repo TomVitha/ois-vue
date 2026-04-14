@@ -21,13 +21,13 @@
       <div class="text-secondary">15 celkem</div>
     </template>
 
-    <template #actions>
+    <!-- <template #actions>
       <div class="btn-list">
         <RouterLink to="/zadosti">
           Požádat o odklad platby
         </RouterLink>
       </div>
-    </template>
+    </template> -->
 
     <!-- NOTE: Sem by případně šli Alerts -->
 

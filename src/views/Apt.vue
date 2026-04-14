@@ -180,11 +180,11 @@
       </div>
 
       <div class="col-lg-6">
-        <!-- WIP: postup předání -->
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Postup předání</h3>
           </div>
+          <!-- NOTE: ÚDAJE JSOU ZÁSTUPNÉ! Neberte tyhle kroky doslova! Jsou pouze ilustrativní! Jde tu hlavně o ukázku stavů kroků: dokončený, dostupný, a nedostupný (závislý na dokončení jiného kroku) -->
           <Handover>
             <HandoverItem title="Podpis smlouvy" description="Kupní smlouva byla podepsána všemi stranami." status="done" />
             <HandoverItem title="Úhrada zálohy" description="Záloha ve výši 10 % kupní ceny byla uhrazena." status="done" />
@@ -195,7 +195,6 @@
         </div>
       </div>
 
-      <!-- WIP - Timeline bytu component -->
       <div class="col">
         <div class="card">
           <div class="card-header">
