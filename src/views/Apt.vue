@@ -214,6 +214,8 @@
                     <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Postup výstavby</label>
                     <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Termínové sekce</label>
                     <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Platby</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Předání</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Dokumenty</label>
                     <div class="dropdown-divider"></div>
                     <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Prošlá data</label>
                   </div>
@@ -222,14 +224,18 @@
             </div>
           </div>
           <div class="card-body">
+            <!-- NOTE: POUZE UKÁZKOVÁ DATA! -->
             <Milestones>
               <MilestonesItem title="Zahájení výstavby" date="2026-06-01" category="construction" status="passed" />
               <MilestonesItem title="1. termínová sekce" date="2022-09-16" category="changes" status="passed" />
+              <MilestonesItem title="Název platby" date="2022-10-10" category="payments" status="passed" />
               <MilestonesItem title="2. termínová sekce" date="2022-12-01" category="changes" status="passed" />
+              <MilestonesItem title="Název platby" date="2022-12-15" category="payments" status="passed" />
               <MilestonesItem title="3. termínová sekce" date="2023-07-14" category="changes" status="passed" />
               <MilestonesItem title="Dokončení hrubé stavby" date="2024-02-29" category="construction" status="upcoming" />
+              <MilestonesItem title="Název platby" date="2023-07-15" category="payments" status="upcoming" />
               <MilestonesItem title="4. termínová sekce" date="2024-08-30" category="changes" status="upcoming" />
-              <MilestonesItem title="Podání prohlášení vlastníka" date="2024-10-25" category="handover" status="upcoming" />
+              <MilestonesItem title="Doložení důležitého dokladu" date="2024-10-25" category="documents" status="upcoming" />
               <MilestonesItem title="Dokončení stavby" date="2024-12-31" category="construction" status="upcoming" />
               <MilestonesItem title="Kolaudace" date="2025-03-20" category="handover" status="upcoming" />
               <MilestonesItem title="Nastěhování" date="2025-03-25" category="handover" status="upcoming" />
