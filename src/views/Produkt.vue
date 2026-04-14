@@ -8,6 +8,15 @@
   import Milestones from '@/components/Milestones.vue'
   import MilestonesItem from '@/components/MilestonesItem.vue'
 
+  // Import Swiper Vue.js components
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { Navigation, Pagination } from 'swiper/modules';
+
+  // Import Swiper styles
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
   const route = useRoute()
 </script>
 
@@ -231,7 +240,37 @@
             <h3 class="card-title">Galerie</h3>
           </div>
           <div class="card-body">
-            <!-- TODO: Galerie -->
+            <Swiper
+              id="product-gallery"
+              :slides-per-view="1"
+              :space-between="10"
+              :breakpoints="{
+                576: { slidesPerView: 2 },
+                992: {
+                  slidesPerView: 'auto',
+                  navigation: { enabled: true },
+                  pagination: { enabled: false }
+                }
+              }"
+              :modules="[Navigation, Pagination]"
+              :navigation="{ enabled: false }"
+              :pagination="{ enabled: true }">
+              <SwiperSlide>
+                <img src="https://www.central-group.cz/Uloziste/c5/c5048395-8411-40a4-812e-306447b0961f.jpg" class="w-100 h-100 object-cover" alt="">
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://www.central-group.cz/Uloziste/97/9707c0ed-2738-46b6-a727-a574bc29d206.jpg" class="w-100 h-100 object-cover" alt="">
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://www.central-group.cz/Uloziste/a9/a9996212-4c0c-4932-9d69-5529c92ded6a.jpg" class="w-100 h-100 object-cover" alt="">
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://www.central-group.cz/Uloziste/b1/b18de4b6-bd8f-4ded-b2b0-1f5a07926a84.jpg" class="w-100 h-100 object-cover" alt="">
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://www.central-group.cz/Uloziste/0a/0a41719c-d193-49c3-a247-ccda17d4f86d.jpg" class="w-100 h-100 object-cover" alt="">
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </div>
@@ -241,4 +280,20 @@
 
 </template>
 
-<style scoped></style>
+<style scoped>
+
+  :deep(#product-gallery) {
+    --swiper-theme-color: white;
+    --swiper-navigation-size: 28px;
+  }
+
+  @media (min-width: 992px) {
+    :deep(#product-gallery) {
+      height: 300px;
+    }
+
+    :deep(#product-gallery .swiper-slide) {
+      width: auto;
+    }
+  }
+</style>
