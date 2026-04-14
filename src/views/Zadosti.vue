@@ -13,6 +13,10 @@
   const requestsStore = useRequestsStore()
   const { formatDate } = useFormatting()
 
+  function getCategoryForRequest(templateId: number): string {
+    return requestsStore.templates.find((t) => t.id === templateId)?.category ?? '—'
+  }
+
   const modalTrigger = ref<HTMLButtonElement | null>(null)
   const statusResult = ref<LastSubmissionResult | null>(null)
 
@@ -78,8 +82,9 @@
                     <tr>
                       <th class="w-50">Název</th>
                       <th>Stav</th>
+                      <th>Kategorie</th>
                       <th>Zasláno</th>
-                      <th>Záležitost</th>
+                      <td class="w-1">Akce</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -88,11 +93,17 @@
                       <td data-label="Stav">
                         <span class="status status-info">Otevřená</span>
                       </td>
+                      <td data-label="Kategorie">{{ getCategoryForRequest(request.templateId) }}</td>
                       <td data-label="Zasláno">{{ formatDate(request.createdAt) }}</td>
-                      <td data-label="Záležitost">
-                        <span class="badge">{{ request.propertyId }}</span>
+                      <!-- NOTE: V tomto zlednodušeném režimu Žádostí (kde jsou zatím jen dvě textová pole) přijde klientovi zpráva do Komunikace, ve které bude výpis změn. Na tu zprávu zde odkážeme -->
+                      <!-- TODO: V budoucnosti nebudeme odkazovat na zprávu v Komunikaci, ale otevře se přehled odeslané Žádosti -->
+                      <td>
+                        <RouterLink
+                          :to="`/komunikace/`"
+                          class="btn-link">
+                          Detaily
+                        </RouterLink>
                       </td>
-                      <!-- TODO: Přidat funkci "zobrazit" kde klient uvidí údaje dané žádosti -->
                     </tr>
                   </tbody>
                 </table>
@@ -104,6 +115,7 @@
     </div>
 
     <!-- HACK: This button is used to trigger the modal programmatically -->
+    <!-- TODO: do better -->
     <button
       ref="modalTrigger"
       type="button"
