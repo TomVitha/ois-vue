@@ -84,7 +84,7 @@
                       <th>Stav</th>
                       <th>Kategorie</th>
                       <th>Zasláno</th>
-                      <td class="w-1">Akce</td>
+                      <th class="w-1"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,7 +95,7 @@
                       </td>
                       <td data-label="Kategorie">{{ getCategoryForRequest(request.templateId) }}</td>
                       <td data-label="Zasláno">{{ formatDate(request.createdAt) }}</td>
-                      <!-- NOTE: V tomto zlednodušeném režimu Žádostí (kde jsou zatím jen dvě textová pole) přijde klientovi zpráva do Komunikace, ve které bude výpis změn. Na tu zprávu zde odkážeme -->
+                      <!-- NOTE: V tomto zjednodušeném režimu Žádostí (kde jsou zatím jen dvě textová pole) přijde klientovi zpráva do Komunikace, ve které bude výpis změn. Na tu zprávu zde odkážeme -->
                       <!-- TODO: V budoucnosti nebudeme odkazovat na zprávu v Komunikaci, ale otevře se přehled odeslané Žádosti -->
                       <td>
                         <RouterLink

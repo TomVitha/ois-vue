@@ -213,7 +213,7 @@
             </template>
           </NavItem> -->
 
-          <!-- NOTE: Všiměte si, že každý typ produktu (byt, rodinný dům, komerční prostor má jinou ikonu) -->
+          <!-- NOTE: Všimněte si, že každý typ produktu (byt, rodinný dům, komerční prostor má jinou ikonu) -->
 
           <!-- * Produkt #1 (Byt) -->
           <NavItem label="192-03-147" :children="[
