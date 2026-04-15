@@ -39,6 +39,10 @@ const router = createRouter({
       component: () => import('../views/Kontakty.vue'),
     },
     {
+      path: '/vzorkovna',
+      component: () => import('../views/Vzorkovna.vue'),
+    },
+    {
       path: '/novinky',
       component: () => import('../views/News.vue'),
     },
