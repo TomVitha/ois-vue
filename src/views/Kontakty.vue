@@ -45,7 +45,6 @@
               <div class="col-sm-6 col-lg-6 col-xxl-4">
                 <ContactBlock
                   name="Konzultační centrum"
-                  position="Lidský zástupce společnosti"
                   phone="+420 123 456 789"
                   email="konzultace@central-group.cz">
                   <template #avatar>
@@ -62,7 +61,6 @@
               <div class="col-sm-6 col-lg-6 col-xxl-4">
                 <ContactBlock
                   name="Úvěrové poradenství"
-                  position="Lidská zástupkyně společnosti"
                   phone="+420 987 654 321"
                   email="	uvery@central-group.cz">
                   <template #avatar>
