@@ -73,6 +73,7 @@
               <div class="dropdown">
                 <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                   Produkty
+                  <!-- NOTE: Zde se výjimečně budou vypisovat všechny nakliklé položky (zde produkty) - Jeden badge na položku! -->
                   <span class="badge ms-2">192-03-147</span>
                 </a>
                 <div class="dropdown-menu">
@@ -93,6 +94,8 @@
               <div class="dropdown">
                 <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                   Stav
+                  <!-- NOTE: Zde se objeví badge s počet aktivních položek filtru. -->
+                  <!-- <span class="badge ms-2">1</span> -->
                 </a>
                 <!-- NOTE: Výchozí stav: Žádné checkboxy nezaškrtnuty = žádné aktivní filtry => zobrazit všechny položky. Pak zobrazit položky vyhovující právě těm zaškrtnutým filtrům. -->
                 <div class="dropdown-menu">
@@ -114,12 +117,12 @@
                   </label>
                 </div>
               </div>
-              <!-- NOTE: Použijeme, pokud by se výsledky neupdatovali okamžitě -->
-              <button type="button" class="btn-link text-success">
+              <!-- NOTE: Použijeme, pokud by se výsledky neupdatovali okamžitě. Zobrazí se pouze když právě navolené filtry se liší od aktivních (tedy když uživatel si nakliká filtry, ale nejsou aplikovány). -->
+              <button type="button" class="btn-link text-success text-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l5 5l10 -10" /></svg>
                 Aplikovat
               </button>
-              <button type="button" class="btn-link text-body">
+              <button type="button" class="btn-link text-body text-nowrap">
                 Zrušit filtry
               </button>
             </div>

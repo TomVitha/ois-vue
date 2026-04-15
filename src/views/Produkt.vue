@@ -201,11 +201,11 @@
                     <!-- <span class="badge badge-dot bg-red badge-notification"></span> -->
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Postup výstavby</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Termínové sekce</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Platby</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Předání</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Dokumenty</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Postup výstavby</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Termínové sekce</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Platby</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Předání</label>
+                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Dokumenty</label>
                     <div class="dropdown-divider"></div>
                     <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Prošlá data</label>
                   </div>
