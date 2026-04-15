@@ -76,7 +76,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="card-title text-center">
-                  <img src="https://www.barkotex.cz/images/barkotex/logo/barkotex-logo.svg" alt="Barkotex" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
+                  <img src="https://www.barkotex.cz/images/barkotex/logo/barkotex-logo.svg" alt="Barkotex" title="Barkotex" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
                   <!-- Barkotex -->
                   <!-- <span class="badge">Podlahové krytiny</span> -->
                   <span class="badge bg-primary-lt text-primary-lt-fg">Podlahové krytiny</span>
@@ -156,7 +156,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="card-title text-center">
-                  <img src="https://www.profilighting.cz/images/layout/logo.png" alt="Profilighting" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
+                  <img src="https://www.profilighting.cz/images/layout/logo.png" alt="Profilighting" title="Profilighting" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
                   <!-- Profilighting -->
                   <!-- <span class="badge">Osvětlení</span> -->
                   <span class="badge bg-primary-lt text-primary-lt-fg">Osvětlení</span>
@@ -236,7 +236,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="card-title text-center">
-                  <img src="https://www.janjunek.com/dist/svg/Sapeli.svg" alt="Sapeli" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
+                  <img src="https://www.janjunek.com/dist/svg/Sapeli.svg" alt="Sapeli" title="Sapeli" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5/3;">
                   <!-- Sapeli -->
                   <!-- <span class="badge">Interiérové dveře</span> -->
                   <span class="badge bg-primary-lt text-primary-lt-fg">Interiérové dveře</span>
