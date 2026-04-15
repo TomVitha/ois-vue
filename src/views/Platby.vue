@@ -33,11 +33,14 @@
 
     <div class="row row-deck row-cards">
 
+      <!-- NOTE: Na tyto údaje se nevztahuje filtrování -->
       <div class="col-12 col-lg-4">
         <div class="card">
           <div class="card-body p-sm-5">
             <div class="subheader mb-1">Celá částka</div>
             <p class="h1 m-0 text-nowrap">5&nbsp;780&nbsp;000&nbsp;Kč</p>
+            <!-- NOTE: Když bude mít klient zaplacené všechny platby, všechny tyto malé texty zmizí! -->
+            <!-- NOTE: Datum nepozdější platby -->
             <div class="text-secondary mt-2">Splácení do: 31.12.2035</div>
           </div>
         </div>
@@ -47,6 +50,7 @@
           <div class="card-body p-sm-5">
             <div class="subheader mb-1">Zaplaceno</div>
             <p class="h1 m-0 text-nowrap text-green">4&nbsp;866&nbsp;391&nbsp;Kč</p>
+            <!-- NOTE: Datum naposledy kompletně uhrazené platby. Pokud žádná taková není, zobrazí se "Žádná". -->
             <div class="text-secondary mt-2">Poslední platba: 26.04.2025</div>
           </div>
         </div>
@@ -56,35 +60,12 @@
           <div class="card-body p-sm-5">
             <div class="subheader mb-1">Zbývá</div>
             <p class="h1 m-0 text-nowrap text-red">913&nbsp;609&nbsp;Kč</p>
+            <!-- NOTE: Datum nejbližší platby. -->
             <div class="text-secondary mt-2">Další platba: 31.02.2026</div>
           </div>
         </div>
       </div>
 
-      <!-- TEMP: Sekce Poukázky skryty -> přesunuty na vlastní stránku Poukázky -->
-      <div class="col-12" hidden>
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Poukázky</h3>
-          </div>
-          <div class="card-body">
-            <div class="row row-cards">
-              <div v-for="voucher in vouchersStore.vouchers" :key="voucher.id" class="col-lg-4">
-                <Voucher
-                  :id="voucher.id"
-                  :title="voucher.title"
-                  :value="voucher.value"
-                  :spent="voucher.spent"
-                  :date-received="voucher.dateReceived"
-                  :date-expiration="voucher.dateExpiration"
-                  :breakdown="voucher.breakdown" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WIP: Filtrování -->
       <div class="col-12">
         <div class="w-100">
           <div class="border-bottom py-3">
@@ -96,13 +77,16 @@
                 </a>
                 <div class="dropdown-menu">
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" checked />192-03-147
+                    <input class="form-check-input m-0 me-2" type="checkbox" checked />
+                    192-03-147
                   </label>
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Product 2
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    192-666-999
                   </label>
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Product 3
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    192-RD-007
                   </label>
                 </div>
               </div>
@@ -110,22 +94,34 @@
                 <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                   Stav
                 </a>
+                <!-- NOTE: Výchozí stav: Žádné checkboxy nezaškrtnuty = žádné aktivní filtry => zobrazit všechny položky. Pak zobrazit položky vyhovující právě těm zaškrtnutým filtrům. -->
                 <div class="dropdown-menu">
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Zaplaceno
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    Zaplaceno
                   </label>
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Nadcházející
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    Nadcházející
                   </label>
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Blíží se
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    Blíží se
                   </label>
                   <label class="dropdown-item">
-                    <input class="form-check-input m-0 me-2" type="checkbox" />Po splatnosti
+                    <input class="form-check-input m-0 me-2" type="checkbox" />
+                    Po splatnosti
                   </label>
                 </div>
               </div>
-              <button type="button" class="btn-link text-body">Zrušit filtry</button>
+              <!-- NOTE: Použijeme, pokud by se výsledky neupdatovali okamžitě -->
+              <button type="button" class="btn-link text-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l5 5l10 -10" /></svg>
+                Aplikovat
+              </button>
+              <button type="button" class="btn-link text-body">
+                Zrušit filtry
+              </button>
             </div>
           </div>
         </div>
