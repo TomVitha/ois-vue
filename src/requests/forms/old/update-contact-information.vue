@@ -46,7 +46,7 @@
 </script>
 
 <template>
-  <div class="space-y">
+  <!-- <div class="space-y">
 
     <div>
       <label class="form-label required" for="update-contact-full-name">Smluvní strana (partner)</label>
@@ -100,21 +100,7 @@
         required>
     </div>
 
-    <!-- <div>
-      <label class="form-label" for="update-contact-proof">
-        Kopie občanského průkazu
-        <span
-          class="form-help"
-          data-bs-toggle="popover"
-          data-bs-placement="top"
-          data-bs-html="true"
-          data-bs-content="<p>Nahrajte čitelnou kopii občanského průkazu (přední i zadní strana), pokud měníte adresu trvalého bydliště.</p><p class='mb-0'>Soubor může být ve formátu PDF, JPG nebo PNG.</p>">?</span>
-      </label>
-      <input type="file" class="form-control">
-      <small class="form-hint">Povinné pouze při změně adresy trvalého bydliště.</small>
-    </div> -->
-
-  </div>
+  </div> -->
 </template>
 
 <style scoped></style>

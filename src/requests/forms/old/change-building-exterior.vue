@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <div class="space-y">
+  <!-- <div class="space-y">
 
     <div class="mb-3">
       <label class="form-label">Typ úpravy</label>
@@ -115,7 +115,7 @@
         required></textarea>
     </div>
 
-  </div>
+  </div> -->
 </template>
 
 <style scoped></style>

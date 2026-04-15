@@ -36,7 +36,7 @@
 </script>
 
 <template>
-  <Alert
+  <!-- <Alert
     type="info"
     :is-dismissable="false">
     Tuto žádost využívejte pouze v případě, že žádná z předvolených šablon neodpovídá tomu, co potřebujete. V předmětu stručně uveďte, o co žádáte, a v detailech popište svou situaci a požadavek co nejpřesněji.
@@ -64,7 +64,7 @@
         required
         placeholder=""></textarea>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped></style>

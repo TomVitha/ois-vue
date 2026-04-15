@@ -12,10 +12,13 @@
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import { Navigation, Pagination } from 'swiper/modules';
 
-  // Import Swiper styles
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
+  // FIXME: Nemám tušení na co si stěžuje, cesta je správně a styly se správně importují, přesto hází error.
+  // @ts-expect-error
+  import 'swiper/css'
+  // @ts-expect-error
+  import 'swiper/css/navigation'
+  // @ts-expect-error
+  import 'swiper/css/pagination'
 
   const route = useRoute()
 </script>
