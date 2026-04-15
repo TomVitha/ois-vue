@@ -64,7 +64,7 @@
         <div class="fw-semibold">{{ props.title }}</div>
         <div class="text-secondary" v-if="props.note">{{ props.note }}</div>
       </div>
-      <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny -->
+      <!-- ? Ke klientským termínům přidat odkaz na Žádosti a změny, ať si může provést změny ? -->
     </div>
   </div>
 </template>

@@ -114,8 +114,8 @@
       </div>
     </div>
 
-    <!-- HACK: This button is used to trigger the modal programmatically -->
-    <!-- TODO: do better -->
+    <!-- HACK: This button is programmatically clicked used to trigger the modal -->
+    <!-- TODO: You've gotta do better, senator -->
     <button
       ref="modalTrigger"
       type="button"

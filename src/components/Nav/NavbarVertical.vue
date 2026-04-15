@@ -279,8 +279,6 @@
             <hr class="my-1">
           </li>
 
-
-          <!-- TODO: Vytvořit stránku -->
           <!-- * Vzorkovna + interierove studio (central interier) -->
           <NavItem label="Vzorkovna" to="/vzorkovna">
             <template #icon>
