@@ -1,17 +1,13 @@
 <script setup lang="ts">
-  import { usePaymentsStore } from '@/stores/payments'
-  import { useVouchersStore } from '@/stores/vouchers'
-
-  const paymentsStore = usePaymentsStore()
-  const vouchersStore = useVouchersStore()
-
   import PageTemplate from '@/components/PageTemplate.vue'
   import Payments from '@/components/Payment/Payments.vue'
   import PaymentOffcanvas from '@/components/Payment/PaymentOffcanvas.vue'
-  import Voucher from '@/components/Payment/Voucher.vue'
   import VoucherDialog from '@/components/Payment/VoucherDialog.vue'
   import Empty from '@/components/Empty.vue'
   // import Alert from '@/components/Alert.vue'
+
+  import { usePaymentsStore } from '@/stores/payments'
+  const paymentsStore = usePaymentsStore()
 </script>
 
 <template>

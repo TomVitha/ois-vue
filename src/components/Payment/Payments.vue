@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import Payment from '@/components/Payment/Payment.vue'
-
   import DataTable from 'datatables.net-dt';
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
 
   type PaymentItem = {
     id: number
@@ -29,23 +29,22 @@
     });
   })
 
-</script>
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
-<!-- TODO: Vylepšit logiku zobrazení pro různé velikosti obrazovky - teď ohavně řešeno přes Bootstrap třídy -->
+</script>
 
 <template>
 
   <!-- Mobile: list rendering -->
-  <div class="list-group list-group-flush d-lg-none">
+  <div v-if="!isDesktop" class="list-group list-group-flush">
     <Payment
       v-for="payment in payments"
       :key="`${payment.title}-${payment.duedate}`"
       v-bind="payment"
       variant="list" />
   </div>
-
   <!-- Desktop: table rendering -->
-  <div class="table-responsive d-none d-lg-block">
+  <div v-else class="table-responsive">
     <table id="payments-table" class="table table-hover table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
       <thead>
         <tr>

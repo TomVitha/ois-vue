@@ -141,19 +141,9 @@
 
 <style scoped>
   .offcanvas {
-    /* --tblr-offcanvas-zindex: 1045; */
     --tblr-offcanvas-width: 500px;
     --tblr-offcanvas-height: 99vh;
-    /* --tblr-offcanvas-padding-x: 1.5rem; */
     --tblr-offcanvas-padding-y: 1rem;
-    /* --tblr-offcanvas-color: var(--tblr-body-color); */
-    /* --tblr-offcanvas-bg: var(--tblr-bg-surface); */
-    /* --tblr-offcanvas-border-width: var(--tblr-border-width); */
-    /* --tblr-offcanvas-border-color: var(--tblr-border-color); */
-    /* --tblr-offcanvas-box-shadow: var(--tblr-box-shadow-sm); */
-    /* --tblr-offcanvas-transition: transform 0.3s ease-in-out; */
-    /* --tblr-offcanvas-title-line-height: 1.4285714286; */
-
     border-radius: var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) 0 0;
   }
   @media (min-width: 992px) {

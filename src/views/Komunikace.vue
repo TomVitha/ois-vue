@@ -139,6 +139,9 @@
 
   const msgSignatureText = ref('')
   const isSignatureValid = computed(() => msgSignatureText.value.trim().length > 0)
+
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
@@ -146,10 +149,8 @@
     <div class="container-fluid flex-fill space-y-0">
       <div class="messenger row row-deck row-cards flex-fill">
 
-        <!-- TODO: Improve element rendering (hiding) based programmatically (instead of Bootstrap classes) -->
-
         <!-- Messages list column -->
-        <div class="col-12 col-lg-auto d-flex flex-column messenger__list" :class="{ 'd-none d-lg-flex d-print-none': selectedMessage }">
+        <div v-if="isDesktop ||!selectedMessage" class="col-12 col-lg-auto d-flex flex-column messenger__list">
           <div class="card">
             <div class="card-header space-y-2 align-items-stretch ">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-message-modal">
@@ -360,27 +361,27 @@
           </div>
         </div>
         <!-- Message body column -->
-        <div class="col d-flex flex-column messenger__body" :class="{ 'd-none d-lg-flex d-print-none': !selectedMessage }">
+        <div v-if="isDesktop ||selectedMessage" class="col d-flex flex-column messenger__body">
           <!-- * Empty state - Pokud není žádné aktivní vybraná zpráva -->
           <div v-if="!selectedMessage" class="page page-center" id="empty-state">
             <!-- <div class="container-tight"> -->
-              <div class="empty">
-                <!-- <div class="empty-img"> -->
-                  <!-- TODO: Obrázek obálky -->
-                <!-- </div> -->
-                <p class="empty-title">
-                  <span v-if="messages.some(m => m.meta.isUnread)">
-                    Nepřečtených zpráv ({{messages.filter(m => m.meta.isUnread).length}})
-                  </span>
-                  <span v-else>Žádná vybraná zpráva</span>
-                </p>
-                <p class="empty-subtitle text-secondary" style="text-wrap: pretty">
-                  <span v-if="messages.filter(m => m.meta.from).length <= 0">Nemáte žádné položky</span>
-                  <span v-else>
-                    Vyberte některou ze zpráv.
-                  </span>
-                </p>
-              </div>
+            <div class="empty">
+              <!-- <div class="empty-img"> -->
+              <!-- TODO: Obrázek obálky -->
+              <!-- </div> -->
+              <p class="empty-title">
+                <span v-if="messages.some(m => m.meta.isUnread)">
+                  Nepřečtených zpráv ({{messages.filter(m => m.meta.isUnread).length}})
+                </span>
+                <span v-else>Žádná vybraná zpráva</span>
+              </p>
+              <p class="empty-subtitle text-secondary" style="text-wrap: pretty">
+                <span v-if="messages.filter(m => m.meta.from).length <= 0">Nemáte žádné položky</span>
+                <span v-else>
+                  Vyberte některou ze zpráv.
+                </span>
+              </p>
+            </div>
             <!-- </div> -->
           </div>
           <!-- * Message content -->
@@ -388,7 +389,7 @@
           <div class="card scrollable" v-else id="message-view">
             <div class="card-header d-block">
               <div class="row gy-3">
-                <div class="col-12 col-xl-auto d-lg-none d-print-none">
+                <div v-if="isDesktop" class="col-12 d-print-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Previous message -->
                     <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex - 1]?.id ?? null" :disabled="selectedIndex <= 0">

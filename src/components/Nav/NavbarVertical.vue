@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import NavbarNav from '@/components/Nav/NavbarNav.vue'
   import NavItem from '@/components/Nav/NavItem.vue'
+
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
 </script>
 
 <template>
@@ -63,7 +66,7 @@
       </div>
 
       <!-- Navbar for mobile -->
-      <NavbarNav class="d-lg-none" />
+      <NavbarNav v-if="!isDesktop" />
 
       <div class="collapse navbar-collapse user-select-none" id="sidebar-menu">
 
