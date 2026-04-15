@@ -10,7 +10,7 @@
 
     <template #actions>
       <div class="btn-list">
-        <RouterLink to="/klientsky-zmeny#dodavatele">
+        <RouterLink to="/klientske-zmeny#dodavatele">
           Kontakty na dodavatele
         </RouterLink>
       </div>
