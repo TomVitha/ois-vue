@@ -2,32 +2,37 @@
   const props = defineProps<{
     name: string
     position?: string
+    department?: string
     phone?: string
     email?: string
-    imgURL?: string
+    imgAvatarURL?: string
   }>()
 </script>
 
 <template>
   <div class="card">
     <div class="card-body p-4 text-center">
-      <img v-if="props.imgURL" class="avatar avatar-xl mb-3" :src="props.imgURL"> </img>
+      <img v-if="props.imgAvatarURL" class="avatar avatar-xl mb-3" :src="props.imgAvatarURL"> </img>
       <span v-else class="avatar avatar-xl mb-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-        </svg>
+        <slot name="avatar">
+          <!-- default person svg icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+          </svg>
+        </slot>
       </span>
       <h3 class="m-0">
-        {{ name }}
+        {{ props.name }}
       </h3>
-      <div class="text-secondary">{{ position }}</div>
-      <div class="mt-2"><span class="badge bg-purple-lt">Oddělení</span></div>
+      <div class="text-secondary">{{ props.position }}</div>
+      <!-- NOTE: je otázka jestli tohle použijeme -->
+      <div class="mt-2" v-if="department"><span class="badge bg-purple-lt">{{ props.department }}</span></div>
       <div class="space-y-0 mt-3">
-        <a :href="`tel:${phone}`" class="text-reset">{{ phone }}</a>
-        <a :href="`mailto:${email}`" class="text-reset">{{ email }}</a>
+        <a :href="`tel:${props.phone}`" class="text-reset">{{ props.phone }}</a>
+        <a :href="`mailto:${email}`" class="text-reset">{{ props.email }}</a>
       </div>
     </div>
     <!-- * Napsat zprávu -->
@@ -60,6 +65,4 @@
 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
