@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 // import LayoutDefault from '../layouts/LayoutDefault.vue'
 import LayoutBlank from '../layouts/LayoutBlank.vue'
+// TEMP
+import LayoutDOIS from '../layouts/LayoutDOIS.vue'
 
 const router = createRouter({
   linkActiveClass: 'active',
@@ -76,6 +78,23 @@ const router = createRouter({
       path: '/zadosti/nova/:propertyId/:templateId',
       component: () => import('../views/ZadostNovaForm.vue'),
     },
+    // DOIS
+    {
+      path: '/dois/',
+      component: () => import('../views/DOIS/Home.vue'),
+      meta: { layout: LayoutDOIS },
+    },
+    {
+      path: '/dois/seznam-objednavek',
+      component: () => import('../views/DOIS/SeznamObjednavek.vue'),
+      meta: { layout: LayoutDOIS },
+    },
+    {
+      path: '/dois/detail-objednavky',
+      component: () => import('../views/DOIS/DetailObjednavky.vue'),
+      meta: { layout: LayoutDOIS },
+    },
+    // Else
     {
       path: '/404',
       // meta: { layout: LayoutBlank },

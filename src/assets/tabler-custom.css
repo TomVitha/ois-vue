@@ -180,7 +180,7 @@ dialog {
 }
 
 /* The <form> will be 'invisible' (but its children will not) and won't interfere with the layout */
-.card form {
+.card form:not(.dropzone) {
   display: contents;
 }
 
