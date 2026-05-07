@@ -1,16 +1,35 @@
 <script setup lang="ts">
   // import Footer from '@/components/Footer.vue';
-  import { useSlots } from 'vue';
+  import { useSlots, useAttrs, getCurrentInstance } from 'vue';
+  import { useRouter } from 'vue-router';
 
   const slots = useSlots();
+  const attrs = useAttrs();
+  const router = useRouter();
+  const instance = getCurrentInstance()
+  const emit = defineEmits<{ back: [navigate: () => void] }>()
 
-  defineProps<{
+  const props = defineProps<{
     title: string
     pretitle?: string,
     extra?: string
     backTo?: string
     description?: string
   }>()
+
+
+  function handleBack() {
+    if (!props.backTo) return
+
+    const navigate = () => router.push(props.backTo!)
+    const hasBackListener = !!instance?.vnode.props?.onBack
+
+    if (hasBackListener) {
+      emit('back', navigate)
+    } else {
+      navigate()
+    }
+  }
 </script>
 
 <template>
@@ -20,12 +39,12 @@
       <div class="row align-items-center">
         <!-- back button -->
         <div v-if="backTo" class="col-auto pe-0">
-          <RouterLink :to="backTo" class="btn btn-action" draggable="false">
+          <button @click="handleBack" class="btn btn-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M15 6l-6 6l6 6"></path>
             </svg>
-          </RouterLink>
+          </button>
         </div>
         <div class="col-auto">
           <hgroup>

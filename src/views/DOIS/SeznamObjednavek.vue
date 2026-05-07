@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
   // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
@@ -12,10 +12,47 @@
     let myDropzone = new Dropzone("#dropzone-order-attachments");
   });
 
+  const isFluidLayout = ref(false)
+
 </script>
 
 <template>
   <PageTemplate title="Seznam objednávek">
+
+    <template #actions>
+      <div class="btn-list">
+        <div class="btn-actions">
+          <!-- TEMP -->
+          <button
+            onclick="document.querySelector('.page-body').classList.toggle('layout-fluid')"
+            @click="isFluidLayout = !isFluidLayout"
+            class="btn btn-action"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            :title="!isFluidLayout ? 'Rozšířené zobrazení' : 'Normální zobrazení'">
+            <svg v-if="!isFluidLayout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-viewport-wide">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 12h-7l3 -3" />
+              <path d="M6 15l-3 -3" />
+              <path d="M14 12h7l-3 -3" />
+              <path d="M18 15l3 -3" />
+              <path d="M3 6v-1a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v1" />
+              <path d="M3 18v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2v-1" />
+            </svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-viewport-narrow">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 12h7l-3 -3" />
+              <path d="M7 15l3 -3" />
+              <path d="M21 12h-7l3 -3" />
+              <path d="M17 15l-3 -3" />
+              <path d="M9 6v-1a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1" />
+              <path d="M9 18v1a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-1" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </template>
+
     <div class="row row-cards">
       <div class="col-12">
         <div class="card">
@@ -27,8 +64,6 @@
               </div>
               <div class="col-md-auto col-sm-12">
                 <div class="ms-auto d-flex flex-wrap btn-list">
-                  <!-- TEMP -->
-                  <button onclick="document.querySelector('.page-wrapper').classList.toggle('layout-fluid')">Fluid</button>
                   <div class="dropdown">
                     <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat vybrané do</a>
                     <div class="dropdown-menu">
@@ -64,7 +99,9 @@
                   <td class="sort-id"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">458-2025-ÚVD</a></td>
                   <!-- ALT: Samostatná stránka -->
                   <!-- <td class="sort-receipt"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">192-01-086-IS-I</a></td> -->
-                  <td class="sort-receipt"><RouterLink to="/dois/detail-objednavky"class="text-reset" tabindex="-1">192-01-086-IS-I</RouterLink></td>
+                  <td class="sort-receipt">
+                    <RouterLink to="/dois/detail-objednavky" class="text-reset" tabindex="-1">192-01-086-IS-I</RouterLink>
+                  </td>
                   <td class="sort-status" date-status="0"><span class="status status-success">Nová</span></td>
                   <td class="sort-technician">Petr Lamata</td>
                   <td class="sort-readiness">Indeco</td>

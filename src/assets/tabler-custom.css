@@ -323,6 +323,14 @@ html {
   height: 2.5rem;
 }
 
+/* FIX Když tabulka měla jen jeden řádek tak podtržení vyčuhovalo */
+.card-table :is(thead, tbody, tfoot) tr:last-child {
+  border-bottom: 0;
+}
+.card-table :is(thead, tbody, tfoot) tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
 /* HACK: QUICK AND DIRTY */
 @media (min-width: 992px) {
   .navbar-vertical.navbar-expand-lg .navbar-brand {
