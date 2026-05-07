@@ -249,14 +249,14 @@
               <!-- * Řazení (nejnovější, nejstarší), Filtrování (podle bytu, odesilatele), Vyhledávání?, Ne/přečtené, Ne/mají přílohu -->
               <!-- ? Paginace zpráv, výpis kolik z kolika ? -->
               <div class="btn-actions flex-fill justify-content-end">
-                <button href="#" class="btn btn-action dropdown-toggle me-auto" title="Hledat">
+                <button class="btn btn-action dropdown-toggle me-auto" title="Hledat">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
                     <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
                     <path d="M21 21l-6 -6"></path>
                   </svg>
                 </button>
                 <div class="dropdown">
-                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Značka">
+                  <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Značka">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tag">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -273,7 +273,7 @@
                   </div>
                 </div>
                 <div class="dropdown">
-                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
+                  <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
@@ -316,7 +316,7 @@
                   </div>
                 </div>
                 <div class="dropdown">
-                  <button href="#" class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Seřadit">
+                  <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Seřadit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrows-up-down">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                       <path d="M7 3l0 18" />
@@ -449,7 +449,7 @@
                             <path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" />
                           </svg>
                         </button>
-                        <button href="#" class="btn btn-action" title="Tisk" data-bs-toggle="tooltip" data-bs-placement="top" @click="printPage()">
+                        <button class="btn btn-action" title="Tisk" data-bs-toggle="tooltip" data-bs-placement="top" @click="printPage()">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-printer">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
