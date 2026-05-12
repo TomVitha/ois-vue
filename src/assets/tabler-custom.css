@@ -103,7 +103,7 @@ dialog {
 }
 
 /* Active link is highlighted */
-.nav-link.active {
+.navbar-nav .nav-link.active {
   background-color: var(--tblr-nav-link-hover-bg);
 }
 
@@ -223,6 +223,11 @@ dialog {
 
 .avatar {
   object-fit: cover;
+}
+
+/* FIX: Sort icon shrinking */
+.table-sort:after {
+  flex-shrink: 0;
 }
 
 /* FIX: Buttons being displayed as block */

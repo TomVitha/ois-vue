@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, watch } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
   // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
@@ -7,12 +7,24 @@
   import Dropzone from "dropzone";
   import "dropzone/dist/dropzone.css";
 
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
 
   onMounted(() => {
     let myDropzone = new Dropzone("#dropzone-order-attachments");
   });
 
+  const isWideScreen = matchesMediaQuery('(min-width: 1600px)')
   const isFluidLayout = ref(false)
+
+  // watch isFluid, add/remove class .fluid from body
+  watch(isFluidLayout, (newValue) => {
+    const pageBody = document.querySelector('.page-body') as HTMLElement
+    if (newValue) {
+      pageBody.classList.add('layout-fluid')
+    } else {
+      pageBody.classList.remove('layout-fluid')
+    }
+  })
 
 </script>
 
@@ -24,7 +36,7 @@
         <div class="btn-actions">
           <!-- TEMP -->
           <button
-            onclick="document.querySelector('.page-body').classList.toggle('layout-fluid')"
+            v-if="isWideScreen"
             @click="isFluidLayout = !isFluidLayout"
             class="btn btn-action"
             data-bs-toggle="tooltip"
@@ -50,6 +62,16 @@
             </svg>
           </button>
         </div>
+        <RouterLink to="/todo" type="button" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-1">
+            <path d="M12 5l0 14" />
+            <path d="M5 12l14 0" />
+          </svg>
+          Vytvořit
+        </RouterLink>
       </div>
     </template>
 
@@ -65,7 +87,7 @@
               <div class="col-md-auto col-sm-12">
                 <div class="ms-auto d-flex flex-wrap btn-list">
                   <div class="dropdown">
-                    <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat vybrané do</a>
+                    <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat do</a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">XLSX</a>
                       <a class="dropdown-item" href="#">CSV</a>
