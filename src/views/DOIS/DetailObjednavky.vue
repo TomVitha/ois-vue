@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
+  import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
 
@@ -9,7 +10,7 @@
   import "dropzone/dist/dropzone.css";
 
   onMounted(() => {
-    let myDropzone = new Dropzone("#dropzone-order-attachments");
+    let dropzoneOrderAttachments = new Dropzone("#dropzone-order-attachments");
   });
 
   // NOTE: Pouze pokud budou neuložené změny
@@ -19,12 +20,14 @@
     }
   }
 
+  const route = useRoute()
+
   // TEMP
   const tempShowActionsBar = ref(false)
 </script>
 
 <template>
-  <PageTemplate title="Objednávka 458-2025-ÚVD" back-to="/dois/seznam-objednavek" @back="handleBack">
+  <PageTemplate :title="`Objednávka ${route.params.orderId}`" back-to="/dois/seznam-objednavek" @back="handleBack">
 
     <template #actions>
       <div class="btn-list">
@@ -177,9 +180,9 @@
           <div class="col-12">
             <div class="card card-md">
               <!-- ? card header ? -->
-              <!-- <div class="card-header">
-                <h3 class="card-title">Údaje objednávky</h3>
-              </div> -->
+              <div class="card-header">
+                <h3 class="card-title">Objednávka</h3>
+              </div>
               <!-- Výčet údajů (#0) -->
               <!-- <div class="card-body">
                 <p>Interní číslo: 458-2025-ÚVD</p>
@@ -505,25 +508,34 @@
               <div class="card-body accordion-collapse collapse show" data-bs-parent="#accordion-default" id="temp-collapse-1-default">
                 <div class="row gy-3">
                   <div class="col-12">
-                    <!-- ? musí tam být ta závorka ? -->
-                    <!-- <p>Poznámka dodavatele (k objednávce): [VÝPIS] text</p> -->
-                    <span class="form-label">Poznámka dodavatele (k objednávce)</span>
+                    <!-- <span class="form-label">Poznámka dodavatele</span> -->
+                    <label class="form-label" for="order-supplier-note">Poznámka dodavatele</label>
                     <p class="form-control-plaintext">Tohle je ten nejhezčí byt, ve kterém jsem kdy byl.</p>
+                    <!-- <textarea class="form-control" name="order-supplier-note" id="order-supplier-note" rows="1" placeholder="Poznámka dodavatele..." style="resize: none; field-sizing: content;" value="Tohle je ten nejhezčí byt, ve kterém jsem kdy byl." readonly disabled></textarea> -->
                   </div>
                   <div class="col-12">
-                    <!-- <p>Poznámka technika: text</p> -->
                     <label class="form-label" for="order-technician-note">Poznámka technika <span class="form-label-description">xx/yy</span></label>
-                    <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none;"></textarea>
+                    <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
                   </div>
                   <div class="col-xl-6">
-                    <!-- <p>Vady: text</p> -->
                     <label class="form-label" for="order-flaws">Vady <span class="form-label-description">xx/yy</span></label>
                     <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
                   </div>
                   <div class="col-xl-6">
-                    <!-- <p>Předávací protokol k odstranění vad: date | null</p> -->
                     <label class="form-label" for="order-input-date-flaws-protocol">Předávací protokol k odstranění vad</label>
-                    <input type="date" class="form-control" name="order-input-date-flaws-protocol" id="order-input-date-flaws-protocol">
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                          <path d="M16 3v4"></path>
+                          <path d="M8 3v4"></path>
+                          <path d="M4 11h16"></path>
+                          <path d="M11 15h1"></path>
+                          <path d="M12 15v3"></path>
+                        </svg>
+                      </span>
+                      <input type="date" class="form-control" name="order-input-date-flaws-protocol" id="order-input-date-flaws-protocol">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1106,6 +1118,7 @@
     --tblr-nav-underline-gap: 0rem;
     --tblr-nav-link-padding-x: 1rem;
     --tblr-nav-link-padding-y: 0.75rem;
+    --tblr-nav-link-hover-bg: transparent;
   }
 
   .nav-underline .nav-link {

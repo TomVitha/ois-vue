@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+// ?
+import DoisHome from '../views/DOIS/Home.vue'
 // import LayoutDefault from '../layouts/LayoutDefault.vue'
 import LayoutBlank from '../layouts/LayoutBlank.vue'
 // TEMP
@@ -81,7 +83,7 @@ const router = createRouter({
     // DOIS
     {
       path: '/dois/',
-      component: () => import('../views/DOIS/Home.vue'),
+      component: DoisHome,
       meta: { layout: LayoutDOIS },
     },
     {
@@ -90,8 +92,13 @@ const router = createRouter({
       meta: { layout: LayoutDOIS },
     },
     {
-      path: '/dois/detail-objednavky',
+      path: '/dois/objednavka/:orderId',
       component: () => import('../views/DOIS/DetailObjednavky.vue'),
+      meta: { layout: LayoutDOIS },
+    },
+    {
+      path: '/dois/nahrani-souboru',
+      component: () => import('../views/DOIS/NahraniSouboru.vue'),
       meta: { layout: LayoutDOIS },
     },
     // Else

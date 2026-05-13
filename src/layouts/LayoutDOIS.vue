@@ -131,7 +131,7 @@
           </NavItem>
 
           <!-- * FTP -->
-          <NavItem label="FTP" to="/todo">
+          <NavItem label="FTP" to="https://dodatky.central-group.cz/NQImqe8IUdPA">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-network">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -153,7 +153,7 @@
           </NavItem>
 
           <!-- * Nahrávání souborů -->
-          <NavItem label="Nahrávání souborů" to="/todo">
+          <NavItem label="Nahrávání souborů" to="/dois/nahrani-souboru">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-upload">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />

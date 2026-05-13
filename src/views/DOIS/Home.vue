@@ -1,12 +1,5 @@
 <script setup lang="ts">
-  import { usePaymentsStore } from '@/stores/payments'
-  const paymentsStore = usePaymentsStore()
-
-  import Payments from '@/components/Payment/Payments.vue'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import PaymentOffcanvas from '@/components/Payment/PaymentOffcanvas.vue'
-  import SignaturePromptItem from '@/components/SignaturePromptItem.vue'
-  import ClientTermItem from '@/components/ClientTermItem.vue'
   import Empty from '@/components/Empty.vue'
 </script>
 
@@ -61,8 +54,6 @@
         </div>
       </div>
     </div>
-
-    <PaymentOffcanvas />
 
   </PageTemplate>
 

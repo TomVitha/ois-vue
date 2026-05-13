@@ -10,7 +10,7 @@
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
 
   onMounted(() => {
-    let myDropzone = new Dropzone("#dropzone-order-attachments");
+    let dropzoneOrderAttachments = new Dropzone("#dropzone-order-attachments");
   });
 
   const isWideScreen = matchesMediaQuery('(min-width: 1600px)')
@@ -107,8 +107,8 @@
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-receipt">Číslo SoD</button></th>
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-status">Stav</button></th>
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-technician">Technik ÚVD</button></th>
-                  <th><button class="table-sort d-flex justify-content-between" data-sort="sort-supplier">Indeco</button></th>
-                  <th><button class="table-sort d-flex justify-content-between" data-sort="sort-readiness">Připravenost</button></th>
+                  <th><button class="table-sort d-flex justify-content-between" data-sort="sort-supplier">Dodavatel</button></th>
+                  <th><button class="table-sort d-flex justify-content-between" data-sort="sort-readiness">Připravenost stavba</button></th>
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-item">Položka</button></th>
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-completion">Termín splnění dle SoD</button></th>
                   <th><button class="table-sort d-flex justify-content-between" data-sort="sort-accept">Datum akceptace dodavatelem</button></th>
@@ -117,13 +117,11 @@
               <tbody class="table-tbody">
                 <tr>
                   <td><input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox" aria-label="Vybrat položku"></td>
-                  <!-- Modal dialog -->
-                  <td class="sort-id"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">458-2025-ÚVD</a></td>
-                  <!-- ALT: Samostatná stránka -->
-                  <!-- <td class="sort-receipt"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">192-01-086-IS-I</a></td> -->
-                  <td class="sort-receipt">
-                    <RouterLink to="/dois/detail-objednavky" class="text-reset" tabindex="-1">192-01-086-IS-I</RouterLink>
-                  </td>
+                  <!-- ! OLD: Modal dialog -->
+                  <!-- <td class="sort-id"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">458-2025-ÚVD</a></td> -->
+                  <!-- TEMP hard-coded link -> dynamic -->
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">192-01-086-IS-I</td>
                   <td class="sort-status" date-status="0"><span class="status status-success">Nová</span></td>
                   <td class="sort-technician">Petr Lamata</td>
                   <td class="sort-readiness">Indeco</td>
