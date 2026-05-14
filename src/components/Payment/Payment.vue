@@ -1,13 +1,9 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { RouterLink } from 'vue-router'
-
   import { useFormatting } from '@/composables/formatting'
-  import { useLocaleStore } from '@/stores/locale'
   import { usePaymentsStore } from '@/stores/payments'
+  import type { PaymentStatusCode } from '@/stores/payments'
 
   const { formatDate, formatCurrency } = useFormatting()
-  const localeStore = useLocaleStore()
   const paymentsStore = usePaymentsStore()
 
   // Prevent undeclared props from falling through onto the root DOM element.
@@ -22,49 +18,16 @@
     duedate: string
     amount: number
     paid: number
+    remaining: number
+    isPartiallyPaid: boolean
+    percentPaid: number
+    status: PaymentStatusCode
+    statusText: string
+    statusBadgeClass: string
     isInvoiceShown?: boolean
     variant?: 'list' | 'table'
   }>(), {
     variant: 'list'
-  })
-
-  // TODO: Get from store
-  const dueDaysThreshold = 7
-  const remainingAmount = computed(() => props.amount - props.paid)
-
-  const isPaid = computed(() => props.paid >= props.amount)
-  const isPartiallyPaid = computed(() => props.paid > 0 && props.paid < props.amount)
-  const percentagePaid = computed(() => {
-    if (props.amount === 0) return 0      // avoid division by zero
-    return Math.min(100, (props.paid / props.amount) * 100).toFixed(2)
-  })
-
-  type PaymentStatus = 'unknown' | 'upcoming' | 'due' | 'overdue' | 'paid'
-  const status = computed<PaymentStatus>(() => {
-    const today = new Date('2025-08-01')    // DEV: hard-coded today date for dev purposes
-    const dueDate = new Date(props.duedate)
-    today.setHours(0, 0, 0, 0)
-    dueDate.setHours(0, 0, 0, 0)
-    const diffDays = Math.ceil((dueDate.getTime() - today.getTime()) / (24 * 60 * 60 * 1000))
-
-    if (isPaid.value) return 'paid'
-    if (diffDays < 0) return 'overdue'
-    if (diffDays <= dueDaysThreshold) return 'due'
-    if (diffDays > dueDaysThreshold) return 'upcoming'
-    return 'unknown'
-  })
-
-  // TODO: Create a status object in store, with texts, class
-  const statusText = computed(() => {
-    const map: Record<PaymentStatus, Record<string, string>> = {
-      unknown: { cs: 'Neznámý', en: 'Unknown' },
-      upcoming: { cs: 'Nadcházející', en: 'Upcoming' },
-      due: { cs: 'Blíží se', en: 'Due' },
-      overdue: { cs: 'Po splatnosti', en: 'Overdue' },
-      paid: { cs: 'Zaplaceno', en: 'Paid' },
-    }
-    const locale = localeStore.locale.startsWith('cs') ? 'cs' : 'en'
-    return map[status.value][locale]
   })
 
   function openPayment() {
@@ -90,16 +53,11 @@
         <div class="fw-bold">{{ formatCurrency(props.amount) }}</div>
         <span
           class="badge"
-          :class="{
-            'bg-success-lt': status === 'paid',
-            'bg-info-lt': status === 'upcoming',
-            'bg-warning-lt': status === 'due',
-            'bg-danger-lt': status === 'overdue'
-          }">
-          {{ statusText }}
+          :class="props.statusBadgeClass">
+          {{ props.statusText }}
         </span>
       </div>
-      <div class="col-12" v-if="isPartiallyPaid">
+      <div class="col-12" v-if="props.isPartiallyPaid">
         <div class="row gy-1">
           <div class="col">
             <!-- <div class="text-secondary">Zaplaceno</div> -->
@@ -107,19 +65,19 @@
           </div>
           <div class="col text-end">
             <!-- <div class="text-secondary">Zbývá</div> -->
-            <div class="fs-5 text-secondary">{{ formatCurrency(remainingAmount) }}</div>
+            <div class="fs-5 text-secondary">{{ formatCurrency(props.remaining) }}</div>
           </div>
           <div class="col-12">
             <div class="progress progress-sm">
               <div
                 class="progress-bar bg-success"
-                :style="`width: ${percentagePaid}%`"
-                :title="`${percentagePaid}% zaplaceno`"
+                :style="`width: ${props.percentPaid}%`"
+                :title="`${props.percentPaid}% zaplaceno`"
                 role="progressbar"
-                :aria-valuenow="percentagePaid"
+                :aria-valuenow="props.percentPaid"
                 aria-valuemin="0"
                 aria-valuemax="100">
-                <span class="visually-hidden"> {{ percentagePaid }}% zaplaceno</span>
+                <span class="visually-hidden"> {{ props.percentPaid }}% zaplaceno</span>
               </div>
             </div>
           </div>
@@ -142,26 +100,21 @@
     <td data-label="Splatnost" :data-sort="props.duedate">
       {{ formatDate(props.duedate) }}
     </td>
-    <td data-label="Stav">
+    <td data-label="Stav" :data-sort="props.status">
       <span
         class="badge"
-        :class="{
-          'bg-success-lt': status === 'paid',
-          'bg-info-lt': status === 'upcoming',
-          'bg-yellow-lt': status === 'due',
-          'bg-danger-lt': status === 'overdue'
-        }">
-        {{ statusText }}
+        :class="props.statusBadgeClass">
+        {{ props.statusText }}
       </span>
     </td>
-    <td class="text-success text-sm-end" data-label="Částka">
+    <td class="text-success text-sm-end" :data-sort="props.amount" data-label="Částka">
       {{ formatCurrency(props.amount) }}
     </td>
-    <td class="text-sm-end" data-label="Zaplaceno">
+    <td class="text-sm-end" :data-sort="props.paid" data-label="Zaplaceno">
       {{ formatCurrency(props.paid) }}
     </td>
-    <td class="text-sm-end" data-label="Zbývá">
-      {{ formatCurrency(remainingAmount) }}
+    <td class="text-sm-end" :data-sort="props.remaining" data-label="Zbývá">
+      {{ formatCurrency(props.remaining) }}
     </td>
   </tr>
 </template>

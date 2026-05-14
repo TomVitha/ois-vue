@@ -4,6 +4,7 @@
 
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { useLocaleStore } from '@/stores/locale'
 
 type PaymentHistoryItem = {
   id: number
@@ -20,6 +21,43 @@ type PaymentDataItem = {
   paid: number
   isInvoiceShown?: boolean
   paymentHistory?: PaymentHistoryItem[]
+}
+
+export type PaymentStatusCode = 0 | 1 | 2 | 3 | 4
+type PaymentStatusKey = 'unknown' | 'upcoming' | 'due' | 'paid' | 'overdue'
+type PaymentStatusMeta = {
+  key: PaymentStatusKey
+  text: { cs: string; en: string }
+  badgeClass: string
+}
+
+// Single source of truth for status ordering, localized text and badge styles.
+const PAYMENT_STATUSES: Record<PaymentStatusCode, PaymentStatusMeta> = {
+  0: {
+    key: 'unknown',
+    text: { cs: 'Neznámý', en: 'Unknown' },
+    badgeClass: 'bg-secondary-lt'
+  },
+  1: {
+    key: 'upcoming',
+    text: { cs: 'Nadcházející', en: 'Upcoming' },
+    badgeClass: 'bg-info-lt'
+  },
+  2: {
+    key: 'due',
+    text: { cs: 'Blíží se', en: 'Due' },
+    badgeClass: 'bg-warning-lt'
+  },
+  3: {
+    key: 'paid',
+    text: { cs: 'Zaplaceno', en: 'Paid' },
+    badgeClass: 'bg-success-lt'
+  },
+  4: {
+    key: 'overdue',
+    text: { cs: 'Po splatnosti', en: 'Overdue' },
+    badgeClass: 'bg-danger-lt'
+  }
 }
 
 // VÝCHOZÍ DATA
@@ -100,6 +138,7 @@ const paymentsData = ref<PaymentDataItem[]>([
 
 export const usePaymentsStore = defineStore('payments', () => {
 
+  const localeStore = useLocaleStore()
   const dueDaysThreshold = ref(7)
   // const today = ref(new Date())
   const today = ref(new Date('2025-08-01')) // DEV: hard-coded datum dneška, aby byly vidět všechny stavy plateb
@@ -115,14 +154,26 @@ export const usePaymentsStore = defineStore('payments', () => {
       const paidFromHistory = paymentHistory.reduce((sum, h) => sum + h.amount, 0)
       const paid = paymentHistory.length > 0 ? paidFromHistory : p.paid
       const isPaid = paid >= p.amount
-      const daysBetweenTodayAndDueDate = Math.ceil(
-        (new Date(p.duedate).getTime() - today.value.getTime()) / (24 * 60 * 60 * 1000)
-      )
-      const status =
-        isPaid ? 'paid'
-          : daysBetweenTodayAndDueDate < 0 ? 'overdue'
-            : daysBetweenTodayAndDueDate <= dueDaysThreshold.value ? 'due'
-              : 'upcoming'
+      const locale = localeStore.locale.startsWith('cs') ? 'cs' : 'en'
+      const dueDateTimestamp = new Date(p.duedate).getTime()
+      const daysBetweenTodayAndDueDate = Number.isNaN(dueDateTimestamp)
+        ? Number.NaN
+        : Math.ceil((dueDateTimestamp - today.value.getTime()) / (24 * 60 * 60 * 1000))
+
+      let status: PaymentStatusCode = 0
+      if (isPaid) {
+        status = 3
+      } else if (!Number.isFinite(daysBetweenTodayAndDueDate)) {
+        status = 0
+      } else if (daysBetweenTodayAndDueDate < 0) {
+        status = 4
+      } else if (daysBetweenTodayAndDueDate <= dueDaysThreshold.value) {
+        status = 2
+      } else {
+        status = 1
+      }
+
+      const statusMeta = PAYMENT_STATUSES[status]
 
       return {
         ...p,
@@ -134,6 +185,9 @@ export const usePaymentsStore = defineStore('payments', () => {
         percentPaid: p.amount === 0 ? 0 : Math.min(100, Math.round((paid / p.amount) * 100)),
         daysBetweenTodayAndDueDate,
         status,
+        statusKey: statusMeta.key,
+        statusText: statusMeta.text[locale],
+        statusBadgeClass: statusMeta.badgeClass,
         accountNumberCG,
         varSymbol: `74646${String(p.id).padStart(2, '0')}`, // DEV: hard-coded
         message: '192-03-147 KD1' // DEV: hard-coded
@@ -142,11 +196,11 @@ export const usePaymentsStore = defineStore('payments', () => {
   )
 
   // PŘEHLEDY
-  const paidPayments = computed(() => payments.value.filter(p => p.status === 'paid'))
-  const overduePayments = computed(() => payments.value.filter(p => p.status === 'overdue'))
-  const upcomingPayments = computed(() => payments.value.filter(p => { return p.status === 'due' || p.status === 'upcoming' }))
-  const upcomingNotDuePayments = computed(() => payments.value.filter(p => p.status === 'upcoming'))
-  const duePayments = computed(() => payments.value.filter(p => p.status === 'due'))
+  const paidPayments = computed(() => payments.value.filter(p => p.status === 3))
+  const overduePayments = computed(() => payments.value.filter(p => p.status === 4))
+  const upcomingPayments = computed(() => payments.value.filter(p => p.status === 2 || p.status === 1))
+  const upcomingNotDuePayments = computed(() => payments.value.filter(p => p.status === 1))
+  const duePayments = computed(() => payments.value.filter(p => p.status === 2))
   const partiallyPaidPayments = computed(() => payments.value.filter(p => p.isPartiallyPaid))
 
   const selectedPayment = computed(() =>

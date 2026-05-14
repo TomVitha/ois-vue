@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  import { nextTick, onUnmounted, ref, watch } from 'vue'
   import Payment from '@/components/Payment/Payment.vue'
-  import DataTable from 'datatables.net-dt';
-  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+  import DataTable from 'datatables.net-dt'
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery'
+  import type { PaymentStatusCode } from '@/stores/payments'
 
   type PaymentItem = {
     id: number
@@ -10,6 +11,12 @@
     duedate: string
     amount: number
     paid: number
+    remaining: number
+    isPartiallyPaid: boolean
+    percentPaid: number
+    status: PaymentStatusCode
+    statusText: string
+    statusBadgeClass: string
     isInvoiceShown?: boolean
   }
 
@@ -17,19 +24,47 @@
     payments: PaymentItem[]
   }>()
 
-  onMounted(() => {
-    // DataTables pro řazení (a dále případně filtrování, stránkování, vyhledávání). Není aktuálně nutné.
-    const paymentsTable = new DataTable("#payments-table", {
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
+  const paymentTableRef = ref<HTMLTableElement | null>(null)
+  let paymentsTable: InstanceType<typeof DataTable> | null = null
+
+  function destroyDataTable() {
+    paymentsTable?.destroy()
+    paymentsTable = null
+  }
+
+  async function initDataTable() {
+    await nextTick()
+
+    if (!isDesktop.value || !paymentTableRef.value || paymentsTable) return
+
+    // DataTables pro řazení (a dále případně filtrování, stránkování, vyhledávání).
+    paymentsTable = new DataTable(paymentTableRef.value, {
+      // TEMP: Disabled options, making sure it works at all
       paging: false,
       searching: false,
       info: false,
       autoWidth: false,
       orderClasses: false,
       order: [[1, 'asc']],       // Sloupec podle kterého se bude defaultně řadit - index sloupce (od 0); směr řazení
-    });
+    })
+  }
+
+  watch(isDesktop, (desktop) => {
+    if (desktop) {
+      void initDataTable()
+      return
+    }
+
+    destroyDataTable()
+  }, {
+    immediate: true,
+    flush: 'post'
   })
 
-  const isDesktop = matchesMediaQuery('(min-width: 992px)')
+  onUnmounted(() => {
+    destroyDataTable()
+  })
 
 </script>
 
@@ -45,7 +80,7 @@
   </div>
   <!-- Desktop: table rendering -->
   <div v-else class="table-responsive">
-    <table id="payments-table" class="table table-hover table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
+    <table ref="paymentTableRef" id="payments-table" class="table table-hover table-selectable card-table table-vcenter text-nowrap datatable table-mobile-sm">
       <thead>
         <tr>
           <th>Popis</th>
