@@ -1,0 +1,39 @@
+/* GEIST font */
+/* https://vercel.com/font */
+/* NOTE: Nepoužíváme Google Fonts verzi, protože nepodporuje glyphs a 'font-feature-settings'. Alternativně je možné použít přes npm. */
+@font-face {
+  font-family: 'Geist';
+  src:
+    url('../fonts/geist/webfonts/Geist[wght].woff2') format('woff2'),
+    url('../fonts/geist/webfonts/Geist[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src:
+    url('../fonts/geist/webfonts/Geist-Italic[wght].woff2') format('woff2'),
+    url('../fonts/geist/webfonts/Geist-Italic[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* GEIST MONO font */
+@font-face {
+  font-family: 'Geist Mono';
+  src:
+    url('../fonts/geist/webfonts/GeistMono[wght].woff2') format('woff2'),
+    url('../fonts/geist/webfonts/GeistMono[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src:
+    url('../fonts/geist/webfonts/GeistMono-Italic[wght].woff2') format('woff2'),
+    url('../fonts/geist/webfonts/GeistMono-Italic[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}

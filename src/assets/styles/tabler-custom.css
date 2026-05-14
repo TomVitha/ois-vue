@@ -1,64 +1,29 @@
 /* TODO: Clean up ! */
 
-/* GEIST font */
-/* https://vercel.com/font */
-/* NOTE: Nepoužíváme Google Fonts verzi, protože nepodporuje glyphs a 'font-feature-settings'. Alternativně je možné použít přes npm. */
-@font-face {
-  font-family: 'Geist';
-  src:
-    url('./fonts/geist/webfonts/Geist[wght].woff2') format('woff2'),
-    url('./fonts/geist/webfonts/Geist[wght].ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Geist';
-  src:
-    url('./fonts/geist/webfonts/Geist-Italic[wght].woff2') format('woff2'),
-    url('./fonts/geist/webfonts/Geist-Italic[wght].ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: italic;
-}
-
-/* GEIST MONO font */
-@font-face {
-  font-family: 'Geist Mono';
-  src:
-    url('./fonts/geist/webfonts/GeistMono[wght].woff2') format('woff2'),
-    url('./fonts/geist/webfonts/GeistMono[wght].ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Geist Mono';
-  src:
-    url('./fonts/geist/webfonts/GeistMono-Italic[wght].woff2') format('woff2'),
-    url('./fonts/geist/webfonts/GeistMono-Italic[wght].ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: italic;
-}
+/* 
+  Required CSS support for:
+  - :has()
+  - color-mix
+*/
 
 :host, :root {
-  --tblr-font-sans-serif: "Geist", "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --tblr-font-monospace: "Geist Mono", Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  /* DEBUG - serif as fallback (do not remove yet) */
+  --tblr-font-sans-serif: "Geist", serif, "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --tblr-font-monospace: "Geist Mono", serif, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
+  /* --tblr-font-sans-serif: "Geist", "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; */
+  /* --tblr-font-monospace: "Geist Mono", Monaco, Consolas, Liberation Mono, Courier New, monospace; */
 }
 
 body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Required CSS features
-  :has()
-  color-mix
-
-*/
 
 /* DEV: HIDES VUE INSPECTOR */
 #vue-inspector-container,
 #__vue-devtools-container__ {
-  display: none !important;
+  /* display: none !important; */
 }
 
 
