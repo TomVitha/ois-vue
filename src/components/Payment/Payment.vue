@@ -10,6 +10,12 @@
   const localeStore = useLocaleStore()
   const paymentsStore = usePaymentsStore()
 
+  // Prevent undeclared props from falling through onto the root DOM element.
+  // This avoids extra attributes from appearing on the <div>/<tr> element.
+  defineOptions({
+    inheritAttrs: false
+  })
+
   const props = withDefaults(defineProps<{
     id: number
     title: string
