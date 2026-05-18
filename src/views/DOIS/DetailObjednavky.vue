@@ -1,37 +1,38 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { ref } from 'vue';
   import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+  import { useDropzone } from '@/composables/useDropzone'
+  import 'dropzone/dist/dropzone.css'
 
-
-  // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
-  // @ts-expect-error
-  import Dropzone from "dropzone";
-  import "dropzone/dist/dropzone.css";
-
-  onMounted(() => {
-    let dzOrderAttachments = new Dropzone("#dropzone-order-attachments");
-  });
-
-  // NOTE: Pouze pokud budou neuložené změny
+  
+  const unsavedChanges = ref(false)
   function handleBack(navigate: () => void) {
-    if (confirm("Neuložené změny budou ztraceny. Opravdu chcete odejít?")) {
+    if (!unsavedChanges.value || (unsavedChanges.value && confirm("Neuložené změny budou ztraceny. Opravdu chcete odejít?"))) {
       navigate()
-    }
+    } 
   }
 
   const route = useRoute()
-
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
-
   // TEMP
+  // TODO: Odstranit až se rozhodne který layout budeme chtít
   const tempShowActionsBar = ref(false)
+
+  // NOTE: dzOrderAttachments.value is available for manual calls
+  const { dropzone: dzOrderAttachments } = useDropzone({
+    selector: '#dropzone-order-attachments',
+    options: {
+      url: './',
+    },
+  })
+
 </script>
 
 <template>
-  <PageTemplate :title="`Objednávka ${route.params.orderId}`" back-to="/dois/seznam-objednavek" @back="handleBack">
+  <PageTemplate :title="`Objednávka ${route.params.orderId}`" back-to="/dois/objednavky-uvd" @back="handleBack">
 
     <template #actions>
       <div class="btn-list">
@@ -90,7 +91,7 @@
             </button>
           </div>
         </div>
-        <RouterLink to="/dois/seznam-objednavek" type="button" class="btn">
+        <RouterLink to="/dois/objednavky-uvd" type="button" class="btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M18 6l-12 12" />
@@ -98,7 +99,7 @@
           </svg>
           Zrušit
         </RouterLink>
-        <RouterLink to="/dois/seznam-objednavek" type="button" class="btn btn-primary">
+        <RouterLink to="/dois/objednavky-uvd" type="button" class="btn btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M5 12l5 5l10 -10" />
@@ -547,8 +548,9 @@
                 </div>
               </div>
             </div>
-
           </div>
+
+          <!-- TODO: Předělej položky pomocí <div> (a na mobilu skryt checkboxy?) -->
           <div class="col-12">
             <div class="card card-md">
               <div class="card-header">

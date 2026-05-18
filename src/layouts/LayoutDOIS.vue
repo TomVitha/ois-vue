@@ -1,6 +1,6 @@
 <script setup lang="ts">
   // TEMP File - Poté sloučit s LayoutDefault !
-  
+
   // import NavbarVertical from '../components/Nav/NavbarVertical.vue'
   // import Navbar from '../components/Nav/Navbar.vue'
 
@@ -103,8 +103,10 @@
             </template>
           </NavItem>
 
+          <!-- TODO: Všude jinde přejmenovat na tohle -->
+          <!-- TEMP název -->
           <!-- * Seznam objednávek -->
-          <NavItem label="(? new) Seznam objednávek" to="/dois/seznam-objednavek">
+          <NavItem label="Objednávky ÚVD" to="/dois/objednavky-uvd">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-list">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -119,7 +121,7 @@
           </NavItem>
 
           <!-- * Obchodní případy -->
-          <NavItem label="Obchodní případy" to="/todo">
+          <NavItem label="Obchodní případy" to="/dois/obchodni-pripady">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-files">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -152,8 +154,8 @@
             </template>
           </NavItem>
 
-          <!-- * Nahrávání souborů -->
-          <NavItem label="Nahrávání souborů" to="/dois/nahrani-souboru">
+          <!-- * Nahrání souborů -->
+          <NavItem label="Nahrání souborů" to="/dois/nahrani-souboru">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-upload">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -163,6 +165,12 @@
               </svg>
             </template>
           </NavItem>
+
+          <!-- 
+            Číselníky - není samostatná stránka - je to jen kategorie v menu
+             - položky, 
+             - dodavatelé 
+          -->
 
           <!-- ? Položky -->
           <NavItem label="Položky (?)" to="/todo">
@@ -232,23 +240,6 @@
             </template>
           </NavItem>
 
-          <!-- ? Číselníky -->
-          <NavItem label="Číselníky (?)" to="/todo">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-dashed">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
-                <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
-                <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
-                <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
-                <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
-                <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
-                <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
-                <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
-              </svg>
-            </template>
-          </NavItem>
-
           <!-- <li class="nav-item">
             <hr class="my-1">
           </li> -->
@@ -288,22 +279,6 @@
           </NavItem>
           -->
 
-          <!-- Separator -->
-          <li class="nav-item">
-            <hr class="my-1">
-          </li>
-
-          <!-- * Help / FAQ -->
-          <NavItem label="Otázky a odpovědi" to="/help">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-help">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                <path d="M12 17l0 .01" />
-                <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
-              </svg>
-            </template>
-          </NavItem>
 
         </ul>
       </div>

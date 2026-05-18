@@ -2,30 +2,14 @@
   import { ref, onMounted, watch } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
-  import OrderDetailDialog from '@/components/DOIS/OrderDetailDialog.vue'
-
-  // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
-  // @ts-expect-error
-  import Dropzone from "dropzone";
-  import "dropzone/dist/dropzone.css";
 
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
-
-  onMounted(() => {
-    let dzOrderAttachments = new Dropzone("#dropzone-order-attachments");
-  });
-
   const isWideScreen = matchesMediaQuery('(min-width: 1600px)')
   const isFluidLayout = ref(false)
 
-  // watch isFluid, add/remove class .fluid from body
+  // Toggle fluid layout
   watch(isFluidLayout, (newValue) => {
-    const pageBody = document.querySelector('.page-body') as HTMLElement
-    if (newValue) {
-      pageBody.classList.add('layout-fluid')
-    } else {
-      pageBody.classList.remove('layout-fluid')
-    }
+    (document.querySelector('.page-body') as HTMLElement).classList.toggle('layout-fluid', newValue)
   })
 
 </script>
@@ -33,10 +17,26 @@
 <template>
   <PageTemplate title="Seznam objednávek">
 
+    <!-- WIP -->
+    <template #toolbar>
+      <div class="d-flex gap-3 align-items-baseline">
+        <search class="input-icon">
+          <span class="input-icon-addon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+              <path d="M21 21l-6 -6"></path>
+            </svg>
+          </span>
+          <input type="search" class="form-control form-control-sm" placeholder="Hledejte…">
+        </search>
+        <span>[zde budou filtry]</span>
+      </div>
+    </template>
+
     <template #actions>
       <div class="btn-list">
         <div class="btn-actions">
-          <!-- TEMP -->
+          <!-- WIP -->
           <button
             v-if="isWideScreen"
             @click="isFluidLayout = !isFluidLayout"
@@ -64,6 +64,15 @@
             </svg>
           </button>
         </div>
+        <!-- WIP -->
+        <div class="dropdown">
+          <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat do</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">XLSX</a>
+            <a class="dropdown-item" href="#">CSV</a>
+            <a class="dropdown-item" href="#">PDF</a>
+          </div>
+        </div>
         <RouterLink to="/todo" type="button" class="btn btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -80,7 +89,8 @@
     <div class="row row-cards">
       <div class="col-12">
         <div class="card">
-          <div class="card-header">
+          <!-- ? chceme card header ? -->
+          <!-- <div class="card-header">
             <div class="row w-full">
               <div class="col">
                 <h3 class="card-title mb-0">Objednávky</h3>
@@ -99,7 +109,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="table-responsive">
             <table class="table table-vcenter table-selectable table-nowrap card-table">
               <thead>
@@ -124,9 +134,7 @@
                   <td><input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox" aria-label="Vybrat položku"></td>
                   <!-- TEMP hard-coded link -> dynamic -->
                   <td class="sort-id"><RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink></td>
-                  <!-- ! OLD: Modal dialog -- zatím ponecháno pro referenci, poté odebrat -->
-                  <td class="sort-receipt"><a href="#" class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#temp-detail-modal">192-01-086-IS-I</a></td>
-                  <!-- <td class="sort-receipt">192-01-086-IS-I</td> -->
+                  <td class="sort-receipt">192-01-086-IS-I</td>
                   <td class="sort-status" date-status="0"><span class="status status-success">Nová</span></td>
                   <td class="sort-technician">Petr Lamata</td>
                   <td class="sort-readiness">Indeco</td>
@@ -195,9 +203,6 @@
         </div>
       </div>
     </div>
-
-    <!-- TODO: Deprecate in favor of DetailObjednavky view; Left for now for reference -->
-    <OrderDetailDialog />
 
   </PageTemplate>
 </template>

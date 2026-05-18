@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
+  import { useDropzone } from '@/composables/useDropzone'
+  import 'dropzone/dist/dropzone.css'
 
-  // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
-  // @ts-expect-error
-  import Dropzone from "dropzone";
-  import "dropzone/dist/dropzone.css";
+  // NOTE: dzFileupload.value is available for manual calls
+  const { dropzone: dzFileupload } = useDropzone({
+    selector: '#dropzone-file-upload',
+    options: {
+      url: './',
+    },
+  })
 
-  onMounted(() => {
-    let dzFileupload = new Dropzone("#dropzone-file-upload");
-  });
 </script>
 
 <template>

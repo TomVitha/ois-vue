@@ -38,14 +38,26 @@
               </p>
             </div>
 
-            <!-- * Platby -->
-            <div class="col-12">
+            <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
+            <!-- <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title me-auto">Sekce</h3>
-                </div>
-                <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
                 <Empty title="Nic" subtitle="Zatím tu nic není." />
+              </div>
+            </div> -->
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  přehledy
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  grafy
+                </div>
               </div>
             </div>
 

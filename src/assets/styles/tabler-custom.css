@@ -73,7 +73,7 @@ dialog {
 }
 
 /* Increase icon gap */
-.nav-link-icon {
+.navbar-nav .nav-link-icon {
   margin-right: 0.875rem;
 }
 
@@ -314,6 +314,7 @@ html {
 .nav-underline {
   --tblr-nav-underline-gap: 0rem;
   --tblr-nav-underline-border-width: 2px;
+  align-items: end;
 }
 
 .nav .nav-link {
