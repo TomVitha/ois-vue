@@ -9,7 +9,7 @@
   import "dropzone/dist/dropzone.css";
 
   onMounted(() => {
-    let dropzoneFileupload = new Dropzone("#dropzone-file-upload");
+    let dzFileupload = new Dropzone("#dropzone-file-upload");
   });
 </script>
 
@@ -92,7 +92,7 @@
               <div class="col">
                 <label class="form-check my-0">
                   <input class="form-check-input" type="checkbox">
-                  <span class="form-check-label">Nahrávám jako poptávku</span>
+                  <span class="form-check-label">Nahrát jako poptávku</span>
                 </label>
               </div>
               <div class="col-auto">

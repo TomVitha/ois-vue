@@ -3,6 +3,8 @@
   import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+
 
   // Installed version (6.0.0-beta.2) doesn't bundle TypeScript type declarations  
   // @ts-expect-error
@@ -10,7 +12,7 @@
   import "dropzone/dist/dropzone.css";
 
   onMounted(() => {
-    let dropzoneOrderAttachments = new Dropzone("#dropzone-order-attachments");
+    let dzOrderAttachments = new Dropzone("#dropzone-order-attachments");
   });
 
   // NOTE: Pouze pokud budou neuložené změny
@@ -21,6 +23,8 @@
   }
 
   const route = useRoute()
+
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
   // TEMP
   const tempShowActionsBar = ref(false)
@@ -180,12 +184,13 @@
           <div class="col-12">
             <div class="card card-md">
               <!-- ? card header ? -->
-              <div class="card-header">
+              <!-- <div class="card-header">
                 <h3 class="card-title">Objednávka</h3>
-              </div>
+              </div> -->
               <!-- Výčet údajů (#0) -->
               <!-- <div class="card-body">
-                <p>Interní číslo: 458-2025-ÚVD</p>
+                <p>Interní číslo: {{ route.params.orderId }}</p>
+                <p>Stav: Nová</p>
                 <p>Číslo SoD: 192-01-086-IS-I</p>
                 <p>Datum podpisu SoD: 01.05.2025</p>
                 <p>Katalogové číslo: 192-01-086</p>
@@ -199,7 +204,7 @@
                     <dl class="datagrid">
                       <div class="datagrid-item">
                         <dt class="datagrid-title">Interní číslo</dt>
-                        <dd class="datagrid-content">458-2025-ÚVD</dd>
+                        <dd class="datagrid-content">{{ route.params.orderId }}</dd>
                       </div>
                       <div class="datagrid-item">
                         <dt class="datagrid-title">Číslo SoD</dt>
@@ -226,13 +231,16 @@
                 </div>
               </div> -->
               <!-- Výčet údajů (#2) -->
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-xxl-10">
                     <div class="row gy-3">
                       <div class="col-12">
                         <div class="form-label mb-0">Interní číslo</div>
-                        <span class="h2">458-2025-ÚVD</span>
+                        <div>
+                          <span class="h2">{{ route.params.orderId }}</span>
+                          <span class="status status-success align-text-bottom ms-2">Nová</span>
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <div class="row">
@@ -287,15 +295,18 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- Výčet údajů (#3) -->
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-xxl-10">
                     <div class="row gy-3">
                       <div class="col-12">
                         <div class="datagrid-title">Interní číslo</div>
-                        <span class="h2">458-2025-ÚVD</span>
+                        <div>
+                          <span class="h2">{{ route.params.orderId }}</span>
+                          <span class="status status-success align-text-bottom ms-2">Nová</span>
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <div class="datagrid-title">Číslo SoD</div>
@@ -313,27 +324,14 @@
                         <div class="datagrid-title">Datum akceptace objednávky</div>
                         <div>15.05.2025</div>
                       </div>
-                      <!-- <div class="col-md-6">
-                        <div class="datagrid-title">Dodavatel</div>
-                        <div>Společnost s.r.o.</div>
-                      </div> -->
-                      <!-- Dodavatel with popover -->
                       <div class="col-md-6">
                         <div class="datagrid-title">Dodavatel</div>
-                        <div>
-                          <!-- WIP -->
-                          <span
-                            data-bs-toggle="modal"
-                            data-bs-target="#order-supplier-infobox"
-                            class="badge badge-lg bg-default text-body cursor-pointer">
-                            Společnost s.r.o.
-                          </span>
-                        </div>
+                        <div>Společnost s.r.o.</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- ? text-muted VS datagrid-title -->
               <!-- ? nechat na 2 sloupce ? -->
               <!-- * Výčet údajů (#4) -->
@@ -343,7 +341,10 @@
                     <div class="row g-3">
                       <div class="col-12">
                         <div class="text-muted">Interní číslo</div>
-                        <span class="h2">458-2025-ÚVD</span>
+                        <div>
+                          <span class="h2">{{ route.params.orderId }}</span>
+                          <span class="status status-success align-text-bottom ms-2">Nová</span>
+                        </div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">
                         <div class="text-muted w-50">Číslo SoD</div>
@@ -361,9 +362,21 @@
                         <div class="text-muted w-50">Datum akceptace objednávky</div>
                         <div class="w-50">15.05.2025</div>
                       </div>
-                      <div class="col-12 col-md-6 d-flex">
+                      <!-- <div class="col-12 col-md-6 d-flex">
                         <div class="text-muted w-50">Dodavatel</div>
                         <div class="w-50">Společnost s.r.o.</div>
+                      </div> -->
+                      <!-- ? maybe ? -->
+                      <div class="col-12 col-md-6 d-flex flex-column">
+                        <div class="text-muted">Dodavatel</div>
+                        <div>
+                          <span
+                            data-bs-toggle="modal"
+                            data-bs-target="#order-supplier-infobox"
+                            class="badge badge-lg bg-default text-body cursor-pointer">
+                            Společnost s.r.o.
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -494,18 +507,12 @@
           <!-- TODO: Odstraň accordion -->
           <!-- ? collapsable accordion ? -->
           <div class="col-12">
+
             <div class="card card-md">
               <div class="card-header">
-                <div class="accordion-button" type="button" aria-expanded="true" data-bs-toggle="collapse" data-bs-target="#temp-collapse-1-default">
-                  <h3 class="card-title">Dodavatel</h3>
-                  <div class="accordion-button-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                      <path d="M6 9l6 6l6 -6"></path>
-                    </svg>
-                  </div>
-                </div>
+                <h3 class="card-title">Dodavatel</h3>
               </div>
-              <div class="card-body accordion-collapse collapse show" data-bs-parent="#accordion-default" id="temp-collapse-1-default">
+              <div class="card-body">
                 <div class="row gy-3">
                   <div class="col-12">
                     <!-- <span class="form-label">Poznámka dodavatele</span> -->
@@ -540,6 +547,7 @@
                 </div>
               </div>
             </div>
+
           </div>
           <div class="col-12">
             <div class="card card-md">
@@ -606,8 +614,8 @@
               <!-- * Empty state -->
               <!-- <Empty title="Žádné přílohy" subtitle="K objednávce nejsou připojeny žádné přílohy." /> -->
               <!-- * Výpis příloh -->
-              <div class="card-body">
-                <div class="card">
+              <div :class="{ 'card-body': isDesktop }">
+                <div :class="{ 'card': isDesktop }">
                   <table class="table card-table table-selectable table-vcenter">
                     <tbody>
                       <tr>
@@ -789,6 +797,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-12">
             <div class="card card-md">
               <div class="card-header">
@@ -800,9 +809,9 @@
                 </div>
               </div>
 
-              <div class="card-body">
-                <div class="card">
-                  <table class="table table-vcenter table-selectable table-nowrap card-table">
+              <div :class="{ 'card-body': isDesktop }">
+                <div :class="{ 'card': isDesktop }">
+                  <table class="table table-vcenter table-selectable card-table">
                     <thead>
                       <tr>
                         <th>Název</th>
@@ -828,10 +837,59 @@
                           </div>
                         </td>
                       </tr>
+                      <tr>
+                        <td>Nějaká položka s dlouhým názvem</td>
+                        <td>
+                          <div class="input-icon">
+                            <span class="input-icon-addon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                                <path d="M16 3v4"></path>
+                                <path d="M8 3v4"></path>
+                                <path d="M4 11h16"></path>
+                                <path d="M11 15h1"></path>
+                                <path d="M12 15v3"></path>
+                              </svg>
+                            </span>
+                            <input type="date" class="form-control" id="">
+                          </div>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
+
+              <!-- <div class="card-body">
+                <div class="list-group overflow-auto">
+                  <div class="list-group-item">
+                    <div class="row align-items-center gy-3">
+                      <div class="col-sm-5">
+                        <span>Skříň chodba</span>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="">
+                          <label for="floating-password">Termín dokončení dle SoD</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center gy-3">
+                      <div class="col-sm-5">
+                        <span>Nějaká položka s dlouhým názvem</span>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="">
+                          <label for="floating-password">Termín dokončení dle SoD</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
 
               <!-- TODO: Rozhodni se, které z těch dvou -->
 
@@ -1112,23 +1170,5 @@
     transition: none !important;
   }
 
-  /* WIP */
-  /* ? improve selector ? */
-  .nav-underline {
-    --tblr-nav-underline-gap: 0rem;
-    --tblr-nav-link-padding-x: 1rem;
-    --tblr-nav-link-padding-y: 0.75rem;
-    --tblr-nav-link-hover-bg: transparent;
-  }
 
-  .nav-underline .nav-link {
-    padding-right: var(--tblr-nav-link-padding-x);
-    padding-left: var(--tblr-nav-link-padding-x);
-    font-weight: 600;
-  }
-
-  .nav-underline .nav-link.active,
-  .nav-underline .show > .nav-link {
-    border-bottom-color: var(--tblr-primary);
-  }
 </style>

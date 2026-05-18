@@ -90,6 +90,7 @@
                   <tbody>
                     <tr v-for="request in group.requests" :key="request.id">
                       <td data-label="Název">{{ request.templateName }}</td>
+                      <!-- TODO: Stavy žádosti -->
                       <td data-label="Stav">
                         <span class="status status-info">Otevřená</span>
                       </td>
