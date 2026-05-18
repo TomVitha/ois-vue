@@ -97,6 +97,11 @@ const router = createRouter({
       meta: { layout: LayoutDOIS },
     },
     {
+      path: '/dois/obchodni-pripad',
+      component: () => import('../views/DOIS/ObchodniPripad.vue'),
+      meta: { layout: LayoutDOIS },
+    },
+    {
       path: '/dois/objednavka/:orderId',
       component: () => import('../views/DOIS/DetailObjednavky.vue'),
       meta: { layout: LayoutDOIS },

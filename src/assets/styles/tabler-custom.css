@@ -297,9 +297,39 @@ html {
 .card-table :is(thead, tbody, tfoot) tr:last-child {
   border-bottom: 0;
 }
+
 .card-table :is(thead, tbody, tfoot) tr:last-child :is(th, td) {
   border-bottom: 0;
 }
+
+
+/* WIP */
+.nav {
+  --tblr-nav-link-padding-x: 1rem;
+  --tblr-nav-link-padding-y: 0.75rem;
+  --tblr-nav-link-hover-bg: transparent;
+  --tblr-nav-link-font-weight: 600;
+}
+
+.nav-underline {
+  --tblr-nav-underline-gap: 0rem;
+  --tblr-nav-underline-border-width: 2px;
+}
+
+.nav .nav-link {
+  padding: var(--tblr-nav-link-padding-y) var(--tblr-nav-link-padding-x);
+}
+
+.nav-underline .nav-link.active,
+.nav-underline .show > .nav-link {
+  border-bottom-color: var(--tblr-primary);
+  font-weight: var(--tblr-nav-link-font-weight);
+}
+
+.nav-bordered .nav-item + .nav-item {
+  margin: 0;
+}
+
 
 /* HACK: QUICK AND DIRTY */
 @media (min-width: 992px) {
