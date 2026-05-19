@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
+  import { onBeforeUnmount, onMounted, ref } from 'vue'
 </script>
 
 <template>
@@ -9,7 +10,7 @@
 
     <!-- WIP -->
     <template #toolbar>
-      <div class="d-flex gap-3 align-items-baseline">
+      <div class="btn-list align-items-center">
         <search class="input-icon">
           <span class="input-icon-addon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
@@ -19,12 +20,22 @@
           </span>
           <input type="search" class="form-control form-control-sm" placeholder="Hledejte…">
         </search>
+        <!-- WIP -->
         <span>[zde budou filtry]</span>
+        <button type="button" class="btn-link text-success text-nowrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l5 5l10 -10" />
+          </svg>
+          Aplikovat
+        </button>
+        <button type="button" class="btn-link text-body text-nowrap">
+          Zrušit filtry
+        </button>
       </div>
     </template>
 
     <div class="row row-deck row-cards">
-
 
       <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
       <!-- <div class="col-12">

@@ -1,11 +1,18 @@
 <script setup lang="ts">
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
+
+  // ? maybe
+  import AccordionGroup from '@/components/AccordionGroup.vue'
+  import AccordionItem from '@/components/AccordionItem.vue'
+
+  import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
 </script>
 
 <template>
 
-  <PageTemplate title="Objednávky ??">
+  <PageTemplate title="Objednávky">
+
     <template #actions>
       <div class="btn-list">
         <button class="btn btn-primary">Primary</button>
@@ -13,79 +20,55 @@
       </div>
     </template>
 
-    <div class="row row-cards">
-      <!-- <div class="col-xxl-3">
+    <div class="row row-deck row-cards">
+
+      <div class="col-12">
         <div class="card">
-          <div class="card-body">
-            <div class="space-y-1 justify-content-center text-center">
-              <h3>Adam Novák</h3>
-              <div>+420721584630</div>
-              <div>novak@seznam.cz</div>
-              <div>Pryskyřicova 304/11, Praha 0, 100 00</div>
+          <div class="card-header">
+            <div>
+              <div class="card-title">194-11-049</div>
+              <div>Sapeli Development</div>
             </div>
           </div>
-        </div>
-      </div> -->
-      <div class="col">
-
-        <div class="col-12">
-          <div class="row row-deck row-cards">
-
-            <!-- * Platby -->
-            <div class="col-12">
-              <div class="card">
-                <!-- <div class="card-header">
-                  <h3 class="card-title me-auto">Objednávky</h3>
-                </div> -->
-                <table class="table table-vcenter table-selectable card-table">
-                  <thead>
-                    <tr>
-                      <th class="w-1">Stav</th>
-                      <th>Číslo smlouvy</th>
-                      <th>Dodavatel</th>
-                      <th>Datum a čas</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="status status-success">Nová</span>
-                      </td>
-                      <td>197-08-040</td>
-                      <td>HANÁK NÁBYTEK,a.s.</td>
-                      <td>23.04.2026 13:53</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <!-- * Empty state - Zobrazí se pokud nejsou žádné platby -->
-                <!-- <Empty title="idk" subtitle="idk" /> -->
-              </div>
-            </div>
-
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <span class="status status-success">Nová</span>
+          <div class="list-group list-group-flush">
+            <OrderDocumentItem :status="1" name="194-11-049_Sapeli-KD2.pdf"></OrderDocumentItem>
+          </div>
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col">
+                <div class="accordion accordion-flush" id="temp-dokumenty">
+                  <div class="accordion-item">
+                    <div class="accordion-header">
+                      <button
+                        class="accordion-button collapsed list-group-header"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#temp-dokumenty-1"
+                        aria-expanded="false">
+                        Počet dokumentů: 3
+                        <div class="accordion-button-toggle">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                            <path d="M6 9l6 6l6 -6"></path>
+                          </svg>
+                        </div>
+                      </button>
                     </div>
-                    <div class="col">
-                      	197-08-040
-                    </div>
-                    <div class="col">
-                      	HANÁK NÁBYTEK,a.s.
-                    </div>
-                    <div class="col">
-                      	23.04.2026 13:53
+                    <!-- WIP -->
+                    <div id="temp-dokumenty-1" class="accordion-collapse collapse">
+                      <div class="list-group list-group-flush">
+                        <OrderDocumentItem :status="1" name="6A017122_53341_01.scn"></OrderDocumentItem>
+                        <OrderDocumentItem :status="2" name="189-08-287_KK_var 1_01.pdf"></OrderDocumentItem>
+                        <OrderDocumentItem :status="3" name="1_1.png"></OrderDocumentItem>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
+
     </div>
 
   </PageTemplate>

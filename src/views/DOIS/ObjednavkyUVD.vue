@@ -15,11 +15,11 @@
 </script>
 
 <template>
-  <PageTemplate title="Seznam objednávek">
+  <PageTemplate title="Objednávky ÚVD">
 
     <!-- WIP -->
     <template #toolbar>
-      <div class="d-flex gap-3 align-items-baseline">
+      <div class="btn-list align-items-center">
         <search class="input-icon">
           <span class="input-icon-addon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
@@ -42,7 +42,6 @@
             @click="isFluidLayout = !isFluidLayout"
             class="btn btn-action"
             data-bs-toggle="tooltip"
-            data-bs-placement="top"
             :title="!isFluidLayout ? 'Rozšířené zobrazení' : 'Normální zobrazení'">
             <svg v-if="!isFluidLayout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-viewport-wide">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -66,7 +65,10 @@
         </div>
         <!-- WIP -->
         <div class="dropdown">
-          <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat do</a>
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-download"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+            Exportovat
+          </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">XLSX</a>
             <a class="dropdown-item" href="#">CSV</a>
