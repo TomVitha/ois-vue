@@ -200,6 +200,11 @@ dialog {
   display: inline-flex;
 }
 
+/* FIX: Visible border on disabled btn-action */
+.btn-action {
+  --tblr-btn-disabled-border-color: transparent;
+}
+
 @media (max-width: 575.98px) {
   .table-mobile-sm .btn {
     display: inline-flex;

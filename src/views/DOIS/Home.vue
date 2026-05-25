@@ -34,7 +34,7 @@
             <!-- Úvodní text -->
             <div class="col-12">
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste temporibus dolores, obcaecati voluptates, voluptate beatae.
+                Kdo ví co tu bude ¯\_(ツ)_/¯
               </p>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  přehledy
+                  přehledy?
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
-                  grafy
+                  grafy?
                 </div>
               </div>
             </div>
