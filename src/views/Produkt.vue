@@ -44,6 +44,8 @@
                   <h2 class="mb-0">Rezidenční čtvrť Tesla Hloubětín</h2>
                   <h3>Praha 9 - Hloubětín</h3>
                 </div>
+                <!-- NOTE: ZMĚNA ZOBRAZENÝCH ÚDAJŮ PRO RODINNÝ DŮM ! -->
+                <!-- NOTE: Pokud je produkt rodinný dům, skryjte div.col elementy s údaji "bytový dům" a "patro". Také změňte "col-4" na "col-6" ! -->
                 <div class="row gy-3">
                   <div class="col-4">
                     <div class="row">
