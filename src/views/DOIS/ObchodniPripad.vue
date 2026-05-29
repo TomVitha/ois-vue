@@ -144,7 +144,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <div class="card-title">Klient</div>
+                <div class="card-title">Osoba</div>
               </div>
               <!-- TEMP -->
               <div class="card-body">

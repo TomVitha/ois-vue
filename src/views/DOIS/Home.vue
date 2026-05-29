@@ -6,12 +6,6 @@
 <template>
 
   <PageTemplate pretitle="Dodavatelský portál" title="Dashboard">
-    <template #actions>
-      <div class="btn-list">
-        <button class="btn btn-primary">Primary</button>
-        <a href="#" class="btn">Secondary</a>
-      </div>
-    </template>
 
     <div class="row row-cards">
       <!-- <div class="col-xxl-3">

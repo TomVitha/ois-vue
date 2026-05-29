@@ -5,90 +5,291 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+// HARD-CODED USER DATA
+const currentUser = {
+  id: 1,
+  username: 'John Doe',
+}
+
 type DocumentStatus = 0 | 1 | 2 | 3
 
-const orders = ref([
+export type Comment = {
+  id: number
+  parentId: number
+  username: string
+  datetime: string
+  text: string
+}
+
+type OrderDocument = {
+  id: number
+  filepath: string
+  datetime: string
+  status: DocumentStatus
+}
+
+type OrderPart = [
+  mainDocument: OrderDocument,
+  supportingDocuments: OrderDocument[][]
+]
+
+type Order = {
+  id: number
+  contractNumber: string
+  supplier: string
+  documents: OrderPart[]
+}
+
+const orders = ref<Order[]>([
   {
     id: 0,
     contractNumber: '194-11-049',
     supplier: 'Sapeli Development',
     documents: [
-      // main (order) document
-      {
-        id: 1,
-        filename: 'hlavni-dokument.pdf',
-        datetime: '2026-05-11T09:38:00',
-        status: 1,
-      },
-      // supplier documents
+      // ORDER PART 1
       [
-        // group of documents #1
+        // main document
+        {
+          id: 1,
+          filepath: '/soubory/hlavni-dokument-1.pdf',
+          datetime: '2026-05-11T09:38:00',
+          status: 1,
+        },
+        // supporting documents
         [
-          {
-            id: 2,
-            filename: '6A017122_53341_01.scn',
-            datetime: '2026-05-11T09:38:00',
-            status: 1,
-            comments: [
-              {
-                username: 'Petr Stolice',
-                datetime: '2026-05-11T10:12:00',
-                text: 'Tohle je poznámka k dokumentu 194-11-049_Sapeli-KD1.pdf.'
-              },
-              {
-                username: 'Ema Bílá',
-                datetime: '2026-05-11T10:14:12',
-                text: 'A tady je další koment.'
-              }
-            ]
-          },
-          {
-            id: 3,
-            filename: '189-08-287_KK_var 1_01.pdf',
-            datetime: '2026-05-11T09:38:00',
-            status: 1,
-          },
-          {
-            id: 4,
-            filename: '1_1.png',
-            datetime: '2026-05-11T09:38:00',
-            status: 1,
-          },
-        ],
-        // group of documents #2
+          // group of documents #1
+          [
+            {
+              id: 2,
+              filepath: '/soubory/6A017122_53341_01.scn',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+            {
+              id: 3,
+              filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+          ],
+          // group of documents #2
+          [
+            {
+              id: 4,
+              filepath: '/soubory/1_1.png',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+            {
+              id: 5,
+              filepath: '/soubory/1_2.png',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            }
+          ]
+        ]
+      ],
+      // ORDER PART 2
+      [
+        // main document
+        {
+          id: 6,
+          filepath: '/soubory/hlavni-dokument-2.pdf',
+          datetime: '2026-05-11T09:38:00',
+          status: 1,
+        },
+        // supporting documents
         [
-          {
-            id: 5,
-            filename: '1_2.png',
-            datetime: '2026-05-11T09:38:00',
-            status: 1,
-          }
+          // group of documents #1
+          [
+            {
+              id: 7,
+              filepath: '/soubory/6A017122_53341_01.scn',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+            {
+              id: 8,
+              filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+            {
+              id: 9,
+              filepath: '/soubory/1_1.png',
+              datetime: '2026-05-11T09:38:00',
+              status: 1,
+            },
+          ],
+          // group of documents #2
+          [
+            {
+              id: 10,
+              filepath: '/soubory/Eraserhead.1977.1080p.x265.AAC-PiratskaStrana.mkv',
+              datetime: '2007-10-27T21:14:11',
+              status: 1,
+            }
+          ]
         ]
       ]
-    ],
-    // comments for the whole order itself
-    comments: [
-      {
-        username: 'Martin Smrkal',
-        datetime: '2026-05-11T10:14:00',
-        text: 'A toto je koment k celé objednávce.'
-      }
-    ],
+    ]
   }
 ])
+
+const documentComments = ref<Comment[]>([
+  {
+    id: 1,
+    parentId: 1,
+    username: 'Jirka Jiříkovský',
+    datetime: '2026-05-11T10:12:00',
+    text: 'prosím ať se to udělá pořádně'
+  },
+  {
+    id: 2,
+    parentId: 2,
+    username: 'Petr Stolice',
+    datetime: '2026-05-11T10:12:00',
+    text: 'Mě se to nelíbí'
+  },
+  {
+    id: 3,
+    parentId: 2,
+    username: 'Ema Bílá',
+    datetime: '2026-05-11T10:14:12',
+    text: 'mě jo'
+  },
+  {
+    id: 4,
+    parentId: 7,
+    username: 'Petr Stolice',
+    datetime: '2026-05-11T10:12:00',
+    text: 'Tohle je poznámka k dokumentu 194-11-049_Sapeli-KD1.pdf.'
+  },
+  {
+    id: 5,
+    parentId: 7,
+    username: 'Ema Bílá',
+    datetime: '2026-05-11T10:14:12',
+    text: 'A tady je další koment.'
+  },
+  {
+    id: 6,
+    parentId: 10,
+    username: 'David Lynch',
+    datetime: '2007-10-27T22:07:33',
+    text: 'Believe it or not, Eraserhead is my most spiritual film'
+  },
+  {
+    id: 7,
+    parentId: 10,
+    username: 'Jason Barlow',
+    datetime: '2007-10-27T22:08:50',
+    text: 'Elaborate on that'
+  },
+  {
+    id: 8,
+    parentId: 10,
+    username: 'David Lynch',
+    datetime: '2007-10-27T22:09:00',
+    text: 'no'
+  },
+])
+
+const orderComments = ref<Comment[]>([
+  {
+    id: 6,
+    parentId: 0,
+    username: 'Martin Smrkal',
+    datetime: '2026-05-11T10:14:00',
+    text: 'A toto je koment k celé objednávce.'
+  }
+])
+
+function getDocumentComments(documentId: number): Comment[] {
+  return documentComments.value.filter(comment => comment.parentId === documentId)
+}
+
+function getOrderComments(orderId: number): Comment[] {
+  return orderComments.value.filter(comment => comment.parentId === orderId)
+}
+
+function getNextCommentId(): number {
+  const allComments = [...documentComments.value, ...orderComments.value]
+  return allComments.reduce((maxId, comment) => Math.max(maxId, comment.id), 0) + 1
+}
+
+function addDocumentComment(orderId: number, documentId: number, text: string): Comment | null {
+  const order = orders.value.find(o => o.id === orderId)
+  if (!order) return null
+
+  const documentExistsInOrder = order.documents.flat(3).some(
+    (d): d is OrderDocument =>
+      typeof d === 'object' &&
+      d !== null &&
+      'id' in d &&
+      'status' in d &&
+      (d as OrderDocument).id === documentId
+  )
+  if (!documentExistsInOrder) return null
+
+  const trimmedText = text.trim()
+  if (!trimmedText) return null
+
+  const comment: Comment = {
+    id: getNextCommentId(),
+    parentId: documentId,
+    username: currentUser.username,
+    datetime: new Date().toISOString(),
+    text: trimmedText,
+  }
+
+  documentComments.value.push(comment)
+  return comment
+}
+
+function addOrderComment(orderId: number, text: string): Comment | null {
+  const order = orders.value.find(o => o.id === orderId)
+  if (!order) return null
+
+  const trimmedText = text.trim()
+  if (!trimmedText) return null
+
+  const comment: Comment = {
+    id: getNextCommentId(),
+    parentId: orderId,
+    username: currentUser.username,
+    datetime: new Date().toISOString(),
+    text: trimmedText,
+  }
+
+  orderComments.value.push(comment)
+  return comment
+}
 
 function setDocumentStatus(orderId: number, documentId: number, status: DocumentStatus) {
   const order = orders.value.find(o => o.id === orderId)
   if (!order) return
-  const document = order.documents.flat(2).find((d: any) => d.id === documentId)
+  const document = order.documents.flat(3).find(
+    (d): d is OrderDocument =>
+      typeof d === 'object' &&
+      d !== null &&
+      'id' in d &&
+      'status' in d &&
+      (d as OrderDocument).id === documentId
+  )
   if (!document) return
   document.status = status
 }
 
-
 export const useDoisOrders = defineStore('doisOrders', () => {
   return {
     orders,
+    documentComments,
+    orderComments,
+    getDocumentComments,
+    getOrderComments,
+    addDocumentComment,
+    addOrderComment,
     setDocumentStatus,
   }
 })
