@@ -368,6 +368,8 @@ html {
 @media (min-width: 992px) {
   .navbar-vertical.navbar-expand-lg {
     width: var(--tblr-navbar-vertical-width);
+    /* FIX: Scrollbar will only show when content overflows, instead of always showing */
+    overflow-y: auto;
   }
 }
 
