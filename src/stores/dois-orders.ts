@@ -5,18 +5,30 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-// HARD-CODED USER DATA
-const currentUser = {
-  id: 1,
-  username: 'John Doe',
+export type User = {
+  id: number
+  username: string
 }
+
+const users = ref<User[]>([
+  { id: 1, username: 'John Doe' },
+  { id: 2, username: 'Jirka Jiříkovský' },
+  { id: 3, username: 'Petr Stolice' },
+  { id: 4, username: 'Ema Bílá' },
+  { id: 5, username: 'David Lynch' },
+  { id: 6, username: 'Jason Barlow' },
+  { id: 7, username: 'Martin Smrkal' },
+])
+
+// Stores the ID of the currently active user.
+const currentUser = ref<number>(1)
 
 type DocumentStatus = 0 | 1 | 2 | 3
 
 export type Comment = {
   id: number
   parentId: number
-  username: string
+  userId: number
   datetime: string
   text: string
 }
@@ -140,56 +152,56 @@ const documentComments = ref<Comment[]>([
   {
     id: 1,
     parentId: 1,
-    username: 'Jirka Jiříkovský',
+    userId: 2,
     datetime: '2026-05-11T10:12:00',
     text: 'prosím ať se to udělá pořádně'
   },
   {
     id: 2,
     parentId: 2,
-    username: 'Petr Stolice',
+    userId: 3,
     datetime: '2026-05-11T10:12:00',
     text: 'Mě se to nelíbí'
   },
   {
     id: 3,
     parentId: 2,
-    username: 'Ema Bílá',
+    userId: 4,
     datetime: '2026-05-11T10:14:12',
     text: 'mě jo'
   },
   {
     id: 4,
     parentId: 7,
-    username: 'Petr Stolice',
+    userId: 3,
     datetime: '2026-05-11T10:12:00',
     text: 'Tohle je poznámka k dokumentu 194-11-049_Sapeli-KD1.pdf.'
   },
   {
     id: 5,
     parentId: 7,
-    username: 'Ema Bílá',
+    userId: 4,
     datetime: '2026-05-11T10:14:12',
     text: 'A tady je další koment.'
   },
   {
     id: 6,
     parentId: 10,
-    username: 'David Lynch',
+    userId: 5,
     datetime: '2007-10-27T22:07:33',
     text: 'Believe it or not, Eraserhead is my most spiritual film'
   },
   {
     id: 7,
     parentId: 10,
-    username: 'Jason Barlow',
+    userId: 6,
     datetime: '2007-10-27T22:08:50',
     text: 'Elaborate on that'
   },
   {
     id: 8,
     parentId: 10,
-    username: 'David Lynch',
+    userId: 5,
     datetime: '2007-10-27T22:09:00',
     text: 'no'
   },
@@ -199,9 +211,9 @@ const orderComments = ref<Comment[]>([
   {
     id: 6,
     parentId: 0,
-    username: 'Martin Smrkal',
+    userId: 7,
     datetime: '2026-05-11T10:14:00',
-    text: 'A toto je koment k celé objednávce.'
+    text: 'Tady to je koment k celé objednávce.'
   }
 ])
 
@@ -238,7 +250,7 @@ function addDocumentComment(orderId: number, documentId: number, text: string): 
   const comment: Comment = {
     id: getNextCommentId(),
     parentId: documentId,
-    username: currentUser.username,
+    userId: currentUser.value,
     datetime: new Date().toISOString(),
     text: trimmedText,
   }
@@ -257,7 +269,7 @@ function addOrderComment(orderId: number, text: string): Comment | null {
   const comment: Comment = {
     id: getNextCommentId(),
     parentId: orderId,
-    username: currentUser.username,
+    userId: currentUser.value,
     datetime: new Date().toISOString(),
     text: trimmedText,
   }
@@ -283,6 +295,8 @@ function setDocumentStatus(orderId: number, documentId: number, status: Document
 
 export const useDoisOrders = defineStore('doisOrders', () => {
   return {
+    users,
+    currentUser,
     orders,
     documentComments,
     orderComments,

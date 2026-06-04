@@ -1,5 +1,15 @@
 <script setup lang="ts">
+  import { ref, computed, provide, readonly } from 'vue'
   import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
+  import OrderComment from '@/components/DOIS/OrderComment.vue'
+  import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
+  import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
+  import { useDoisOrders } from '@/stores/dois-orders'
+  const doisOrdersStore = useDoisOrders()
+
+  const orderComments = computed(() => {
+    return doisOrdersStore.getOrderComments(props.orderId)
+  })
 
   const props = defineProps<{
     orderId: number,
@@ -8,21 +18,30 @@
     documents: any,
   }>()
 
-  // const orderParts = computed(() => {
-  //   return Array.isArray(props.documents) ? props.documents : []
-  // })
+  const areCommentsVisible = ref(false)
 
-  // const mainDocument = computed(() => {
-  //   return orderParts.value.length > 0 && Array.isArray(orderParts.value[0]) && orderParts.value[0].length > 0
-  //     ? orderParts.value[0][0]
-  //     : null
-  // })
+  function toggleComments() {
+    areCommentsVisible.value = !areCommentsVisible.value
+  }
 
-  // const supportingDocuments = computed(() => {
-  //   return orderParts.value.length > 0 && Array.isArray(orderParts.value[0]) && orderParts.value[0].length > 1
-  //     ? orderParts.value[0].slice(1)
-  //     : []
-  // })
+  function onCommentSubmitted(payload: SubmittedCommentPayload) {
+    console.debug('New comment submitted:', payload)
+  }
+
+  const isAttachingDocs = ref(false)
+
+  provide('isAttachingDocs', readonly(isAttachingDocs))
+
+  function startAttachingDocs() { isAttachingDocs.value = true }
+
+  function submitAttachingDocs() { isAttachingDocs.value = false }
+
+  function onSubmitAttachingDocs() {
+    console.log('Documents attached successfully.')
+    submitAttachingDocs()
+  }
+
+  function cancelAttachingDocs() { isAttachingDocs.value = false }
 
 </script>
 
@@ -32,6 +51,51 @@
       <div>
         <div class="card-title mb-0">{{ props.contractNumber }}</div>
         <div>{{ props.supplier }}</div>
+      </div>
+      <div class="ms-auto">
+        <div v-if="isAttachingDocs" class="btn-list">
+          <!-- Submit -->
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#order-attach-docs-confirm">
+            Přiložit vybrané
+          </button>
+          <!-- Cancel -->
+          <button class="btn" @click="cancelAttachingDocs">Zrušit</button>
+        </div>
+        <div v-if="!isAttachingDocs" class="btn-actions">
+          <button
+            class="btn btn-icon btn-action"
+            :class="{ 'active': areCommentsVisible }"
+            data-bs-toggle="tooltip"
+            title="Komentáře"
+            draggable="false"
+            @click="toggleComments">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+            </svg>
+            <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span>
+          </button>
+          <!-- * Dropdown actions -->
+          <div class="dropdown">
+            <button class="btn btn-icon btn-action dropdown-toggle" data-bs-toggle="dropdown" draggable="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+              </svg>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+              <button @click="startAttachingDocs" class="dropdown-item">
+                <!-- TEMP: Název -->
+                Poptávka / Přiložit dokumenty k objednávce
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-body">
@@ -93,7 +157,113 @@
       </div>
     </div>
     <!-- TODO: order comments -->
+    <div class="card-body" v-if="areCommentsVisible">
+      <h3 class="mb-3">Komentáře</h3>
+      <div class="space-y">
+        <!-- ? CHAT BUBBLES ? -->
+        <!-- <div class="chat">
+          <div class="chat-bubbles">
+            <div class="chat-item">
+              <div class="chat-bubble chat-bubble-me">
+                <div class="chat-bubble-title">
+                  <div class="row">
+                    <div>
+                      <span class="chat-bubble-author">Paweł Kuna</span> <span class="chat-bubble-date">09:32</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-bubble-body">
+                  <p>Hey guys, I just pushed a new commit on the <code>dev</code> branch. Can you have a look and tell me what you think?</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat-item">
+              <div class="chat-bubble">
+                <div class="chat-bubble-title">
+                  <div class="row">
+                    <div>
+                      <span class="chat-bubble-author">Paweł Kuna</span> <span class="chat-bubble-date">09:32</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-bubble-body">
+                  <p>Hey guys, I just pushed a new commit on the <code>dev</code> branch. Can you have a look and tell me what you think?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- * Poznámky komponent -->
+        <div class="space-y" v-if="orderComments.length > 0">
+          <template v-for="comment in orderComments" :key="comment.id">
+            <OrderComment
+              :commentId="comment.id"
+              :userId="comment.userId"
+              :datetime="comment.datetime"
+              :text="comment.text" />
+          </template>
+        </div>
+        <div>
+          <OrderAddComment
+            target="order"
+            :targetId="props.orderId"
+            @submitted="onCommentSubmitted" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- * Stornovat objednávku? -->
+  <!-- TEMP place -> into component -->
+  <div class="modal" id="order-attach-docs-confirm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body py-4">
+          <!-- <h3>Stornovat objednávku</h3> -->
+          <div class="row gy-3">
+            <div class="col-12">
+              <span>Vyberte smlouvu o dílo, ke které chcete přílohy připojit:</span>
+            </div>
+            <div class="row-12">
+              <select class="form-select" id="order-select-sod" autocomplete="off">
+                <option selected disabled>Vyberte</option>
+                <option value="1">152-01-023-ID-I</option>
+                <option value="2">152-01-023-ID-II</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100">
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn w-100"
+                  data-bs-dismiss="modal">Storno</button>
+              </div>
+              <div class="col">
+                <button
+                  class="btn btn-primary w-100"
+                  data-bs-dismiss="modal"
+                  @click="onSubmitAttachingDocs">
+                  Připojit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+  /* WIP */
+  .chat-item {
+    width: fit-content;
+    /* max-width: 500px; */
+  }
+
+</style>
