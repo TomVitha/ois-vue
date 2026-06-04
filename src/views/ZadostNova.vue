@@ -19,7 +19,7 @@
 <template>
   <PageTemplate title="Nová žádost" back-to="/zadosti">
     <template #toolbar>
-      <div class="row g-2 align-items-end">
+      <div class="row g-3 align-items-end">
         <div class="col-12 col-md-6 col-xl-4">
           <label class="form-label" for="request-property-select">Produkt</label>
           <select

@@ -7,12 +7,8 @@
 */
 
 :host, :root {
-  /* DEBUG - serif as fallback (do not remove yet) */
-  --tblr-font-sans-serif: "Geist", serif, "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --tblr-font-monospace: "Geist Mono", serif, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-
-  /* --tblr-font-sans-serif: "Geist", "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; */
-  /* --tblr-font-monospace: "Geist Mono", Monaco, Consolas, Liberation Mono, Courier New, monospace; */
+  --tblr-font-sans-serif: "Geist", "Inter Var", Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --tblr-font-monospace: "Geist Mono", Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 body {

@@ -7,12 +7,12 @@
   import { useDropzone } from '@/composables/useDropzone'
   import 'dropzone/dist/dropzone.css'
 
-  
+
   const unsavedChanges = ref(false)
   function handleBack(navigate: () => void) {
     if (!unsavedChanges.value || (unsavedChanges.value && confirm("Neuložené změny budou ztraceny. Opravdu chcete odejít?"))) {
       navigate()
-    } 
+    }
   }
 
   const route = useRoute()
@@ -971,7 +971,36 @@
       </div>
       <!-- * Záložka - Stavba -->
       <div class="tab-pane" id="tab-construction" role="tabpanel">
-        todo
+        <div class="row row-cards">
+          <div class="col-12">
+            <div class="card card-md">
+              <div class="card-body">
+                <div class="row gy-3">
+                  <div class="col-12 col-lg-4">
+                    <label for="order-construction-readiness" class="form-label">Připravenost stavba</label>
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                          <path d="M16 3v4"></path>
+                          <path d="M8 3v4"></path>
+                          <path d="M4 11h16"></path>
+                          <path d="M11 15h1"></path>
+                          <path d="M12 15v3"></path>
+                        </svg>
+                      </span>
+                      <input type="date" class="form-control" name="order-construction-readiness" id="order-construction-readiness">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="order-construction-note" class="form-label">Poznámka stavba</label>
+                    <input type="text" class="form-control" name="order-construction-note" id="order-construction-note" placeholder="Poznámka...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

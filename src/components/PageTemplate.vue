@@ -65,7 +65,7 @@
         <p class="m-0">{{ description }}</p>
       </div>
       <!-- Toolbar -->
-      <div v-if="slots.toolbar" class="row mt-3">
+      <div v-if="slots.toolbar" class="mt-3">
         <div class="border-bottom pb-3">
           <slot name="toolbar"></slot>
         </div>

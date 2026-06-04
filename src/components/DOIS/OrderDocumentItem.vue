@@ -203,4 +203,8 @@
     /* background-color: var(--tblr-bg-surface-tertiary); */
     background-color: transparent;
   }
+  .list-group-item.active {
+    /* TODO: Couple color with status - var(--tblr-info) / var(--tblr-alert) / var(--tblr-danger) */
+    /* border-left-color: ; */
+  }
 </style>
