@@ -170,6 +170,12 @@
           <a href="#tab-order-info" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab" draggable="false">Objednávka</a>
         </li>
         <li class="nav-item" role="presentation">
+          <a href="#tab-items" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Položky</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tab-attachments" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Přílohy</a>
+        </li>
+        <li class="nav-item" role="presentation">
           <a href="#tab-construction" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Stavba</a>
         </li>
       </ul>
@@ -549,7 +555,185 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- * Záložka - Položky -->
+      <div class="tab-pane" id="tab-items" role="tabpanel">
+        <div class="row row-cards">
+          <div class="col-12">
+            <div class="card card-md">
+              <div class="card-header">
+                <div class="d-flex w-100 align-items-center">
+                  <div class="d-flex align-items-center gap-2">
+                    <h3 class="card-title">Položky</h3>
+                    <span class="text-secondary d-none d-sm-inline">(Celkem 7)</span>
+                  </div>
+                </div>
+              </div>
+              <div :class="{ 'card-body': isDesktop }">
+                <div :class="{ 'card': isDesktop }">
+                  <table class="table table-vcenter table-selectable card-table">
+                    <thead>
+                      <tr>
+                        <th>Název</th>
+                        <th class="w-50">Termín dokončení dle SoD</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Skříň chodba</td>
+                        <td>
+                          <div class="input-icon">
+                            <span class="input-icon-addon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                                <path d="M16 3v4"></path>
+                                <path d="M8 3v4"></path>
+                                <path d="M4 11h16"></path>
+                                <path d="M11 15h1"></path>
+                                <path d="M12 15v3"></path>
+                              </svg>
+                            </span>
+                            <input type="date" class="form-control" id="">
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Nějaká položka s dlouhým názvem</td>
+                        <td>
+                          <div class="input-icon">
+                            <span class="input-icon-addon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                                <path d="M16 3v4"></path>
+                                <path d="M8 3v4"></path>
+                                <path d="M4 11h16"></path>
+                                <path d="M11 15h1"></path>
+                                <path d="M12 15v3"></path>
+                              </svg>
+                            </span>
+                            <input type="date" class="form-control" id="">
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- <div class="card-body">
+                <div class="list-group overflow-auto">
+                  <div class="list-group-item">
+                    <div class="row align-items-center gy-3">
+                      <div class="col-sm-5">
+                        <span>Skříň chodba</span>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="">
+                          <label for="floating-password">Termín dokončení dle SoD</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center gy-3">
+                      <div class="col-sm-5">
+                        <span>Nějaká položka s dlouhým názvem</span>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="date" class="form-control" id="">
+                          <label for="floating-password">Termín dokončení dle SoD</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- TODO: Rozhodni se, které z těch dvou -->
+
+              <!-- <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 text-truncate">
+                      <span>Skříň chodba</span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-icon">
+                        <span class="input-icon-addon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                            <path d="M16 3v4"></path>
+                            <path d="M8 3v4"></path>
+                            <path d="M4 11h16"></path>
+                            <path d="M11 15h1"></path>
+                            <path d="M12 15v3"></path>
+                          </svg>
+                        </span>
+                        <input type="date" class="form-control" id="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 text-truncate">
+                      <span>Skříň chodba</span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-icon">
+                        <span class="input-icon-addon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                            <path d="M16 3v4"></path>
+                            <path d="M8 3v4"></path>
+                            <path d="M4 11h16"></path>
+                            <path d="M11 15h1"></path>
+                            <path d="M12 15v3"></path>
+                          </svg>
+                        </span>
+                        <input type="date" class="form-control" id="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div class="card-body">
+                <div class="card">
+                  <div class="card-body divide-y">
+                    <div class="row align-items-center">
+                      <div class="col-md-6">
+                        <span class="col-form-label">skříň</span>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="date" class="form-control" name="" id="">
+                      </div>
+                    </div>
+                    <div class="row align-items-center">
+                      <div class="col-md-6">
+                        <span class="col-form-label">skříň</span>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="date" class="form-control" name="" id="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- * Záložka - Přílohy -->
+      <div class="tab-pane" id="tab-attachments" role="tabpanel">
+        <div class="row row-cards">
+          <!-- * Přílohy -->
           <!-- TODO: Předělej položky pomocí <div> (a na mobilu skryt checkboxy?) -->
           <div class="col-12">
             <div class="card card-md">
@@ -799,176 +983,10 @@
               </div>
             </div>
           </div>
-
-          <div class="col-12">
-            <div class="card card-md">
-              <div class="card-header">
-                <div class="d-flex w-100 align-items-center">
-                  <div class="d-flex align-items-center gap-2">
-                    <h3 class="card-title">Položky</h3>
-                    <span class="text-secondary d-none d-sm-inline">(Celkem 7)</span>
-                  </div>
-                </div>
-              </div>
-
-              <div :class="{ 'card-body': isDesktop }">
-                <div :class="{ 'card': isDesktop }">
-                  <table class="table table-vcenter table-selectable card-table">
-                    <thead>
-                      <tr>
-                        <th>Název</th>
-                        <th class="w-50">Termín dokončení dle SoD</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Skříň chodba</td>
-                        <td>
-                          <div class="input-icon">
-                            <span class="input-icon-addon">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                                <path d="M16 3v4"></path>
-                                <path d="M8 3v4"></path>
-                                <path d="M4 11h16"></path>
-                                <path d="M11 15h1"></path>
-                                <path d="M12 15v3"></path>
-                              </svg>
-                            </span>
-                            <input type="date" class="form-control" id="">
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nějaká položka s dlouhým názvem</td>
-                        <td>
-                          <div class="input-icon">
-                            <span class="input-icon-addon">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                                <path d="M16 3v4"></path>
-                                <path d="M8 3v4"></path>
-                                <path d="M4 11h16"></path>
-                                <path d="M11 15h1"></path>
-                                <path d="M12 15v3"></path>
-                              </svg>
-                            </span>
-                            <input type="date" class="form-control" id="">
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- <div class="card-body">
-                <div class="list-group overflow-auto">
-                  <div class="list-group-item">
-                    <div class="row align-items-center gy-3">
-                      <div class="col-sm-5">
-                        <span>Skříň chodba</span>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="date" class="form-control" id="">
-                          <label for="floating-password">Termín dokončení dle SoD</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item">
-                    <div class="row align-items-center gy-3">
-                      <div class="col-sm-5">
-                        <span>Nějaká položka s dlouhým názvem</span>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="date" class="form-control" id="">
-                          <label for="floating-password">Termín dokončení dle SoD</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- TODO: Rozhodni se, které z těch dvou -->
-
-              <!-- <div class="list-group list-group-flush">
-                <div class="list-group-item">
-                  <div class="row align-items-center">
-                    <div class="col-md-6 text-truncate">
-                      <span>Skříň chodba</span>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-icon">
-                        <span class="input-icon-addon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                            <path d="M16 3v4"></path>
-                            <path d="M8 3v4"></path>
-                            <path d="M4 11h16"></path>
-                            <path d="M11 15h1"></path>
-                            <path d="M12 15v3"></path>
-                          </svg>
-                        </span>
-                        <input type="date" class="form-control" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="list-group-item">
-                  <div class="row align-items-center">
-                    <div class="col-md-6 text-truncate">
-                      <span>Skříň chodba</span>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-icon">
-                        <span class="input-icon-addon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                            <path d="M16 3v4"></path>
-                            <path d="M8 3v4"></path>
-                            <path d="M4 11h16"></path>
-                            <path d="M11 15h1"></path>
-                            <path d="M12 15v3"></path>
-                          </svg>
-                        </span>
-                        <input type="date" class="form-control" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- <div class="card-body">
-                <div class="card">
-                  <div class="card-body divide-y">
-                    <div class="row align-items-center">
-                      <div class="col-md-6">
-                        <span class="col-form-label">skříň</span>
-                      </div>
-                      <div class="col-md-6">
-                        <input type="date" class="form-control" name="" id="">
-                      </div>
-                    </div>
-                    <div class="row align-items-center">
-                      <div class="col-md-6">
-                        <span class="col-form-label">skříň</span>
-                      </div>
-                      <div class="col-md-6">
-                        <input type="date" class="form-control" name="" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-            </div>
-          </div>
         </div>
       </div>
+
+
       <!-- * Záložka - Stavba -->
       <div class="tab-pane" id="tab-construction" role="tabpanel">
         <div class="row row-cards">
@@ -1002,6 +1020,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- * Nahrát soubory -->
