@@ -167,14 +167,10 @@
             </template>
           </NavItem>
 
-          <!-- 
-            Číselníky - není samostatná stránka - je to jen kategorie v menu
-             - položky, 
-             - dodavatelé 
-          -->
+          <!-- NOTE: Následující zakomentované stránky budou (možná) implementovány někdy v budoucnu -->
 
           <!-- ? Položky -->
-          <NavItem label="Položky (?)" to="/todo">
+          <!-- <NavItem label="Položky (?)" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-box">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -184,10 +180,10 @@
                 <path d="M12 12l-8 -4.5" />
               </svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- ? Dodavatelé -->
-          <NavItem label="Dodavatelé (?)" to="/todo">
+          <!-- <NavItem label="Dodavatelé (?)" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-truck">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -195,33 +191,22 @@
                 <path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                 <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" />
               </svg>
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-forklift">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                <path d="M12 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                <path d="M7 17l5 0" />
-                <path d="M3 17v-6h13v6" />
-                <path d="M5 11v-4h4" />
-                <path d="M9 11v-6h4l3 6" />
-                <path d="M22 15h-3v-10" />
-                <path d="M16 13l3 0" />
-              </svg> -->
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- ? Reporty -->
-          <NavItem label="Reporty (?)" to="/todo">
+          <!-- <NavItem label="Reporty (?)" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chart-histogram"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 3v18h18" /><path d="M20 18v3" /><path d="M16 16v5" /><path d="M12 13v8" /><path d="M8 16v5" /><path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" /></svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- ? Správa reportů -->
-          <NavItem label="Správa reportů (?)" to="/todo">
+          <!-- <NavItem label="Správa reportů (?)" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
         </ul>
       </div>
