@@ -17,7 +17,9 @@
 <template>
   <PageTemplate title="Objednávky ÚVD">
 
-    <!-- WIP -->
+
+
+    <!-- Je tenhle filtr zločin proti lidskosti? Ano. Ale, takhle to chtěli, tak to tak mají. -->
     <template #toolbar>
 
       <div class="row align-items-center gy-2">
@@ -192,20 +194,19 @@
             <label>Předávací protokol vady</label>
           </div>
         </div>
-        <!-- WIP -->
-        <div class="col-auto">
-          <button type="button" class="btn-link text-success text-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M5 12l5 5l10 -10" />
-            </svg>
-            Aplikovat
-          </button>
-        </div>
-        <div class="col-auto">
-          <button type="button" class="btn-link text-body text-nowrap">
-            Zrušit filtry
-          </button>
+        <div class="col-auto ms-auto">
+          <div class="btn-list">
+            <button type="button" class="btn btn-sm btn-outline-success text-nowrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l5 5l10 -10" />
+              </svg>
+              Filtrovat
+            </button>
+            <button type="button" class="btn-link text-body text-nowrap">
+              Zrušit filtry
+            </button>
+          </div>
         </div>
       </div>
 
@@ -214,7 +215,7 @@
     <template #actions>
       <div class="btn-list">
         <div class="btn-actions">
-          <!-- WIP -->
+
           <button
             v-if="isWideScreen"
             @click="isFluidLayout = !isFluidLayout"
@@ -274,27 +275,6 @@
     <div class="row row-cards">
       <div class="col-12">
         <div class="card">
-          <!-- ? chceme card header ? -->
-          <!-- <div class="card-header">
-            <div class="row w-full">
-              <div class="col">
-                <h3 class="card-title mb-0">Objednávky</h3>
-                <p class="text-secondary m-0">Zobrazení <strong>1 až 8</strong> z <strong>16 záznamů</strong></p>
-              </div>
-              <div class="col-md-auto col-sm-12">
-                <div class="ms-auto d-flex flex-wrap btn-list">
-                  <div class="dropdown">
-                    <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown">Exportovat do</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">XLSX</a>
-                      <a class="dropdown-item" href="#">CSV</a>
-                      <a class="dropdown-item" href="#">PDF</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div class="table-responsive">
             <table class="table table-vcenter table-selectable table-nowrap card-table">
               <thead>
