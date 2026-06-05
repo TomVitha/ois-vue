@@ -63,14 +63,6 @@
               </svg>
               Připojit objednávku
             </button>
-            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                <path d="M18.364 5.636l-12.728 12.728" />
-              </svg>
-              Stornovat
-            </button>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
@@ -80,7 +72,6 @@
               </svg>
               Náhled
             </button>
-
             <button class="dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -97,6 +88,15 @@
               </svg>
               Protokol o odstranění vad
             </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M18.364 5.636l-12.728 12.728" />
+              </svg>
+              Stornovat
+            </button>
           </div>
         </div>
         <RouterLink to="/dois/objednavky-uvd" type="button" class="btn">
@@ -105,7 +105,7 @@
             <path d="M18 6l-12 12" />
             <path d="M6 6l12 12" />
           </svg>
-          Zrušit
+          Zrušit změny
         </RouterLink>
         <RouterLink to="/dois/objednavky-uvd" type="button" class="btn btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
@@ -136,15 +136,6 @@
           </svg>
           Připojit objednávku
         </button>
-        <button class="btn btn-sm btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-            <path d="M18.364 5.636l-12.728 12.728" />
-          </svg>
-          Stornovat
-        </button>
-
         <div class="dropdown">
           <button class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
             Dokumenty
@@ -176,6 +167,14 @@
             </button>
           </div>
         </div>
+        <button class="btn btn-sm btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+            <path d="M18.364 5.636l-12.728 12.728" />
+          </svg>
+          Stornovat
+        </button>
       </div>
 
       <!-- * Záložky -->
