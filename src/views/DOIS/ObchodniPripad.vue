@@ -209,8 +209,6 @@
       <div class="tab-pane" id="tab-4" role="tabpanel">
         <div class="row row-deck row-cards">
           <div class="col-12">
-            <!-- WIP -->
-            <!-- TEMP -->
             <div class="card card-md">
               <div class="card-body">
                 <div class="mb-3">

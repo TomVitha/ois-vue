@@ -8,9 +8,7 @@
 
   <PageTemplate title="Obchodní případy">
 
-    <!-- WIP -->
     <template #toolbar>
-
       <div class="row align-items-center gy-2">
         <div class="col-lg-auto">
           <div class="form-floating">
@@ -39,7 +37,6 @@
           </div>
         </div>
       </div>
-
     </template>
 
     <div class="row row-deck row-cards">

@@ -64,7 +64,6 @@
               </div>
             </form>
           </div>
-          <!-- WIP -->
           <!-- ? Jak to funguje s tím GDRP ??? -->
           <div class="card-footer">
             <div class="row align-items-baseline">

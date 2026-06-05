@@ -102,7 +102,6 @@
     </div>
     <div class="card-body">
       <div class="space-y">
-        <!-- WIP -->
         <div v-for="orderPart in props.documents" class="card">
           <!-- * Main document = orderPart[0] -->
           <div class="list-group list-group-flush">
@@ -158,43 +157,9 @@
         </div>
       </div>
     </div>
-    <!-- TODO: order comments -->
     <div class="card-body" v-if="areCommentsVisible && orderComments.length > 0">
       <h3 class="mb-3">Komentáře</h3>
       <div class="space-y">
-        <!-- ? CHAT BUBBLES ? -->
-        <!-- <div class="chat">
-          <div class="chat-bubbles">
-            <div class="chat-item">
-              <div class="chat-bubble chat-bubble-me">
-                <div class="chat-bubble-title">
-                  <div class="row">
-                    <div>
-                      <span class="chat-bubble-author">Paweł Kuna</span> <span class="chat-bubble-date">09:32</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-bubble-body">
-                  <p>Hey guys, I just pushed a new commit on the <code>dev</code> branch. Can you have a look and tell me what you think?</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="chat-bubble">
-                <div class="chat-bubble-title">
-                  <div class="row">
-                    <div>
-                      <span class="chat-bubble-author">Paweł Kuna</span> <span class="chat-bubble-date">09:32</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-bubble-body">
-                  <p>Hey guys, I just pushed a new commit on the <code>dev</code> branch. Can you have a look and tell me what you think?</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
         <OrderComments :comments="orderComments" />
 
@@ -254,7 +219,7 @@
 
 <style scoped>
 
-  /* WIP */
+  /* ? maybe ? */
   .chat-item {
     width: fit-content;
     /* max-width: 500px; */
