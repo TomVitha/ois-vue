@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { ref, computed, provide, readonly } from 'vue'
   import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
-  import OrderComment from '@/components/DOIS/OrderComment.vue'
+  import OrderComments from '@/components/DOIS/OrderComments.vue'
+  // import OrderComment from '@/components/DOIS/OrderComment.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
   import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
@@ -194,22 +195,14 @@
             </div>
           </div>
         </div> -->
-        <!-- * Poznámky komponent -->
-        <div class="space-y" v-if="orderComments.length > 0">
-          <template v-for="comment in orderComments" :key="comment.id">
-            <OrderComment
-              :commentId="comment.id"
-              :userId="comment.userId"
-              :datetime="comment.datetime"
-              :text="comment.text" />
-          </template>
-        </div>
-        <div>
-          <OrderAddComment
-            target="order"
-            :targetId="props.orderId"
-            @submitted="onCommentSubmitted" />
-        </div>
+
+        <OrderComments :comments="orderComments" />
+
+        <OrderAddComment
+          target="order"
+          :targetId="props.orderId"
+          @submitted="onCommentSubmitted" />
+
       </div>
     </div>
   </div>

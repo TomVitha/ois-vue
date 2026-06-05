@@ -1,11 +1,14 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   import { useDropzone } from '@/composables/useDropzone'
   import 'dropzone/dist/dropzone.css'
+  import OrderComments from '@/components/DOIS/OrderComments.vue'
+  import { useDoisOrders } from '@/stores/dois-orders'
+  const doisOrdersStore = useDoisOrders()
 
 
   const unsavedChanges = ref(false)
@@ -24,6 +27,11 @@
     options: {
       url: './',
     },
+  })
+
+  // TEMP - hard-coded natáhnout komentáře k dané objednávce
+  const comments = computed(() => {
+    return doisOrdersStore.getOrderComments(0)
   })
 
 </script>
@@ -729,7 +737,15 @@
       <!-- TODO -->
       <!-- * Záložka: Komunikace -->
       <div class="tab-pane" id="tab-communication" role="tabpanel">
-        <h1>todo!!</h1>
+        <div class="row row-cards">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <OrderComments :comments="comments" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { ref, computed, inject } from 'vue'
 
-  import OrderComment from '@/components/DOIS/OrderComment.vue'
+  import OrderComments from '@/components/DOIS/OrderComments.vue'
+  // import OrderComment from '@/components/DOIS/OrderComment.vue'
   import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
 
@@ -12,8 +13,8 @@
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
   import { useDoisOrders } from '@/stores/dois-orders'
-  import type { Comment as DoisComment } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
+  import type { Comment as DoisComment } from '@/stores/dois-orders'
 
   type StatusCode = 0 | 1 | 2 | 3
 
@@ -162,15 +163,7 @@
   </div>
   <!-- * Comments -->
   <div v-if="areCommentsVisible" class="list-group-item active space-y">
-    <div class="space-y" v-if="comments.length">
-      <template v-for="comment in comments" :key="comment.id">
-        <OrderComment
-          :commentId="comment.id"
-          :userId="comment.userId"
-          :datetime="comment.datetime"
-          :text="comment.text" />
-      </template>
-    </div>
+    <OrderComments :comments="comments" />
     <OrderAddComment
       v-if="isAddCommentVisible"
       target="document"

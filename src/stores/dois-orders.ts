@@ -214,7 +214,15 @@ const orderComments = ref<Comment[]>([
     userId: 7,
     datetime: '2026-05-11T10:14:00',
     text: 'Tady to je koment k celé objednávce.'
-  }
+  },
+  {
+    id: 7,
+    parentId: 0,
+    userId: 4,
+    datetime: '2026-05-11T10:14:00',
+    text: 'Už to bude hotový?'
+  },
+
 ])
 
 function getDocumentComments(documentId: number): Comment[] {
