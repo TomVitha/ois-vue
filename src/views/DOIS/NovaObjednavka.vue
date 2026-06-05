@@ -221,25 +221,9 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Skříň chodba</td>
                         <td>
-                          <div class="input-icon">
-                            <span class="input-icon-addon">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                                <path d="M16 3v4"></path>
-                                <path d="M8 3v4"></path>
-                                <path d="M4 11h16"></path>
-                                <path d="M11 15h1"></path>
-                                <path d="M12 15v3"></path>
-                              </svg>
-                            </span>
-                            <input type="date" class="form-control" id="">
-                          </div>
+                          <input type="text" class="form-control" placeholder="Název položky...">
                         </td>
-                      </tr>
-                      <tr>
-                        <td>Nějaká položka s dlouhým názvem</td>
                         <td>
                           <div class="input-icon">
                             <span class="input-icon-addon">

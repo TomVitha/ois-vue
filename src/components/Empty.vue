@@ -31,7 +31,7 @@
       <slot name="image"></slot>
     </div>
     <div v-if="props.header" class="empty-header">{{ props.header }}</div>
-    <p v-if="props.title" class="empty-title">{{ props.title }}</p>
+    <p v-if="props.title" class="empty-title" :class="{ 'mb-0': !props.subtitle }">{{ props.title }}</p>
     <p v-if="props.subtitle" class="empty-subtitle text-secondary">{{ props.subtitle }}</p>
     <div v-if="slots.actions" class="empty-actions">
       <slot name="actions"></slot>
