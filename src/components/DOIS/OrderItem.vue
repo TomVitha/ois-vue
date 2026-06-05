@@ -18,7 +18,8 @@
     documents: any,
   }>()
 
-  const areCommentsVisible = ref(false)
+  // NOTE: Komentáře k objednávkám  budou defaultně viditelné
+  const areCommentsVisible = ref(true)
 
   function toggleComments() {
     areCommentsVisible.value = !areCommentsVisible.value
@@ -157,7 +158,7 @@
       </div>
     </div>
     <!-- TODO: order comments -->
-    <div class="card-body" v-if="areCommentsVisible">
+    <div class="card-body" v-if="areCommentsVisible && orderComments.length > 0">
       <h3 class="mb-3">Komentáře</h3>
       <div class="space-y">
         <!-- ? CHAT BUBBLES ? -->

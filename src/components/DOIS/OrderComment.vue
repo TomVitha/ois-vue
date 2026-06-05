@@ -26,7 +26,7 @@
 
 <template>
   <div class="comment">
-    <div class="text-muted fs-5" v-if="props.datetime">
+    <div class="text-muted" v-if="props.datetime">
       <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> • <span>{{ formatDate(props.datetime, 'long-datetime') }}</span>
     </div>
     <div>{{ props.text }}</div>

@@ -184,6 +184,10 @@
         <li class="nav-item" role="presentation">
           <a href="#tab-construction" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Stavba</a>
         </li>
+        <!-- TODO: Komunikace -->
+        <li class="nav-item" role="presentation">
+          <a href="#tab-communication" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Komunikace</a>
+        </li>
       </ul>
 
     </template>
@@ -688,7 +692,6 @@
         </div>
       </div>
 
-
       <!-- * Záložka: Stavba -->
       <div class="tab-pane" id="tab-construction" role="tabpanel">
         <div class="row row-cards">
@@ -721,6 +724,12 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- TODO -->
+      <!-- * Záložka: Komunikace -->
+      <div class="tab-pane" id="tab-communication" role="tabpanel">
+        <h1>todo!!</h1>
       </div>
 
     </div>
@@ -794,112 +803,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- * Dodavatel infobox -->
-    <!-- TEMP place -> into component -->
-    <div class="modal" id="order-supplier-infobox" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <div class="modal-body text-center py-4">
-            <div class="card-title text-center">
-              <img src="https://www.barkotex.cz/images/barkotex/logo/barkotex-logo.svg" alt="Barkotex" title="Barkotex" class="d-block mb-2 mx-auto object-fit-contain" style="height: 80px; aspect-ratio: 5 / 3;">
-              <span class="badge bg-primary-lt text-primary-lt-fg">Podlahové krytiny</span>
-            </div>
-            <div class="row gy-2 text-start">
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                      <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" />
-                    </svg>
-                  </div>
-                  <div class="col">
-                    <div>Šafránková 1238/1</div>
-                    <div>Praha 5155 00</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                    </svg>
-                  </div>
-                  <div class="col"><a href="tel:+420602280008">+420 602 280 008</a></div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-                      <path d="M3 7l9 6l9 -6" />
-                    </svg>
-                  </div>
-                  <div class="col"><a href="mailto:klient@development-sapeli.cz">klient@development-sapeli.cz</a></div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-world">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                      <path d="M3.6 9h16.8" />
-                      <path d="M3.6 15h16.8" />
-                      <path d="M11.5 3a17 17 0 0 0 0 18" />
-                      <path d="M12.5 3a17 17 0 0 1 0 18" />
-                    </svg>
-                  </div>
-                  <div class="col"><a href="http://www.sapeli.cz" target="_blank">www.sapeli.cz</a></div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                      <path d="M12 7v5l3 3" />
-                    </svg>
-                  </div>
-                  <div class="col">Po - Pá 8 - 18h</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex">
-            <RouterLink to="/komunikace" class="card-btn" draggable="false">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon me-2 text-muted icon-tabler icons-tabler-outline icon-tabler-mail">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                <path d="M3 7l9 6l9 -6" />
-              </svg>
-              Zpráva
-            </RouterLink>
-            <!-- ? Sjednat schůzku  -->
-            <!-- <RouterLink to="#" class="card-btn" draggable="false">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon me-2 text-muted icon-tabler icons-tabler-outline icon-tabler-calendar-time">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-                <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                <path d="M15 3v4" />
-                <path d="M7 3v4" />
-                <path d="M3 11h16" />
-                <path d="M18 16.496v1.504l1 1" />
-              </svg>
-              Schůzka
-            </RouterLink> -->
           </div>
         </div>
       </div>
