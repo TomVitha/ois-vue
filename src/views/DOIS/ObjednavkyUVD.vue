@@ -19,18 +19,196 @@
 
     <!-- WIP -->
     <template #toolbar>
-      <div class="btn-list align-items-center">
-        <search class="input-icon">
-          <span class="input-icon-addon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-              <path d="M21 21l-6 -6"></path>
+
+      <div class="row align-items-center gy-2">
+
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="text">
+            <label>Interní číslo objednávky</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="text">
+            <label>Katalogové číslo</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="text">
+            <label>Bytový dům</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="text">
+            <label>Číslo SoD</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Datum podpisu SoD</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Stav objednávky</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Položka</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Dodavatel</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Technik ÚVD</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Stavební dozor</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Prodejce</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Datum akceptace objednávky</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Zahájení montáže</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Dokončení montáže</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Termín splnění dle SoD</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Připravenost stavba od</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <input class="form-control" type="date">
+            <label>Připravenost stavba do</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Předávací protokol montáž</label>
+          </div>
+        </div>
+        <div class="col-sm-4 col-xxl-2">
+          <div class="form-floating">
+            <select class="form-select" autocomplete="off">
+              <option selected>všichni</option>
+              <option value="1">Možnost 1</option>
+              <option value="2">Možnost 2</option>
+              <option value="3">Možnost 3</option>
+              <option value="4">Možnost 4</option>
+              <option value="5">Možnost 5</option>
+            </select>
+            <label>Předávací protokol vady</label>
+          </div>
+        </div>
+        <!-- WIP -->
+        <div class="col-auto">
+          <button type="button" class="btn-link text-success text-nowrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l5 5l10 -10" />
             </svg>
-          </span>
-          <input type="search" class="form-control form-control-sm" placeholder="Hledejte…">
-        </search>
-        <span>[zde budou filtry]</span>
+            Aplikovat
+          </button>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn-link text-body text-nowrap">
+            Zrušit filtry
+          </button>
+        </div>
       </div>
+
     </template>
 
     <template #actions>
@@ -66,7 +244,12 @@
         <!-- WIP -->
         <div class="dropdown">
           <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-download"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-download">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+              <path d="M7 11l5 5l5 -5" />
+              <path d="M12 4l0 12" />
+            </svg>
             Exportovat
           </button>
           <div class="dropdown-menu">
@@ -135,7 +318,9 @@
                 <tr>
                   <td><input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox" aria-label="Vybrat položku"></td>
                   <!-- TEMP hard-coded link -> dynamic -->
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">192-01-086-IS-I</td>
                   <td class="sort-status" date-status="0"><span class="status status-success">Nová</span></td>
                   <td class="sort-technician">Petr Lamata</td>
@@ -147,60 +332,6 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div class="card-footer">
-            <div class="row g-2 justify-content-center justify-content-sm-between">
-              <div class="col-auto d-flex align-items-center">
-                <div class="dropdown">
-                  <a class="btn dropdown-toggle" data-bs-toggle="dropdown">
-                    <span id="page-count" class="me-1">20</span>
-                    <span>záznamů</span>
-                  </a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item">10 záznamů</a>
-                    <a class="dropdown-item">20 záznamů</a>
-                    <a class="dropdown-item">50 záznamů</a>
-                    <a class="dropdown-item">100 záznamů</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-auto d-flex align-items-center">
-                <p class="m-0 text-secondary">Zobrazení <strong>1 až 8</strong> z <strong>16 záznamů</strong></p>
-              </div>
-              <div class="col-auto">
-                <ul class="pagination m-0 ms-auto">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M15 6l-6 6l6 6"></path>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                        <path d="M9 6l6 6l-6 6"></path>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>
