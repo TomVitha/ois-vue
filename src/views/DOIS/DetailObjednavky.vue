@@ -17,9 +17,6 @@
 
   const route = useRoute()
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
-  // TEMP
-  // TODO: Odstranit až se rozhodne který layout budeme chtít
-  const tempShowActionsBar = ref(false)
 
   // NOTE: dzOrderAttachments.value is available for manual calls
   const { dropzone: dzOrderAttachments } = useDropzone({
@@ -36,18 +33,19 @@
 
     <template #actions>
       <div class="btn-list">
-        <div class="dropdown">
+        <!-- NOTE: Akce v dropdownu pro mobil -->
+        <div v-if="!isDesktop" class="dropdown">
           <a class="btn dropdown-toggle btn-outline" data-bs-toggle="dropdown">
             Akce
           </a>
           <div class="dropdown-menu dropdown-menu-end">
             <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+                <path d="M10 14l11 -11" />
+                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
               </svg>
-              Náhled
+              Odeslat objednávku
             </button>
             <button class="dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
@@ -57,14 +55,24 @@
               </svg>
               Připojit objednávku
             </button>
-            <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
+            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 14l11 -11" />
-                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M18.364 5.636l-12.728 12.728" />
               </svg>
-              Odeslat objednávku
+              Stornovat
             </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+              </svg>
+              Náhled
+            </button>
+
             <button class="dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -80,14 +88,6 @@
                 <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
               </svg>
               Protokol o odstranění vad
-            </button>
-            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                <path d="M18.364 5.636l-12.728 12.728" />
-              </svg>
-              Stornovat
             </button>
           </div>
         </div>
@@ -110,27 +110,9 @@
     </template>
 
     <template #toolbar>
-
-      <div v-if="tempShowActionsBar" class="btn-list">
-        <button class="btn btn-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-            <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-          </svg>
-          Náhled
-        </button>
-        <button class="btn btn-sm">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M12 11l0 6" /><path d="M9 14l6 0" /></svg> -->
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg> -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 5l0 14" />
-            <path d="M5 12l14 0" />
-          </svg>
-          Připojit objednávku
-        </button>
-        <button class="btn btn-sm">
+      <!-- NOTE: Akce v toolbaru pro desktop -->
+      <div v-if="isDesktop" class="btn-list mb-3">
+        <button class="btn btn-sm btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10 14l11 -11" />
@@ -139,21 +121,12 @@
           Odeslat objednávku
         </button>
         <button class="btn btn-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-            <path d="M9 15l2 2l4 -4" />
+            <path d="M12 5l0 14" />
+            <path d="M5 12l14 0" />
           </svg>
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l5 5l10 -10" /></svg> -->
-          Předávací protokol
-        </button>
-        <button class="btn btn-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tool">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
-          </svg>
-          Protokol o odstranění vad
+          Připojit objednávku
         </button>
         <button class="btn btn-sm btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
@@ -163,9 +136,42 @@
           </svg>
           Stornovat
         </button>
+
+        <div class="dropdown">
+          <button class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+            Dokumenty
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+              </svg>
+              Náhled
+            </button>
+            <button class="dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+                <path d="M9 15l2 2l4 -4" />
+              </svg>
+              Předávací protokol
+            </button>
+            <button class="dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tool">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
+              </svg>
+              Protokol o odstranění vad
+            </button>
+          </div>
+        </div>
       </div>
 
-      <ul class="nav nav-underline mb-n3 flex-nowrap scroll-x" :class="{ 'mt-3': tempShowActionsBar }" data-bs-toggle="tabs" role="tablist">
+      <!-- * Záložky -->
+      <ul class="nav nav-underline mb-n3 flex-nowrap scroll-x" data-bs-toggle="tabs" role="tablist">
         <li class="nav-item" role="presentation">
           <a href="#tab-order-info" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab" draggable="false">Objednávka</a>
         </li>
@@ -182,166 +188,12 @@
 
     </template>
 
-    <!-- TODO: Někde ti tu chybí stav (např Nová) -->
-
     <div class="tab-content">
-      <!-- * Záložka - Objednávka -->
+      <!-- * Záložka: Objednávka -->
       <div class="tab-pane active show" id="tab-order-info" role="tabpanel">
         <div class="row row-cards">
           <div class="col-12">
             <div class="card card-md">
-              <!-- ? card header ? -->
-              <!-- <div class="card-header">
-                <h3 class="card-title">Objednávka</h3>
-              </div> -->
-              <!-- Výčet údajů (#0) -->
-              <!-- <div class="card-body">
-                <p>Interní číslo: {{ route.params.orderId }}</p>
-                <p>Stav: Nová</p>
-                <p>Číslo SoD: 192-01-086-IS-I</p>
-                <p>Datum podpisu SoD: 01.05.2025</p>
-                <p>Katalogové číslo: 192-01-086</p>
-                <p>Dodavatel: Společnost s.r.o.</p>
-                <p>Datum akceptace objednávky: 15.05.2025</p>
-              </div> -->
-              <!-- Výčet údajů (#1) -->
-              <!-- <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-xxl-10">
-                    <dl class="datagrid">
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Interní číslo</dt>
-                        <dd class="datagrid-content">{{ route.params.orderId }}</dd>
-                      </div>
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Číslo SoD</dt>
-                        <dd class="datagrid-content">192-01-086-IS-I</dd>
-                      </div>
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Datum podpisu SoD</dt>
-                        <dd class="datagrid-content">01.05.2025</dd>
-                      </div>
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Katalogové číslo</dt>
-                        <dd class="datagrid-content">192-01-086</dd>
-                      </div>
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Dodavatel</dt>
-                        <dd class="datagrid-content">Společnost s.r.o.</dd>
-                      </div>
-                      <div class="datagrid-item">
-                        <dt class="datagrid-title">Datum akceptace objednávky</dt>
-                        <dd class="datagrid-content">15.05.2025</dd>
-                      </div>
-                    </dl>
-                  </div>
-                </div>
-              </div> -->
-              <!-- Výčet údajů (#2) -->
-              <!-- <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-xxl-10">
-                    <div class="row gy-3">
-                      <div class="col-12">
-                        <div class="form-label mb-0">Interní číslo</div>
-                        <div>
-                          <span class="h2">{{ route.params.orderId }}</span>
-                          <span class="status status-success align-text-bottom ms-2">Nová</span>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="row">
-                          <div class="col-6 col-md-12">
-                            <div class="form-label mb-0">Číslo SoD</div>
-                          </div>
-                          <div class="col-6 col-md-12">
-                            <div>192-01-086-IS-I</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="row">
-                          <div class="col-6 col-md-12">
-                            <div class="form-label mb-0">Katalogové číslo</div>
-                          </div>
-                          <div class="col-6 col-md-12">
-                            <div>192-01-086</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="row">
-                          <div class="col-6 col-md-12">
-                            <div class="form-label mb-0">Datum podpisu SoD</div>
-                          </div>
-                          <div class="col-6 col-md-12">
-                            <div>01.05.2025</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="row">
-                          <div class="col-6 col-md-12">
-                            <div class="form-label mb-0">Datum akceptace objednávky</div>
-                          </div>
-                          <div class="col-6 col-md-12">
-                            <div>15.05.2025</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="row">
-                          <div class="col-6 col-md-12">
-                            <div class="form-label mb-0">Dodavatel</div>
-                          </div>
-                          <div class="col-6 col-md-12">
-                            <div>Společnost s.r.o.</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-              <!-- Výčet údajů (#3) -->
-              <!-- <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-xxl-10">
-                    <div class="row gy-3">
-                      <div class="col-12">
-                        <div class="datagrid-title">Interní číslo</div>
-                        <div>
-                          <span class="h2">{{ route.params.orderId }}</span>
-                          <span class="status status-success align-text-bottom ms-2">Nová</span>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="datagrid-title">Číslo SoD</div>
-                        <div>192-01-086-IS-I</div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="datagrid-title">Katalogové číslo</div>
-                        <div>192-01-086</div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="datagrid-title">Datum podpisu SoD</div>
-                        <div>01.05.2025</div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="datagrid-title">Datum akceptace objednávky</div>
-                        <div>15.05.2025</div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="datagrid-title">Dodavatel</div>
-                        <div>Společnost s.r.o.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-              <!-- ? text-muted VS datagrid-title -->
-              <!-- ? nechat na 2 sloupce ? -->
-              <!-- * Výčet údajů (#4) -->
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-xxl-10">
@@ -369,35 +221,14 @@
                         <div class="text-muted w-50">Datum akceptace objednávky</div>
                         <div class="w-50">15.05.2025</div>
                       </div>
-                      <!-- <div class="col-12 col-md-6 d-flex">
+                      <div class="col-12 col-md-6 d-flex">
                         <div class="text-muted w-50">Dodavatel</div>
                         <div class="w-50">Společnost s.r.o.</div>
-                      </div> -->
-                      <!-- ? maybe ? -->
-                      <div class="col-12 col-md-6 d-flex flex-column">
-                        <div class="text-muted">Dodavatel</div>
-                        <div>
-                          <span
-                            data-bs-toggle="modal"
-                            data-bs-target="#order-supplier-infobox"
-                            class="badge badge-lg bg-default text-body cursor-pointer">
-                            Společnost s.r.o.
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- <div class="card-body">
-                <p>Termín splnění dle SoD: date | null</p>
-                <p>Prodejce: Dropdown (multiple??)</p>
-                <p>Technik ÚVD: Dropdown (multiple??)</p>
-                <p>Stavební dozor: Dropdown (multiple??)</p>
-                <p>Zahájení montáže: date | null</p>
-                <p>Dokončení montáže: date | null</p>
-                <p>Předávací protokol k montáži: date | null (co to znamená? proč je datum?)</p>
-              </div> -->
 
               <div class="card-body">
                 <div class="row">
@@ -419,7 +250,6 @@
                           <input type="date" class="form-control" name="order-input-date-sod" id="order-input-date-sod" value="2025-07-01">
                         </div>
                       </div>
-                      <!-- ? Multiple options ? -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-seller">Prodejce</label>
                         <select class="form-select" id="order-input-seller" autocomplete="off">
@@ -431,7 +261,6 @@
                           <option value="5">Možnost 5</option>
                         </select>
                       </div>
-                      <!-- ? Multiple options ? -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-technician">Technik ÚVD</label>
                         <select class="form-select" id="order-input-technician" autocomplete="off">
@@ -443,7 +272,6 @@
                           <option value="5">Možnost 5</option>
                         </select>
                       </div>
-                      <!-- ? Multiple options ? -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-oversight">Stavební dozor</label>
                         <select class="form-select" id="order-input-oversight" autocomplete="off">
@@ -487,7 +315,6 @@
                           <input type="datetime-local" class="form-control" name="order-input-date-installation-end" id="order-input-date-installation-end">
                         </div>
                       </div>
-                      <!-- ? Proč je datum ? -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-date-installation-protocol">Předávací protokol k montáži</label>
                         <div class="input-icon">
@@ -511,10 +338,7 @@
             </div>
           </div>
 
-          <!-- TODO: Odstraň accordion -->
-          <!-- ? collapsable accordion ? -->
           <div class="col-12">
-
             <div class="card card-md">
               <div class="card-header">
                 <h3 class="card-title">Dodavatel</h3>
@@ -522,17 +346,15 @@
               <div class="card-body">
                 <div class="row gy-3">
                   <div class="col-12">
-                    <!-- <span class="form-label">Poznámka dodavatele</span> -->
-                    <label class="form-label" for="order-supplier-note">Poznámka dodavatele</label>
+                    <span class="form-label">Poznámka dodavatele</span>
                     <p class="form-control-plaintext">Tohle je ten nejhezčí byt, ve kterém jsem kdy byl.</p>
-                    <!-- <textarea class="form-control" name="order-supplier-note" id="order-supplier-note" rows="1" placeholder="Poznámka dodavatele..." style="resize: none; field-sizing: content;" value="Tohle je ten nejhezčí byt, ve kterém jsem kdy byl." readonly disabled></textarea> -->
                   </div>
                   <div class="col-12">
-                    <label class="form-label" for="order-technician-note">Poznámka technika <span class="form-label-description">xx/yy</span></label>
+                    <label class="form-label" for="order-technician-note">Poznámka technika</label>
                     <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
                   </div>
                   <div class="col-xl-6">
-                    <label class="form-label" for="order-flaws">Vady <span class="form-label-description">xx/yy</span></label>
+                    <label class="form-label" for="order-flaws">Vady</label>
                     <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
                   </div>
                   <div class="col-xl-6">
@@ -558,11 +380,11 @@
         </div>
       </div>
 
-      <!-- * Záložka - Položky -->
+      <!-- * Záložka: Položky -->
       <div class="tab-pane" id="tab-items" role="tabpanel">
         <div class="row row-cards">
           <div class="col-12">
-            <div class="card card-md">
+            <div class="card">
               <div class="card-header">
                 <div class="d-flex w-100 align-items-center">
                   <div class="d-flex align-items-center gap-2">
@@ -730,13 +552,13 @@
         </div>
       </div>
 
-      <!-- * Záložka - Přílohy -->
+      <!-- * Záložka: Přílohy -->
       <div class="tab-pane" id="tab-attachments" role="tabpanel">
         <div class="row row-cards">
           <!-- * Přílohy -->
           <!-- TODO: Předělej položky pomocí <div> (a na mobilu skryt checkboxy?) -->
           <div class="col-12">
-            <div class="card card-md">
+            <div class="card">
               <div class="card-header">
                 <div class="d-flex w-100 align-items-center">
                   <div class="d-flex align-items-center gap-2">
@@ -832,127 +654,7 @@
                                 <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
                               </svg>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end" style="">
-                              <a href="#" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                                  <path d="M7 11l5 5l5 -5" />
-                                  <path d="M12 4l0 12" />
-                                </svg>
-                                Stáhnout
-                              </a>
-                              <a href="#" class="dropdown-item text-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 7l16 0" />
-                                  <path d="M10 11l0 6" />
-                                  <path d="M14 11l0 6" />
-                                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                                Smazat
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="w-1"><input class="form-check-input m-0 table-selectable-check" type="checkbox" aria-label="Vybrat reklamaci"></td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto">
-                              <span class="avatar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-                                  <path d="M9 9l1 0" />
-                                  <path d="M9 13l6 0" />
-                                  <path d="M9 17l6 0" />
-                                </svg>
-                              </span>
-                            </div>
-                            <div class="col">
-                              <div>
-                                <a href="https://google.com" class="text-reset">192-01-81_os1.pdf</a>
-                              </div>
-                              <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="w-1 text-end ps-0">
-                          <!-- * Options [⋮] -->
-                          <div class="dropdown">
-                            <!-- Thin button -->
-                            <a href="#" class="btn-action p-2" data-bs-toggle="dropdown" aria-expanded="false">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                              </svg>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" style="">
-                              <a href="#" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                                  <path d="M7 11l5 5l5 -5" />
-                                  <path d="M12 4l0 12" />
-                                </svg>
-                                Stáhnout
-                              </a>
-                              <a href="#" class="dropdown-item text-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 7l16 0" />
-                                  <path d="M10 11l0 6" />
-                                  <path d="M14 11l0 6" />
-                                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                                Smazat
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="w-1"><input class="form-check-input m-0 table-selectable-check" type="checkbox" aria-label="Vybrat reklamaci"></td>
-                        <td>
-                          <div class="row">
-                            <div class="col-auto">
-                              <span class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-md icon-tabler icons-tabler-outline icon-tabler-file-text">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-                                  <path d="M9 9l1 0" />
-                                  <path d="M9 13l6 0" />
-                                  <path d="M9 17l6 0" />
-                                </svg>
-                              </span>
-                            </div>
-                            <div class="col">
-                              <div>
-                                <a href="https://google.com" class="text-reset">192-01-81_os1.pdf</a>
-                              </div>
-                              <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="w-1 text-end ps-0">
-                          <!-- * Options [⋮] -->
-                          <div class="dropdown">
-                            <!-- Thin button -->
-                            <a href="#" class="btn-action p-2" data-bs-toggle="dropdown" aria-expanded="false">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                              </svg>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" style="">
+                            <div class="dropdown-menu dropdown-menu-end">
                               <a href="#" class="dropdown-item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
                                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -987,7 +689,7 @@
       </div>
 
 
-      <!-- * Záložka - Stavba -->
+      <!-- * Záložka: Stavba -->
       <div class="tab-pane" id="tab-construction" role="tabpanel">
         <div class="row row-cards">
           <div class="col-12">
