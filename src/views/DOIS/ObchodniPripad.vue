@@ -104,73 +104,58 @@
 
       <!-- Klient a produkt -->
       <div class="tab-pane active show" id="tab-1" role="tabpanel">
-        <div class="row row-deck row-cards">
-          <!-- TODO -->
-          <!-- 
-            'Klient' -- je abstraktní taková uber entita
-                Nazev:Veselý Josef Dr. Ing. Ph.D. MBA a Věra
-                Email:vesely@taxway.cz
-                Telefon:+420724747457, 602234725
-            'Osoba' - Reálně je "Osoby" -- vypisuje všechny jednotlivé osoby/lidi
-                Jméno:Dr. Ing. Veselý Josef Ph.D MBA
-                Email:vesely@taxway.cz
-                Telefon:+420724747457
 
-                Jméno:Veselá Věra
-                Telefon:+420602234725
-            'Produkt' -- evidentně ne všechny údaje musí být vypsány
-                Číslo smlouvy:128-07-156
-                Typ:
-                Adresa:
-                Dům:
-                Číslo bytu:
-                Dispozice:
-           -->
-          <!-- TEMP - SUPER TEMP -->
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Klient</div>
+        <div class="row row-cards">
+          <div class="col-lg-6">
+            <div class="row row-deck row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Klient</div>
+                  </div>
+                  <div class="card-body">
+                    <!-- TEMP -->
+                    <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
+                    <p>Email: vesely@taxway.cz</p>
+                    <p>Telefon: +420724747457, 602234725</p>
+                  </div>
+                </div>
               </div>
-              <div class="card-body">
-                <!-- TEMP -->
-                <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
-                <p>Email: vesely@taxway.cz</p>
-                <p>Telefon: +420724747457, 602234725</p>
-              </div>
-            </div>
-          </div>
-          <!-- TEMP - SUPER TEMP -->
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Osoba</div>
-              </div>
-              <!-- TEMP -->
-              <div class="card-body">
-                <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
-                <p>Email: vesely@taxway.cz</p>
-                <p>Telefon: +420724747457</p>
-              </div>
-              <div class="card-body">
-                <p>Jméno: Veselá Věra</p>
-                <p>Telefon :+420602234725</p>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Osoba</div>
+                  </div>
+                  <!-- TEMP -->
+                  <div class="card-body">
+                    <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
+                    <p>Email: vesely@taxway.cz</p>
+                    <p>Telefon: +420724747457</p>
+                  </div>
+                  <div class="card-body">
+                    <p>Jméno: Veselá Věra</p>
+                    <p>Telefon :+420602234725</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- TEMP - SUPER TEMP -->
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Produkt</div>
-              </div>
-              <div class="card-body">
-                <p>Číslo smlouvy: 128-07-156</p>
-                <p>Typ: </p>
-                <p>Adresa: </p>
-                <p>Dům: </p>
-                <p>Číslo bytu: </p>
-                <p>Dispozice: </p>
+          <div class="col-lg-6">
+            <div class="row row-deck row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Produkt</div>
+                  </div>
+                  <div class="card-body">
+                    <p>Číslo smlouvy: 128-07-156</p>
+                    <p>Typ: </p>
+                    <p>Adresa: </p>
+                    <p>Dům: </p>
+                    <p>Číslo bytu: </p>
+                    <p>Dispozice: </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
