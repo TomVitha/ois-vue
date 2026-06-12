@@ -92,8 +92,7 @@
             </button>
             <div class="dropdown-menu dropdown-menu-end">
               <button @click="startAttachingDocs" class="dropdown-item">
-                <!-- TEMP: Název -->
-                Poptávka / Přiložit dokumenty k objednávce
+                Přiložit dokumenty k objednávce
               </button>
             </div>
           </div>
