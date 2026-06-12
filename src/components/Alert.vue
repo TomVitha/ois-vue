@@ -7,11 +7,11 @@
     defineProps<{
       heading?: string
       type: 'success' | 'info' | 'warning' | 'danger'
-      isDismissable?: boolean
+      isDismissible?: boolean
       isImportant?: boolean
     }>(),
     {
-      isDismissable: false,
+      isDismissible: false,
       isImportant: false
     }
   )
@@ -20,7 +20,7 @@
 <template>
   <div
     class="alert"
-    :class="[`alert-${type}`, { 'alert-important': isImportant }, { 'alert-dismissible': isDismissable }]"
+    :class="[`alert-${type}`, { 'alert-important': isImportant }, { 'alert-dismissible': isDismissible }]"
     role="alert">
     <div class="alert-icon">
       <svg v-if="type == 'success'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
@@ -48,7 +48,7 @@
         <slot></slot>
       </div>
     </div>
-    <a v-if="isDismissable" class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+    <a v-if="isDismissible" class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
   </div>
 </template>
 
