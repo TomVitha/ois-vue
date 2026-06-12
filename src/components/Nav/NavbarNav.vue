@@ -10,7 +10,7 @@
     <div class="d-flex align-items-center">
 
       <!-- Theme switch -->
-      <div class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" :title="themeStore.theme === 'dark' ? 'Zapnout světlý režim' : 'Zapnout tmavý režim'">
+      <div class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Přepnout režim">
         <button class="nav-link px-0 hide-theme-dark" @click.prevent="themeStore.applyTheme('dark')">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
@@ -26,7 +26,7 @@
 
       <!-- Messenger -->
       <div class="nav-item">
-        <RouterLink to="/komunikace" class="nav-link px-0" data-bs-toggle="tooltip" data-bs-placement="bottom" :title="messengerStore.unreadCount > 0 ? 'Nové zprávy' : 'Komunikace'">
+        <RouterLink to="/komunikace" class="nav-link px-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Komunikace">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
