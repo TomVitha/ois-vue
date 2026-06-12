@@ -20,9 +20,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- TEMP: Logo zatím odkazuje na /dois/objednavky; protože Dashboard ještě není hotový -->
+
       <!-- CG Logo with BG (desktop) -->
       <div class="navbar-brand d-none d-lg-inline-flex">
-        <RouterLink to="/dois" aria-label="CENTRAL GROUP">
+        <RouterLink to="/dois/objednavky" aria-label="CENTRAL GROUP">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 155 129" style="enable-background:new 0 0 155 129;" xml:space="preserve" class="navbar-brand-image">
             <rect width="155" height="129" fill="#FFED00" />
             <g>
@@ -47,7 +49,7 @@
 
       <!-- CG Logo Wordmark (mobile) -->
       <div class="navbar-brand navbar-brand-autodark d-lg-none">
-        <RouterLink to="/dois" aria-label="CENTRAL GROUP">
+        <RouterLink to="/dois/objednavky" aria-label="CENTRAL GROUP">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="25 50 232 86" style="enable-background:new 0 0 283.5 186.2;" xml:space="preserve" class="navbar-brand-image">
             <g>
               <g fill="#000000">
@@ -79,7 +81,7 @@
         <ul class="navbar-nav p-2 p-lg-3 pt-3 gap-1">
 
           <!-- * Dashboard -->
-          <NavItem label="Dashboard" to="/dois">
+          <!-- <NavItem label="Dashboard" to="/dois">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-2">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -89,7 +91,7 @@
                 <path d="M14 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -1" />
               </svg>
             </template>
-          </NavItem>
+          </NavItem> -->
 
           <!-- * Objednávky -->
           <NavItem label="Objednávky" to="/dois/objednavky">
@@ -189,12 +191,12 @@
             </template>
           </NavItem> -->
 
-          <!-- ? Reporty -->
-          <!-- <NavItem label="Reporty (?)" to="/todo">
+          <!-- Reporty -->
+          <NavItem label="Reporty" to="/todo">
             <template #icon>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chart-histogram"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 3v18h18" /><path d="M20 18v3" /><path d="M16 16v5" /><path d="M12 13v8" /><path d="M8 16v5" /><path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" /></svg>
             </template>
-          </NavItem> -->
+          </NavItem>
 
           <!-- ? Správa reportů -->
           <!-- <NavItem label="Správa reportů (?)" to="/todo">
