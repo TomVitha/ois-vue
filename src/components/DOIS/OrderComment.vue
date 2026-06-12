@@ -15,7 +15,7 @@
   }>()
 
   const username = computed(() => {
-    return doisOrdersStore.users.find(user => user.id === props.userId)?.username || `Uživatel #${props.userId}`
+    return doisOrdersStore.getUser(props.userId)?.username || `Uživatel #${props.userId}`
   })
 
   const isMe = computed(() => {
@@ -26,8 +26,8 @@
 
 <template>
   <div class="comment">
-    <div class="text-muted" v-if="props.datetime">
-      <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> • <span>{{ formatDate(props.datetime, 'long-datetime') }}</span>
+    <div v-if="props.datetime">
+      <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> <span class="text-muted"> • {{ formatDate(props.datetime, 'long-datetime') }}</span>
     </div>
     <div>{{ props.text }}</div>
   </div>
