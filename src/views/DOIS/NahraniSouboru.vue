@@ -11,7 +11,15 @@
   const isNonCompliantUpload = ref<boolean | null>(null)
   // NOTE: Podímky pro nahrání: V dropzone je nahraný aspoň 1 soubor a pokud klient neudělil souhlas tak je třeba vzít na vědomí
   const allowFileUpload = computed(() => {
-    return !isDzEmpty.value && (isGdprCompliant.value || isNonCompliantUpload.value) ? true : false
+    if (isDzEmpty.value) {
+      return false
+    }
+
+    if (userView.value === 'supplier') {
+      return true
+    }
+
+    return Boolean(isGdprCompliant.value || isNonCompliantUpload.value)
   })
 
   // NOTE: dzFileupload.value is available for manual calls
@@ -29,13 +37,18 @@
 
           if (isDzEmpty.value) {
             isDzEmpty.value = false
-  
-            // NOTE: Po nahrání souboru se AUTOMATICKY provede kontrola GDRP klienta. Tedy to samé, jako když jste doposud klikni na tlačítko "Kontrola klienta na GDRP"
-            // DEV - Pro účely vývoje/testování se stav GDRP nastaví náhodně. V produkci se samozřejmě
-            isGdprCompliant.value = Math.random() < 0.5
-  
-            // Pokud GDPR souhlas není, uživatel odsouhlasí že to bere na vědomí
-            isNonCompliantUpload.value = isGdprCompliant.value === false ? false : null
+
+            if (userView.value === 'client') {
+              // NOTE: Po nahrání souboru se AUTOMATICKY provede kontrola GDRP klienta. Tedy to samé, jako když jste doposud klikni na tlačítko "Kontrola klienta na GDRP"
+              // DEV - Pro účely vývoje/testování se stav GDRP nastaví náhodně. V produkci se samozřejmě
+              isGdprCompliant.value = Math.random() < 0.5
+
+              // Pokud GDPR souhlas není, uživatel odsouhlasí že to bere na vědomí
+              isNonCompliantUpload.value = isGdprCompliant.value === false ? false : null
+            } else {
+              isGdprCompliant.value = null
+              isNonCompliantUpload.value = null
+            }
           }
         })
 
@@ -54,6 +67,9 @@
     dzFileupload.value?.removeAllFiles(true)
   }
 
+  /** DEV - POMOCNÁ PROMĚNNÁ pro kontrolu pohledů Klient (CG) vs Dodavatel */
+  const userView = ref<"client" | "supplier">("supplier")
+
 
 </script>
 
@@ -70,8 +86,8 @@
           </div> -->
           <div class="card-body">
             <div class="row gy-3">
-              <!-- TODO: Messages - success/failure -->
-              <div class="col-12">
+              <!-- "Dodavatel" - vidí klient -->
+              <div v-if="userView === 'client'" class="col-12">
                 <div class="row">
                   <div class="col-12 col-md-6 col-xl-4">
                     <div class="form-label">Dodavatel</div>
@@ -84,7 +100,33 @@
                   </div>
                 </div>
               </div>
-              <!-- WIP -->
+              <!-- "Katalogové číslo" - vidí dodavatel -->
+              <div v-if="userView === 'supplier'" class="col-12">
+                <div class="row">
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="d-flex align-items-end gap-2">
+                      <div>
+                        <div class="form-label">Katalogové číslo</div>
+                        <input type="text" class="form-control">
+                      </div>
+                      <button class="btn btn-primary">Vyhledat</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-if="userView === 'supplier'" class="col-12">
+                <div class="row">
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-label">Konzultant</div>
+                    <select class="form-select">
+                      <option selected disabled>vyberte</option>
+                      <option value="1">Možnost 1</option>
+                      <option value="2">Možnost 2</option>
+                      <option value="3">Možnost 3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div class="col-6">
                 <p class="text-muted m-0">Klient se zjišťuje z katalogového čísla, ze začátku názvu souboru.</p>
               </div>
@@ -112,7 +154,7 @@
                   </div>
                 </form>
               </div>
-              <div class="col-12">
+              <div v-if="userView === 'client'" class="col-12">
                 <label class="form-check my-0">
                   <input class="form-check-input" type="checkbox">
                   <span class="form-check-label">Nahrát jako poptávku</span>
@@ -120,7 +162,7 @@
               </div>
 
               <!-- WIP -->
-              <div class="col-12 gy-5" v-if="isGdprCompliant !== null">
+              <div class="col-12 gy-5" v-if="userView === 'client' && isGdprCompliant !== null">
                 <!-- Udělil souhlas -->
                 <Alert class="mb-0" v-if="isGdprCompliant == true" type="success">Klient udělil souhlas s GDPR.</Alert>
                 <!-- Neudělil souhlas -->
@@ -129,7 +171,7 @@
                 <Alert class="mb-0" v-else type="warning">Udělení souhlasu klienta s GDPR se nepodařilo ověřit.</Alert>
               </div>
 
-              <div class="col-12" v-if="isGdprCompliant == false">
+              <div class="col-12" v-if="userView === 'client' && isGdprCompliant == false">
                 <label class="form-check my-0">
                   <input class="form-check-input" type="checkbox" v-model="isNonCompliantUpload">
                   <span class="form-check-label">Beru na vědomí, přesto umožnit nahrání</span>
