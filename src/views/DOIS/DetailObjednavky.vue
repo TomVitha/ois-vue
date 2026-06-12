@@ -7,6 +7,7 @@
   import { useDropzone } from '@/composables/useDropzone'
   import 'dropzone/dist/dropzone.css'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
+  import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
 
@@ -48,20 +49,20 @@
           </a>
           <div class="dropdown-menu dropdown-menu-end">
             <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 14l11 -11" />
-                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
-              </svg>
-              Odeslat objednávku
-            </button>
-            <button class="dropdown-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 5l0 14" />
                 <path d="M5 12l14 0" />
               </svg>
               Připojit objednávku
+            </button>
+            <button class="dropdown-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 14l11 -11" />
+                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+              </svg>
+              Odeslat objednávku
             </button>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item">
@@ -120,14 +121,7 @@
     <template #toolbar>
       <!-- NOTE: Akce v toolbaru pro desktop -->
       <div v-if="isDesktop" class="btn-list mb-3">
-        <button class="btn btn-sm btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M10 14l11 -11" />
-            <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
-          </svg>
-          Odeslat objednávku
-        </button>
+        <!-- NOTE: Nejprve bude viditelné pouze "připojit objednávku"; poté bude viditelné pouze "odeslat objednávku; poté ani jedno" -->
         <button class="btn btn-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -135,6 +129,14 @@
             <path d="M5 12l14 0" />
           </svg>
           Připojit objednávku
+        </button>
+        <button class="btn btn-sm btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 14l11 -11" />
+            <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
+          </svg>
+          Odeslat objednávku
         </button>
         <div class="dropdown">
           <button class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
@@ -651,6 +653,9 @@
                             </svg>
                             <!-- ? stáhnout kliknutím na název ? -->
                             <a href="./todo" class="text-reset">192-01-81_os1.pdf</a>
+                              <!-- NOTE: Zobrazí se pouze pokud se bude jednat o dokument objednávky -->
+                              <span class="badge ms-1">Objednávka</span>
+                            </span>
                           </div>
                           <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
                         </td>
