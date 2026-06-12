@@ -16,13 +16,13 @@
     return selectedPayment.value?.amount ?? 0
   })
 
-  // NOTE: Potřeba dát do proměnné protože window nejde na přímo použít, jinak error: "Property 'window' does not exist on type..."
-  const win = window
+  import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
+  const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
 </script>
 
 <template>
-  <div class="offcanvas" :class="[win.innerWidth < 992 ? 'offcanvas-bottom' : 'offcanvas-end']" tabindex="-1" id="payment-offcanvas" aria-labelledby="paymentOffcanvasLabel">
+  <div class="offcanvas" :class="[isDesktop ? 'offcanvas-end' : 'offcanvas-bottom']" tabindex="-1" id="payment-offcanvas" aria-labelledby="paymentOffcanvasLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="paymentOffcanvasLabel">Detail platby</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
