@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue';
+  import { computed, ref, onMounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   import { useDropzone } from '@/composables/useDropzone'
   import 'dropzone/dist/dropzone.css'
-
+  import TomSelect from 'tom-select'
 
   const unsavedChanges = ref(true)
   function handleBack(navigate: () => void) {
@@ -49,6 +49,13 @@
     options: {
       url: './',
     },
+  })
+
+  onMounted(() => {
+    new TomSelect('#filter-item', {
+      allowEmptyOption: false,
+      create: false,
+    })
   })
 
 </script>
@@ -193,7 +200,15 @@
                     <tbody>
                       <tr>
                         <td>
-                          <input type="text" class="form-control" placeholder="Název položky...">
+                          <!-- NOTE: Tom Select -->
+                          <select class="form-select" autocomplete="off" id="filter-item">
+                            <option selected disabled></option>
+                            <option value="1">Možnost 1</option>
+                            <option value="2">Možnost 2</option>
+                            <option value="3">Možnost 3</option>
+                            <option value="4">Možnost 4</option>
+                            <option value="5">Možnost 5</option>
+                          </select>
                         </td>
                         <td>
                           <div class="input-icon">

@@ -2,6 +2,7 @@
   import { ref, onMounted, watch } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
+  import TomSelect from 'tom-select'
 
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   const isWideScreen = matchesMediaQuery('(min-width: 1600px)')
@@ -10,6 +11,14 @@
   // Toggle fluid layout
   watch(isFluidLayout, (newValue) => {
     (document.querySelector('.page-body') as HTMLElement).classList.toggle('layout-fluid', newValue)
+  })
+
+
+  onMounted(() => {
+    new TomSelect('#filter-item', {
+      allowEmptyOption: false,
+      create: false,
+    })
   })
 
 </script>
@@ -61,10 +70,11 @@
             <label>Stav objednávky</label>
           </div>
         </div>
+        <!-- NOTE: Tom Select -->
         <div class="col-sm-4 col-xxl-2">
           <div class="form-floating">
-            <select class="form-select" autocomplete="off">
-              <option selected>všichni</option>
+            <select class="form-select" id="filter-item">
+              <option value="0" selected>všechny</option>
               <option value="1">Možnost 1</option>
               <option value="2">Možnost 2</option>
               <option value="3">Možnost 3</option>

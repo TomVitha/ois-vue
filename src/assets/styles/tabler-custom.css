@@ -387,3 +387,19 @@ html {
 .progress, .progress-stacked {
   --tblr-progress-bar-transition: none;
 }
+
+/* FIX: Tom Select inside Bootstrap form-floating (floating label) */
+/* https://github.com/orchidjs/tom-select/issues/579#issuecomment-2437534901 */
+.form-floating {
+  .ts-wrapper.form-control,
+  .ts-wrapper.form-select {
+    height: 0 !important;
+  }
+  
+  .ts-wrapper.form-control .ts-control,
+  .ts-wrapper.form-select .ts-control {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1rem;
+  }
+}
