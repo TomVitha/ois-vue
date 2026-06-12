@@ -16,7 +16,7 @@
 
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
-  const steps = ['Objednávka', 'Položky', 'Přílohy', 'Stavba'] as const
+  const steps = ['Objednávka', 'Položky', 'Přílohy'] as const
   const activeStepIndex = ref(0)
 
   const isFirstStep = computed(() => activeStepIndex.value === 0)
@@ -54,7 +54,7 @@
 </script>
 
 <template>
-  <PageTemplate :title="`Nová objednávka 123-4567-ÚVD`" back-to="/dois/objednavky-uvd" @back="handleBack">
+  <PageTemplate :title="`Nová objednávka 999-2025-ÚVD`" back-to="/dois/objednavky-uvd" @back="handleBack">
 
     <div class="row mb-5">
       <div class="col-lg-8 mx-auto">
@@ -86,8 +86,8 @@
                       <div class="col-12">
                         <div class="text-muted">Interní číslo</div>
                         <div>
-                          <span class="h2">123-4567-ÚVD</span>
-                          <span class="status status-success align-text-bottom ms-2">Nová</span>
+                          <span class="h2">999-2025-ÚVD</span>
+                          <span class="status status-info align-text-bottom ms-2">Nová</span>
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-6">
@@ -142,35 +142,6 @@
                           <option value="5">Možnost 5</option>
                         </select>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="row gy-3">
-                  <!-- ? chceme vůbec zobrazovat ? -->
-                  <!-- <div class="col-12">
-                    <label class="form-label" for="order-technician-note">Poznámka technika</label>
-                    <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;" disabled></textarea>
-                  </div> -->
-                  <div class="col-xl-6">
-                    <label class="form-label" for="order-flaws">Vady</label>
-                    <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
-                  </div>
-                  <div class="col-xl-6">
-                    <label class="form-label" for="order-input-date-flaws-protocol">Předávací protokol k odstranění vad</label>
-                    <div class="input-icon">
-                      <span class="input-icon-addon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                          <path d="M16 3v4"></path>
-                          <path d="M8 3v4"></path>
-                          <path d="M4 11h16"></path>
-                          <path d="M11 15h1"></path>
-                          <path d="M12 15v3"></path>
-                        </svg>
-                      </span>
-                      <input type="date" class="form-control" name="order-input-date-flaws-protocol" id="order-input-date-flaws-protocol">
                     </div>
                   </div>
                 </div>
@@ -375,46 +346,13 @@
         </div>
       </div>
 
-      <!-- * Záložka: Stavba -->
-      <div class="tab-pane" :class="{ 'active show': activeStepIndex === 3 }" id="tab-construction" role="tabpanel">
-        <div class="row row-cards">
-          <div class="col-12">
-            <div class="card card-md">
-              <div class="card-body">
-                <div class="row gy-3">
-                  <div class="col-12 col-lg-4">
-                    <label for="order-construction-readiness" class="form-label">Připravenost stavba</label>
-                    <div class="input-icon">
-                      <span class="input-icon-addon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                          <path d="M16 3v4"></path>
-                          <path d="M8 3v4"></path>
-                          <path d="M4 11h16"></path>
-                          <path d="M11 15h1"></path>
-                          <path d="M12 15v3"></path>
-                        </svg>
-                      </span>
-                      <input type="date" class="form-control" name="order-construction-readiness" id="order-construction-readiness">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <label for="order-construction-note" class="form-label">Poznámka stavba</label>
-                    <input type="text" class="form-control" name="order-construction-note" id="order-construction-note" placeholder="Poznámka...">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="col-12 mt-5">
       <div class="btn-list justify-content-center">
         <button type="button" class="btn btn-link" :disabled="isFirstStep" @click="goToPreviousStep">Zpět</button>
-        <button type="button" class="btn btn-primary" @click="goToNextStep">{{ isLastStep ? 'Dokončit' : 'Pokračovat' }}</button>
+        <button v-if="!isLastStep" type="button" class="btn" @click="goToNextStep">Další</button>
+        <RouterLink to="/dois/objednavky-uvd" class="btn btn-primary">{{ !isLastStep ? 'Uložit' : 'Dokončit' }}</RouterLink>
       </div>
     </div>
 
