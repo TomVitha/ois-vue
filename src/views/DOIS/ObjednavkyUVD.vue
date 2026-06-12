@@ -39,12 +39,6 @@
         <div class="col-sm-4 col-xxl-2">
           <div class="form-floating">
             <input class="form-control" type="text">
-            <label>Bytový dům</label>
-          </div>
-        </div>
-        <div class="col-sm-4 col-xxl-2">
-          <div class="form-floating">
-            <input class="form-control" type="text">
             <label>Číslo SoD</label>
           </div>
         </div>
@@ -254,8 +248,6 @@
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">XLSX</a>
-            <a class="dropdown-item" href="#">CSV</a>
-            <a class="dropdown-item" href="#">PDF</a>
           </div>
         </div>
         <RouterLink to="/dois/nova-objednavka" type="button" class="btn btn-primary">
