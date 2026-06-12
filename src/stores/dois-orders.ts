@@ -38,6 +38,7 @@ type OrderDocument = {
   filepath: string
   datetime: string
   status: DocumentStatus
+  uploaderId: number
 }
 
 type OrderPart = [
@@ -66,6 +67,7 @@ const orders = ref<Order[]>([
           filepath: '/soubory/hlavni-dokument-1.pdf',
           datetime: '2026-05-11T09:38:00',
           status: 1,
+          uploaderId: 7,
         },
         // supporting documents
         [
@@ -76,12 +78,14 @@ const orders = ref<Order[]>([
               filepath: '/soubory/6A017122_53341_01.scn',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
             {
               id: 3,
               filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
           ],
           // group of documents #2
@@ -91,12 +95,14 @@ const orders = ref<Order[]>([
               filepath: '/soubory/1_1.png',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
             {
               id: 5,
               filepath: '/soubory/1_2.png',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             }
           ]
         ]
@@ -109,6 +115,7 @@ const orders = ref<Order[]>([
           filepath: '/soubory/hlavni-dokument-2.pdf',
           datetime: '2026-05-11T09:38:00',
           status: 1,
+          uploaderId: 7,
         },
         // supporting documents
         [
@@ -119,18 +126,21 @@ const orders = ref<Order[]>([
               filepath: '/soubory/6A017122_53341_01.scn',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
             {
               id: 8,
               filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
             {
               id: 9,
               filepath: '/soubory/1_1.png',
               datetime: '2026-05-11T09:38:00',
               status: 1,
+              uploaderId: 1,
             },
           ],
           // group of documents #2
@@ -140,6 +150,7 @@ const orders = ref<Order[]>([
               filepath: '/soubory/Eraserhead.1977.1080p.x265.AAC-PiratskaStrana.mkv',
               datetime: '2007-10-27T21:14:11',
               status: 1,
+              uploaderId: 1,
             }
           ]
         ]
@@ -233,6 +244,10 @@ function getOrderComments(orderId: number): Comment[] {
   return orderComments.value.filter(comment => comment.parentId === orderId)
 }
 
+function getUser(userId: number): User | undefined {
+  return users.value.find(user => user.id === userId)
+}
+
 function getNextCommentId(): number {
   const allComments = [...documentComments.value, ...orderComments.value]
   return allComments.reduce((maxId, comment) => Math.max(maxId, comment.id), 0) + 1
@@ -310,6 +325,7 @@ export const useDoisOrders = defineStore('doisOrders', () => {
     orderComments,
     getDocumentComments,
     getOrderComments,
+    getUser,
     addDocumentComment,
     addOrderComment,
     setDocumentStatus,

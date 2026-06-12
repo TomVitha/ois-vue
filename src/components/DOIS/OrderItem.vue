@@ -125,6 +125,7 @@
               :status="orderPart[0].status"
               :filepath="orderPart[0].filepath"
               :datetime="orderPart[0].datetime"
+              :uploader-id="orderPart[0].uploaderId"
               :is-main-document="true" />
           </div>
           <!-- * Supporting documents = orderPart[1] -->
@@ -159,6 +160,7 @@
                             :status="doc.status"
                             :filepath="doc.filepath"
                             :datetime="doc.datetime"
+                            :uploader-id="doc.uploaderId"
                             :is-main-document="false" />
                         </template>
                       </div>
