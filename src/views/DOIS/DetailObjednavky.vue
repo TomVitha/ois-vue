@@ -213,7 +213,7 @@
                         <div class="text-muted">Interní číslo</div>
                         <div>
                           <span class="h2">{{ route.params.orderId }}</span>
-                          <span class="status status-success align-text-bottom ms-2">Nová</span>
+                          <span class="status status-info align-text-bottom ms-2">Nová</span>
                         </div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">

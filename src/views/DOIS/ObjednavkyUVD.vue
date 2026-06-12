@@ -300,7 +300,7 @@
                     <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink>
                   </td>
                   <td class="sort-receipt">192-01-086-IS-I</td>
-                  <td class="sort-status" date-status="0"><span class="status status-success">Nová</span></td>
+                  <td class="sort-status" date-status="0"><span class="status status-info">Nové</span></td>
                   <td class="sort-technician">Petr Lamata</td>
                   <td class="sort-readiness">Indeco</td>
                   <td>30.01.2026</td>

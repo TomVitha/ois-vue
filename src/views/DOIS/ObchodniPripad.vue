@@ -145,14 +145,17 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <div class="card-title">Produkt</div>
+                    <div class="card-title">
+                      Produkt
+                      <span class="badge bg-success-lt text-success-lt-fg ms-1">Zkolaudováno</span>
+                    </div>
                   </div>
                   <div class="card-body">
                     <p>Číslo smlouvy: 128-07-156</p>
                     <p>Typ: </p>
                     <p>Adresa: </p>
                     <p>Dům: </p>
-                    <p>Číslo bytu: </p>
+                    <p>Číslo produktu: </p>
                     <p>Dispozice: </p>
                   </div>
                 </div>
