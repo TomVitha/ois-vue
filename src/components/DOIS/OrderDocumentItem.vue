@@ -108,9 +108,7 @@
       </div>
       <!-- * Filename -->
       <div class="col-4">
-        <!-- <a :href="props.filepath" class="text-reset">{{ filename }}</a> -->
-        <!-- ? maybe .fw-bold for main document ? -->
-        <a :href="props.filepath" class="text-reset" :class="{ '': props.isMainDocument }">{{ filename }}</a>
+        <a :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
       </div>
 
       <!-- * Datetime -->
