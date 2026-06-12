@@ -153,7 +153,9 @@
               </svg>
             </button>
             <!-- * Komentáře -->
-            <button
+            <!-- HACK - zatím prostě schovaný button -->
+            <!-- NOTE: U jednotlivých souborů komentáře nebudou. Bude pouze jedna společná sekce Komentáře. Možná bude možné v komentáři "označit" jednotlivý komentář, že se vztahuje ke němu (třeba jako když @ uživatele?) -->
+            <!-- <button
               class="btn btn-action"
               :class="{ 'active': isAddCommentVisible }"
               data-bs-toggle="tooltip"
@@ -165,7 +167,7 @@
                 <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
               </svg>
               <span v-if="comments.length" class="badge badge-notification">{{ comments.length }}</span>
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
