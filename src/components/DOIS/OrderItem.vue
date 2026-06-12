@@ -2,7 +2,6 @@
   import { ref, computed, provide, readonly } from 'vue'
   import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
-  // import OrderComment from '@/components/DOIS/OrderComment.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
   import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
@@ -67,8 +66,24 @@
           <button class="btn" @click="cancelAttachingDocs">Zrušit</button>
         </div>
         <div v-if="!isAttachingDocs" class="btn-actions">
+          <!-- WIP - ALT comments (offcanvas side panel) -->
           <button
-            class="btn btn-icon btn-action"
+            class="btn btn-action"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#dois-order-offcanvas"
+            title="Otevřít komentáře">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M8 9h8" />
+              <path d="M8 13h6" />
+              <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
+            </svg>
+            <!-- TEMP vypnuto ať se netluče s prvním tlačítem -->
+            <!-- <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span> -->
+          </button>
+          <!-- * Komentáře -->
+          <button
+            class="btn btn-action"
             :class="{ 'active': areCommentsVisible }"
             data-bs-toggle="tooltip"
             title="Komentáře"
@@ -82,7 +97,7 @@
           </button>
           <!-- * Dropdown actions -->
           <div class="dropdown">
-            <button class="btn btn-icon btn-action dropdown-toggle" data-bs-toggle="dropdown" draggable="false">
+            <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" draggable="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />

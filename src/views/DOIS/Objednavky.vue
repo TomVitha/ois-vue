@@ -4,8 +4,8 @@
   import { useDoisOrders } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
 
-
   import OrderItem from '@/components/DOIS/OrderItem.vue'
+  import OrderOffcanvas from '@/components/DOIS/OrderOffcanvas.vue'
 </script>
 
 <template>
@@ -79,6 +79,10 @@
         </div>
       </template>
     </div>
+
+    <!-- EXPERIMENTAL - order offcanvas (temp hard-coded order) -->
+    <OrderOffcanvas :order-id="0"></OrderOffcanvas>
+
 
   </PageTemplate>
 
