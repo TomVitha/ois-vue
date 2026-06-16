@@ -1,9 +1,42 @@
 <script setup lang="ts">
+  import { watch } from 'vue';
+  import { useRoute } from 'vue-router';
   import NavbarNav from '@/components/Nav/NavbarNav.vue'
   import NavItem from '@/components/Nav/NavItem.vue'
 
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
+  const route = useRoute()
+
+  function closeNavbarMenu(isCloseImmediately: boolean = false) {
+
+    if (isDesktop.value) return
+
+    const navbarMenu = document.getElementById('sidebar-menu')
+    if (!navbarMenu?.classList.contains('show')) {
+      return
+    }
+
+    const navbarToggler = document.querySelector<HTMLButtonElement>('button.navbar-toggler[data-bs-target="#sidebar-menu"]',)
+
+    // Closes immediately without transition
+    if (isCloseImmediately) {
+      navbarMenu.classList.remove('show', 'collapsing')
+      navbarMenu.classList.add('collapse')
+      navbarMenu.style.removeProperty('height')
+
+      navbarToggler?.classList.add('collapsed')
+      navbarToggler?.setAttribute('aria-expanded', 'false')
+      return
+    }
+    // Default close (with transition)
+    else {
+      navbarToggler?.click()  // Clicks the toggler button
+    }
+  }
+
+  // On route change, close the navbar menu (for mobile)
+  watch(() => route.fullPath, () => closeNavbarMenu())  
 </script>
 
 <template>
