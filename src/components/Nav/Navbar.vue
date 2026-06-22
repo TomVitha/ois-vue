@@ -5,9 +5,6 @@
 <template>
   <header class="navbar navbar-expand-lg d-print-none d-lg-flex sticky-top">
     <div class="container-xl">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <NavbarNav />
     </div>
   </header>
