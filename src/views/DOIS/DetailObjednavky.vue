@@ -749,7 +749,7 @@
                 <div class="space-y">
                   <OrderComments :comments="comments" />
                   <!-- HACK - Hard-coded values !! -->
-                  <OrderAddComment target="order" :targetId="0" />
+                  <OrderAddComment :orderId="0" />
                 </div>
               </div>
             </div>

@@ -61,8 +61,7 @@
     </div>
     <div class="offcanvas-footer border-top flex-shrink-0 flex-grow-0">
       <OrderAddComment
-        target="order"
-        :targetId="0" />
+        :orderId="props.orderId" />
     </div>
   </div>
 </template>

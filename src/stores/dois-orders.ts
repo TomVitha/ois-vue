@@ -27,7 +27,8 @@ type DocumentStatus = 0 | 1 | 2 | 3
 
 export type Comment = {
   id: number
-  parentId: number
+  refOrderId: number
+  refDocumentId?: number
   userId: number
   datetime: string
   text: string
@@ -159,76 +160,82 @@ const orders = ref<Order[]>([
   }
 ])
 
-const documentComments = ref<Comment[]>([
+const comments = ref<Comment[]>([
   {
     id: 1,
-    parentId: 1,
+    refOrderId: 0,
+    refDocumentId: 1,
     userId: 2,
     datetime: '2026-05-11T10:12:00',
     text: 'prosím ať se to udělá pořádně'
   },
   {
     id: 2,
-    parentId: 2,
+    refOrderId: 0,
+    refDocumentId: 2,
     userId: 3,
     datetime: '2026-05-11T10:12:00',
     text: 'Mě se to nelíbí'
   },
   {
     id: 3,
-    parentId: 2,
+    refOrderId: 0,
+    refDocumentId: 2,
     userId: 4,
     datetime: '2026-05-11T10:14:12',
     text: 'mě jo'
   },
   {
     id: 4,
-    parentId: 7,
+    refOrderId: 0,
+    refDocumentId: 7,
     userId: 3,
     datetime: '2026-05-11T10:12:00',
     text: 'Tohle je poznámka k dokumentu 194-11-049_Sapeli-KD1.pdf.'
   },
   {
     id: 5,
-    parentId: 7,
+    refOrderId: 0,
+    refDocumentId: 7,
     userId: 4,
     datetime: '2026-05-11T10:14:12',
     text: 'A tady je další koment.'
   },
   {
     id: 6,
-    parentId: 10,
+    refOrderId: 0,
+    refDocumentId: 10,
     userId: 5,
     datetime: '2007-10-27T22:07:33',
     text: 'Believe it or not, Eraserhead is my most spiritual film'
   },
   {
     id: 7,
-    parentId: 10,
+    refOrderId: 0,
+    refDocumentId: 10,
     userId: 6,
     datetime: '2007-10-27T22:08:50',
     text: 'Elaborate on that'
   },
   {
     id: 8,
-    parentId: 10,
+    refOrderId: 0,
+    refDocumentId: 10,
     userId: 5,
     datetime: '2007-10-27T22:09:00',
     text: 'no'
   },
-])
-
-const orderComments = ref<Comment[]>([
   {
-    id: 6,
-    parentId: 0,
+    id: 9,
+    refOrderId: 0,
     userId: 7,
     datetime: '2026-05-11T10:14:00',
     text: 'Tady to je koment k celé objednávce.'
   },
   {
-    id: 7,
-    parentId: 0,
+    id: 10,
+    refOrderId: 0,
+    refDocumentId: 0,
     userId: 4,
     datetime: '2026-05-11T10:14:00',
     text: 'Už to bude hotový?'
@@ -236,28 +243,23 @@ const orderComments = ref<Comment[]>([
 
 ])
 
-function getDocumentComments(documentId: number): Comment[] {
-  return documentComments.value.filter(comment => comment.parentId === documentId)
+function getDocumentComments(orderId: number, documentId: number): Comment[] {
+  return comments.value.filter(comment => comment.refOrderId === orderId && comment.refDocumentId === documentId)
 }
 
 function getOrderComments(orderId: number): Comment[] {
-  return orderComments.value.filter(comment => comment.parentId === orderId)
+  return comments.value.filter(comment => comment.refOrderId === orderId)
 }
 
 function getUser(userId: number): User | undefined {
   return users.value.find(user => user.id === userId)
 }
 
-function getNextCommentId(): number {
-  const allComments = [...documentComments.value, ...orderComments.value]
-  return allComments.reduce((maxId, comment) => Math.max(maxId, comment.id), 0) + 1
-}
-
-function addDocumentComment(orderId: number, documentId: number, text: string): Comment | null {
+function getOrderDocument(orderId: number, documentId: number): OrderDocument | undefined {
   const order = orders.value.find(o => o.id === orderId)
-  if (!order) return null
+  if (!order) return undefined
 
-  const documentExistsInOrder = order.documents.flat(3).some(
+  return order.documents.flat(3).find(
     (d): d is OrderDocument =>
       typeof d === 'object' &&
       d !== null &&
@@ -265,39 +267,48 @@ function addDocumentComment(orderId: number, documentId: number, text: string): 
       'status' in d &&
       (d as OrderDocument).id === documentId
   )
-  if (!documentExistsInOrder) return null
-
-  const trimmedText = text.trim()
-  if (!trimmedText) return null
-
-  const comment: Comment = {
-    id: getNextCommentId(),
-    parentId: documentId,
-    userId: currentUser.value,
-    datetime: new Date().toISOString(),
-    text: trimmedText,
-  }
-
-  documentComments.value.push(comment)
-  return comment
 }
 
-function addOrderComment(orderId: number, text: string): Comment | null {
+function getOrderDocumentFilename(orderId: number, documentId?: number): string | undefined {
+  if (documentId === undefined) return undefined
+  const document = getOrderDocument(orderId, documentId)
+  if (!document) return undefined
+  return document.filepath.split(/[/\\]/).at(-1) || document.filepath
+}
+
+function getNextCommentId(): number {
+  return comments.value.reduce((maxId, comment) => Math.max(maxId, comment.id), 0) + 1
+}
+
+function addComment(orderId: number, text: string, documentId?: number): Comment | null {
   const order = orders.value.find(o => o.id === orderId)
   if (!order) return null
 
+  if (documentId !== undefined) {
+    const documentExistsInOrder = order.documents.flat(3).some(
+      (d): d is OrderDocument =>
+        typeof d === 'object' &&
+        d !== null &&
+        'id' in d &&
+        'status' in d &&
+        (d as OrderDocument).id === documentId
+    )
+    if (!documentExistsInOrder) return null
+  }
+
   const trimmedText = text.trim()
   if (!trimmedText) return null
 
   const comment: Comment = {
     id: getNextCommentId(),
-    parentId: orderId,
+    refOrderId: orderId,
+    ...(documentId !== undefined ? { refDocumentId: documentId } : {}),
     userId: currentUser.value,
     datetime: new Date().toISOString(),
     text: trimmedText,
   }
 
-  orderComments.value.push(comment)
+  comments.value.push(comment)
   return comment
 }
 
@@ -321,13 +332,12 @@ export const useDoisOrders = defineStore('doisOrders', () => {
     users,
     currentUser,
     orders,
-    documentComments,
-    orderComments,
+    comments,
     getDocumentComments,
     getOrderComments,
     getUser,
-    addDocumentComment,
-    addOrderComment,
+    getOrderDocumentFilename,
+    addComment,
     setDocumentStatus,
   }
 })

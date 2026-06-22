@@ -45,7 +45,7 @@
   }
 
   const comments = computed<DoisComment[]>(() => {
-    return doisOrdersStore.getDocumentComments(props.documentId)
+    return doisOrdersStore.getDocumentComments(props.orderId, props.documentId)
   })
 
   const areCommentsVisible = ref(false)
@@ -176,9 +176,8 @@
     <OrderComments :comments="comments" />
     <OrderAddComment
       v-if="isAddCommentVisible"
-      target="document"
-      :targetId="props.documentId"
       :orderId="props.orderId"
+      :documentId="props.documentId"
       @submitted="onCommentSubmitted" />
   </div>
 </template>

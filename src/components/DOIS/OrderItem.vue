@@ -180,8 +180,7 @@
         <OrderComments :comments="orderComments" />
 
         <OrderAddComment
-          target="order"
-          :targetId="props.orderId"
+          :orderId="props.orderId"
           @submitted="onCommentSubmitted" />
 
       </div>
