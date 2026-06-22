@@ -166,12 +166,6 @@
         </div>
         <div class="col-sm-4 col-xxl-2">
           <div class="form-floating">
-            <input class="form-control" type="date">
-            <label>Připravenost stavba do</label>
-          </div>
-        </div>
-        <div class="col-sm-4 col-xxl-2">
-          <div class="form-floating">
             <select class="form-select" autocomplete="off">
               <option selected>všichni</option>
               <option value="1">Možnost 1</option>
@@ -196,8 +190,8 @@
             <label>Předávací protokol vady</label>
           </div>
         </div>
-        <div class="col-auto ms-auto">
-          <div class="btn-list">
+        <div class="col-12">
+          <div class="btn-list justify-content-end">
             <button type="button" class="btn btn-sm btn-outline-success text-nowrap">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
