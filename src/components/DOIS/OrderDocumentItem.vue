@@ -22,6 +22,10 @@
     uploaderId: number
   }>()
 
+  const emit = defineEmits<{
+    (event: 'reference-document', documentId: number): void
+  }>()
+
   const filename = computed(() => {
     return props.filepath.split(/[/\\]/).at(-1) || props.filepath
   })
@@ -38,7 +42,11 @@
     doisOrdersStore.setDocumentStatus(props.orderId, props.documentId, 3)
   }
 
-  const isAttachingDocs = inject('isAttachingDocs', ref(false))
+  function referenceDocumentInComment() {
+    emit('reference-document', props.documentId)
+  }
+
+  const isAttachingDocuments = inject('isAttachingDocuments', ref(false))
 
   const statusMap: Record<StatusCode, { text: string; colorClass: string }> = {
     0: { text: 'Neznámé', colorClass: 'secondary' },
@@ -59,7 +67,7 @@
     if (userView.value === 'client')
       return !props.isMainDocument
 
-    // Klienti mohou nastavovat pouze pro hlavní dokument
+    // Dodavatelé mohou nastavovat pouze pro hlavní dokument
     if (userView.value === 'supplier')
       return props.isMainDocument
 
@@ -72,9 +80,14 @@
 <!-- FIXME: Mobilní zobrazení -->
 <template>
   <!-- ? bg-body-tertiary / bg-surface-tertiary - maybe ? -->
-  <div class="list-group-item" :class="{ 'bg-surface-tertiary': !props.isMainDocument }">
+  <div
+    :id="`order-document-${props.orderId}-${props.documentId}`"
+    class="list-group-item"
+    :class="{
+      'bg-surface-tertiary': !props.isMainDocument,
+    }">
     <div class="row align-items-center">
-      <div v-if="isAttachingDocs" class="col-auto">
+      <div v-if="isAttachingDocuments" class="col-auto">
         <input class="form-check-input align-middle" type="checkbox">
       </div>
       <div class="col-auto col-xxl-1">
@@ -97,10 +110,12 @@
           <div class="text-muted">{{ userUploader?.username }}</div>
         </template>
       </div>
+
       <!-- * Actions -->
       <div class="col-auto">
         <div class="d-flex align-items-center h-0">
           <div class="btn-actions">
+
             <!-- * Přijmout -->
             <button
               v-if="canStatusBeSet"
@@ -113,6 +128,7 @@
                 <path d="M5 12l5 5l10 -10" />
               </svg>
             </button>
+
             <!-- * Odmítnout -->
             <button
               v-if="canStatusBeSet"
@@ -126,16 +142,23 @@
                 <path d="M6 6l12 12" />
               </svg>
             </button>
-            <!-- * Komentáře -->
-            <!-- <button
+
+            <!-- * Reference document in comment -->
+            <button
               class="btn btn-action"
               data-bs-toggle="tooltip"
-              title="Komentáře">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle">
+              title="Odkázat se na dokument v komentáři"
+              @click="referenceDocumentInComment">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-plus">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+                <path d="M8 9h8" />
+                <path d="M8 13h6" />
+                <path d="M12.01 18.594l-4.01 2.406v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v5.5" />
+                <path d="M16 19h6" />
+                <path d="M19 16v6" />
               </svg>
-            </button> -->
+            </button>
+
           </div>
         </div>
       </div>
@@ -147,5 +170,32 @@
   .list-group-item.active {
     /* background-color: var(--tblr-bg-surface-tertiary); */
     background-color: transparent;
+  }
+
+  /* DEV */
+  .highlighted-document {
+    isolation: isolate;
+  }
+
+  .highlighted-document::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    animation-name: flash-document;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes flash-document {
+    0% {
+      background-color: color-mix(in srgb, var(--tblr-primary) 40%, transparent);
+    }
+
+    100% {
+      background-color: transparent;
+    }
   }
 </style>

@@ -16,6 +16,10 @@
     text: string
   }>()
 
+  const emit = defineEmits<{
+    (event: 'goto-document', payload: { orderId: number; documentId: number }): void
+  }>()
+
   const username = computed(() => {
     return doisOrdersStore.getUser(props.userId)?.username || `Uživatel #${props.userId}`
   })
@@ -28,13 +32,27 @@
     return doisOrdersStore.getOrderDocumentFilename(props.refOrderId, props.refDocumentId)
   })
 
+  function openReferencedDocument() {
+    if (props.refDocumentId === undefined) return
+    emit('goto-document', {
+      orderId: props.refOrderId,
+      documentId: props.refDocumentId,
+    })
+  }
+
 </script>
 
 <template>
   <div class="comment">
     <div v-if="props.datetime">
       <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> <span class="text-muted"> • {{ formatDate(props.datetime, 'long-datetime') }}</span>
-      <span v-if="referencedDocumentFilename" class="badge bg-primary-lt mx-1">{{ referencedDocumentFilename }}</span>
+      <button
+        v-if="referencedDocumentFilename"
+        type="button"
+        class="badge bg-primary-lt text-primary-emphasis border-0 mx-1"
+        @click="openReferencedDocument">
+        {{ referencedDocumentFilename }}
+      </button>
     </div>
     <div>{{ props.text }}</div>
   </div>

@@ -1,15 +1,10 @@
 <script setup lang="ts">
-  import { ref, computed, provide, readonly } from 'vue'
+  import { ref, computed, provide, readonly, nextTick } from 'vue'
   import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
   import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
-  const doisOrdersStore = useDoisOrders()
-
-  const orderComments = computed(() => {
-    return doisOrdersStore.getOrderComments(props.orderId)
-  })
 
   const props = defineProps<{
     orderId: number,
@@ -18,7 +13,14 @@
     documents: any,
   }>()
 
-  // NOTE: Komentáře k objednávkám  budou defaultně viditelné
+  const doisOrdersStore = useDoisOrders()
+
+  // COMMENTS
+
+  const orderComments = computed(() => {
+    return doisOrdersStore.getOrderComments(props.orderId)
+  })
+
   const areCommentsVisible = ref(true)
 
   function toggleComments() {
@@ -29,20 +31,107 @@
     console.debug('New comment submitted:', payload)
   }
 
-  const isAttachingDocs = ref(false)
+  const referencedDocumentId = ref<number | undefined>()
+  const highlightedDocumentElement = ref<HTMLElement | null>(null)
 
-  provide('isAttachingDocs', readonly(isAttachingDocs))
-
-  function startAttachingDocs() { isAttachingDocs.value = true }
-
-  function submitAttachingDocs() { isAttachingDocs.value = false }
-
-  function onSubmitAttachingDocs() {
-    console.log('Documents attached successfully.')
-    submitAttachingDocs()
+  function getDocumentElementId(documentId: number): string {
+    return `order-document-${props.orderId}-${documentId}`
   }
 
-  function cancelAttachingDocs() { isAttachingDocs.value = false }
+  const addCommentRef = ref<HTMLElement | null>(null)
+
+  /**
+   * Scrolls the given element into view, centering it vertically in the viewport.
+   * @param element The element to scroll into view.
+   */
+  function scrollTo(element: Element) {
+    element.scrollIntoView({
+      behavior: 'auto',
+      block: 'center',
+      inline: 'nearest',
+    })
+  }
+
+  function setHighlightedDocumentClass(element: HTMLElement) {
+    highlightedDocumentElement.value?.classList.remove('highlighted-document')
+
+    /// Force class reflow so animation restarts even when targeting same element.
+    element.classList.remove('highlighted-document')
+    void element.offsetWidth  // TRICK: Read layout to force reflow before re-adding the class, so the flash animation replays.
+    element.classList.add('highlighted-document')
+
+    highlightedDocumentElement.value = element
+  }
+
+  function getSupportingDocumentGroupCollapseId(documentId: number): string | null {
+    for (let orderPartIndex = 0; orderPartIndex < props.documents.length; orderPartIndex += 1) {
+      const supportingDocumentGroups = props.documents[orderPartIndex]?.[1]
+      if (!Array.isArray(supportingDocumentGroups)) continue
+
+      for (let documentGroupIndex = 0; documentGroupIndex < supportingDocumentGroups.length; documentGroupIndex += 1) {
+        const documentGroup = supportingDocumentGroups[documentGroupIndex]
+        if (!Array.isArray(documentGroup)) continue
+
+        const containsDocument = documentGroup.some((document: { id?: number }) => document?.id === documentId)
+        if (!containsDocument) continue
+
+        return `docgroup-${props.orderId}-${orderPartIndex}-${documentGroupIndex}`
+      }
+    }
+
+    return null
+  }
+
+  function expandSupportingDocumentGroup(documentId: number): void {
+    const collapseId = getSupportingDocumentGroupCollapseId(documentId)
+    if (!collapseId) return
+
+    const collapseElement = document.getElementById(collapseId)
+
+    /// If the collapse element is already expanded, do nothing.
+    if (!collapseElement || collapseElement.classList.contains('show')) return
+
+    const collapseTrigger = document.querySelector<HTMLButtonElement>(`button[data-bs-target="#${collapseId}"]`)
+    /// Click trigger to expand the accordion
+    collapseTrigger?.click()
+  }
+
+  async function onReferenceDocumentFromItem(documentId: number) {
+    referencedDocumentId.value = documentId
+    areCommentsVisible.value = true
+
+    await nextTick()
+    const addCommentElement = addCommentRef.value
+    if (!addCommentElement) return
+
+    scrollTo(addCommentElement)
+    const textarea = addCommentElement.querySelector<HTMLTextAreaElement>('textarea')
+    textarea?.focus({ preventScroll: true })
+  }
+
+  function onReferencedDocumentIdUpdated(documentId: number | undefined) {
+    referencedDocumentId.value = documentId
+  }
+
+  async function onGoToDocument(payload: { orderId: number; documentId: number }) {
+    if (payload.orderId !== props.orderId) return
+
+    expandSupportingDocumentGroup(payload.documentId)
+
+    const documentEl = document.getElementById(getDocumentElementId(payload.documentId))
+    if (!documentEl) return
+
+    scrollTo(documentEl)
+    setHighlightedDocumentClass(documentEl as HTMLElement)
+  }
+
+  // ATTACHING DOCUMENTS
+  const isAttachingDocuments = ref(false)
+  provide('isAttachingDocuments', readonly(isAttachingDocuments))
+  function startAttachingDocs() { isAttachingDocuments.value = true }
+  function submitAttachingDocs() { isAttachingDocuments.value = false }
+  function onSubmitAttachingDocs() { submitAttachingDocs() }
+  function cancelAttachingDocs() { isAttachingDocuments.value = false }
 
 </script>
 
@@ -54,7 +143,7 @@
         <div>{{ props.supplier }}</div>
       </div>
       <div class="ms-auto">
-        <div v-if="isAttachingDocs" class="btn-list">
+        <div v-if="isAttachingDocuments" class="btn-list">
           <!-- Submit -->
           <button
             class="btn btn-primary"
@@ -65,23 +154,23 @@
           <!-- Cancel -->
           <button class="btn" @click="cancelAttachingDocs">Zrušit</button>
         </div>
-        <div v-if="!isAttachingDocs" class="btn-actions">
-          <!-- WIP - ALT comments (offcanvas side panel) -->
+        <div v-if="!isAttachingDocuments" class="btn-actions">
+          <!-- ALT comments (offcanvas side panel) -->
           <button
             class="btn btn-action"
             data-bs-toggle="offcanvas"
             data-bs-target="#dois-order-offcanvas"
-            title="Otevřít komentáře">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message">
+            title="Otevřít panel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-sidebar-right-expand">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M8 9h8" />
-              <path d="M8 13h6" />
-              <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
+              <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+              <path d="M15 4v16" />
+              <path d="M10 10l-2 2l2 2" />
             </svg>
             <!-- TEMP vypnuto ať se netluče s prvním tlačítem -->
             <!-- <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span> -->
           </button>
-          <!-- * Komentáře -->
+          <!-- * Otevřít/Zavřít Komentáře -->
           <button
             class="btn btn-action"
             :class="{ 'active': areCommentsVisible }"
@@ -89,9 +178,11 @@
             title="Komentáře"
             draggable="false"
             @click="toggleComments">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+              <path d="M8 9h8" />
+              <path d="M8 13h6" />
+              <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
             </svg>
             <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span>
           </button>
@@ -126,7 +217,8 @@
               :filepath="orderPart[0].filepath"
               :datetime="orderPart[0].datetime"
               :uploader-id="orderPart[0].uploaderId"
-              :is-main-document="true" />
+              :is-main-document="true"
+              @reference-document="onReferenceDocumentFromItem" />
           </div>
           <!-- * Supporting documents = orderPart[1] -->
           <template v-if="orderPart[1]">
@@ -161,7 +253,8 @@
                             :filepath="doc.filepath"
                             :datetime="doc.datetime"
                             :uploader-id="doc.uploaderId"
-                            :is-main-document="false" />
+                            :is-main-document="false"
+                            @reference-document="onReferenceDocumentFromItem" />
                         </template>
                       </div>
                     </div>
@@ -177,11 +270,17 @@
       <h3 class="mb-3">Komentáře</h3>
       <div class="space-y">
 
-        <OrderComments :comments="orderComments" />
+        <OrderComments
+          :comments="orderComments"
+          @goto-document="onGoToDocument" />
 
-        <OrderAddComment
-          :orderId="props.orderId"
-          @submitted="onCommentSubmitted" />
+        <div ref="addCommentRef">
+          <OrderAddComment
+            :orderId="props.orderId"
+            :referenced-document-id="referencedDocumentId"
+            @update:referencedDocumentId="onReferencedDocumentIdUpdated"
+            @submitted="onCommentSubmitted" />
+        </div>
 
       </div>
     </div>

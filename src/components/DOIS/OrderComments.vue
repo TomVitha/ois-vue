@@ -6,6 +6,10 @@
   const props = defineProps<{
     comments: DoisComment[]
   }>()
+
+  const emit = defineEmits<{
+    (event: 'goto-document', payload: { orderId: number; documentId: number }): void
+  }>()
 </script>
 
 <template>
@@ -17,7 +21,8 @@
         :refDocumentId="comment.refDocumentId"
         :userId="comment.userId"
         :datetime="comment.datetime"
-        :text="comment.text" />
+        :text="comment.text"
+        @goto-document="emit('goto-document', $event)" />
     </template>
   </div>
 </template>

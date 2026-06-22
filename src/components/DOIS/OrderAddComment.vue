@@ -1,17 +1,16 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { useDoisOrders } from '@/stores/dois-orders'
   import type { Comment as DoisComment } from '@/stores/dois-orders'
 
   const props = defineProps<{
     orderId: number
     documentId?: number
+    referencedDocumentId?: number
   }>()
 
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
-
-  const doisOrdersStore = useDoisOrders()
 
   export type SubmittedCommentPayload = {
     orderId: number
@@ -21,18 +20,15 @@
 
   const emit = defineEmits<{
     (event: 'submitted', payload: SubmittedCommentPayload): void
+    (event: 'update:referencedDocumentId', payload: number | undefined): void
   }>()
-
-  const newCommentText = ref('')
 
   type OrderDocumentOption = {
     id: number
     filename: string
   }
 
-  const canSelectDocument = computed(() => {
-    return props.documentId === undefined
-  })
+  const doisOrdersStore = useDoisOrders()
 
   function isOrderDocument(value: unknown): value is { id: number; filepath: string } {
     return typeof value === 'object' && value !== null && 'id' in value && 'filepath' in value
@@ -51,20 +47,49 @@
       }))
   })
 
-  const selectedDocumentId = ref<number | undefined>(props.documentId)
+  // REFERENCING DOCUMENT
 
-  const selectedDocument = computed(() => {
-    return orderDocuments.value.find(document => document.id === selectedDocumentId.value)
+  const canReferenceDocument = computed(() => {
+    return props.documentId === undefined
   })
 
-  function selectDocument(documentId: number) {
-    selectedDocumentId.value = documentId
+  const referencedDocumentId = ref<number | undefined>(props.documentId)
+
+  watch(
+    () => props.documentId,
+    (documentId) => {
+      referencedDocumentId.value = documentId
+    },
+    { immediate: true }
+  )
+
+  watch(
+    () => props.referencedDocumentId,
+    (documentId) => {
+      if (!canReferenceDocument.value) return
+      referencedDocumentId.value = documentId
+    },
+    { immediate: true }
+  )
+
+  const referencedDocument = computed(() => {
+    return orderDocuments.value.find(document => document.id === referencedDocumentId.value)
+  })
+
+  function referenceDocument(documentId: number) {
+    referencedDocumentId.value = documentId
+    emit('update:referencedDocumentId', documentId)
   }
 
-  function clearSelectedDocument() {
-    if (!canSelectDocument.value) return
-    selectedDocumentId.value = undefined
+  function clearReferencedDocument() {
+    if (!canReferenceDocument.value) return
+    referencedDocumentId.value = undefined
+    emit('update:referencedDocumentId', undefined)
   }
+
+  // SUBMITTING COMMENT
+
+  const newCommentText = ref('')
 
   const canSubmitComment = computed(() => {
     return newCommentText.value.trim().length > 0
@@ -73,17 +98,22 @@
   function submitComment() {
     if (!canSubmitComment.value) return
 
-    const createdComment = doisOrdersStore.addComment(props.orderId, newCommentText.value, selectedDocumentId.value)
+    const createdComment = doisOrdersStore.addComment(props.orderId, newCommentText.value, referencedDocumentId.value)
 
     if (!createdComment) return
 
     emit('submitted', {
       orderId: props.orderId,
-      documentId: selectedDocumentId.value,
+      documentId: referencedDocumentId.value,
       comment: createdComment,
     })
 
     newCommentText.value = ''
+
+    if (canReferenceDocument.value) {
+      referencedDocumentId.value = undefined
+      emit('update:referencedDocumentId', undefined)
+    }
   }
 </script>
 
@@ -100,20 +130,20 @@
       style="resize: none; field-sizing: content; padding-bottom: 3.5rem">
     </textarea>
     <!-- Akce -->
-    <div class="d-flex align-items-center position-absolute end-0 bottom-0 px-2 pb-2 w-100">
-      <div v-if="canSelectDocument" class="btn-actions">
+    <div class="d-flex align-items-center position-absolute end-0 bottom-0 px-2 pb-2 column-gap-1 w-100">
+      <div v-if="canReferenceDocument" class="btn-actions">
+        <!-- Reference documents dropdown -->
         <div class="dropdown">
           <button
             class="btn btn-action dropdown-toggle"
             data-bs-toggle="dropdown"
             draggable="false"
+            title="Připojit komentář k dokumentu"
             :disabled="orderDocuments.length === 0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-              <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-              <path d="M12 11l0 6" />
-              <path d="M9 14l6 0" />
+              <path d="M12 5l0 14" />
+              <path d="M5 12l14 0" />
             </svg>
           </button>
           <div class="dropdown-menu">
@@ -122,25 +152,26 @@
               :key="document.id"
               type="button"
               class="dropdown-item"
-              :class="{ 'active': document.id === selectedDocumentId }"
-              @click="selectDocument(document.id)">
+              :class="{ 'active': document.id === referencedDocumentId }"
+              @click="referenceDocument(document.id)">
               {{ document.filename }}
             </button>
             <div v-if="orderDocuments.length === 0" class="dropdown-item text-muted">Žádné dokumenty</div>
           </div>
         </div>
       </div>
-      <span v-if="canSelectDocument && selectedDocument" class="tag bg-blue text-blue-fg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+      <!-- Tag - referenced document -->
+      <span v-if="canReferenceDocument && referencedDocument" class="badge bg-blue text-blue-fg">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M14 3v4a1 1 0 0 0 1 1h4" />
           <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
           <path d="M9 9l1 0" />
           <path d="M9 13l6 0" />
           <path d="M9 17l6 0" />
-        </svg>
-        {{ selectedDocument.filename }}
-        <button type="button" class="btn-close" aria-label="Odebrat dokument" @click="clearSelectedDocument"></button>
+        </svg> -->
+        {{ referencedDocument.filename }}
+        <button type="button" class="btn-close" title="Odebrat" @click="clearReferencedDocument"></button>
       </span>
       <button
         class="btn btn-primary ms-auto"
@@ -162,6 +193,7 @@
   .tag {
     --tblr-border-color: transparent;
   }
+
   .btn-close {
     --tblr-btn-close-opacity: 1;
   }
