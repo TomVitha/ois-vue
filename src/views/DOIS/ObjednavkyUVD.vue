@@ -17,7 +17,7 @@
   onMounted(() => {
     new TomSelect('#filter-item', {
       allowEmptyOption: false,
-      create: false,
+      plugins: ['dropdown_input'],
     })
   })
 
@@ -25,8 +25,6 @@
 
 <template>
   <PageTemplate title="Objednávky ÚVD">
-
-
 
     <!-- Je tenhle filtr zločin proti lidskosti? Ano. Ale, takhle to chtěli, tak to tak mají. -->
     <template #toolbar>

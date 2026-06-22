@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { ref, onMounted, watch } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
   import { useDoisOrders } from '@/stores/dois-orders'
@@ -6,6 +7,15 @@
 
   import OrderItem from '@/components/DOIS/OrderItem.vue'
   import OrderOffcanvas from '@/components/DOIS/OrderOffcanvas.vue'
+
+  import TomSelect from 'tom-select'
+
+  onMounted(() => {
+    new TomSelect('#filter-supplier', {
+      allowEmptyOption: false,
+      plugins: ['dropdown_input'],
+    })
+  })
 </script>
 
 <template>
@@ -26,10 +36,11 @@
             <label>Datum do</label>
           </div>
         </div>
-        <div class="col-lg-auto">
+        <!-- Tom Select -->
+        <div class="col-lg-3">
           <div class="form-floating">
-            <select class="form-select" autocomplete="off">
-              <option selected>všichni</option>
+            <select class="form-select" autocomplete="off" id="filter-supplier">
+              <option selected disabled></option>
               <option value="1">Možnost 1</option>
               <option value="2">Možnost 2</option>
               <option value="3">Možnost 3</option>

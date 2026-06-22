@@ -388,7 +388,7 @@ html {
   --tblr-progress-bar-transition: none;
 }
 
-/* FIX: Tom Select inside Bootstrap form-floating (floating label) */
+/* FIX: Tom Select - select inside Bootstrap form-floating (floating label) */
 /* https://github.com/orchidjs/tom-select/issues/579#issuecomment-2437534901 */
 .form-floating {
   .ts-wrapper.form-control,
@@ -402,4 +402,19 @@ html {
     padding-bottom: 0.625rem;
     padding-left: 1rem;
   }
+}
+
+/* FIX: Tom Select - Text input wrapping under selected option */
+.ts-wrapper.single .ts-control {
+  flex-wrap: nowrap;
+}
+.ts-control .item {
+  flex-shrink: 0;
+}
+
+/* FIXME:  */
+/* cursor */
+.ts-wrapper.plugin-dropdown_input .ts-control,
+.ts-wrapper.plugin-dropdown_input .ts-control input {
+  cursor: default;
 }
