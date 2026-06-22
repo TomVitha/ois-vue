@@ -576,7 +576,7 @@
                 <div class="d-flex w-100 align-items-center">
                   <div class="d-flex align-items-center gap-2">
                     <h3 class="card-title">Přílohy</h3>
-                    <span class="text-secondary d-none d-sm-inline">(Celkem 3)</span>
+                    <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
                   </div>
                   <div class="btn-list h-0 flex-nowrap ms-auto align-items-center">
                     <!-- <div class="dropdown">
@@ -635,69 +635,134 @@
               <!-- * Empty state -->
               <!-- <Empty title="Žádné přílohy" subtitle="K objednávce nejsou připojeny žádné přílohy." /> -->
               <!-- * Výpis příloh -->
-              <div :class="{ 'card-body': isDesktop }">
-                <div :class="{ 'card': isDesktop }">
-                  <table class="table card-table table-selectable table-vcenter">
-                    <tbody>
-                      <tr>
-                        <td class="w-1"><input class="form-check-input m-0 table-selectable-check" type="checkbox" aria-label="Vybrat reklamaci"></td>
-                        <td>
-                          <div>
-                            <span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-                                <path d="M9 9l1 0" />
-                                <path d="M9 13l6 0" />
-                                <path d="M9 17l6 0" />
-                              </svg>
-                              <!-- ? stáhnout kliknutím na název ? -->
-                              <a href="./todo" class="text-reset">192-01-81_os1.pdf</a>
-                              <!-- NOTE: Zobrazí se pouze pokud se bude jednat o dokument objednávky -->
-                              <span class="badge ms-1">Objednávka</span>
-                            </span>
-                          </div>
-                          <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
-                        </td>
-                        <td class="w-1 text-end ps-0">
-                          <!-- * Options [⋮] -->
-                          <div class="dropdown">
-                            <!-- Thin button -->
-                            <a href="#" class="btn-action p-2" data-bs-toggle="dropdown" aria-expanded="false">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                              </svg>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a href="#" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
+              <div class="card-body" :class="{ 'p-0': !isDesktop }">
+                <div class="list-group" :class="{ 'list-group-flush': !isDesktop }">
+                  <div class="list-group-item p-0">
+                    <table class="table card-table table-selectable table-vcenter">
+                      <tbody>
+                        <tr>
+                          <td class="w-1"><input class="form-check-input m-0 table-selectable-check" type="checkbox" aria-label="Vybrat reklamaci"></td>
+                          <td>
+                            <div>
+                              <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
                                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                                  <path d="M7 11l5 5l5 -5" />
-                                  <path d="M12 4l0 12" />
+                                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+                                  <path d="M9 9l1 0" />
+                                  <path d="M9 13l6 0" />
+                                  <path d="M9 17l6 0" />
                                 </svg>
-                                Stáhnout
-                              </a>
-                              <a href="#" class="dropdown-item text-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                  <path d="M4 7l16 0" />
-                                  <path d="M10 11l0 6" />
-                                  <path d="M14 11l0 6" />
-                                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                </svg>
-                                Smazat
-                              </a>
+                                <!-- ? stáhnout kliknutím na název ? -->
+                                <a href="./todo" class="text-reset">192-01-81_os1.pdf</a>
+                                <!-- NOTE: Zobrazí se pouze pokud se bude jednat o dokument objednávky -->
+                                <span class="badge bg-purple-lt text-purple-lt-fg mx-1">Objednávka</span>
+                              </span>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                            <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
+                          </td>
+                          <td class="w-1 text-end ps-0">
+                            <!-- * Options [⋮] -->
+                            <div class="dropdown">
+                              <!-- Thin button -->
+                              <a href="#" class="btn-action p-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                  <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                  <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                </svg>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                    <path d="M7 11l5 5l5 -5" />
+                                    <path d="M12 4l0 12" />
+                                  </svg>
+                                  Stáhnout
+                                </a>
+                                <a href="#" class="dropdown-item text-danger">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 7l16 0" />
+                                    <path d="M10 11l0 6" />
+                                    <path d="M14 11l0 6" />
+                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                  </svg>
+                                  Smazat
+                                </a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="list-group-item p-0">
+                    <table class="table card-table table-selectable table-vcenter">
+                      <tbody>
+                        <tr>
+                          <td class="w-1"><input class="form-check-input m-0 table-selectable-check" type="checkbox" aria-label="Vybrat reklamaci"></td>
+                          <td>
+                            <div>
+                              <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+                                  <path d="M9 9l1 0" />
+                                  <path d="M9 13l6 0" />
+                                  <path d="M9 17l6 0" />
+                                </svg>
+                                <!-- ? stáhnout kliknutím na název ? -->
+                                <a href="./todo" class="text-reset">nejaky-jiny-soubor.pdf</a>
+                                <!-- NOTE: Zobrazí se pouze pokud se bude jednat o dokument objednávky -->
+                                <span class="badge bg-blue-lt text-blue-lt-fg mx-1">Příloha</span>
+                              </span>
+                            </div>
+                            <div class="text-muted">Poznámka dodavatele k daným přílohám</div>
+                          </td>
+                          <td class="w-1 text-end ps-0">
+                            <!-- * Options [⋮] -->
+                            <div class="dropdown">
+                              <!-- Thin button -->
+                              <a href="#" class="btn-action p-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                  <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                  <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                </svg>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-download">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                    <path d="M7 11l5 5l5 -5" />
+                                    <path d="M12 4l0 12" />
+                                  </svg>
+                                  Stáhnout
+                                </a>
+                                <a href="#" class="dropdown-item text-danger">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dropdown-item-icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 7l16 0" />
+                                    <path d="M10 11l0 6" />
+                                    <path d="M14 11l0 6" />
+                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                  </svg>
+                                  Smazat
+                                </a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
