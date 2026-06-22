@@ -1,11 +1,6 @@
 <script setup lang="ts">
   import { ref, computed, inject } from 'vue'
 
-  import OrderComments from '@/components/DOIS/OrderComments.vue'
-  // import OrderComment from '@/components/DOIS/OrderComment.vue'
-  import type { SubmittedCommentPayload } from '@/components/DOIS/OrderAddComment.vue'
-  import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
-
   import { useFormatting } from '@/composables/formatting'
   const { formatDate } = useFormatting()
 
@@ -14,7 +9,6 @@
 
   import { useDoisOrders } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
-  import type { Comment as DoisComment } from '@/stores/dois-orders'
 
   type StatusCode = 0 | 1 | 2 | 3
 
@@ -44,25 +38,7 @@
     doisOrdersStore.setDocumentStatus(props.orderId, props.documentId, 3)
   }
 
-  const comments = computed<DoisComment[]>(() => {
-    return doisOrdersStore.getDocumentComments(props.orderId, props.documentId)
-  })
-
-  const areCommentsVisible = ref(false)
-
-  function toggleComments() {
-    areCommentsVisible.value = !areCommentsVisible.value
-  }
-
-  const isAddCommentVisible = computed(() => {
-    return areCommentsVisible.value
-  })
-
   const isAttachingDocs = inject('isAttachingDocs', ref(false))
-
-  function onCommentSubmitted(payload: SubmittedCommentPayload) {
-    console.debug('New comment submitted:', payload)
-  }
 
   const statusMap: Record<StatusCode, { text: string; colorClass: string }> = {
     0: { text: 'Neznámé', colorClass: 'secondary' },
@@ -151,34 +127,19 @@
               </svg>
             </button>
             <!-- * Komentáře -->
-            <!-- HACK - zatím prostě schovaný button -->
-            <!-- NOTE: U jednotlivých souborů komentáře nebudou. Bude pouze jedna společná sekce Komentáře. Možná bude možné v komentáři "označit" jednotlivý komentář, že se vztahuje ke němu (třeba jako když @ uživatele?) -->
             <!-- <button
               class="btn btn-action"
-              :class="{ 'active': isAddCommentVisible }"
               data-bs-toggle="tooltip"
-              title="Komentáře"
-              :aria-expanded="isAddCommentVisible"
-              @click="toggleComments">
+              title="Komentáře">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
               </svg>
-              <span v-if="comments.length" class="badge badge-notification">{{ comments.length }}</span>
             </button> -->
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- * Comments -->
-  <div v-if="areCommentsVisible" class="list-group-item active space-y">
-    <OrderComments :comments="comments" />
-    <OrderAddComment
-      v-if="isAddCommentVisible"
-      :orderId="props.orderId"
-      :documentId="props.documentId"
-      @submitted="onCommentSubmitted" />
   </div>
 </template>
 
