@@ -165,7 +165,7 @@
         <div v-if="!isAttachingDocuments" class="btn-actions">
           <!-- ALT comments (offcanvas side panel) -->
           <button
-            class="btn btn-action"
+            class="btn btn-action text-reset"
             data-bs-toggle="offcanvas"
             data-bs-target="#dois-order-offcanvas"
             title="Otevřít panel"
@@ -181,7 +181,7 @@
           </button>
           <!-- * Otevřít/Zavřít Komentáře -->
           <button
-            class="btn btn-action"
+            class="btn btn-action text-reset"
             :class="{ 'active': areCommentsVisible }"
             data-bs-toggle="tooltip"
             title="Komentáře"
@@ -197,7 +197,7 @@
           </button>
           <!-- * Dropdown actions -->
           <div class="dropdown">
-            <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" draggable="false">
+            <button class="btn btn-action text-reset dropdown-toggle" data-bs-toggle="dropdown" draggable="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -342,10 +342,10 @@
 
 <style scoped>
 
-  /* ? maybe ? */
-  .chat-item {
-    width: fit-content;
-    /* max-width: 500px; */
+  /* HACK: Card Header background */
+  .card-header {
+    background-color: var(--tblr-body-color);
+    color: var(--tblr-card-bg);
   }
 
 </style>
