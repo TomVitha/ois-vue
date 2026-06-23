@@ -7,16 +7,14 @@
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
-  import { useDoisOrders } from '@/stores/dois-orders'
+  import { useDoisOrders, type DocumentStatus } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
-
-  type StatusCode = 0 | 1 | 2 | 3
 
   const props = defineProps<{
     orderId: number
     documentId: number
     isMainDocument: boolean
-    status: StatusCode
+    status: DocumentStatus
     filepath: string
     datetime: string
     uploaderId: number
@@ -48,15 +46,12 @@
 
   const isAttachingDocuments = inject('isAttachingDocuments', ref(false))
 
-  const statusMap: Record<StatusCode, { text: string; colorClass: string }> = {
-    0: { text: 'Neznámé', colorClass: 'secondary' },
-    1: { text: 'Nové', colorClass: 'info' },
-    2: { text: 'Přijato', colorClass: 'success' },
-    3: { text: 'Odmítnuto', colorClass: 'danger' },
-  }
+  const statusMeta = computed(() => {
+    return doisOrdersStore.documentStatusMap[props.status]
+  })
 
   /** DEV - POMOCNÁ PROMĚNNÁ pro kontrolu pohledů Klient (CG) vs Dodavatel */
-  const userView = ref<"client" | "supplier">("supplier")
+  const userView = ref<"client" | "supplier">("client")
 
   const canStatusBeSet = computed(() => {
 
@@ -91,8 +86,8 @@
         <input class="form-check-input align-middle" type="checkbox">
       </div>
       <div class="col-auto col-xxl-1">
-        <span :class="isDesktop ? [`status`, `status-${statusMap[props.status].colorClass}`] : [`badge`, `bg-${statusMap[props.status].colorClass}-lt`]">
-          {{ statusMap[props.status].text }}
+        <span :class="isDesktop ? [`status`, `status-${statusMeta.colorClass}`] : [`badge`, `bg-${statusMeta.colorClass}-lt`]">
+          {{ statusMeta.text }}
         </span>
       </div>
       <!-- * Filename -->
@@ -191,7 +186,7 @@
 
   @keyframes flash-document {
     0% {
-      background-color: color-mix(in srgb, var(--tblr-primary) 40%, transparent);
+      background-color: color-mix(in srgb, v-bind('`var(--tblr-${statusMeta.colorClass})`') 40%, transparent);
     }
 
     100% {

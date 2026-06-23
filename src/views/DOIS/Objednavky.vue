@@ -16,6 +16,12 @@
       plugins: ['dropdown_input'],
     })
   })
+
+  const selectedOrderId = ref(doisOrdersStore.orders[0]?.id ?? -1)
+
+  function onOpenOrderOffcanvas(orderId: number) {
+    selectedOrderId.value = orderId
+  }
 </script>
 
 <template>
@@ -86,14 +92,13 @@
             :orderId="order.id"
             :contractNumber="order.contractNumber"
             :supplier="order.supplier"
-            :documents="order.documents" />
+            :documents="order.documents"
+            @open-dois-order-offcanvas="onOpenOrderOffcanvas" />
         </div>
       </template>
     </div>
 
-    <!-- EXPERIMENTAL - order offcanvas (temp hard-coded order) -->
-    <OrderOffcanvas :order-id="0"></OrderOffcanvas>
-
+    <OrderOffcanvas :order-id="selectedOrderId" />
 
   </PageTemplate>
 

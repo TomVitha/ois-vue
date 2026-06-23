@@ -28,8 +28,18 @@
     return props.userId === doisOrdersStore.currentUser
   })
 
+  const referencedDocument = computed(() => {
+    if (props.refDocumentId === undefined) return undefined
+    return doisOrdersStore.getOrderDocument(props.refOrderId, props.refDocumentId)
+  })
+
   const referencedDocumentFilename = computed(() => {
-    return doisOrdersStore.getOrderDocumentFilename(props.refOrderId, props.refDocumentId)
+    if (!referencedDocument.value) return undefined
+    return referencedDocument.value.filepath.split(/[/\\]/).at(-1) || referencedDocument.value.filepath
+  })
+
+  const referencedDocumentStatusMeta = computed(() => {
+    return doisOrdersStore.getDocumentStatusMeta(referencedDocument.value?.status)
   })
 
   function openReferencedDocument() {
@@ -49,7 +59,13 @@
       <button
         v-if="referencedDocumentFilename"
         type="button"
-        class="badge bg-primary-lt text-primary-emphasis border-0 mx-1"
+        :class="[
+          'badge',
+          `bg-${referencedDocumentStatusMeta.colorClass}-lt`,
+          `text-${referencedDocumentStatusMeta.colorClass}-lt-fg`,
+          'border-0',
+          'mx-1',
+        ]"
         @click="openReferencedDocument">
         {{ referencedDocumentFilename }}
       </button>

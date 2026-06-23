@@ -13,6 +13,10 @@
     documents: any,
   }>()
 
+  const emit = defineEmits<{
+    (event: 'open-dois-order-offcanvas', orderId: number): void
+  }>()
+
   const doisOrdersStore = useDoisOrders()
 
   // COMMENTS
@@ -21,10 +25,14 @@
     return doisOrdersStore.getOrderComments(props.orderId)
   })
 
-  const areCommentsVisible = ref(true)
+  const areCommentsVisible = ref(orderComments.value.length > 0)
 
   function toggleComments() {
     areCommentsVisible.value = !areCommentsVisible.value
+  }
+
+  function openOffcanvas() {
+    emit('open-dois-order-offcanvas', props.orderId)
   }
 
   function onCommentSubmitted(payload: SubmittedCommentPayload) {
@@ -160,7 +168,8 @@
             class="btn btn-action"
             data-bs-toggle="offcanvas"
             data-bs-target="#dois-order-offcanvas"
-            title="Otevřít panel">
+            title="Otevřít panel"
+            @click="openOffcanvas">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-sidebar-right-expand">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
@@ -266,7 +275,7 @@
         </div>
       </div>
     </div>
-    <div class="card-body" v-if="areCommentsVisible && orderComments.length > 0">
+    <div class="card-body" v-if="areCommentsVisible">
       <h3 class="mb-3">Komentáře</h3>
       <div class="space-y">
 
