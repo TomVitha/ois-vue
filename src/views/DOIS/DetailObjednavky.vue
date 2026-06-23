@@ -35,6 +35,13 @@
     return doisOrdersStore.getOrderComments(0)
   })
 
+  type OrderProcessStep = 1 | 2 | 3 | 4
+  const orderProcessStep = ref<OrderProcessStep>(1)
+
+  function nextOrderStep() {
+    orderProcessStep.value++
+  }
+
 </script>
 
 <template>
@@ -48,7 +55,8 @@
             Akce
           </a>
           <div class="dropdown-menu dropdown-menu-end">
-            <button class="dropdown-item">
+            <!-- NOTE: Tlačítka se zobrazují dynamicky -->
+            <button v-if="orderProcessStep === 1" class="dropdown-item" @click="nextOrderStep">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M12 5l0 14" />
@@ -56,13 +64,20 @@
               </svg>
               Připojit objednávku
             </button>
-            <button class="dropdown-item">
+            <button v-else-if="orderProcessStep === 2" class="dropdown-item" @click="nextOrderStep">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M10 14l11 -11" />
                 <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
               </svg>
               Odeslat objednávku
+            </button>
+            <button v-else-if="orderProcessStep === 3" class="dropdown-item" @click="nextOrderStep">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l5 5l10 -10" />
+              </svg>
+              Vyřídit objednávku
             </button>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item">
@@ -121,8 +136,7 @@
     <template #toolbar>
       <!-- NOTE: Akce v toolbaru pro desktop -->
       <div v-if="isDesktop" class="btn-list mb-3">
-        <!-- NOTE: Nejprve bude viditelné pouze "připojit objednávku"; poté bude viditelné pouze "odeslat objednávku; poté ani jedno" -->
-        <button class="btn btn-sm">
+        <button v-if="orderProcessStep === 1" class="btn btn-sm" @click="nextOrderStep">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 5l0 14" />
@@ -130,13 +144,20 @@
           </svg>
           Připojit objednávku
         </button>
-        <button class="btn btn-sm btn-primary">
+        <button v-else-if="orderProcessStep === 2" class="btn btn-sm btn-primary" @click="nextOrderStep">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10 14l11 -11" />
             <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
           </svg>
           Odeslat objednávku
+        </button>
+        <button v-else-if="orderProcessStep === 3" class="btn btn-sm btn-success" @click="nextOrderStep">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l5 5l10 -10" />
+          </svg>
+          Vyřídit objednávku
         </button>
         <div class="dropdown">
           <button class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
