@@ -51,10 +51,21 @@
     },
   })
 
+  // Initialize multiple Tom-selects
+
+  const tomSelectSelectors = ['#filter-item', '#order-input-supplier'] as const
+  const tomSelectOptions = {
+    allowEmptyOption: false,
+    plugins: ['dropdown_input'],
+  }
+
   onMounted(() => {
-    new TomSelect('#filter-item', {
-      allowEmptyOption: false,
-      create: false,
+    tomSelectSelectors.forEach((selector) => {
+      const element = document.querySelector(selector)
+
+      if (element) {
+        new TomSelect(selector, tomSelectOptions)
+      }
     })
   })
 
@@ -140,8 +151,8 @@
                       </div> -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-supplier">Dodavatel</label>
-                        <select class="form-select" id="order-input-supplier" autocomplete="off">
-                          <option selected disabled>Vyberte</option>
+                        <select class="form-select" autocomplete="off" id="order-input-supplier">
+                          <option selected disabled>vyberte</option>
                           <option value="1">Možnost 1</option>
                           <option value="2">Možnost 2</option>
                           <option value="3">Možnost 3</option>
@@ -202,7 +213,7 @@
                         <td>
                           <!-- NOTE: Tom Select -->
                           <select class="form-select" autocomplete="off" id="filter-item">
-                            <option selected disabled></option>
+                            <option selected disabled>vyberte</option>
                             <option value="1">Možnost 1</option>
                             <option value="2">Možnost 2</option>
                             <option value="3">Možnost 3</option>

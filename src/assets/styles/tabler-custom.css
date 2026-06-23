@@ -388,6 +388,11 @@ html {
   --tblr-progress-bar-transition: none;
 }
 
+/* FIX: Unify padding with Tabler input fields (we subtract to compensate for border) */
+.ts-control {
+  padding: calc(0.625rem - 1.5px) 1rem;
+}
+
 /* FIX: Tom Select - select inside Bootstrap form-floating (floating label) */
 /* https://github.com/orchidjs/tom-select/issues/579#issuecomment-2437534901 */
 .form-floating {
