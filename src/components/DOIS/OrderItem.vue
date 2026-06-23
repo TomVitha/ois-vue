@@ -230,7 +230,7 @@
               @reference-document="onReferenceDocumentFromItem" />
           </div>
           <!-- * Supporting documents = orderPart[1] -->
-          <template v-if="orderPart[1]">
+          <template v-if="orderPart[1].length > 0">
             <div class="row">
               <div class="col">
                 <div class="accordion accordion-flush" id="temp-dokumenty">
