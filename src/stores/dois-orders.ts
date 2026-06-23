@@ -23,7 +23,28 @@ const users = ref<User[]>([
 // Stores the ID of the currently active user.
 const currentUser = ref<number>(1)
 
-type DocumentStatus = 0 | 1 | 2 | 3
+export type DocumentStatus = 0 | 1 | 2 | 3
+
+export type DocumentStatusMeta = {
+  text: string
+  colorClass: string
+}
+
+const documentStatusMap: Record<DocumentStatus, DocumentStatusMeta> = {
+  0: { text: 'Neznámé', colorClass: 'secondary' },
+  1: { text: 'Nové', colorClass: 'info' },
+  2: { text: 'Přijato', colorClass: 'success' },
+  3: { text: 'Odmítnuto', colorClass: 'danger' },
+}
+
+function isDocumentStatus(status: unknown): status is DocumentStatus {
+  return status === 0 || status === 1 || status === 2 || status === 3
+}
+
+function getDocumentStatusMeta(status: unknown): DocumentStatusMeta {
+  if (!isDocumentStatus(status)) return documentStatusMap[0]
+  return documentStatusMap[status]
+}
 
 export type Comment = {
   id: number
@@ -157,14 +178,130 @@ const orders = ref<Order[]>([
         ]
       ]
     ]
-  }
+  },
+  {
+    id: 1,
+    contractNumber: '189-08-106',
+    supplier: 'Alarmové systémy CZ s.r.o.',
+    documents: [
+      // ORDER PART 1
+      [
+        // main document
+        {
+          id: 11,
+          filepath: '189-08-106_Alarmové systémy_373-2026-ÚVD.pdf',
+          datetime: '2026-05-14T08:44',
+          status: 2,
+          uploaderId: 2,
+        },
+        // supporting documents
+        []
+      ],
+    ]
+  },
+  {
+    id: 2,
+    contractNumber: '192-11-298',
+    supplier: 'Alarmové systémy CZ s.r.o.',
+    documents: [
+      // ORDER PART 1
+      [
+        // main document
+        {
+          id: 12,
+          filepath: '192-11-298_ASCZ-2026-620.pdf',
+          datetime: '2026-04-21T12:16',
+          status: 2,
+          uploaderId: 2,
+        },
+        // supporting documents
+        []
+      ],
+    ]
+  },
+  {
+    id: 3,
+    contractNumber: '192-13-083',
+    supplier: 'Alarmové systémy CZ s.r.o.',
+    documents: [
+      // ORDER PART 1
+      [
+        // main document
+        {
+          id: 13,
+          filepath: '192-13-083_ASCZ-2026-605.pdf',
+          datetime: '2026-04-17T14:39',
+          status: 2,
+          uploaderId: 3,
+        },
+        // supporting documents
+        []
+      ],
+      // ORDER PART 2
+      [
+        // main document
+        {
+          id: 14,
+          filepath: '192-13-083_ASCZ-2026-687.pdf',
+          datetime: '2026-05-11T14:32',
+          status: 2,
+          uploaderId: 3,
+        },
+        // supporting documents
+        []
+      ],
+    ]
+  },
+  // WIP
+  {
+    id: 4,
+    contractNumber: '204-01-061',
+    supplier: 'Ptáček koupelny',
+    documents: [
+      // ORDER PART 1
+      [
+        // main document
+        {
+          id: 15,
+          filepath: '204-01-061_Ptáček-KD1.pdf',
+          datetime: '2026-04-15T13:50',
+          status: 2,
+          uploaderId: 4,
+        },
+        // supporting documents
+        [
+          // group of documents #1
+          [
+            {
+              id: 16,
+              filepath: '204-01-061 specifikace CG výběr (KD1).zip',
+              datetime: '2026-05-11T09:38:00',
+              status: 3,
+              uploaderId: 4,
+            },
+          ],
+          // group of documents #2
+          [
+            {
+              id: 17,
+              filepath: '204-01-061 specifikace CG výběr 2 (KD l).zip',
+              datetime: '2026-04-20T17:01',
+              status: 1,
+              uploaderId: 4,
+            },
+          ],
+        ]
+      ],
+    ]
+  },
+
+
 ])
 
 const comments = ref<Comment[]>([
   {
     id: 1,
     refOrderId: 0,
-    refDocumentId: 1,
     userId: 2,
     datetime: '2026-05-11T10:12:00',
     text: 'prosím ať se to udělá pořádně'
@@ -186,51 +323,12 @@ const comments = ref<Comment[]>([
     text: 'mě jo'
   },
   {
-    id: 4,
-    refOrderId: 0,
-    refDocumentId: 7,
-    userId: 3,
-    datetime: '2026-05-11T10:12:00',
-    text: 'Tohle je poznámka k dokumentu 194-11-049_Sapeli-KD1.pdf.'
-  },
-  {
-    id: 5,
-    refOrderId: 0,
-    refDocumentId: 7,
-    userId: 4,
-    datetime: '2026-05-11T10:14:12',
-    text: 'A tady je další koment.'
-  },
-  {
     id: 6,
     refOrderId: 0,
     refDocumentId: 10,
     userId: 5,
     datetime: '2007-10-27T22:07:33',
-    text: 'Believe it or not, Eraserhead is my most spiritual film'
-  },
-  {
-    id: 7,
-    refOrderId: 0,
-    refDocumentId: 10,
-    userId: 6,
-    datetime: '2007-10-27T22:08:50',
-    text: 'Elaborate on that'
-  },
-  {
-    id: 8,
-    refOrderId: 0,
-    refDocumentId: 10,
-    userId: 5,
-    datetime: '2007-10-27T22:09:00',
-    text: 'no'
-  },
-  {
-    id: 9,
-    refOrderId: 0,
-    userId: 7,
-    datetime: '2026-05-11T10:14:00',
-    text: 'Tady to je koment k celé objednávce.'
+    text: 'Co tohle tady dělá?'
   },
   {
     id: 10,
@@ -238,7 +336,15 @@ const comments = ref<Comment[]>([
     refDocumentId: 0,
     userId: 4,
     datetime: '2026-05-11T10:14:00',
-    text: 'Už to bude hotový?'
+    text: 'Už to bude hotové?'
+  },
+  {
+    id: 11,
+    refOrderId: 4,
+    refDocumentId: 16,
+    userId: 1,
+    datetime: '2026-05-13T09:38:00',
+    text: 'Prosím o opravu přílohy k bidetové spršce, aby korespondovala s výměrami ve výkresu. Děkuji.'
   },
 
 ])
@@ -267,13 +373,6 @@ function getOrderDocument(orderId: number, documentId: number): OrderDocument | 
       'status' in d &&
       (d as OrderDocument).id === documentId
   )
-}
-
-function getOrderDocumentFilename(orderId: number, documentId?: number): string | undefined {
-  if (documentId === undefined) return undefined
-  const document = getOrderDocument(orderId, documentId)
-  if (!document) return undefined
-  return document.filepath.split(/[/\\]/).at(-1) || document.filepath
 }
 
 function getNextCommentId(): number {
@@ -333,10 +432,12 @@ export const useDoisOrders = defineStore('doisOrders', () => {
     currentUser,
     orders,
     comments,
+    documentStatusMap,
+    getDocumentStatusMeta,
     getDocumentComments,
     getOrderComments,
+    getOrderDocument,
     getUser,
-    getOrderDocumentFilename,
     addComment,
     setDocumentStatus,
   }
