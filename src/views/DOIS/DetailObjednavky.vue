@@ -35,12 +35,7 @@
     return doisOrdersStore.getOrderComments(0)
   })
 
-  type OrderProcessStep = 1 | 2 | 3 | 4
-  const orderProcessStep = ref<OrderProcessStep>(1)
-
-  function nextOrderStep() {
-    orderProcessStep.value++
-  }
+  const orderProcessStep = ref(1)
 
 </script>
 
@@ -49,72 +44,6 @@
 
     <template #actions>
       <div class="btn-list">
-        <!-- NOTE: Akce v dropdownu pro mobil -->
-        <div v-if="!isDesktop" class="dropdown">
-          <a class="btn dropdown-toggle btn-outline" data-bs-toggle="dropdown">
-            Akce
-          </a>
-          <div class="dropdown-menu dropdown-menu-end">
-            <!-- NOTE: Tlačítka se zobrazují dynamicky -->
-            <button v-if="orderProcessStep === 1" class="dropdown-item" @click="nextOrderStep">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 5l0 14" />
-                <path d="M5 12l14 0" />
-              </svg>
-              Připojit objednávku
-            </button>
-            <button v-else-if="orderProcessStep === 2" class="dropdown-item" @click="nextOrderStep">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 14l11 -11" />
-                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
-              </svg>
-              Odeslat objednávku
-            </button>
-            <button v-else-if="orderProcessStep === 3" class="dropdown-item" @click="nextOrderStep">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M5 12l5 5l10 -10" />
-              </svg>
-              Vyřídit objednávku
-            </button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-              </svg>
-              Náhled
-            </button>
-            <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-check">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-                <path d="M9 15l2 2l4 -4" />
-              </svg>
-              Předávací protokol montáže
-            </button>
-            <button class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tool">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
-              </svg>
-              Protokol o odstranění vad
-            </button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                <path d="M18.364 5.636l-12.728 12.728" />
-              </svg>
-              Stornovat
-            </button>
-          </div>
-        </div>
         <RouterLink to="/dois/objednavky-uvd" type="button" class="btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -135,8 +64,8 @@
 
     <template #toolbar>
       <!-- NOTE: Akce v toolbaru pro desktop -->
-      <div v-if="isDesktop" class="btn-list mb-3">
-        <button v-if="orderProcessStep === 1" class="btn btn-sm" @click="nextOrderStep">
+      <div class="btn-list mb-3">
+        <button v-if="orderProcessStep === 1" class="btn btn-sm" @click="orderProcessStep++">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 5l0 14" />
@@ -144,7 +73,7 @@
           </svg>
           Připojit objednávku
         </button>
-        <button v-else-if="orderProcessStep === 2" class="btn btn-sm btn-primary" @click="nextOrderStep">
+        <button v-else-if="orderProcessStep === 2" class="btn btn-sm btn-primary" @click="orderProcessStep++">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-send">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10 14l11 -11" />
@@ -152,7 +81,7 @@
           </svg>
           Odeslat objednávku
         </button>
-        <button v-else-if="orderProcessStep === 3" class="btn btn-sm btn-success" @click="nextOrderStep">
+        <button v-else-if="orderProcessStep === 3" class="btn btn-sm btn-success" @click="orderProcessStep++">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M5 12l5 5l10 -10" />
@@ -190,7 +119,7 @@
             </button>
           </div>
         </div>
-        <button class="btn btn-sm btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
+        <button v-if="orderProcessStep < 4" class="btn btn-sm btn-outline btn-danger" data-bs-toggle="modal" data-bs-target="#order-cancel-confirm">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cancel">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
