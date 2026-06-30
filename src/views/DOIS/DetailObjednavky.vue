@@ -335,7 +335,21 @@
               <div class="card-header">
                 <div class="d-flex align-items-center gap-2">
                   <h3 class="card-title">Položky</h3>
-                  <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
+                  <span class="text-secondary d-none d-sm-inline">(Celkem x)</span>
+                </div>
+                <div class="btn-list card-actions">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-1">
+                      <path d="M12 5l0 14" />
+                      <path d="M5 12l14 0" />
+                    </svg>
+                    Přidat
+                  </button>
                 </div>
               </div>
               <div :class="{ 'card-body': isDesktop }">
