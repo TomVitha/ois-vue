@@ -32,5 +32,5 @@ export type LastSubmissionResult = {
   templateName: string
   propertyName: string
   createdAt: string
-  state: 'success'
+  state: 'success' | 'failure'
 }
