@@ -108,15 +108,27 @@
         <div class="row row-cards">
           <div class="col-lg-6">
             <div class="row row-deck row-cards">
+              <!-- WIP -->
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
                     <div class="card-title">Klient</div>
                   </div>
                   <div class="card-body">
-                    <p>Název: Veselý Josef a Beáta</p>
-                    <p>Email: josef.vesely@outlook.com</p>
-                    <p>Telefon: +420724673167</p>
+                    <div class="space-y">
+                      <div class="row">
+                        <div class="col-4 text-muted">Číslo SoD</div>
+                        <div class="col">192-01-086-IS-I</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Email</div>
+                        <div class="col">josef.vesely@outlook.com</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Telefon</div>
+                        <div class="col">+420724673167</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -125,16 +137,37 @@
                   <div class="card-header">
                     <div class="card-title">Osoba</div>
                   </div>
-                  <!-- TEMP -->
                   <div class="card-body">
-                    <p>Nazev: Veselý Josef</p>
-                    <p>Email: josef.vesely@outlook.com</p>
-                    <p>Telefon: +420724673167</p>
+                    <div class="space-y">
+                      <div class="row">
+                        <div class="col-4 text-muted">Jméno</div>
+                        <div class="col">Veselý Josef</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Email</div>
+                        <div class="col">josef.vesely@outlook.com</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Telefon</div>
+                        <div class="col">+420724673167</div>
+                      </div>
+                    </div>
                   </div>
                   <div class="card-body">
-                    <p>Jméno: Veselá Beáta</p>
-                    <p>Email: beatavesela@yahoo.com</p>
-                    <p>Telefon: +420778711795</p>
+                    <div class="space-y">
+                      <div class="row">
+                        <div class="col-4 text-muted">Jméno</div>
+                        <div class="col">Veselá Beáta</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Email</div>
+                        <div class="col">beatavesela@yahoo.com</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Telefon</div>
+                        <div class="col">+420778711795</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -150,13 +183,34 @@
                       <span class="badge bg-success-lt text-success-lt-fg ms-1">Zkolaudováno</span>
                     </div>
                   </div>
+                  <!-- NOTE: Tyhle údaje se často nevypisují... možná by nebylo od věci, kdyby se vypisovaly ?? -->
                   <div class="card-body">
-                    <p>Číslo smlouvy: 132-07-163</p>
-                    <p>Typ: </p>
-                    <p>Adresa: </p>
-                    <p>Dům: </p>
-                    <p>Číslo produktu: </p>
-                    <p>Dispozice: </p>
+                    <div class="space-y">
+                      <div class="row">
+                        <div class="col-4 text-muted">Číslo smlouvy</div>
+                        <div class="col">132-07-163</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Typ</div>
+                        <div class="col"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Adresa</div>
+                        <div class="col"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Dům</div>
+                        <div class="col"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Číslo produktu</div>
+                        <div class="col"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4 text-muted">Dispozice</div>
+                        <div class="col"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
