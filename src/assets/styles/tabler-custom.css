@@ -350,6 +350,20 @@ html {
   --tblr-navbar-vertical-width: 17rem;
 }
 
+.card-actions {
+  margin: -0.5rem 0 -0.5rem auto;
+}
+
+/* height 0, y-axis centered (not to be confused with .h-0) */
+.h0 {
+  height: 0;
+  min-height: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* HACK: Tabler má hard-coded šířku vertikálního navbaru. Proto jsem ji tady přepsal pomocí jednotné proměnné. (Vypsal jsem jen třídy relevantní pro náš -lg breakpoint, zbylé se nás stejně netýkají.) */
 @media (min-width: 992px) {
 

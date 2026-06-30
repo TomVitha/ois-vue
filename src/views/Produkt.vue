@@ -193,27 +193,24 @@
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <div class="d-flex align-items-center justify-content-between w-100">
-              <h3 class="card-title">Milníky</h3>
-              <!-- Note - třída .h-0 pro nulovou výšku, aby neovlivňovala velikost card-header -->
-              <div class="btn-actions flex-fill align-items-center justify-content-end h-0 ms-auto">
-                <div class="dropdown">
-                  <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
-                    </svg>
-                    <!-- <span class="badge badge-dot bg-red badge-notification"></span> -->
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Postup výstavby</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Termínové sekce</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Platby</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Předání</label>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Dokumenty</label>
-                    <div class="dropdown-divider"></div>
-                    <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Prošlá data</label>
-                  </div>
+            <h3 class="card-title">Milníky</h3>
+            <div class="btn-actions card-actions">
+              <div class="dropdown">
+                <button class="btn btn-action dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-filter">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
+                  </svg>
+                  <!-- <span class="badge badge-dot bg-red badge-notification"></span> -->
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Postup výstavby</label>
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Termínové sekce</label>
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Platby</label>
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Předání</label>
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox">Dokumenty</label>
+                  <div class="dropdown-divider"></div>
+                  <label class="dropdown-item"><input class="form-check-input m-0 me-2" type="checkbox" checked>Prošlá data</label>
                 </div>
               </div>
             </div>

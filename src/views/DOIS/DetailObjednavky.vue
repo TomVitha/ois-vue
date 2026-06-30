@@ -294,36 +294,36 @@
                           <input type="datetime-local" class="form-control" name="order-input-date-installation-protocol" id="order-input-date-installation-protocol">
                         </div>
                       </div>
-                  <div class="col-12">
-                    <label class="form-label" for="order-technician-note">Poznámka technika</label>
-                    <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
-                  </div>
-                  <div class="col-xl-6">
-                    <label class="form-label" for="order-flaws">Vady</label>
-                    <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
-                  </div>
-                  <div class="col-xl-6">
-                    <label class="form-label" for="order-input-date-flaws-protocol">Předávací protokol k odstranění vad</label>
-                    <div class="input-icon">
-                      <span class="input-icon-addon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                          <path d="M16 3v4"></path>
-                          <path d="M8 3v4"></path>
-                          <path d="M4 11h16"></path>
-                          <path d="M11 15h1"></path>
-                          <path d="M12 15v3"></path>
-                        </svg>
-                      </span>
-                      <input type="date" class="form-control" name="order-input-date-flaws-protocol" id="order-input-date-flaws-protocol">
+                      <div class="col-12">
+                        <label class="form-label" for="order-technician-note">Poznámka technika</label>
+                        <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
+                      </div>
+                      <div class="col-xl-6">
+                        <label class="form-label" for="order-flaws">Vady</label>
+                        <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
+                      </div>
+                      <div class="col-xl-6">
+                        <label class="form-label" for="order-input-date-flaws-protocol">Předávací protokol k odstranění vad</label>
+                        <div class="input-icon">
+                          <span class="input-icon-addon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                              <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                              <path d="M16 3v4"></path>
+                              <path d="M8 3v4"></path>
+                              <path d="M4 11h16"></path>
+                              <path d="M11 15h1"></path>
+                              <path d="M12 15v3"></path>
+                            </svg>
+                          </span>
+                          <input type="date" class="form-control" name="order-input-date-flaws-protocol" id="order-input-date-flaws-protocol">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
         </div>
       </div>
 
@@ -333,11 +333,9 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="d-flex w-100 align-items-center">
-                  <div class="d-flex align-items-center gap-2">
-                    <h3 class="card-title">Položky</h3>
-                    <span class="text-secondary d-none d-sm-inline">(Celkem 7)</span>
-                  </div>
+                <div class="d-flex align-items-center gap-2">
+                  <h3 class="card-title">Položky</h3>
+                  <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
                 </div>
               </div>
               <div :class="{ 'card-body': isDesktop }">
@@ -507,20 +505,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="d-flex w-100 align-items-center">
                   <div class="d-flex align-items-center gap-2">
                     <h3 class="card-title">Přílohy</h3>
                     <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
                   </div>
-                  <div class="btn-list h-0 flex-nowrap ms-auto align-items-center">
-                    <!-- <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" title="Filtrování">
-                        Akce
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <button class="dropdown-item">něco</button>
-                      </div>
-                    </div> -->
+                  <div class="btn-list card-actions">
                     <!-- NOTE: Hromadná akce - zobrazit pouze když je vybrána alespoň jedna příloha -->
                     <div class="dropdown">
                       <a class="btn btn-sm dropdown-toggle btn-outline" data-bs-toggle="dropdown">
@@ -563,7 +552,6 @@
                       </svg>
                       Přidat
                     </button>
-                  </div>
                 </div>
               </div>
               <!-- * Empty state -->

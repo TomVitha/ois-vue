@@ -107,8 +107,8 @@
       </div>
 
       <!-- * Actions -->
-      <div class="col-auto">
-        <div class="d-flex align-items-center h-0">
+      <div class="col-auto order-item-actions">
+        <div class="h0">
           <div class="btn-actions">
 
             <!-- * Přijmout -->
