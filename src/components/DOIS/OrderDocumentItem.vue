@@ -77,7 +77,7 @@
   <!-- ? bg-body-tertiary / bg-surface-tertiary - maybe ? -->
   <div
     :id="`order-document-${props.orderId}-${props.documentId}`"
-    class="list-group-item"
+    class="list-group-item order-item"
     :class="{
       'bg-surface-tertiary': !props.isMainDocument,
     }">
@@ -193,4 +193,16 @@
       background-color: transparent;
     }
   }
+
+  /* Actions show on hover */
+  /* @media (hover: hover) {
+    .order-item:not(:hover) .order-item-actions {
+      display: none;
+    }
+  
+    .list-group-hoverable .list-group-item-actions {
+      transition: none;
+    }
+  } */
+
 </style>
