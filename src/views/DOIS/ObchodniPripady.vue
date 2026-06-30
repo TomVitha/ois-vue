@@ -57,8 +57,6 @@
                   <th class="w-1">Obchodní případ</th>
                   <th>Klient</th>
                   <th>Název</th>
-                  <th>Jméno</th>
-                  <th>Příjmení</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,8 +67,6 @@
                   </td>
                   <td>Osoba</td>
                   <td>Veselý Pavel a Martina</td>
-                  <td>Pavel</td>
-                  <td>Veselý</td>
                 </tr>
               </tbody>
             </table>
