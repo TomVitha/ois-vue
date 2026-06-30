@@ -155,7 +155,7 @@
         <div class="col-sm-4 col-xxl-2">
           <div class="form-floating">
             <input class="form-control" type="date">
-            <label>Termín splnění dle SoD</label>
+            <label>Termín dokončení díla</label>
           </div>
         </div>
         <div class="col-sm-4 col-xxl-2">
@@ -282,7 +282,7 @@
                   <th>Dodavatel</th>
                   <th>Připravenost stavba</th>
                   <th>Položka</th>
-                  <th>Termín splnění dle SoD</th>
+                  <th>Termín dokončení díla</th>
                   <th>Datum akceptace dodavatelem</th>
                 </tr>
               </thead>
