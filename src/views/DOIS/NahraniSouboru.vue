@@ -2,6 +2,7 @@
   import { computed, ref } from 'vue'
   import PageTemplate from '@/components/PageTemplate.vue'
   import Empty from '@/components/Empty.vue'
+  import DebugSwitch from '@/components/debug/DebugSwitch.vue'
   import { useDropzone } from '@/composables/useDropzone'
   import 'dropzone/dist/dropzone.css'
   import Alert from '@/components/Alert.vue'
@@ -68,9 +69,12 @@
   }
 
   /** DEV - POMOCNÁ PROMĚNNÁ pro kontrolu pohledů Klient (CG) vs Dodavatel */
-  const userView = ref<"client" | "supplier">("supplier")
-
-
+  const userView = ref<"client" | "supplier">("client")
+  // DEBUG UI SWITCH
+  const debugClientView = computed({
+    get: () => userView.value === 'supplier',
+    set: (isSupplierView: boolean) => { userView.value = isSupplierView ? 'supplier' : 'client' },
+  })
 </script>
 
 <template>
@@ -160,8 +164,6 @@
                   <span class="form-check-label">Nahrát jako poptávku</span>
                 </label>
               </div>
-
-              <!-- WIP -->
               <div class="col-12 gy-5" v-if="userView === 'client' && isGdprCompliant !== null">
                 <!-- Udělil souhlas -->
                 <Alert class="mb-0" v-if="isGdprCompliant == true" type="success">Klient udělil souhlas s GDPR.</Alert>
@@ -170,15 +172,12 @@
                 <!-- Nešlo ověřit -->
                 <Alert class="mb-0" v-else type="warning">Udělení souhlasu klienta s GDPR se nepodařilo ověřit.</Alert>
               </div>
-
               <div class="col-12" v-if="userView === 'client' && isGdprCompliant == false">
                 <label class="form-check my-0">
                   <input class="form-check-input" type="checkbox" v-model="isNonCompliantUpload">
                   <span class="form-check-label">Beru na vědomí, přesto umožnit nahrání</span>
                 </label>
               </div>
-
-
             </div>
           </div>
           <div class="card-footer">
@@ -197,6 +196,14 @@
         </div>
       </div>
     </div>
+
+    <!-- DEBUG UI SWITCH -->
+    <DebugSwitch
+      v-model="debugClientView"
+      title="Pohledy"
+      false-label="Klient"
+      true-label="Dodavatel"
+    />
 
   </PageTemplate>
 
