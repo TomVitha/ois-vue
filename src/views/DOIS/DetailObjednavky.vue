@@ -294,24 +294,6 @@
                           <input type="datetime-local" class="form-control" name="order-input-date-installation-protocol" id="order-input-date-installation-protocol">
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <div class="card card-md">
-              <div class="card-header">
-                <h3 class="card-title">Dodavatel</h3>
-              </div>
-              <div class="card-body">
-                <div class="row gy-3">
-                  <div class="col-12">
-                    <span class="form-label">Poznámka dodavatele</span>
-                    <p class="form-control-plaintext">Tohle je ten nejhezčí byt, ve kterém jsem kdy byl.</p>
-                  </div>
                   <div class="col-12">
                     <label class="form-label" for="order-technician-note">Poznámka technika</label>
                     <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
@@ -340,6 +322,8 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 
