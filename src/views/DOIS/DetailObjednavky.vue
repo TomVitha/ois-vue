@@ -872,20 +872,6 @@
                 </button>
               </div>
             </form>
-            <div class="mt-3">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <label class="form-label col-form-label" for="order-upload-attachment-type">Nahrát jako</label>
-                </div>
-                <div class="col-auto">
-                  <select class="form-select" id="order-upload-attachment-type" name="order-upload-attachment-type" required>
-                    <option disabled selected>Vyberte</option>
-                    <option value="1">Objednávka</option>
-                    <option value="2">Příloha</option>
-                  </select>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="modal-footer">
