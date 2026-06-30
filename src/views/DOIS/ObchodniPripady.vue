@@ -63,10 +63,10 @@
                 <tr>
                   <td>
                     <!-- TODO: Router params ?? -->
-                    <RouterLink to="/dois/obchodni-pripad" class="text-reset">B152010372</RouterLink>
+                    <RouterLink to="/dois/obchodni-pripad" class="text-reset">B132071631</RouterLink>
                   </td>
                   <td>Osoba</td>
-                  <td>Veselý Pavel a Martina</td>
+                  <td>Veselý Josef a Beáta</td>
                 </tr>
               </tbody>
             </table>

@@ -37,7 +37,7 @@
 </script>
 
 <template>
-  <PageTemplate title="Obchodní případ 118680" back-to="/dois/obchodni-pripady">
+  <PageTemplate title="Obchodní případ B132071631" back-to="/dois/obchodni-pripady">
     <ul class="nav nav-underline border-bottom flex-nowrap scroll-x mb-3" data-bs-toggle="tabs" role="tablist">
       <li class="nav-item" role="presentation">
         <a href="#tab-1" class="nav-link text-nowrap active" data-bs-toggle="tab" aria-selected="true" role="tab" draggable="false">
@@ -114,10 +114,9 @@
                     <div class="card-title">Klient</div>
                   </div>
                   <div class="card-body">
-                    <!-- TEMP -->
-                    <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
-                    <p>Email: vesely@taxway.cz</p>
-                    <p>Telefon: +420724747457, 602234725</p>
+                    <p>Název: Veselý Josef a Beáta</p>
+                    <p>Email: josef.vesely@outlook.com</p>
+                    <p>Telefon: +420724673167</p>
                   </div>
                 </div>
               </div>
@@ -128,13 +127,14 @@
                   </div>
                   <!-- TEMP -->
                   <div class="card-body">
-                    <p>Nazev: Veselý Josef Dr. Ing. Ph.D. MBA a Věra</p>
-                    <p>Email: vesely@taxway.cz</p>
-                    <p>Telefon: +420724747457</p>
+                    <p>Nazev: Veselý Josef</p>
+                    <p>Email: josef.vesely@outlook.com</p>
+                    <p>Telefon: +420724673167</p>
                   </div>
                   <div class="card-body">
-                    <p>Jméno: Veselá Věra</p>
-                    <p>Telefon :+420602234725</p>
+                    <p>Jméno: Veselá Beáta</p>
+                    <p>Email: beatavesela@yahoo.com</p>
+                    <p>Telefon: +420778711795</p>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    <p>Číslo smlouvy: 128-07-156</p>
+                    <p>Číslo smlouvy: 132-07-163</p>
                     <p>Typ: </p>
                     <p>Adresa: </p>
                     <p>Dům: </p>
