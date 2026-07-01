@@ -295,14 +295,17 @@
     </div>
   </div>
 
-  <!-- * Stornovat objednávku? -->
-  <!-- TEMP place -> into component -->
+  <!-- * Připojit dokumenty -->
+  <!-- TODO: Place into component -->
   <div class="modal" id="order-attach-docs-confirm" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
       <div class="modal-content">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header">
+          <h5 class="modal-title">Připojit dokumenty</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
         <div class="modal-body py-4">
-          <!-- <h3>Stornovat objednávku</h3> -->
           <div class="row gy-3">
             <div class="col-12">
               <span>Vyberte smlouvu o dílo, ke které chcete přílohy připojit:</span>
@@ -317,23 +320,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="w-100">
-            <div class="row">
-              <div class="col">
-                <button
-                  class="btn w-100"
-                  data-bs-dismiss="modal">Storno</button>
-              </div>
-              <div class="col">
-                <button
-                  class="btn btn-primary w-100"
-                  data-bs-dismiss="modal"
-                  @click="onSubmitAttachingDocs">
-                  Připojit
-                </button>
-              </div>
-            </div>
-          </div>
+          <button class="btn" data-bs-dismiss="modal">Storno</button>
+          <button class="btn btn-primary" data-bs-dismiss="modal" @click="onSubmitAttachingDocs">Připojit</button>
         </div>
       </div>
     </div>

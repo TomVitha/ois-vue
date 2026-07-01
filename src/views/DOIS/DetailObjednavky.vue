@@ -519,53 +519,53 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  <div class="d-flex align-items-center gap-2">
-                    <h3 class="card-title">Přílohy</h3>
-                    <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
-                  </div>
-                  <div class="btn-list card-actions">
-                    <!-- NOTE: Hromadná akce - zobrazit pouze když je vybrána alespoň jedna příloha -->
-                    <div class="dropdown">
-                      <a class="btn btn-sm dropdown-toggle btn-outline" data-bs-toggle="dropdown">
-                        Akce
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <button class="dropdown-item">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-download">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 11l5 5l5 -5" />
-                            <path d="M12 4l0 12" />
-                          </svg>
-                          Stáhnout vybrané
-                        </button>
-                        <button class="dropdown-item text-danger">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 7l16 0" />
-                            <path d="M10 11l0 6" />
-                            <path d="M14 11l0 6" />
-                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                          </svg>
-                          Smazat vybrané
-                        </button>
-                      </div>
+                <div class="d-flex align-items-center gap-2">
+                  <h3 class="card-title">Přílohy</h3>
+                  <span class="text-secondary d-none d-sm-inline">(Celkem 2)</span>
+                </div>
+                <div class="btn-list card-actions">
+                  <!-- NOTE: Hromadná akce - zobrazit pouze když je vybrána alespoň jedna příloha -->
+                  <div class="dropdown">
+                    <a class="btn btn-sm dropdown-toggle btn-outline" data-bs-toggle="dropdown">
+                      Akce
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-download">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                          <path d="M7 11l5 5l5 -5" />
+                          <path d="M12 4l0 12" />
+                        </svg>
+                        Stáhnout vybrané
+                      </button>
+                      <button class="dropdown-item text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash text-reset">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M4 7l16 0" />
+                          <path d="M10 11l0 6" />
+                          <path d="M14 11l0 6" />
+                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg>
+                        Smazat vybrané
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#order-upload-attachment-modal"
-                      class="btn btn-primary btn-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-1">
-                        <path d="M12 5l0 14" />
-                        <path d="M5 12l14 0" />
-                      </svg>
-                      Přidat
-                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#order-upload-attachment-modal"
+                    class="btn btn-primary btn-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="icon icon-1">
+                      <path d="M12 5l0 14" />
+                      <path d="M5 12l14 0" />
+                    </svg>
+                    Přidat
+                  </button>
                 </div>
               </div>
               <!-- * Empty state -->
@@ -797,38 +797,25 @@
       </div>
     </div>
 
-    <!-- * Stornovat objednávku? -->
-    <!-- TEMP place -> into component -->
+    <!-- * Stornovat objednávku -->
+    <!-- TODO: Place into component -->
     <div class="modal" id="order-cancel-confirm" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-status bg-danger"></div>
           <div class="modal-body text-center py-4">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon mb-2 text-danger icon-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon mb-2 text-danger icon-lg">
               <path d="M12 9v4"></path>
               <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z"></path>
               <path d="M12 16h.01"></path>
-            </svg> -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon mb-2 text-danger icon-lg icon-tabler icons-tabler-outline icon-tabler-cancel">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-              <path d="M18.364 5.636l-12.728 12.728" />
             </svg>
             <h3>Stornovat objednávku</h3>
             <div class="text-secondary">Opravdu chcete stornovat tuto objednávku?</div>
           </div>
           <div class="modal-footer">
-            <div class="w-100">
-              <div class="row">
-                <div class="col">
-                  <a href="#" class="btn w-100" data-bs-dismiss="modal">Zrušit</a>
-                </div>
-                <div class="col">
-                  <a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal">Stornovat</a>
-                </div>
-              </div>
-            </div>
+            <a href="#" class="btn" data-bs-dismiss="modal">Zrušit</a>
+            <a href="#" class="btn btn-danger" data-bs-dismiss="modal">Stornovat</a>
           </div>
         </div>
       </div>

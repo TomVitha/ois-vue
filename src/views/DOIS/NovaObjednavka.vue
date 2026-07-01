@@ -379,7 +379,7 @@
     </div>
 
     <!-- * Nahrát soubory -->
-    <!-- TEMP place -> into component -->
+    <!-- TODO: Place into component -->
     <div class="modal" id="order-upload-attachment-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
