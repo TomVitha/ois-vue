@@ -1,0 +1,71 @@
+/* FIX: Unify padding with Tabler input fields (we subtract to compensate for border) */
+.ts-control {
+  padding: calc(0.625rem - 1.5px) 1rem;
+  /* HACK WIP */
+  min-height: calc(0.625rem + 21px + 0.625rem);
+}
+
+/* FIX: Tom Select - select inside Bootstrap form-floating (floating label) */
+/* https://github.com/orchidjs/tom-select/issues/579#issuecomment-2437534901 */
+.form-floating {
+
+  .ts-wrapper.form-control,
+  .ts-wrapper.form-select {
+    height: 0 !important;
+  }
+
+  .ts-wrapper.form-control .ts-control,
+  .ts-wrapper.form-select .ts-control {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 1rem;
+  }
+}
+
+/* FIX: Tom Select - Text input wrapping under selected option */
+.ts-wrapper.single .ts-control {
+  flex-wrap: nowrap;
+}
+
+.ts-control .item {
+  flex-shrink: 0;
+}
+
+.ts-wrapper.plugin-dropdown_input .ts-control,
+.ts-wrapper.plugin-dropdown_input .ts-control input {
+  cursor: default;
+}
+
+/* FIX: Missing color */
+.ts-dropdown .active {
+  background-color: var(--tblr-active-bg);
+}
+
+/* WIP */
+.ts-wrapper.multi .ts-control > .tag {
+  --tblr-tag-height: 1.5rem;
+  border: 1px solid var(--tblr-border-color);
+  display: inline-flex;
+  align-items: center;
+  height: var(--tblr-tag-height);
+  border-radius: var(--tblr-border-radius);
+  padding: 0 .5rem;
+  background: var(--tblr-bg-surface);
+  box-shadow: var(--tblr-shadow-input);
+  gap: .5rem;
+  margin: 0 var(--tblr-list-gap, 0.5rem) 0 0;
+  /* --tblr-link-color: red; */
+
+  &.active {
+    border: 1px solid var(--tblr-border-color);
+    border-width: 1px;
+  }
+
+  .remove {
+    --tblr-btn-close-color: currentColor;
+    --tblr-btn-close-opacity: 0.4;
+    color: var(--tblr-btn-close-color);
+    opacity: var(--tblr-btn-close-opacity);
+    text-decoration: none;
+  }
+}

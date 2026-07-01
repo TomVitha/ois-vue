@@ -373,7 +373,8 @@ html {
   }
 
   .navbar-expand-lg.navbar-vertical.navbar-right ~ .navbar,
-  .navbar-expand-lg.navbar-vertical.navbar-right ~ .page-wrapper, .navbar-expand-lg.navbar-vertical.navbar-end ~ .navbar,
+  .navbar-expand-lg.navbar-vertical.navbar-right ~ .page-wrapper, 
+  .navbar-expand-lg.navbar-vertical.navbar-end ~ .navbar,
   .navbar-expand-lg.navbar-vertical.navbar-end ~ .page-wrapper {
     margin-right: var(--tblr-navbar-vertical-width);
   }
@@ -392,7 +393,8 @@ html {
     padding-left: var(--tblr-navbar-vertical-width);
   }
 
-  .navbar-vertical.navbar-expand-lg.navbar-right ~ .page, .navbar-vertical.navbar-expand-lg.navbar-end ~ .page {
+  .navbar-vertical.navbar-expand-lg.navbar-right ~ .page, 
+  .navbar-vertical.navbar-expand-lg.navbar-end ~ .page {
     padding-left: 0;
     padding-right: var(--tblr-navbar-vertical-width);
   }
@@ -400,40 +402,4 @@ html {
 
 .progress, .progress-stacked {
   --tblr-progress-bar-transition: none;
-}
-
-/* FIX: Unify padding with Tabler input fields (we subtract to compensate for border) */
-.ts-control {
-  padding: calc(0.625rem - 1.5px) 1rem;
-}
-
-/* FIX: Tom Select - select inside Bootstrap form-floating (floating label) */
-/* https://github.com/orchidjs/tom-select/issues/579#issuecomment-2437534901 */
-.form-floating {
-  .ts-wrapper.form-control,
-  .ts-wrapper.form-select {
-    height: 0 !important;
-  }
-  
-  .ts-wrapper.form-control .ts-control,
-  .ts-wrapper.form-select .ts-control {
-    padding-top: 1.625rem;
-    padding-bottom: 0.625rem;
-    padding-left: 1rem;
-  }
-}
-
-/* FIX: Tom Select - Text input wrapping under selected option */
-.ts-wrapper.single .ts-control {
-  flex-wrap: nowrap;
-}
-.ts-control .item {
-  flex-shrink: 0;
-}
-
-/* FIXME:  */
-/* cursor */
-.ts-wrapper.plugin-dropdown_input .ts-control,
-.ts-wrapper.plugin-dropdown_input .ts-control input {
-  cursor: default;
 }

@@ -10,10 +10,31 @@
 
   import TomSelect from 'tom-select'
 
+  // Initialize multiple Tom-selects
+  const tomSelectSelectors = ['#filter-suppliers'] as const
+  const tomSelectOptions = {
+    allowEmptyOption: false,
+    maxItems: null, // 'null' allows an unlimited number of items
+    plugins: {
+      // dropdown_input: {},
+      remove_button: {},
+      no_active_items: {},
+      input_autogrow: {},
+      checkbox_options: {
+        checkedClassNames: ['ts-checked'],
+        uncheckedClassNames: ['ts-unchecked'],
+      },
+    },
+    itemClass: 'tag', // Override default "item" class; now matches Tabler
+  }
+
   onMounted(() => {
-    new TomSelect('#filter-supplier', {
-      allowEmptyOption: false,
-      plugins: ['dropdown_input'],
+    tomSelectSelectors.forEach((selector) => {
+      const element = document.querySelector(selector)
+
+      if (element) {
+        new TomSelect(selector, tomSelectOptions)
+      }
     })
   })
 
@@ -42,24 +63,32 @@
             <label>Datum do</label>
           </div>
         </div>
-        <!-- Tom Select -->
-        <div class="col-lg-3">
-          <div class="form-floating">
-            <select class="form-select" autocomplete="off" id="filter-supplier">
-              <option selected disabled></option>
-              <option value="1">Možnost 1</option>
-              <option value="2">Možnost 2</option>
-              <option value="3">Možnost 3</option>
-              <option value="4">Možnost 4</option>
-              <option value="5">Možnost 5</option>
-            </select>
-            <label>Dodavatel</label>
-          </div>
-        </div>
         <div class="col-lg-auto">
           <div class="form-floating">
             <input class="form-control" type="text">
             <label>Číslo</label>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="form-floating">
+            <select class="form-select" name="filter-suppliers" id="filter-suppliers" multiple>
+              <option value="Sapeli">Sapeli</option>
+              <option value="Hanák">Hanák</option>
+              <option value="Next">Next</option>
+              <option value="Barkotex">Barkotex</option>
+              <option value="Ptáček">Ptáček</option>
+              <option value="ProCeram">ProCeram</option>
+              <option value="Profi Lighting">Profi Lighting</option>
+              <option value="Vekra">Vekra</option>
+              <option value="KONE">KONE</option>
+              <option value="Loxone">Loxone</option>
+              <option value="ABB">ABB</option>
+              <option value="Baumit">Baumit</option>
+              <option value="Wienerberger">Wienerberger</option>
+              <option value="Vapis">Vapis</option>
+              <option value="Xella">Xella</option>
+            </select>
+            <label>Dodavatel</label>
           </div>
         </div>
         <div class="col-lg-auto">
