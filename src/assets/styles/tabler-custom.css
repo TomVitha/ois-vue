@@ -373,7 +373,7 @@ html {
   }
 
   .navbar-expand-lg.navbar-vertical.navbar-right ~ .navbar,
-  .navbar-expand-lg.navbar-vertical.navbar-right ~ .page-wrapper, 
+  .navbar-expand-lg.navbar-vertical.navbar-right ~ .page-wrapper,
   .navbar-expand-lg.navbar-vertical.navbar-end ~ .navbar,
   .navbar-expand-lg.navbar-vertical.navbar-end ~ .page-wrapper {
     margin-right: var(--tblr-navbar-vertical-width);
@@ -393,7 +393,7 @@ html {
     padding-left: var(--tblr-navbar-vertical-width);
   }
 
-  .navbar-vertical.navbar-expand-lg.navbar-right ~ .page, 
+  .navbar-vertical.navbar-expand-lg.navbar-right ~ .page,
   .navbar-vertical.navbar-expand-lg.navbar-end ~ .page {
     padding-left: 0;
     padding-right: var(--tblr-navbar-vertical-width);
@@ -402,4 +402,47 @@ html {
 
 .progress, .progress-stacked {
   --tblr-progress-bar-transition: none;
+}
+
+/* Overflow scroll shadow (horizontal-only) */
+@supports (container-type: scroll-state) {
+
+  .table-responsive {
+    --scroll-shadow-color: rgba(0, 0, 0, 0.15);
+    --scroll-shadow-direction: ;
+    container-type: scroll-state;
+  }
+
+  .table-responsive::before,
+  .table-responsive::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    display: block;
+    background: linear-gradient(to var(--scroll-shadow-direction), var(--scroll-shadow-color), transparent);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .table-responsive::before {
+    left: 0;
+    --scroll-shadow-direction: right;
+
+    @container scroll-state(scrollable: left) {
+      opacity: 1;
+    }
+  }
+
+  .table-responsive::after {
+    right: 0;
+    --scroll-shadow-direction: left;
+
+    @container scroll-state(scrollable: right) {
+      opacity: 1;
+    }
+  }
 }

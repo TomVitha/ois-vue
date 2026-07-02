@@ -361,7 +361,7 @@
 
     <div class="row row-cards">
       <div class="col-12">
-        <div class="card">
+        <div class="card overflow-hidden">
           <div class="table-responsive">
             <table ref="ordersTableRef" class="table table-vcenter table-selectable table-nowrap card-table datatable">
               <thead>
