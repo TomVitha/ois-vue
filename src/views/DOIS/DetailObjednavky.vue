@@ -177,16 +177,21 @@
                         <div class="w-50">192-01-086</div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">
-                        <div class="text-muted w-50">Datum podpisu SoD</div>
+                        <div class="text-muted w-50">Podpis SoD</div>
                         <div class="w-50">01.05.2025</div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">
-                        <div class="text-muted w-50">Datum akceptace objednávky</div>
+                        <div class="text-muted w-50">Akceptace objednávky</div>
                         <div class="w-50">15.05.2025</div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">
                         <div class="text-muted w-50">Dodavatel</div>
                         <div class="w-50">Společnost s.r.o.</div>
+                      </div>
+                      <!-- ADDED -->
+                      <div class="col-12 col-md-6 d-flex">
+                        <div class="text-muted w-50">Předání díla</div>
+                        <div class="w-50">Předání s předáním jednotky</div>
                       </div>
                     </div>
                   </div>
@@ -198,7 +203,7 @@
                   <div class="col-12 col-xxl-10">
                     <div class="row g-3">
                       <div class="col-md-6 col-lg-6">
-                        <label class="form-label" for="order-input-date-sod">Termín dokončení díla</label>
+                        <label class="form-label" for="order-input-date-sod">Dokončení dle SoD</label>
                         <div class="input-icon">
                           <span class="input-icon-addon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
@@ -298,9 +303,9 @@
                         <label class="form-label" for="order-technician-note">Poznámka technika</label>
                         <textarea class="form-control" name="order-technician-note" id="order-technician-note" rows="1" placeholder="Poznámka technika..." style="resize: none; field-sizing: content;"></textarea>
                       </div>
-                      <div class="col-xl-6">
+                      <div class="col-12">
                         <label class="form-label" for="order-flaws">Vady</label>
-                        <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none;"></textarea>
+                        <textarea class="form-control" name="order-flaws" id="order-flaws" rows="1" placeholder="Vady..." style="resize: none; field-sizing: content;"></textarea>
                       </div>
                       <div class="col-xl-6">
                         <label class="form-label" for="order-input-date-flaws-protocol">Předávací protokol k odstranění vad</label>
@@ -358,7 +363,7 @@
                     <thead>
                       <tr>
                         <th>Název</th>
-                        <th class="w-50">Termín dokončení dle SoD</th>
+                        <th class="w-50">Termín splnění</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -402,110 +407,6 @@
                   </table>
                 </div>
               </div>
-
-              <!-- <div class="card-body">
-                <div class="list-group overflow-auto">
-                  <div class="list-group-item">
-                    <div class="row align-items-center gy-3">
-                      <div class="col-sm-5">
-                        <span>Skříň chodba</span>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="date" class="form-control" id="">
-                          <label for="floating-password">Termín dokončení dle SoD</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item">
-                    <div class="row align-items-center gy-3">
-                      <div class="col-sm-5">
-                        <span>Nějaká položka s dlouhým názvem</span>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="date" class="form-control" id="">
-                          <label for="floating-password">Termín dokončení dle SoD</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- TODO: Rozhodni se, které z těch dvou -->
-
-              <!-- <div class="list-group list-group-flush">
-                <div class="list-group-item">
-                  <div class="row align-items-center">
-                    <div class="col-md-6 text-truncate">
-                      <span>Skříň chodba</span>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-icon">
-                        <span class="input-icon-addon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                            <path d="M16 3v4"></path>
-                            <path d="M8 3v4"></path>
-                            <path d="M4 11h16"></path>
-                            <path d="M11 15h1"></path>
-                            <path d="M12 15v3"></path>
-                          </svg>
-                        </span>
-                        <input type="date" class="form-control" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="list-group-item">
-                  <div class="row align-items-center">
-                    <div class="col-md-6 text-truncate">
-                      <span>Skříň chodba</span>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-icon">
-                        <span class="input-icon-addon">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                            <path d="M16 3v4"></path>
-                            <path d="M8 3v4"></path>
-                            <path d="M4 11h16"></path>
-                            <path d="M11 15h1"></path>
-                            <path d="M12 15v3"></path>
-                          </svg>
-                        </span>
-                        <input type="date" class="form-control" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- <div class="card-body">
-                <div class="card">
-                  <div class="card-body divide-y">
-                    <div class="row align-items-center">
-                      <div class="col-md-6">
-                        <span class="col-form-label">skříň</span>
-                      </div>
-                      <div class="col-md-6">
-                        <input type="date" class="form-control" name="" id="">
-                      </div>
-                    </div>
-                    <div class="row align-items-center">
-                      <div class="col-md-6">
-                        <span class="col-form-label">skříň</span>
-                      </div>
-                      <div class="col-md-6">
-                        <input type="date" class="form-control" name="" id="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
             </div>
           </div>
         </div>

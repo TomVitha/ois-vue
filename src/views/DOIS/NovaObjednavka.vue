@@ -117,7 +117,7 @@
                         <input type="text" class="form-control" disabled>
                       </div>
                       <div class="col-md-6 col-lg-6">
-                        <label class="form-label" for="order-input-date-sod">Datum podpisu SoD</label>
+                        <label class="form-label" for="order-input-date-sod">Podpis SoD</label>
                         <div class="input-icon">
                           <span class="input-icon-addon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
@@ -132,23 +132,6 @@
                           <input type="date" class="form-control" disabled>
                         </div>
                       </div>
-                      <!-- ? Budeme vůbec zobrazovat při vytvoření, když nejde nastavit, a nastaví se samo až v budoucnu ? -->
-                      <!-- <div class="col-md-6 col-lg-6">
-                        <label class="form-label" for="order-input-date-sod">Datum akceptace objednávky</label>
-                        <div class="input-icon">
-                          <span class="input-icon-addon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                              <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                              <path d="M16 3v4"></path>
-                              <path d="M8 3v4"></path>
-                              <path d="M4 11h16"></path>
-                              <path d="M11 15h1"></path>
-                              <path d="M12 15v3"></path>
-                            </svg>
-                          </span>
-                          <input type="date" class="form-control" disabled>
-                        </div>
-                      </div> -->
                       <div class="col-md-6 col-lg-6">
                         <label class="form-label" for="order-input-supplier">Dodavatel</label>
                         <select class="form-select" autocomplete="off" id="order-input-supplier">
@@ -203,7 +186,7 @@
                     <thead>
                       <tr>
                         <th>Název</th>
-                        <th class="w-50">Termín dokončení dle SoD</th>
+                        <th class="w-50">Termín splnění</th>
                       </tr>
                     </thead>
                     <tbody>
