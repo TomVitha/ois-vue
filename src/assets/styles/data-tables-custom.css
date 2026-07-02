@@ -1,0 +1,37 @@
+/* NOTE: 
+  Tabler obsahuje stylování pro šipky pro sortable buňky, ale počítá s jinými třídami než DataTables používá. 
+  Ideálně bychom si třídy v DataTables nastavili, ale nepřišel jsem na způsob jak. 
+  Proto jsem je tady přepsal s použitím DataTables tříd.
+*/
+
+[class*="dt-orderable"] {
+  cursor: pointer;
+}
+
+[class*="dt-ordering"] {
+  color: var(--tblr-body-color);
+}
+
+.dt-column-order::before {
+  content: "";
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: bottom;
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1'><path d='M5 7l3 -3l3 3'/><path d='M5 10l3 3l3 -3'/></svg>");
+  background: currentColor;
+  margin-left: 0.25rem;
+}
+
+.dt-ordering-asc .dt-column-order::before {
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M5 10l3 -3l3 3'/></svg>");
+}
+
+.dt-ordering-desc .dt-column-order::before {
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M5 7l3 3l3 -3'/></svg>");
+}
+
+.dt-orderable-none .dt-column-order::before {
+  content: none;
+  display: none;
+}

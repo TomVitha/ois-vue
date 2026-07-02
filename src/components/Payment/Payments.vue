@@ -28,11 +28,6 @@
   const paymentTableRef = ref<HTMLTableElement | null>(null)
   let paymentsTable: InstanceType<typeof DataTable> | null = null
 
-  function destroyDataTable() {
-    paymentsTable?.destroy()
-    paymentsTable = null
-  }
-
   async function initDataTable() {
     await nextTick()
 
@@ -40,7 +35,6 @@
 
     // DataTables pro řazení (a dále případně filtrování, stránkování, vyhledávání).
     paymentsTable = new DataTable(paymentTableRef.value, {
-      // TEMP: Disabled options, making sure it works at all
       paging: false,
       searching: false,
       info: false,
@@ -50,6 +44,12 @@
     })
   }
 
+  function destroyDataTable() {
+    paymentsTable?.destroy()
+    paymentsTable = null
+  }
+
+  // Initialize DataTables if isDesktop is true, destroy if false
   watch(isDesktop, (desktop) => {
     if (desktop) {
       void initDataTable()
@@ -105,36 +105,5 @@
 </template>
 
 <style scoped>
-  /* NOTE: 
-    Tabler obsahuje stylování pro šipky pro sortable buňky, ale počítá s jinými třídami než DataTables používá. 
-    Ideálně bychom si třídy v DataTables nastavili, ale nepřišel jsem na způsob jak. 
-    Proto jsem je tady přepsal s použitím DataTables tříd.
-  */
 
-  :deep([class*="dt-orderable"]) {
-    cursor: pointer;
-  }
-
-  :deep([class*="dt-ordering"]) {
-    color: var(--tblr-body-color);
-  }
-
-  :deep(.dt-column-order::before) {
-    content: "";
-    display: inline-flex;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: bottom;
-    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1'><path d='M5 7l3 -3l3 3'/><path d='M5 10l3 3l3 -3'/></svg>");
-    background: currentColor;
-    margin-left: 0.25rem;
-  }
-
-  :deep(.dt-ordering-asc .dt-column-order::before) {
-    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M5 10l3 -3l3 3'/></svg>");
-  }
-
-  :deep(.dt-ordering-desc .dt-column-order::before) {
-    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M5 7l3 3l3 -3'/></svg>");
-  }
 </style>
