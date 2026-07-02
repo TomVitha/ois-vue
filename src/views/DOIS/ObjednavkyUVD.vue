@@ -1,8 +1,23 @@
 <script setup lang="ts">
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, watch, useTemplateRef, nextTick, onUnmounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
   import TomSelect from 'tom-select'
+  import DataTable from 'datatables.net-dt'
+  import 'datatables.net-select'
+  import 'datatables.net-select-dt'
+
+  const dataTableWithSelect = DataTable as typeof DataTable & {
+    select?: {
+      classes?: {
+        checkbox?: string
+      }
+    }
+  }
+
+  if (dataTableWithSelect.select?.classes) {
+    dataTableWithSelect.select.classes.checkbox = 'form-check-input table-selectable-check' // Set custom class to match Tabler's checkbox style
+  }
 
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
   const isWideScreen = matchesMediaQuery('(min-width: 1600px)')
@@ -40,6 +55,50 @@
         new TomSelect(selector, tomSelectOptions)
       }
     })
+  })
+
+
+
+  const ordersTableRef = useTemplateRef('ordersTableRef')
+  let ordersTable: InstanceType<typeof DataTable> | null = null
+
+  async function initDataTable() {
+
+    if (!ordersTableRef.value) return
+    
+    await nextTick()
+
+    // DataTables pro řazení (a dále případně filtrování, stránkování, vyhledávání).
+    ordersTable = new DataTable(ordersTableRef.value, {
+      paging: false,
+      searching: false,
+      info: false,
+      autoWidth: false,
+      orderClasses: false,
+      select: {
+        style: 'multi',
+        selector: 'td:first-child',
+      },
+      columnDefs: [{
+        orderable: false,
+        render: DataTable.render.select(),
+        targets: 0,
+      }],
+      order: [[1, 'asc']],       // Sloupec podle kterého se bude defaultně řadit - index sloupce (od 0); směr řazení
+    })
+  }
+
+  function destroyDataTable() {
+    ordersTable?.destroy()
+    ordersTable = null
+  }
+
+  onMounted(() => {
+    initDataTable();
+  })
+
+  onUnmounted(() => {
+    destroyDataTable()
   })
 
 </script>
@@ -304,12 +363,10 @@
       <div class="col-12">
         <div class="card">
           <div class="table-responsive">
-            <table class="table table-vcenter table-selectable table-nowrap card-table">
+            <table ref="ordersTableRef" class="table table-vcenter table-selectable table-nowrap card-table datatable">
               <thead>
                 <tr>
-                  <th class="w-1">
-                    <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Vybrat všechny položky">
-                  </th>
+                  <th class="w-1"></th>
                   <th>Interní číslo</th>
                   <th>Číslo SoD</th>
                   <th>Stav</th>
@@ -323,11 +380,8 @@
               </thead>
               <tbody class="table-tbody">
                 <tr>
-                  <td><input class="form-check-input m-0 align-middle table-selectable-check" type="checkbox" aria-label="Vybrat položku"></td>
-                  <!-- TEMP hard-coded link -> dynamic -->
-                  <td class="sort-id">
-                    <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink>
-                  </td>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink></td>
                   <td class="sort-receipt">192-01-086-IS-I</td>
                   <td class="sort-status" date-status="0"><span class="status status-info">Nové</span></td>
                   <td class="sort-technician">Petr Lamata</td>
@@ -336,6 +390,66 @@
                   <td class="sort-item">Skříň - chodba</td>
                   <td class="sort-completion">12.01.2026</td>
                   <td class="sort-accept">20.01.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/461-2025-ÚVD" class="text-reset" tabindex="-1">461-2025-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">201-03-145-IS-II</td>
+                  <td class="sort-status" date-status="1"><span class="status status-warning">V řešení</span></td>
+                  <td class="sort-technician">Tomáš Král</td>
+                  <td class="sort-readiness">Sapeli</td>
+                  <td>14.02.2026</td>
+                  <td class="sort-item">Interiérové dveře - patro</td>
+                  <td class="sort-completion">05.03.2026</td>
+                  <td class="sort-accept">08.03.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/463-2025-ÚVD" class="text-reset" tabindex="-1">463-2025-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">118-22-009-IS-I</td>
+                  <td class="sort-status" date-status="2"><span class="status status-success">Dokončeno</span></td>
+                  <td class="sort-technician">Lucie Malá</td>
+                  <td class="sort-readiness">Hanák</td>
+                  <td>03.12.2025</td>
+                  <td class="sort-item">Kuchyňská sestava</td>
+                  <td class="sort-completion">21.12.2025</td>
+                  <td class="sort-accept">22.12.2025</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/470-2026-ÚVD" class="text-reset" tabindex="-1">470-2026-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">307-11-552-IS-III</td>
+                  <td class="sort-status" date-status="0"><span class="status status-info">Nové</span></td>
+                  <td class="sort-technician">Jan Vacek</td>
+                  <td class="sort-readiness">Vekra</td>
+                  <td>25.04.2026</td>
+                  <td class="sort-item">Okna - jižní fasáda</td>
+                  <td class="sort-completion">10.05.2026</td>
+                  <td class="sort-accept">13.05.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/472-2026-ÚVD" class="text-reset" tabindex="-1">472-2026-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">415-07-233-IS-II</td>
+                  <td class="sort-status" date-status="3"><span class="status status-danger">Pozastaveno</span></td>
+                  <td class="sort-technician">Marek Ježek</td>
+                  <td class="sort-readiness">ABB</td>
+                  <td>09.03.2026</td>
+                  <td class="sort-item">Elektroinstalace - 2NP</td>
+                  <td class="sort-completion">31.03.2026</td>
+                  <td class="sort-accept">04.04.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id"><RouterLink to="/dois/objednavka/475-2026-ÚVD" class="text-reset" tabindex="-1">475-2026-ÚVD</RouterLink></td>
+                  <td class="sort-receipt">522-14-601-IS-I</td>
+                  <td class="sort-status" date-status="1"><span class="status status-warning">V řešení</span></td>
+                  <td class="sort-technician">Anna Dvořáková</td>
+                  <td class="sort-readiness">KONE</td>
+                  <td>18.05.2026</td>
+                  <td class="sort-item">Výtahová kabina</td>
+                  <td class="sort-completion">02.06.2026</td>
+                  <td class="sort-accept">06.06.2026</td>
                 </tr>
               </tbody>
             </table>
