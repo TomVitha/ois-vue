@@ -2,6 +2,11 @@
   import { ref, onMounted, watch, useTemplateRef, nextTick, onUnmounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
+  import Filters from '@/components/Filters/Filters.vue'
+  import FilterItemSearch from '@/components/Filters/FilterItemSearch.vue'
+  import FilterItem from '@/components/Filters/FilterItem.vue'
+  import type { FiltersAppliedPayload } from '@/components/Filters/filter-context'
+
   import TomSelect from 'tom-select'
   import DataTable from 'datatables.net-dt'
   import 'datatables.net-select'
@@ -28,14 +33,16 @@
     (document.querySelector('.page-body') as HTMLElement).classList.toggle('layout-fluid', newValue)
   })
 
+  function onFiltersApplied(payload: FiltersAppliedPayload) {
+    console.log('ObjednavkyUVD filters payload', payload)
+  }
 
-  // Initialize multiple Tom-selects
+  // Keep legacy old-toolbar multiselects initialized until old filters are removed.
   const tomSelectSelectors = ['#filter-suppliers', '#filter-items'] as const
   const tomSelectOptions = {
     allowEmptyOption: false,
-    maxItems: null, // null allows an unlimited number of items
+    maxItems: null,
     plugins: {
-      // dropdown_input: {},
       remove_button: {},
       no_active_items: {},
       input_autogrow: {},
@@ -44,16 +51,15 @@
         uncheckedClassNames: ['ts-unchecked'],
       },
     },
-    itemClass: 'tag', // same as tabler class
+    itemClass: 'tag',
   }
 
   onMounted(() => {
     tomSelectSelectors.forEach((selector) => {
       const element = document.querySelector(selector)
+      if (!element) return
 
-      if (element) {
         new TomSelect(selector, tomSelectOptions)
-      }
     })
   })
 
@@ -109,6 +115,7 @@
     <!-- Je tenhle filtr zločin proti lidskosti? Ano. Ale, takhle to chtěli, tak to tak mají. -->
     <template #toolbar>
 
+      <!-- OLD FILTERS -->
       <div class="row align-items-center gy-2">
 
         <div class="col-sm-4 col-xxl-2">
@@ -299,6 +306,89 @@
           </div>
         </div>
       </div>
+
+      <!-- WIP NEW Filters -->
+      <!-- Dropdown (select), single value -->
+      <Filters @applied="onFiltersApplied">
+        <FilterItemSearch />
+        <FilterItem title="Dropdown">
+          <select class="form-select" name="filter-new-status">
+            <option selected hidden disabled></option>
+            <option value="one-time">Nové</option>
+            <option value="recurring">V řešení</option>
+            <option value="recurring">Vyřešeno</option>
+            <option value="recurring">Zrušeno</option>
+          </select>
+        </FilterItem>
+        <!-- Dropdown (select), multiple options (Tom select) -->
+        <FilterItem title="Více možností">
+          <select class="form-select" name="filter-new-suppliers" id="filter-new-suppliers" multiple>
+            <option value="Sapeli">Sapeli</option>
+            <option value="Hanák">Hanák</option>
+            <option value="Next">Next</option>
+            <option value="Barkotex">Barkotex</option>
+            <option value="Ptáček">Ptáček</option>
+            <option value="ProCeram">ProCeram</option>
+            <option value="Profi Lighting">Profi Lighting</option>
+            <option value="Vekra">Vekra</option>
+            <option value="KONE">KONE</option>
+            <option value="Loxone">Loxone</option>
+            <option value="ABB">ABB</option>
+            <option value="Baumit">Baumit</option>
+            <option value="Wienerberger">Wienerberger</option>
+            <option value="Vapis">Vapis</option>
+            <option value="Xella">Xella</option>
+          </select>
+        </FilterItem>
+        <!-- Text -->
+        <FilterItem title="Textové pole">
+          <input class="form-control" type="text">
+        </FilterItem>
+        <!-- Hodnota -->
+        <FilterItem title="Číslo">
+          <input class="form-control" type="number">
+        </FilterItem>
+        <!-- Rádia -->
+        <FilterItem title="Rádia">
+          <fieldset>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-breakfast" value="opt-1">
+              <span class="form-check-label">Možnost 1</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-breakfast" value="opt-2">
+              <span class="form-check-label">Možnost 2</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-breakfast" value="opt-3">
+              <span class="form-check-label">Možnost 3</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-breakfast" value="opt-4">
+              <span class="form-check-label">Možnost 4</span>
+            </label>
+          </fieldset>
+        </FilterItem>
+        <!-- Date -->
+        <FilterItem title="Datum">
+          <input class="form-control" type="date" name="filter-new-date-completion">
+        </FilterItem>
+        <!-- Multiple inputs -->
+        <FilterItem title="Všehochuť">
+          <input class="form-control" type="date" name="filter-new-date-start">
+          <input class="form-control" type="date" name="filter-new-date-end">
+          <fieldset>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-date-radio" value="completed">
+              <span class="form-check-label">Dokončené</span>
+            </label>
+            <label class="form-check">
+              <input class="form-check-input" type="radio" name="filter-new-date-radio" value="all">
+              <span class="form-check-label">Všechny</span>
+            </label>
+          </fieldset>
+        </FilterItem>
+      </Filters>
 
     </template>
 
