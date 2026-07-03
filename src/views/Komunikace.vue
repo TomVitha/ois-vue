@@ -389,7 +389,7 @@
           <div class="card scrollable" v-else id="message-view">
             <div class="card-header d-block">
               <div class="row gy-3">
-                <div v-if="isDesktop" class="col-12 d-print-none">
+                <div v-if="!isDesktop" class="col-12 d-print-none">
                   <div class="btn-actions mx-n3 my-n2">
                     <!-- Previous message -->
                     <button class="btn btn-link btn-action" title="Předchozí zpráva" @click="selectedMessageId = currentTabMessages[selectedIndex - 1]?.id ?? null" :disabled="selectedIndex <= 0">
