@@ -57,4 +57,8 @@
   </a>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .nav-link {
+    --tblr-nav-link-font-weight: normal;
+  }
+</style>
