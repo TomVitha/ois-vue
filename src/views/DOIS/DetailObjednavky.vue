@@ -141,6 +141,9 @@
           <a href="#tab-attachments" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Přílohy</a>
         </li>
         <li class="nav-item" role="presentation">
+          <a href="#tab-consultants" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Konzultanti</a>
+        </li>
+        <li class="nav-item" role="presentation">
           <a href="#tab-construction" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab" draggable="false">Stavba</a>
         </li>
         <!-- TODO: Komunikace -->
@@ -197,7 +200,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-xxl-10">
@@ -607,11 +609,63 @@
         </div>
       </div>
 
+      <!-- * Záložka: Konzultanti -->
+      <div class="tab-pane" id="tab-consultants" role="tabpanel">
+        <div class="row row-cards">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Konzultanti</h3>
+              </div>
+              <div class="card-body">
+                <div class="row gy-3">
+                  <div class="col-12 col-lg-6">
+                    <label for="order-order-date" class="form-label">Datum odeslání</label>
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                          <path d="M16 3v4"></path>
+                          <path d="M8 3v4"></path>
+                          <path d="M4 11h16"></path>
+                          <path d="M11 15h1"></path>
+                          <path d="M12 15v3"></path>
+                        </svg>
+                      </span>
+                      <input type="date" class="form-control" name="order-order-date" id="order-order-date">
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <label for="order-order-date" class="form-label">Datum akceptace</label>
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+                          <path d="M16 3v4"></path>
+                          <path d="M8 3v4"></path>
+                          <path d="M4 11h16"></path>
+                          <path d="M11 15h1"></path>
+                          <path d="M12 15v3"></path>
+                        </svg>
+                      </span>
+                      <input type="date" class="form-control" name="order-order-date" id="order-order-date">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- * Záložka: Stavba -->
       <div class="tab-pane" id="tab-construction" role="tabpanel">
         <div class="row row-cards">
           <div class="col-12">
-            <div class="card card-md">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Stavba</h3>
+              </div>
               <div class="card-body">
                 <div class="row gy-3">
                   <div class="col-12 col-lg-4">
@@ -647,6 +701,9 @@
         <div class="row row-cards">
           <div class="col-12">
             <div class="card">
+              <div class="card-header">
+                <div class="card-title">Komunikace</div>
+              </div>
               <div class="card-body">
                 <div class="space-y">
                   <OrderComments :comments="comments" />
