@@ -59,7 +59,7 @@
       const element = document.querySelector(selector)
       if (!element) return
 
-        new TomSelect(selector, tomSelectOptions)
+      new TomSelect(selector, tomSelectOptions)
     })
   })
 
@@ -71,7 +71,7 @@
   async function initDataTable() {
 
     if (!ordersTableRef.value) return
-    
+
     await nextTick()
 
     // DataTables pro řazení (a dále případně filtrování, stránkování, vyhledávání).
@@ -314,7 +314,7 @@
         <FilterItem title="Dropdown">
           <select class="form-select" name="filter-new-status">
             <option selected hidden disabled></option>
-            <option value="one-time">Nové</option>
+            <option value="one-time">Nová</option>
             <option value="recurring">V řešení</option>
             <option value="recurring">Vyřešeno</option>
             <option value="recurring">Zrušeno</option>
@@ -468,12 +468,15 @@
                   <th>Akceptace dodavatelem</th>
                 </tr>
               </thead>
+              <!-- NOTE: Aby Stav neřadil abecedně podle názvu, ale podle pořadí ve kterém se objednávka vyvíjí, má stav nastavený date-sort, který koresponduje s ID stavu -->
               <tbody class="table-tbody">
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">192-01-086-IS-I</td>
-                  <td class="sort-status" date-status="0"><span class="status status-info">Nové</span></td>
+                  <td class="sort-status" data-sort="1"><span class="status status-info">Nová</span></td>
                   <td class="sort-technician">Petr Lamata</td>
                   <td class="sort-readiness">Indeco</td>
                   <td>30.01.2026</td>
@@ -483,9 +486,11 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/461-2025-ÚVD" class="text-reset" tabindex="-1">461-2025-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/431-2025-ÚVD" class="text-reset" tabindex="-1">431-2025-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">201-03-145-IS-II</td>
-                  <td class="sort-status" date-status="1"><span class="status status-warning">V řešení</span></td>
+                  <td class="sort-status" data-sort="2"><span class="status status-indigo">Odesláno</span></td>
                   <td class="sort-technician">Tomáš Král</td>
                   <td class="sort-readiness">Sapeli</td>
                   <td>14.02.2026</td>
@@ -495,9 +500,11 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/463-2025-ÚVD" class="text-reset" tabindex="-1">463-2025-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/463-2025-ÚVD" class="text-reset" tabindex="-1">463-2025-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">118-22-009-IS-I</td>
-                  <td class="sort-status" date-status="2"><span class="status status-success">Dokončeno</span></td>
+                  <td class="sort-status" data-sort="3"><span class="status status-purple">Akceptováno</span></td>
                   <td class="sort-technician">Lucie Malá</td>
                   <td class="sort-readiness">Hanák</td>
                   <td>03.12.2025</td>
@@ -507,9 +514,11 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/470-2026-ÚVD" class="text-reset" tabindex="-1">470-2026-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/470-2026-ÚVD" class="text-reset" tabindex="-1">470-2026-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">307-11-552-IS-III</td>
-                  <td class="sort-status" date-status="0"><span class="status status-info">Nové</span></td>
+                  <td class="sort-status" data-sort="4"><span class="status status-cyan">Montáž</span></td>
                   <td class="sort-technician">Jan Vacek</td>
                   <td class="sort-readiness">Vekra</td>
                   <td>25.04.2026</td>
@@ -519,9 +528,39 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/472-2026-ÚVD" class="text-reset" tabindex="-1">472-2026-ÚVD</RouterLink></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/472-2026-ÚVD" class="text-reset" tabindex="-1">472-2026-ÚVD</RouterLink>
+                  </td>
+                  <td class="sort-receipt">522-14-601-IS-I</td>
+                  <td class="sort-status" data-sort="5"><span class="status status-warning">Závada</span></td>
+                  <td class="sort-technician">Anna Dvořáková</td>
+                  <td class="sort-readiness">KONE</td>
+                  <td>18.05.2026</td>
+                  <td class="sort-item">Výtahová kabina</td>
+                  <td class="sort-completion">02.06.2026</td>
+                  <td class="sort-accept">06.06.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/473-2026-ÚVD" class="text-reset" tabindex="-1">473-2026-ÚVD</RouterLink>
+                  </td>
+                  <td class="sort-receipt">633-09-412-IS-II</td>
+                  <td class="sort-status" data-sort="6"><span class="status status-lime">Závada odstraněna</span></td>
+                  <td class="sort-technician">David Šimek</td>
+                  <td class="sort-readiness">Ptáček</td>
+                  <td>11.06.2026</td>
+                  <td class="sort-item">Koupelnová skříňka</td>
+                  <td class="sort-completion">26.06.2026</td>
+                  <td class="sort-accept">29.06.2026</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/459-2026-ÚVD" class="text-reset" tabindex="-1">459-2026-ÚVD</RouterLink>
+                  </td>
                   <td class="sort-receipt">415-07-233-IS-II</td>
-                  <td class="sort-status" date-status="3"><span class="status status-danger">Pozastaveno</span></td>
+                  <td class="sort-status" data-sort="7"><span class="status status-success">Vyřízeno</span></td>
                   <td class="sort-technician">Marek Ježek</td>
                   <td class="sort-readiness">ABB</td>
                   <td>09.03.2026</td>
@@ -531,15 +570,17 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="sort-id"><RouterLink to="/dois/objednavka/475-2026-ÚVD" class="text-reset" tabindex="-1">475-2026-ÚVD</RouterLink></td>
-                  <td class="sort-receipt">522-14-601-IS-I</td>
-                  <td class="sort-status" date-status="1"><span class="status status-warning">V řešení</span></td>
-                  <td class="sort-technician">Anna Dvořáková</td>
-                  <td class="sort-readiness">KONE</td>
-                  <td>18.05.2026</td>
-                  <td class="sort-item">Výtahová kabina</td>
-                  <td class="sort-completion">02.06.2026</td>
-                  <td class="sort-accept">06.06.2026</td>
+                  <td class="sort-id">
+                    <RouterLink to="/dois/objednavka/457-2026-ÚVD" class="text-reset" tabindex="-1">457-2026-ÚVD</RouterLink>
+                  </td>
+                  <td class="sort-receipt">709-16-038-IS-III</td>
+                  <td class="sort-status" data-sort="8"><span class="status status-danger">Storno</span></td>
+                  <td class="sort-technician">Kristýna Bartošová</td>
+                  <td class="sort-readiness">ProCeram</td>
+                  <td>04.07.2026</td>
+                  <td class="sort-item">Obklad koupelny</td>
+                  <td class="sort-completion">19.07.2026</td>
+                  <td class="sort-accept">21.07.2026</td>
                 </tr>
               </tbody>
             </table>

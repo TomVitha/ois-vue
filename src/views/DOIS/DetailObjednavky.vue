@@ -63,7 +63,6 @@
     </template>
 
     <template #toolbar>
-      <!-- NOTE: Akce v toolbaru pro desktop -->
       <div class="btn-list mb-3">
         <button v-if="orderProcessStep === 1" class="btn btn-sm" @click="orderProcessStep++">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
@@ -166,9 +165,10 @@
                     <div class="row g-3">
                       <div class="col-12">
                         <div class="text-muted">Interní číslo</div>
-                        <div>
-                          <span class="h2">{{ route.params.orderId }}</span>
-                          <span class="status status-info align-text-bottom ms-2">Nová</span>
+                        <div class="space-x-2 align-items-center">
+                          <h2 class="mb-0">{{ route.params.orderId }}</h2>
+                          <!-- NOTE: Název i barva stavu bude sjednocena s tabulkou Objednávky UVD -->
+                          <span class="status status-info align-text-bottom">Nová</span>
                         </div>
                       </div>
                       <div class="col-12 col-md-6 d-flex">
