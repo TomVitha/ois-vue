@@ -158,12 +158,13 @@
                   </div>
                 </form>
               </div>
-              <div v-if="userView === 'client'" class="col-12">
+              <!-- DEPRECATED -->
+              <!-- <div v-if="userView === 'client'" class="col-12">
                 <label class="form-check my-0">
                   <input class="form-check-input" type="checkbox">
                   <span class="form-check-label">Nahrát jako poptávku</span>
                 </label>
-              </div>
+              </div> -->
               <div class="col-12 gy-5" v-if="userView === 'client' && isGdprCompliant !== null">
                 <!-- Udělil souhlas -->
                 <Alert class="mb-0" v-if="isGdprCompliant == true" type="success">Klient udělil souhlas s GDPR.</Alert>
