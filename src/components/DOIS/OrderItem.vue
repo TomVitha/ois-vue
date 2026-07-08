@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { ref, computed, provide, readonly, nextTick } from 'vue'
+  import { ref, computed, provide, readonly, nextTick, useTemplateRef } from 'vue'
+  import type { ComponentPublicInstance } from 'vue'
   import OrderDocumentItem from '@/components/DOIS/OrderDocumentItem.vue'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
@@ -35,8 +36,19 @@
     emit('open-dois-order-offcanvas', props.orderId)
   }
 
-  function onCommentSubmitted(payload: SubmittedCommentPayload) {
+  const commentsListRef = useTemplateRef('commentsList')
+
+  async function onCommentSubmitted(payload: SubmittedCommentPayload) {
     console.debug('New comment submitted:', payload)
+
+    // Scroll to the bottom of the comments list
+    await nextTick()
+    if (!commentsListRef.value) return
+    commentsListRef.value.$el.scrollTo({
+      top: commentsListRef.value.$el.scrollHeight,
+      left: 0,
+      behavior: 'auto',
+    })
   }
 
   const referencedDocumentId = ref<number | undefined>()
@@ -45,8 +57,6 @@
   function getDocumentElementId(documentId: number): string {
     return `order-document-${props.orderId}-${documentId}`
   }
-
-  const addCommentRef = ref<HTMLElement | null>(null)
 
   /**
    * Scrolls the given element into view, centering it vertically in the viewport.
@@ -104,16 +114,17 @@
     collapseTrigger?.click()
   }
 
+  const addCommentRef = useTemplateRef('addCommentRef')
+
   async function onReferenceDocumentFromItem(documentId: number) {
     referencedDocumentId.value = documentId
     areCommentsVisible.value = true
 
     await nextTick()
-    const addCommentElement = addCommentRef.value
-    if (!addCommentElement) return
+    if (!addCommentRef.value?.$el) return
 
-    scrollTo(addCommentElement)
-    const textarea = addCommentElement.querySelector<HTMLTextAreaElement>('textarea')
+    scrollTo(addCommentRef.value.$el)
+    const textarea = addCommentRef.value.$el.querySelector('textarea') as HTMLTextAreaElement | null
     textarea?.focus({ preventScroll: true })
   }
 
@@ -276,20 +287,24 @@
       </div>
     </div>
     <div class="card-body" v-if="areCommentsVisible">
-      <h3 class="mb-3">Komentáře</h3>
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <h3 class="card-title mb-0">Komentáře</h3>
+        <span class="text-secondary d-none d-sm-inline">(Celkem {{ orderComments.length }})</span>
+      </div>
       <div class="space-y">
 
         <OrderComments
+          ref="commentsList"
+          class="comments"
           :comments="orderComments"
           @goto-document="onGoToDocument" />
 
-        <div ref="addCommentRef">
-          <OrderAddComment
-            :orderId="props.orderId"
-            :referenced-document-id="referencedDocumentId"
-            @update:referencedDocumentId="onReferencedDocumentIdUpdated"
-            @submitted="onCommentSubmitted" />
-        </div>
+        <OrderAddComment
+          ref="addCommentRef"
+          :orderId="props.orderId"
+          :referenced-document-id="referencedDocumentId"
+          @update:referencedDocumentId="onReferencedDocumentIdUpdated"
+          @submitted="onCommentSubmitted" />
 
       </div>
     </div>
@@ -334,6 +349,11 @@
   .card-header {
     background-color: var(--tblr-body-color);
     color: var(--tblr-card-bg);
+  }
+
+  .comments {
+    max-height: min(500px, 70vh);
+    overflow-y: scroll;
   }
 
 </style>
