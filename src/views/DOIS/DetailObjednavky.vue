@@ -708,7 +708,7 @@
                 <div class="space-y">
                   <OrderComments :comments="comments" />
                   <!-- HACK - Hard-coded values !! -->
-                  <OrderAddComment :orderId="0" />
+                  <OrderAddComment :orderId="0" :isRefDocRequired="false" />
                 </div>
               </div>
             </div>

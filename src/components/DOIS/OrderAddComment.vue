@@ -5,6 +5,7 @@
 
   const props = defineProps<{
     orderId: number
+    isRefDocRequired: boolean
     documentId?: number
     referencedDocumentId?: number
   }>()
@@ -100,7 +101,10 @@
   const newCommentText = ref('')
 
   const canSubmitComment = computed(() => {
-    return newCommentText.value.trim().length > 0
+    if (newCommentText.value.trim().length === 0) return false
+    if (!props.isRefDocRequired) return true
+
+    return referencedDocumentId.value !== undefined
   })
 
   function submitComment() {
@@ -160,7 +164,7 @@
       <div class="add-comment-actions d-flex align-items-center column-gap-1">
         <div v-if="canReferenceDocument" class="btn-actions">
           <!-- Reference documents dropdown -->
-          <div class="dropdown">
+          <div v-if="props.isRefDocRequired" class="dropdown">
             <button
               class="btn btn-action dropdown-toggle"
               data-bs-toggle="dropdown"
@@ -190,7 +194,7 @@
             </div>
           </div>
         </div>
-        <span v-if="canReferenceDocument && !referencedDocument" class="comment-document-alert text-danger">Vyberte soubor</span>
+        <span v-if="props.isRefDocRequired && canReferenceDocument && !referencedDocument" class="comment-document-alert text-danger">Vyberte soubor</span>
         <!-- * Tag - referenced document -->
         <span
           v-if="canReferenceDocument && referencedDocument"

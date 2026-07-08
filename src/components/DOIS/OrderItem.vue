@@ -302,6 +302,7 @@
         <OrderAddComment
           ref="addCommentRef"
           :orderId="props.orderId"
+          :isRefDocRequired="true"
           :referenced-document-id="referencedDocumentId"
           @update:referencedDocumentId="onReferencedDocumentIdUpdated"
           @submitted="onCommentSubmitted" />

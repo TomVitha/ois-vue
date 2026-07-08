@@ -64,7 +64,8 @@
     </div>
     <div v-if="order" class="offcanvas-footer border-top flex-shrink-0 flex-grow-0">
       <OrderAddComment
-        :orderId="props.orderId" />
+        :orderId="props.orderId"
+        :isRefDocRequired="true" />
     </div>
   </div>
 </template>
