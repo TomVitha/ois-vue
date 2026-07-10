@@ -121,6 +121,11 @@ const router = createRouter({
       component: () => import('../views/DOIS/NahraniSouboru.vue'),
       meta: { layout: LayoutDOIS },
     },
+    {
+      path: '/dois/ciselniky',
+      component: () => import('../views/DOIS/Ciselniky.vue'),
+      meta: { layout: LayoutDOIS },
+    },
     // Else
     {
       path: '/404',
