@@ -1,5 +1,23 @@
 <script setup lang="ts">
+  import { onMounted } from 'vue';
+  import TomSelect from 'tom-select'
 
+  // Initialize multiple Tom-selects
+  const tomSelectSelectors = ['#order-input-new-item-name'] as const
+  const tomSelectOptions = {
+    allowEmptyOption: false,
+    plugins: ['dropdown_input'],
+  }
+
+  onMounted(() => {
+    tomSelectSelectors.forEach((selector) => {
+      const element = document.querySelector(selector)
+
+      if (element) {
+        new TomSelect(selector, tomSelectOptions)
+      }
+    })
+  })
 </script>
 
 <template>

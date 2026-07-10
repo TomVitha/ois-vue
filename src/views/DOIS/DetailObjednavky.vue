@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
-  import TomSelect from 'tom-select'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
   import OrderAddItemModal from '@/components/DOIS/modals/OrderAddItemModal.vue'
@@ -22,22 +21,7 @@
   const route = useRoute()
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
-  // Initialize multiple Tom-selects
-  const tomSelectSelectors = ['#order-input-new-item-name'] as const
-  const tomSelectOptions = {
-    allowEmptyOption: false,
-    plugins: ['dropdown_input'],
-  }
 
-  onMounted(() => {
-    tomSelectSelectors.forEach((selector) => {
-      const element = document.querySelector(selector)
-
-      if (element) {
-        new TomSelect(selector, tomSelectOptions)
-      }
-    })
-  })
 
   // TEMP - hard-coded natáhnout komentáře k dané objednávce
   const comments = computed(() => {
