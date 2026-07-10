@@ -170,10 +170,16 @@ dialog {
   }
 }
 
-/* Disable font size increase on mobile */
+/* Counters font-size increase on mobile */
 @media (max-width: 575.98px) {
   .form-control, .form-select {
-    font-size: inherit;
+    font-size: 0.875rem;
+  }
+  .form-control-sm, .form-select-sm {
+    font-size: 0.75rem;
+  }
+  .form-control-lg, .form-select-lg {
+    font-size: 1rem;
   }
 }
 
