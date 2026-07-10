@@ -361,7 +361,7 @@
       </div>
     </div>
 
-    <!-- * Nahrát soubory -->
+    <!-- * Nahrát přílohy -->
     <!-- TODO: Place into component -->
     <div class="modal" id="order-upload-attachment-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -370,7 +370,6 @@
             <h5 class="modal-title">Nahrát přílohy</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
           <div class="modal-body">
             <form class="dropzone dz-clickable" id="dropzone-order-attachments" action="./" autocomplete="off" novalidate>
               <div class="dz-default dz-message m-0">
@@ -389,7 +388,6 @@
               </div>
             </form>
           </div>
-
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">Zrušit</button>
             <button type="button" class="btn btn-primary">Přidat</button>
