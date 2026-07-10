@@ -2,13 +2,12 @@
   import { ref, computed, onMounted } from 'vue';
   import { useRoute } from 'vue-router'
   import PageTemplate from '@/components/PageTemplate.vue'
-  import Empty from '@/components/Empty.vue'
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery';
-  import { useDropzone } from '@/composables/useDropzone'
-  import 'dropzone/dist/dropzone.css'
   import TomSelect from 'tom-select'
   import OrderComments from '@/components/DOIS/OrderComments.vue'
   import OrderAddComment from '@/components/DOIS/OrderAddComment.vue'
+  import OrderAddItemModal from '@/components/DOIS/modals/OrderAddItemModal.vue'
+  import OrderAddAttachmentModal from '@/components/DOIS/modals/OrderAddAttachmentModal.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
   const doisOrdersStore = useDoisOrders()
 
@@ -23,16 +22,7 @@
   const route = useRoute()
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
-  // NOTE: dzOrderAttachments.value is available for manual calls
-  const { dropzone: dzOrderAttachments } = useDropzone({
-    selector: '#dropzone-order-attachments',
-    options: {
-      url: './',
-    },
-  })
-
   // Initialize multiple Tom-selects
-
   const tomSelectSelectors = ['#order-input-new-item-name'] as const
   const tomSelectOptions = {
     allowEmptyOption: false,
@@ -737,8 +727,7 @@
 
     </div>
 
-    <!-- * Stornovat objednávku -->
-    <!-- TODO: Place into component -->
+    <!-- * Stornovat objednávku modal -->
     <div class="modal" id="order-cancel-confirm" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -761,99 +750,13 @@
       </div>
     </div>
 
-    <!-- * Přidat položku -->
-    <!-- TEMP place -> into component -->
-    <div class="modal" id="order-add-item-modal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Přidat položku</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label required" for="order-input-new-item-name">Název položky</label>
-                <select class="form-select" autocomplete="off" id="order-input-new-item-name" required>
-                  <option selected disabled>vyberte</option>
-                  <option value="1">Možnost 1</option>
-                  <option value="2">Možnost 2</option>
-                  <option value="3">Možnost 3</option>
-                  <option value="4">Možnost 4</option>
-                  <option value="5">Možnost 5</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label" for="order-input-new-item-date-completion">Termín splnění</label>
-                <div class="input-icon">
-                  <span class="input-icon-addon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
-                      <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-                      <path d="M16 3v4"></path>
-                      <path d="M8 3v4"></path>
-                      <path d="M4 11h16"></path>
-                      <path d="M11 15h1"></path>
-                      <path d="M12 15v3"></path>
-                    </svg>
-                  </span>
-                  <input type="date" class="form-control" id="order-input-new-item-date-completion">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Zrušit</button>
-            <button type="button" class="btn btn-primary">Přidat</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- * Přidat položku modal -->
+    <OrderAddItemModal />
 
-    <!-- * Nahrát přílohy -->
-    <!-- TEMP place -> into component -->
-    <div class="modal" id="order-upload-attachment-modal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Nahrát přílohy</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form class="dropzone dz-clickable" id="dropzone-order-attachments" action="./" autocomplete="off" novalidate>
-              <div class="dz-default dz-message m-0">
-                <button class="dz-button" type="button">
-                  <Empty title="Přetáhněte soubory" subtitle="nebo kliknutím vyberte">
-                    <template #icon>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-upload">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
-                        <path d="M9 15l3 -3l3 3" />
-                        <path d="M12 12l0 9" />
-                      </svg>
-                    </template>
-                  </Empty>
-                </button>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Zrušit</button>
-            <button type="button" class="btn btn-primary">Přidat</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- * Nahrát přílohy modal -->
+    <OrderAddAttachmentModal />
 
   </PageTemplate>
 </template>
 
-<style scoped>
-
-  /* ? maybe ? */
-  .collapsing,
-  .accordion-button-toggle {
-    transition: none !important;
-  }
-
-
-</style>
+<style scoped></style>
