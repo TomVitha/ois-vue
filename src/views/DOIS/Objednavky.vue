@@ -9,6 +9,7 @@
   import OrderOffcanvas from '@/components/DOIS/OrderOffcanvas.vue'
 
   import TomSelect from 'tom-select'
+  import Alert from '@/components/Alert.vue';
 
   // Initialize multiple Tom-selects
   const tomSelectSelectors = ['#filter-suppliers'] as const
@@ -113,6 +114,10 @@
         </div>
       </div>
     </template>
+
+    <Alert type="warning">
+      S platností od 1.&nbsp;1.&nbsp;2025 dochází u&nbsp;společností v&nbsp;rámci koncernu CENTRAL GROUP ke změně DIČ v&nbsp;návaznosti na nově založenou skupinu DPH. Více informací <a href="https://www.central-group.cz/storage/dokumenty/oznameni-o-zalozeni-skupiny-dph-v-ramci-koncernu-CENTRAL-GROUP.pdf">ZDE</a>.
+    </Alert>
 
     <div class="row row-deck row-cards">
       <template v-for="order in doisOrdersStore.orders" :key="order.id">
