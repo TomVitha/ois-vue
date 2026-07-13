@@ -16,6 +16,7 @@
 
   const emit = defineEmits<{
     (event: 'open-dois-order-offcanvas', orderId: number): void
+    (event: 'open-document-preview', documentId: number): void
   }>()
 
   const doisOrdersStore = useDoisOrders()
@@ -132,6 +133,10 @@
     referencedDocumentId.value = documentId
   }
 
+  function onOpenDocumentPreview(documentId: number) {
+    emit('open-document-preview', documentId)
+  }
+
   async function onGoToDocument(payload: { orderId: number; documentId: number }) {
     if (payload.orderId !== props.orderId) return
 
@@ -174,8 +179,8 @@
           <button class="btn" @click="cancelAttachingDocs">Zrušit</button>
         </div>
         <div v-if="!isAttachingDocuments" class="btn-actions">
-          <!-- ALT comments (offcanvas side panel) -->
-          <button
+          <!-- DISCARDED - offcanvas side panel -->
+          <!-- <button
             class="btn btn-action text-reset"
             data-bs-toggle="offcanvas"
             data-bs-target="#dois-order-offcanvas"
@@ -187,9 +192,8 @@
               <path d="M15 4v16" />
               <path d="M10 10l-2 2l2 2" />
             </svg>
-            <!-- TEMP vypnuto ať se netluče s prvním tlačítem -->
-            <!-- <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span> -->
-          </button>
+            <span v-if="orderComments.length" class="badge badge-notification">{{ orderComments.length }}</span>
+          </button> -->
           <!-- * Otevřít/Zavřít Komentáře -->
           <button
             class="btn btn-action text-reset"
@@ -238,7 +242,8 @@
               :datetime="orderPart[0].datetime"
               :uploader-id="orderPart[0].uploaderId"
               :is-main-document="true"
-              @reference-document="onReferenceDocumentFromItem" />
+              @reference-document="onReferenceDocumentFromItem"
+              @open-document-preview="onOpenDocumentPreview" />
           </div>
           <!-- * Supporting documents = orderPart[1] -->
           <template v-if="orderPart[1].length > 0">
@@ -274,7 +279,8 @@
                             :datetime="doc.datetime"
                             :uploader-id="doc.uploaderId"
                             :is-main-document="false"
-                            @reference-document="onReferenceDocumentFromItem" />
+                            @reference-document="onReferenceDocumentFromItem"
+                            @open-document-preview="onOpenDocumentPreview" />
                         </template>
                       </div>
                     </div>

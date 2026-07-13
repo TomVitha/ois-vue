@@ -7,6 +7,7 @@
 
   import OrderItem from '@/components/DOIS/OrderItem.vue'
   import OrderOffcanvas from '@/components/DOIS/OrderOffcanvas.vue'
+  import DocumentPreviewOffcanvas from '@/components/DOIS/DocumentPreviewOffcanvas.vue'
 
   import TomSelect from 'tom-select'
   import Alert from '@/components/Alert.vue';
@@ -40,9 +41,14 @@
   })
 
   const selectedOrderId = ref(doisOrdersStore.orders[0]?.id ?? -1)
+  const selectedDocumentId = ref<number | undefined>()
 
   function onOpenOrderOffcanvas(orderId: number) {
     selectedOrderId.value = orderId
+  }
+
+  function onOpenDocumentPreview(documentId: number) {
+    selectedDocumentId.value = documentId
   }
 </script>
 
@@ -127,12 +133,16 @@
             :contractNumber="order.contractNumber"
             :supplier="order.supplier"
             :documents="order.documents"
-            @open-dois-order-offcanvas="onOpenOrderOffcanvas" />
+            @open-dois-order-offcanvas="onOpenOrderOffcanvas"
+            @open-document-preview="onOpenDocumentPreview" />
         </div>
       </template>
     </div>
 
-    <OrderOffcanvas :order-id="selectedOrderId" />
+    <!-- DISCARDED EXPERIMENT -->
+    <!-- <OrderOffcanvas :order-id="selectedOrderId" /> -->
+
+    <DocumentPreviewOffcanvas :documentId="selectedDocumentId" />
 
   </PageTemplate>
 

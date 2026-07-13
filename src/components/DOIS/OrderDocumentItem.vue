@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, inject } from 'vue'
+  import { ref, computed, inject, useTemplateRef } from 'vue'
 
   import { useFormatting } from '@/composables/formatting'
   const { formatDate } = useFormatting()
@@ -22,6 +22,7 @@
 
   const emit = defineEmits<{
     (event: 'reference-document', documentId: number): void
+    (event: 'open-document-preview', documentId: number): void
   }>()
 
   const filename = computed(() => {
@@ -43,6 +44,28 @@
   function referenceDocumentInComment() {
     emit('reference-document', props.documentId)
   }
+
+  function openDocumentPreview() {
+    const offcanvasElement = document.getElementById('dois-document-preview-offcanvas')
+    const isPreviewOpen = offcanvasElement?.classList.contains('show') ?? false
+    const currentDocumentId = Number(offcanvasElement?.getAttribute('data-current-document-id'))
+
+    // Clicking currently previewed document toggles the offcanvas closed.
+    if (isPreviewOpen && currentDocumentId === props.documentId) {
+      const closeButton = offcanvasElement?.querySelector<HTMLButtonElement>('[data-bs-dismiss="offcanvas"]')
+      closeButton?.click()
+      return
+    }
+
+    emit('open-document-preview', props.documentId)
+
+    // Open offcanvas only when it's currently closed.
+    if (!isPreviewOpen) {
+      previewTriggerRef.value?.click()
+    }
+  }
+
+  const previewTriggerRef = useTemplateRef<HTMLButtonElement>('previewTriggerRef')
 
   const isAttachingDocuments = inject('isAttachingDocuments', ref(false))
 
@@ -92,7 +115,16 @@
       </div>
       <!-- * Filename -->
       <div class="col-4">
-        <a :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
+        <a @click.prevent="openDocumentPreview" :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
+        <!-- HACK: pomocný button -->
+        <button
+          ref="previewTriggerRef"
+          type="button"
+          class="d-none"
+          tabindex="-1"
+          aria-hidden="true"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#dois-document-preview-offcanvas"></button>
       </div>
 
       <!-- * Datetime -->

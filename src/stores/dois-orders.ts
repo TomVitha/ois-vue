@@ -86,7 +86,7 @@ const orders = ref<Order[]>([
         // main document
         {
           id: 1,
-          filepath: '/soubory/hlavni-dokument-1.pdf',
+          filepath: 'https://pdfobject.com/pdf/sample.pdf',
           datetime: '2026-05-11T09:38:00',
           status: 1,
           uploaderId: 7,
@@ -97,14 +97,14 @@ const orders = ref<Order[]>([
           [
             {
               id: 2,
-              filepath: '/soubory/6A017122_53341_01.scn',
+              filepath: 'https://partnerslitomysl.cz/vychozi-obsah/sample-certificate.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
             },
             {
               id: 3,
-              filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
+              filepath: 'https://amo.ostrava.cz/wp-content/uploads/2019/09/29_Vzorovy_SSP_akciove_spolecnosti.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
@@ -114,14 +114,14 @@ const orders = ref<Order[]>([
           [
             {
               id: 4,
-              filepath: '/soubory/1_1.png',
+              filepath: 'https://ndakitchens.com/wp-content/uploads/2025/01/21A-Seusing-Blvd-Ronkonkoma-NY-Josh-Goetz-Photography-1.jpg',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
             },
             {
               id: 5,
-              filepath: '/soubory/1_2.png',
+              filepath: 'https://i.ibb.co/r2sFGKk1/flux-capacitor.jpg',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
@@ -134,7 +134,7 @@ const orders = ref<Order[]>([
         // main document
         {
           id: 6,
-          filepath: '/soubory/hlavni-dokument-2.pdf',
+          filepath: 'https://ontheline.trincoll.edu/images/bookdown/sample-local-pdf.pdf',
           datetime: '2026-05-11T09:38:00',
           status: 1,
           uploaderId: 7,
@@ -145,21 +145,21 @@ const orders = ref<Order[]>([
           [
             {
               id: 7,
-              filepath: '/soubory/6A017122_53341_01.scn',
+              filepath: 'https://znalci.justice.cz/wp-content/uploads/2026/02/Vzorovy-test-znalci.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
             },
             {
               id: 8,
-              filepath: '/soubory/189-08-287_KK_var 1_01.pdf',
+              filepath: 'https://www.vzdusin.cz/odstoupeni-od-smlouvy.pdf',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
             },
             {
               id: 9,
-              filepath: '/soubory/1_1.png',
+              filepath: '/soubory/6A017122_53341_01.scn',
               datetime: '2026-05-11T09:38:00',
               status: 1,
               uploaderId: 1,
@@ -169,7 +169,7 @@ const orders = ref<Order[]>([
           [
             {
               id: 10,
-              filepath: '/soubory/Eraserhead.1977.1080p.x265.AAC-PiratskaStrana.mkv',
+              filepath: 'https://www.central-group.cz/storage/CG/wms3/img/kariera/videa/empiria.mp4',
               datetime: '2007-10-27T21:14:11',
               status: 1,
               uploaderId: 1,
@@ -361,6 +361,13 @@ function getUser(userId: number): User | undefined {
   return users.value.find(user => user.id === userId)
 }
 
+function getDocument(documentId: number): OrderDocument | undefined {
+  return orders.value
+    .flatMap(order => order.documents)
+    .flatMap(([mainDocument, supportingDocuments]) => [mainDocument, ...supportingDocuments.flat()])
+    .find(document => document.id === documentId)
+}
+
 function getOrderDocument(orderId: number, documentId: number): OrderDocument | undefined {
   const order = orders.value.find(o => o.id === orderId)
   if (!order) return undefined
@@ -436,6 +443,7 @@ export const useDoisOrders = defineStore('doisOrders', () => {
     getDocumentStatusMeta,
     getDocumentComments,
     getOrderComments,
+    getDocument,
     getOrderDocument,
     getUser,
     addComment,
