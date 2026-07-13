@@ -2,15 +2,13 @@
   import { computed } from 'vue'
   import Empty from '@/components/Empty.vue'
   import { useDoisOrders } from '@/stores/dois-orders'
-
+  const doisOrdersStore = useDoisOrders()
   import { matchesMediaQuery } from '@/composables/matchesMediaQuery'
   const isDesktop = matchesMediaQuery('(min-width: 992px)')
 
   const props = defineProps<{
     documentId?: number
   }>()
-
-  const doisOrdersStore = useDoisOrders()
 
   const selectedDocument = computed(() => {
     if (props.documentId === undefined) return undefined
@@ -21,14 +19,14 @@
     return selectedDocument.value?.filepath ?? ''
   })
 
-  type PreviewContentType = 'pdf' | 'image' | 'video' | 'text'
+  type PreviewContentType = 'document' | 'image' | 'video' | 'text'
   type PreviewFormat = {
     extension: string
     type: PreviewContentType
   }
 
   const supportedPreviewFormats: Record<string, PreviewFormat> = {
-    pdf: { extension: 'pdf', type: 'pdf' },
+    pdf: { extension: 'pdf', type: 'document' },
     png: { extension: 'png', type: 'image' },
     jpg: { extension: 'jpg', type: 'image' },
     jpeg: { extension: 'jpeg', type: 'image' },
@@ -42,25 +40,37 @@
     txt: { extension: 'txt', type: 'text' },
   }
 
-  function getFileExtension(filepath: string): string | null {
-    const path = filepath.trim()
-    if (!path) return null
+  const fullFileName = computed(() => {
+    const path = filepath.value.trim()
+    if (!path) return ''
 
     const withoutHash = path.split('#')[0] ?? ''
     const withoutQuery = withoutHash.split('?')[0] ?? ''
-    const filename = withoutQuery.split('/').at(-1) ?? withoutQuery
-    const filenameWithoutPath = filename.split('\\').at(-1) ?? filename
+    const filenameFromUrl = withoutQuery.split('/').at(-1) ?? withoutQuery
+    return filenameFromUrl.split('\\').at(-1) ?? filenameFromUrl
+  })
 
-    const extension = filenameWithoutPath.split('.').at(-1)?.toLowerCase()
-    if (!extension || extension === filenameWithoutPath.toLowerCase()) return null
+  const extension = computed((): string | null => {
+    const fullName = fullFileName.value
+    if (!fullName) return null
 
-    return extension
-  }
+    const ext = fullName.split('.').at(-1)?.toLowerCase()
+    if (!ext || ext === fullName.toLowerCase()) return null
+
+    return ext
+  })
+
+  const filename = computed(() => {
+    const fullName = fullFileName.value
+    const ext = extension.value
+
+    if (!fullName || !ext) return fullName
+    return fullName.slice(0, -(ext.length + 1))
+  })
 
   const selectedPreviewFormat = computed<PreviewFormat | null>(() => {
-    const extension = getFileExtension(filepath.value)
-    if (!extension) return null
-    return supportedPreviewFormats[extension] ?? null
+    if (!extension.value) return null
+    return supportedPreviewFormats[extension.value] ?? null
   })
 
   const previewType = computed<PreviewContentType | null>(() => {
@@ -86,13 +96,13 @@
 <template>
   <div class="offcanvas overflow-y-auto" :class="[isDesktop ? 'offcanvas-end' : 'offcanvas-bottom']" :data-bs-scroll="isDesktop" :data-bs-backdrop="!isDesktop" :data-current-document-id="props.documentId ?? ''" tabindex="-1" id="dois-document-preview-offcanvas">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title">Náhled dokumentu</h5>
+      <h5 class="offcanvas-title">Náhled</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <template v-if="hasPreviewSource">
         <iframe
-          v-if="previewType === 'pdf' || previewType === 'text'"
+          v-if="previewType === 'document' || previewType === 'text'"
           :src="previewSrc"
           frameborder="0"
           width="100%"
@@ -102,7 +112,7 @@
         <img
           v-else-if="previewType === 'image'"
           :src="previewSrc"
-          alt="Náhled dokumentu"
+          :alt="fullFileName"
           class="document-image-preview">
 
         <video
@@ -110,19 +120,19 @@
           :src="previewSrc"
           class="document-video-preview"
           controls>
-          Váš prohlížeč nepodporuje přehrávání videa.
+          Video není možné přehrát.
         </video>
 
         <Empty
           v-else
-          title="Náhled není dostupný"
+          :title="fullFileName"
           subtitle="Tento typ souboru nelze zobrazit v náhledu."
           :icon="false"></Empty>
       </template>
 
       <Empty
         v-else
-        title="Náhled dokumentu není dostupný"
+        title="Náhled není dostupný"
         subtitle="Soubor nebyl nalezen."
         :icon="false"></Empty>
     </div>
@@ -131,7 +141,7 @@
 
 <style scoped>
   .offcanvas {
-    --tblr-offcanvas-width: 33vw;
+    --tblr-offcanvas-width: 31vw;
     --tblr-offcanvas-height: 99vh;
     border-radius: var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) 0 0;
   }
@@ -151,7 +161,7 @@
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: scale-down;
   }
 
   @media (min-width: 992px) {
