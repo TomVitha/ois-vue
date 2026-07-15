@@ -360,13 +360,13 @@
       <div class="col-12">
         <div class="card overflow-hidden">
           <div class="table-responsive">
-            <table ref="ordersTableRef" class="table table-vcenter table-selectable table-nowrap card-table datatable">
+            <table ref="ordersTableRef" class="table table-vcenter table-hover table-selectable table-nowrap card-table datatable">
               <thead>
                 <tr>
                   <th class="w-1"></th>
                   <th>Interní číslo</th>
                   <th>Číslo SoD</th>
-                  <th>Stav</th>
+                  <th class="w-1">Stav</th>
                   <th>Technik ÚVD</th>
                   <th>Dodavatel</th>
                   <th>Připravenost stavba</th>
@@ -377,10 +377,11 @@
               </thead>
               <!-- NOTE: Aby Stav neřadil abecedně podle názvu, ale podle pořadí ve kterém se objednávka vyvíjí, má stav nastavený date-sort, který koresponduje s ID stavu -->
               <tbody class="table-tbody">
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="text-reset" tabindex="-1">458-2025-ÚVD</RouterLink>
+                    458-2025-ÚVD
+                    <RouterLink to="/dois/objednavka/458-2025-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>192-01-086-IS-I</td>
                   <td data-sort="1"><span class="status status-info">Nová</span></td>
@@ -391,10 +392,11 @@
                   <td>12.01.2026</td>
                   <td>20.01.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/431-2025-ÚVD" class="text-reset" tabindex="-1">431-2025-ÚVD</RouterLink>
+                    431-2025-ÚVD
+                    <RouterLink to="/dois/objednavka/431-2025-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>201-03-145-IS-II</td>
                   <td data-sort="2"><span class="status status-indigo">Odesláno</span></td>
@@ -405,10 +407,11 @@
                   <td>05.03.2026</td>
                   <td>08.03.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/463-2025-ÚVD" class="text-reset" tabindex="-1">463-2025-ÚVD</RouterLink>
+                    463-2025-ÚVD
+                    <RouterLink to="/dois/objednavka/463-2025-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>118-22-009-IS-I</td>
                   <td data-sort="3"><span class="status status-purple">Akceptováno</span></td>
@@ -419,10 +422,11 @@
                   <td>21.12.2025</td>
                   <td>22.12.2025</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/470-2026-ÚVD" class="text-reset" tabindex="-1">470-2026-ÚVD</RouterLink>
+                    470-2026-ÚVD
+                    <RouterLink to="/dois/objednavka/470-2026-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>307-11-552-IS-III</td>
                   <td data-sort="4"><span class="status status-cyan">Montáž</span></td>
@@ -433,10 +437,11 @@
                   <td>10.05.2026</td>
                   <td>13.05.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/472-2026-ÚVD" class="text-reset" tabindex="-1">472-2026-ÚVD</RouterLink>
+                    472-2026-ÚVD
+                    <RouterLink to="/dois/objednavka/472-2026-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>522-14-601-IS-I</td>
                   <td data-sort="5"><span class="status status-warning">Závada</span></td>
@@ -447,10 +452,11 @@
                   <td>02.06.2026</td>
                   <td>06.06.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/473-2026-ÚVD" class="text-reset" tabindex="-1">473-2026-ÚVD</RouterLink>
+                    473-2026-ÚVD
+                    <RouterLink to="/dois/objednavka/473-2026-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>633-09-412-IS-II</td>
                   <td data-sort="6"><span class="status status-lime">Závada odstraněna</span></td>
@@ -461,10 +467,11 @@
                   <td>26.06.2026</td>
                   <td>29.06.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/459-2026-ÚVD" class="text-reset" tabindex="-1">459-2026-ÚVD</RouterLink>
+                    459-2026-ÚVD
+                    <RouterLink to="/dois/objednavka/459-2026-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>415-07-233-IS-II</td>
                   <td data-sort="7"><span class="status status-success">Vyřízeno</span></td>
@@ -475,10 +482,11 @@
                   <td>31.03.2026</td>
                   <td>04.04.2026</td>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr class="position-relative">
+                  <td class="position-relative z-3"></td>
                   <td>
-                    <RouterLink to="/dois/objednavka/457-2026-ÚVD" class="text-reset" tabindex="-1">457-2026-ÚVD</RouterLink>
+                    457-2026-ÚVD
+                    <RouterLink to="/dois/objednavka/457-2026-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>709-16-038-IS-III</td>
                   <td data-sort="8"><span class="status status-danger">Storno</span></td>
