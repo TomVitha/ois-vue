@@ -377,7 +377,7 @@
               </thead>
               <!-- NOTE: Aby Stav neřadil abecedně podle názvu, ale podle pořadí ve kterém se objednávka vyvíjí, má stav nastavený date-sort, který koresponduje s ID stavu -->
               <tbody class="table-tbody">
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     458-2025-ÚVD
@@ -392,10 +392,11 @@
                   <td>12.01.2026</td>
                   <td>20.01.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     431-2025-ÚVD
+                    <!-- NOTE: Klikatelný odkaz který je napozicován přes celý řádek -->
                     <RouterLink to="/dois/objednavka/431-2025-ÚVD" class="stretched-link" tabindex="-1"></RouterLink>
                   </td>
                   <td>201-03-145-IS-II</td>
@@ -407,7 +408,7 @@
                   <td>05.03.2026</td>
                   <td>08.03.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     463-2025-ÚVD
@@ -422,7 +423,7 @@
                   <td>21.12.2025</td>
                   <td>22.12.2025</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     470-2026-ÚVD
@@ -437,7 +438,7 @@
                   <td>10.05.2026</td>
                   <td>13.05.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     472-2026-ÚVD
@@ -452,7 +453,7 @@
                   <td>02.06.2026</td>
                   <td>06.06.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     473-2026-ÚVD
@@ -467,7 +468,7 @@
                   <td>26.06.2026</td>
                   <td>29.06.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     459-2026-ÚVD
@@ -482,7 +483,7 @@
                   <td>31.03.2026</td>
                   <td>04.04.2026</td>
                 </tr>
-                <tr class="position-relative">
+                <tr>
                   <td class="position-relative z-3"></td>
                   <td>
                     457-2026-ÚVD
@@ -507,4 +508,13 @@
   </PageTemplate>
 </template>
 
-<style scoped></style>
+<style scoped>
+  tr {
+    /* Aby .stretched-link pasoval na řádek */
+    position: relative;
+    /* FIX HACK: Safari doesn't support 'position: relative' on <tr> elements */
+    /* https://mtsknn.fi/blog/relative-tr-in-safari/ */
+    transform: translate(0); 
+    clip-path: inset(0)
+  }
+</style>
