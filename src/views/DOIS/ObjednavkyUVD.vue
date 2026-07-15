@@ -344,7 +344,7 @@
             Exportovat
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">XLSX</a>
+            <button class="dropdown-item" href="#">XLSX</button>
           </div>
         </div>
         <RouterLink to="/dois/nova-objednavka" type="button" class="btn btn-primary">
@@ -504,6 +504,52 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div class="card-footer">
+            <div class="row g-2 justify-content-center justify-content-sm-between align-items-center">
+              <div class="col-auto">
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="me-1">20</span>záznamů
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" role="button">10 záznamů </button>
+                    <button class="dropdown-item active" role="button">20 záznamů </button>
+                    <button class="dropdown-item" role="button">50 záznamů </button>
+                    <button class="dropdown-item" role="button">100 záznamů </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <p class="m-0 text-secondary">
+                  Zobrazení <strong>1 až 20</strong> z <strong>33 záznamů</strong>
+                </p>
+              </div>
+              <div class="col-auto">
+                <ul class="pagination m-0 ms-auto">
+                  <li class="page-item disabled">
+                    <button class="page-link" role="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-chevron-left icon">
+                        <path d="M15 6l-6 6l6 6"></path>
+                      </svg>
+                    </button>
+                  </li>
+                  <li class="page-item active">
+                    <button class="page-link" role="button">1</button>
+                  </li>
+                  <li class="page-item">
+                    <button class="page-link" role="button">2</button>
+                  </li>
+                  <li class="page-item">
+                    <button class="page-link" role="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-chevron-right icon">
+                        <path d="M9 6l6 6l-6 6"></path>
+                      </svg>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
