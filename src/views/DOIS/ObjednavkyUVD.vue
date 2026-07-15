@@ -2,11 +2,6 @@
   import { ref, onMounted, watch, useTemplateRef, nextTick, onUnmounted } from 'vue';
   import PageTemplate from '@/components/PageTemplate.vue'
 
-  import Filters from '@/components/Filters/Filters.vue'
-  import FilterItemSearch from '@/components/Filters/FilterItemSearch.vue'
-  import FilterItem from '@/components/Filters/FilterItem.vue'
-  import type { FiltersAppliedPayload } from '@/components/Filters/filter-context'
-
   import TomSelect from 'tom-select'
   import DataTable from 'datatables.net-dt'
   import 'datatables.net-select'
@@ -33,11 +28,7 @@
     (document.querySelector('.page-body') as HTMLElement).classList.toggle('layout-fluid', newValue)
   })
 
-  function onFiltersApplied(payload: FiltersAppliedPayload) {
-    console.log('ObjednavkyUVD filters payload', payload)
-  }
-
-  // Keep legacy old-toolbar multiselects initialized until old filters are removed.
+  // Initialize multiple Tom-selects
   const tomSelectSelectors = ['#filter-suppliers', '#filter-items'] as const
   const tomSelectOptions = {
     allowEmptyOption: false,
@@ -112,10 +103,10 @@
 <template>
   <PageTemplate title="Objednávky ÚVD">
 
-    <!-- Je tenhle filtr zločin proti lidskosti? Ano. Ale, takhle to chtěli, tak to tak mají. -->
+    <!-- NOTE: Je tenhle filtr zločin proti lidskosti? Ano. Ale, takhle to chtěli, tak to tak mají. -->
     <template #toolbar>
 
-      <!-- OLD FILTERS -->
+      <!-- FILTERS -->
       <div class="row align-items-center gy-2">
 
         <div class="col-sm-4 col-xxl-2">
