@@ -107,7 +107,7 @@
     <template #toolbar>
 
       <!-- FILTERS -->
-      <div class="row align-items-center gy-2">
+      <div class="row align-items-center g-2">
 
         <div class="col-sm-4 col-xxl-2">
           <div class="form-floating">
@@ -241,11 +241,11 @@
             <label>Předávací protokol vady</label>
           </div>
         </div>
-        <!-- WIP -->
         <div class="col-12">
-          <div class="row align-items-center gy-2">
-            <div class="col-auto">
-              <div class="form-floating">
+          <div class="row align-items-center g-2">
+            <div class="col-12 col-sm-auto">
+              <div class="input-group">
+                <label class="input-group-text" for="filter-suppliers">Dodavatel</label>
                 <select class="form-select" name="filter-suppliers" id="filter-suppliers" multiple>
                   <option value="Sapeli">Sapeli</option>
                   <option value="Hanák">Hanák</option>
@@ -263,11 +263,11 @@
                   <option value="Vapis">Vapis</option>
                   <option value="Xella">Xella</option>
                 </select>
-                <label>Dodavatel</label>
               </div>
             </div>
-            <div class="col-auto">
-              <div class="form-floating">
+            <div class="col-12 col-sm-auto">
+              <div class="input-group">
+                <label class="input-group-text" for="filter-items">Položky</label>
                 <select class="form-select" name="filter-items" id="filter-items" multiple>
                   <option value="Židle">Židle</option>
                   <option value="Stůl">Stůl</option>
@@ -277,7 +277,6 @@
                   <option value="Koberec">Koberec</option>
                   <option value="Žaluzie">Žaluzie</option>
                 </select>
-                <label>Položky</label>
               </div>
             </div>
           </div>
@@ -509,12 +508,16 @@
 </template>
 
 <style scoped>
+  .input-group {
+    flex-wrap: nowrap;
+  }
+
   tr {
     /* Aby .stretched-link pasoval na řádek */
     position: relative;
     /* FIX HACK: Safari doesn't support 'position: relative' on <tr> elements */
     /* https://mtsknn.fi/blog/relative-tr-in-safari/ */
-    transform: translate(0); 
+    transform: translate(0);
     clip-path: inset(0)
   }
 </style>
