@@ -245,7 +245,7 @@
           <div class="row align-items-center g-2">
             <div class="col-12 col-sm-auto">
               <div class="input-group">
-                <label class="input-group-text" for="filter-suppliers">Dodavatel</label>
+                <label class="input-group-text user-select-none" for="filter-suppliers">Dodavatel</label>
                 <select class="form-select" name="filter-suppliers" id="filter-suppliers" multiple>
                   <option value="Sapeli">Sapeli</option>
                   <option value="Hanák">Hanák</option>
@@ -267,7 +267,7 @@
             </div>
             <div class="col-12 col-sm-auto">
               <div class="input-group">
-                <label class="input-group-text" for="filter-items">Položky</label>
+                <label class="input-group-text user-select-none" for="filter-items">Položky</label>
                 <select class="form-select" name="filter-items" id="filter-items" multiple>
                   <option value="Židle">Židle</option>
                   <option value="Stůl">Stůl</option>
@@ -505,6 +505,7 @@
               </tbody>
             </table>
           </div>
+          <!-- FIXME na mobilu -->
           <div class="card-footer">
             <div class="row g-2 justify-content-center justify-content-sm-between align-items-center">
               <div class="col-auto">
