@@ -505,10 +505,9 @@
               </tbody>
             </table>
           </div>
-          <!-- FIXME na mobilu -->
           <div class="card-footer">
-            <div class="row g-2 justify-content-center justify-content-sm-between align-items-center">
-              <div class="col-auto">
+            <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-sm-between align-items-center row-gap-3">
+              <div>
                 <div class="dropdown">
                   <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
                     <span class="me-1">20</span>záznamů
@@ -521,12 +520,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-auto">
+              <div>
                 <p class="m-0 text-secondary">
                   Zobrazení <strong>1 až 20</strong> z <strong>33 záznamů</strong>
                 </p>
               </div>
-              <div class="col-auto">
+              <div>
                 <ul class="pagination m-0 ms-auto">
                   <li class="page-item disabled">
                     <button class="page-link" role="button">
