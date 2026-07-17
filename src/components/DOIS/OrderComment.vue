@@ -55,7 +55,7 @@
 <template>
   <div class="comment">
     <div v-if="props.datetime">
-      <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> <span class="text-muted"> • {{ formatDate(props.datetime, 'long-datetime') }}</span>
+      <strong>{{ username }}</strong><span v-if="isMe"> (Vy)</span> <span class="text-muted align-middle fs-5"> • {{ formatDate(props.datetime, 'long-datetime') }}</span>
       <button
         v-if="referencedDocumentFilename"
         type="button"

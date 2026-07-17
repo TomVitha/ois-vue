@@ -116,17 +116,17 @@
       <!-- * Filename -->
       <div class="col-4">
         <div class="text-truncate">
-        <a @click.prevent="openDocumentPreview" :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
-        <!-- HACK: pomocný button -->
-        <button
-          ref="previewTriggerRef"
-          type="button"
-          class="d-none"
-          tabindex="-1"
-          aria-hidden="true"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#dois-document-preview-offcanvas"></button>
-      </div>
+          <a @click.prevent="openDocumentPreview" :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
+          <!-- HACK: pomocný button -->
+          <button
+            ref="previewTriggerRef"
+            type="button"
+            class="d-none"
+            tabindex="-1"
+            aria-hidden="true"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#dois-document-preview-offcanvas"></button>
+        </div>
       </div>
 
       <!-- * Datetime -->
@@ -210,13 +210,13 @@
     z-index: -1;
     pointer-events: none;
     animation-name: flash-document;
-    animation-duration: 2000ms;
+    animation-duration: 1500ms;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
   }
 
   @keyframes flash-document {
-    0% {
+    10% {
       background-color: color-mix(in srgb, v-bind('`var(--tblr-${statusMeta.colorClass})`') 40%, transparent);
     }
 

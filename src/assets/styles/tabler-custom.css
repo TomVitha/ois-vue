@@ -244,6 +244,10 @@ dialog {
   --tblr-btn-border-radius: var(--tblr-border-radius-md);
 }
 
+.btn-action {
+  --tblr-btn-active-border-color: transparent;
+}
+
 .form-control-sm {
   min-height: calc(1.25rem + (0.25rem * 2) + calc(var(--tblr-border-width) * 2));
   padding: 0.25rem 0.5rem;

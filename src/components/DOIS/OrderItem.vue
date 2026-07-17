@@ -352,10 +352,17 @@
 
 <style scoped>
 
-  /* HACK: Card Header background */
-  .card-header {
-    background-color: var(--tblr-body-color);
-    color: var(--tblr-card-bg);
+  :is([data-bs-theme=light]) .card-header {
+    background-color: var(--tblr-bg-surface-inverted);
+    color: var(--tblr-text-inverted);
+  }
+
+  :is([data-bs-theme=light]) .list-group-header {
+    background: var(--tblr-gray-100);
+  }
+
+  :is([data-bs-theme=dark]) .list-group-header {
+    background: var(--tblr-gray-900);
   }
 
   .comments {
