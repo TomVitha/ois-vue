@@ -65,7 +65,7 @@
    */
   function scrollTo(element: Element) {
     element.scrollIntoView({
-      behavior: 'auto',
+      behavior: 'instant',
       block: 'center',
       inline: 'nearest',
     })
@@ -361,6 +361,10 @@
   .comments {
     max-height: min(500px, 70vh);
     overflow-y: scroll;
+  }
+
+  .accordion-collapse {
+    transition: none !important;
   }
 
 </style>

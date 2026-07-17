@@ -143,6 +143,7 @@
   .offcanvas {
     --tblr-offcanvas-width: 31vw;
     --tblr-offcanvas-height: 99vh;
+    --tblr-offcanvas-transition: none;
     border-radius: var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) var(--tblr-modal-border-radius, var(--tblr-border-radius-lg)) 0 0;
   }
 
