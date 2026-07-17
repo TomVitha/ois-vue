@@ -115,6 +115,7 @@
       </div>
       <!-- * Filename -->
       <div class="col-4">
+        <div class="text-truncate">
         <a @click.prevent="openDocumentPreview" :href="props.filepath" class="text-reset" :class="{ 'fw-bold': props.isMainDocument }">{{ filename }}</a>
         <!-- HACK: pomocný button -->
         <button
@@ -126,15 +127,17 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#dois-document-preview-offcanvas"></button>
       </div>
+      </div>
 
       <!-- * Datetime -->
-      <div class="col-2">
-        <div class="text-muted">{{ formatDate(props.datetime, 'long-datetime') }}</div>
+      <div class="col-2 text-truncate">
+        <span class="text-muted">{{ formatDate(props.datetime, 'long-datetime') }}</span>
       </div>
+
       <!-- * Uploader name -->
-      <div class="col">
+      <div class="col text-truncate">
         <template v-if="isMainDocument">
-          <div class="text-muted">{{ userUploader?.username }}</div>
+          <span class="text-muted">{{ userUploader?.username }}</span>
         </template>
       </div>
 
